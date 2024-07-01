@@ -39,8 +39,8 @@ withDefaults(defineProps<Props>(), {
   </div>
 </template>
 
-<style scoped lang="postcss">
-@screen md {
+<style lang="postcss">
+@media (min-width: 640px) {
   #hero-bg {
     background-image: url('/img/storacha-il.png');
     background-size: 40%;

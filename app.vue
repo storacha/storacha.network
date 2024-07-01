@@ -1,0 +1,30 @@
+<script setup lang="ts">
+defineOgImage({ url: '/img/storacha-og-card.png', width: 1200, height: 630, alt: 'Storacha Network' })
+</script>
+
+<template>
+  <NuxtLoadingIndicator color="#EAEAE0" style="opacity: 1;" />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
+  <DevOnly>
+    <Debug />
+  </DevOnly>
+</template>
+
+<style lang="postcss">
+html {
+  @apply antialiased;
+}
+
+p a {
+  @apply transform decoration-1 decoration-gray/50 underline underline-offset-3;
+}
+
+p a:hover {
+  @apply decoration-gray decoration-2;
+}
+footer a:hover {
+  @apply underline;
+}
+</style>

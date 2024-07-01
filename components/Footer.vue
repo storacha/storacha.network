@@ -4,11 +4,11 @@
 
 <template>
   <div>
-    <footer class="bg-brand-3 py-8 p3 color-white">
-      <div class="grid grid-cols-3 gap-12 grid-margins">
+    <footer class="bg-brand-3 py-8 color-white">
+      <div class="grid grid-cols-3 gap-12 p3 text-sm grid-margins sm:text-base">
         <div>© 2024 Storacha. All rights reserved.</div>
         <div class="text-center">
-          Social Comp
+          * * *
         </div>
         <div class="text-right">
           Privacy

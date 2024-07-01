@@ -5,7 +5,7 @@ defineProps<{ siteName: string | undefined, invert?: boolean }>()
 <template>
   <Heading type="h4">
     <img v-if="invert" src="/img/storacha-bug.svg" :alt="siteName" class="max-h-full">
-    <img else src="/img/storacha-bug.svg" :alt="siteName" class="max-h-full max-w-40">
+    <img else src="/img/storacha-bug.svg" :alt="siteName" class="max-h-full max-w-40 sm:max-w-50">
     <span class="hidden">{{ siteName }}</span>
   </Heading>
 </template>

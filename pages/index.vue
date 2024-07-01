@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <TransitionProvider class="home-bg">
-    <Section class="min-h-100vh bg-brand-4 2xl:min-h-200 md:min-h-100vh">
+  <TransitionProvider>
+    <Section class="home-bg min-h-100vh bg-brand-4 2xl:min-h-200 md:min-h-100vh">
       <Hero
         headline="The h🔥ttest storage network on the planet."
         description="COMING SOON 2024"
@@ -31,7 +31,3 @@
     </Section>
   </TransitionProvider>
 </template>
-
-<style scoped lang="postcss">
-
-</style>

@@ -18,34 +18,30 @@ withDefaults(defineProps<Props>(), {
 
 <template>
   <!-- hero -->
-  <div id="hero-bg" class="min-h-100vh flex 2xl:min-h-200 md:min-h-100vh">
-    <div class="w-full flex flex-col justify-center">
-      <div>
-        <h1 class="mb-8 max-w-xl text-5xl color-brand-3 font-500 heading lg:text-7xl md:text-6xl">
-          {{ headline }}
-        </h1>
+  <div id="hero-bg" class="min-h-100vh flex">
+    <div class="m-a flex flex-col items-center justify-between gap-8 sm:flex-row">
+      <div class="mt-50 flex items-center sm:mt-0 sm:min-h-100vh">
+        <div class="flex flex-1 flex-col text-center sm:text-left">
+          <div>
+            <Heading type="h1" class="mb-8 max-w-xl text-3xl color-brand-3 font-500 heading lg:text-7xl md:text-6xl">
+              {{ headline }}
+            </Heading>
+          </div>
+          <div class="mb-6 w-full">
+            <h3 class="font-norma1 max-w-lg color-brand-3 font-500 p1">
+              {{ description }}
+            </h3>
+          </div>
+          <div v-if="action" class="mt-6 w-full">
+            <Btn :href="action.href" :icon="action.icon">
+              {{ action.text }}
+            </Btn>
+          </div>
+        </div>
       </div>
-      <div class="mb-6">
-        <h3 class="font-norma1 max-w-lg color-brand-3 font-500 p1">
-          {{ description }}
-        </h3>
-      </div>
-      <div v-if="action" class="mt-6">
-        <Btn :href="action.href" :icon="action.icon">
-          {{ action.text }}
-        </Btn>
+      <div class="my-12 mix-blend-plus-lighter">
+        <img class="max-h-70vh" alt="Storacha Illustration" src="/img/storacha-il.png">
       </div>
     </div>
   </div>
 </template>
-
-<style lang="postcss">
-@media (min-width: 640px) {
-  #hero-bg {
-    background-image: url('/img/storacha-il.png');
-    background-size: 40%;
-    background-repeat: no-repeat;
-    background-position: 90% center;
-  }
-}
-</style>

@@ -61,7 +61,7 @@ export default defineNuxtConfig({
 
   // reduce CLS by calculating font metrics ahead of load
   fontMetrics: {
-    fonts: ['Manrope', 'Poppins', 'Fira Mono'],
+    fonts: ['DM Sans', 'Epilogue', 'Erode', 'Fira Mono'],
   },
 
   site: {
@@ -73,7 +73,7 @@ export default defineNuxtConfig({
     identity: {
       type: 'Organization',
     },
-    twitter: '@x',
+    twitter: '@storachanetwork',
     splash: false,
     // seoKit
   },
@@ -89,8 +89,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       contactEmail: 'hello@storacha.network',
-      twitter: 'https://twitter.com/x',
-      linkedin: '',
+      twitter: 'https://twitter.com/storachanetwork',
       mailingListUrl: 'https://945c6cfe.sibforms.com/serve/MUIFAJsqje9uA4owcVGYYaQWZarreW_oOzT9j0aXOY1QcOdsXQ7ZjvWvrpXKqNm9sBilY3Pum8s9CyPAkA2ELLEyJp3DVvzEDFg-Ov967IegSH6PXRAG6ulFhavIwebzTu3XsMZbpnyWbsDp5hexye1aXcFs4C9oIFFJWX2Aar8ElyUJDCPSsoeMAdj6puyREL1zUrjNpq2ZobYx',
     },
   },

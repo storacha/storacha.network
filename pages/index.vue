@@ -31,5 +31,8 @@
         </div>
       </div>
     </Section>
+    <Section class="" full-width>
+      <Community />
+    </Section>
   </TransitionProvider>
 </template>

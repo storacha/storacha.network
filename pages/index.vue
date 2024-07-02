@@ -6,7 +6,7 @@
   <TransitionProvider>
     <Section class="min-h-100vh bg-brand-4 2xl:min-h-200 md:min-h-100vh">
       <Hero
-        headline="The h🔥ttest storage network on the planet."
+        headline="Super h🔥t decentralized data at scale."
         description="COMING SOON 2024"
         :action="{ text: 'SIGN UP FOR EARLY ACCESS', href: $config.public.mailingListUrl }"
       />

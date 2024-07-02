@@ -25,12 +25,12 @@ withDefaults(defineProps<Props>(), {
           {{ headline }}
         </h1>
       </div>
-      <div class="my-6">
-        <h3 class="font-norma1 max-w-lg color-brand-3 p1">
+      <div class="mb-6">
+        <h3 class="font-norma1 max-w-lg color-brand-3 font-500 p1">
           {{ description }}
         </h3>
       </div>
-      <div v-if="action">
+      <div v-if="action" class="mt-6">
         <Btn :href="action.href" :icon="action.icon">
           {{ action.text }}
         </Btn>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOgImage({ url: '/img/storacha-og-card.png', width: 1200, height: 630, alt: 'Storacha Network' })
+defineOgImage({ url: '/img/storacha-og-card.png', width: 1200, height: 630, alt: 'Storacha - Decentralized Hot Storage Layer on Filecoin' })
 </script>
 
 <template>

@@ -67,8 +67,8 @@ export default defineNuxtConfig({
   site: {
     // seoKit
     url: PUBLIC_SITE_URL,
-    name: 'Storacha Network',
-    description: 'Meta.',
+    name: 'Storacha - Decentralized Hot Storage Layer on Filecoin',
+    description: 'Storacha is a decentralized hot storage network for data at scale, offering user-owned data with decentralized permissioning and leveraging Filecoin and IPFS. Rebranded from web3.storage.',
     defaultLocale: 'en-US',
     identity: {
       type: 'Organization',

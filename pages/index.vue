@@ -31,7 +31,7 @@
         </div>
       </div>
     </Section>
-    <Section class="" full-width>
+    <Section full-width>
       <Community />
     </Section>
   </TransitionProvider>

@@ -16,14 +16,14 @@ const networks: Network[] = [
 </script>
 
 <template>
-  <div class="grid grid-cols-1 box-border gap-0 md:grid-cols-2">
-    <div class="bg-brand-1 p-6 color-brand-1 md:p-12">
+  <div class="grid grid-cols-1 box-border gap-0 bg-brand-1 md:grid-cols-2">
+    <div class="min-h-170 p-6 color-brand-1 md:p-12">
       <div class="s-block-inner s-block bg-brand-4 sm:float-right">
         <Heading type="h3">
           Join the Community
         </Heading>
         <div class="grid grid-cols-1 mt-8 gap-6 sm:grid-cols-2">
-          <AppLink v-for="n in networks" :key="n.name" class="my-4 flex" :href="n.url" target="_blank" rel="noopener noreferrer">
+          <AppLink v-for="n in networks" :key="n.name" class="my-4 flex hover:color-brand-3" :href="n.url">
             <div class="h-12 w-12 flex items-center justify-center border-1 b-brand-1 rounded-full">
               <img class="h-12 w-12 w-full p-3" :src="n.logo" :alt="n.name">
             </div>

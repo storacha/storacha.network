@@ -3,7 +3,6 @@
 const PUBLIC_SITE_URL = import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://storacha.network'
 
 export default defineNuxtConfig({
-
   router: {
     options: {
       scrollBehaviorType: 'smooth',
@@ -101,4 +100,6 @@ export default defineNuxtConfig({
   devtools: {
     enabled: true,
   },
+
+  compatibilityDate: '2024-07-02',
 })

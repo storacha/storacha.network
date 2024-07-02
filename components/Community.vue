@@ -40,7 +40,7 @@ const networks: Network[] = [
       </div>
     </div>
     <div class="s-block community-img box-border">
-      <div class="s-block-inner h-full border-2">
+      <div class="s-block-inner min-h-100vw border-2 sm:min-h-full">
         <div class="flex flex-col justify-center" />
       </div>
     </div>

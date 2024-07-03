@@ -82,6 +82,7 @@ onUnmounted(() => {
         cursor: isDragging ? 'grabbing' : 'grab',
         scrollSnapType: isDragging ? '' : '',
       }"
+      :class="{ 'is-dragging': isDragging }"
       @mousedown="onMouseDown"
       @mouseup="onMouseUp"
     >
@@ -106,9 +107,11 @@ onUnmounted(() => {
 .pill span {
   @apply color-brand-4;
 }
+
 .pill-active span {
   @apply color-brand-3 bg-brand-4;
 }
+
 .cards {
   display: grid;
   grid-auto-columns: calc(100% - 2rem);
@@ -149,6 +152,10 @@ onUnmounted(() => {
 
 .cards::-webkit-scrollbar-track {
   background: #f1f1f1;
+}
+
+.cards.is-dragging {
+  user-select: none;
 }
 
 @media (hover: none) {

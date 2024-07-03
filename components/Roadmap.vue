@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const cards = [{
   name: 'Milestone 1',
-  status: 'In Progress',
+  status: 'In Progress 🔥',
   active: true,
   title: 'From centralized storage to trusted storage network',
   description: 'Following this, a transition from a centralized storage model to a platform-neutral network of trusted nodes is underway. This shift lays the groundwork for a permissionless storage protocol, enhances integration with Filecoin L1 providers, and aligns with web3-native use cases.',
@@ -48,12 +48,12 @@ function onMouseHold(ev: MouseEvent) {
 
     cursorPos.value = [ev.pageX, ev.pageY]
 
-    if (!el.value)
-      return
-    el.value.scrollBy({
-      left: -delta[0],
-      top: -delta[1],
-    })
+    if (el.value) {
+      el.value.scrollBy({
+        left: -delta[0],
+        top: -delta[1],
+      })
+    }
   })
 }
 
@@ -105,7 +105,7 @@ onUnmounted(() => {
 
 <style lang="postcss" scoped>
 .pill span {
-  @apply color-brand-4;
+  @apply color-brand-4 uppercase text-xs;
 }
 
 .pill-active span {
@@ -115,35 +115,29 @@ onUnmounted(() => {
 .cards {
   display: grid;
   grid-auto-columns: calc(100% - 2rem);
-  grid-column-gap: 10px;
+  grid-column-gap: 1rem;
   grid-auto-flow: column;
   list-style: none;
   overflow-x: scroll;
   width: 100%;
 }
 
-.card:last-child {
-  margin-right: 1rem;
-}
-
 .card {
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
   scroll-snap-align: center;
   transition: all 0.2s;
-  @apply bg-brand-3;
   margin-bottom: 1rem;
+  @apply bg-brand-3 rounded-3rem py-15%;
 }
 
 .cards::-webkit-scrollbar {
-  height: 12px;
-  display: block;
+  height: 0.5rem;
 }
 
 .cards::-webkit-scrollbar-thumb,
 .cards::-webkit-scrollbar-track {
-  border-radius: 92px;
+  @apply rounded-3xl;
 }
 
 .cards::-webkit-scrollbar-thumb {
@@ -151,11 +145,15 @@ onUnmounted(() => {
 }
 
 .cards::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  @apply bg-brand-4;
 }
 
 .cards.is-dragging {
   user-select: none;
+}
+
+.card:last-child {
+  margin-right: 1rem;
 }
 
 @media (hover: none) {
@@ -177,10 +175,9 @@ onUnmounted(() => {
   .card {
     scroll-snap-align: start;
   }
-
   .cards {
-    grid-auto-columns: calc(50% - 5rem);
-    grid-column-gap: 20px;
+    grid-auto-columns: calc(45% - 5rem);
+    grid-column-gap: 1.5rem;
   }
 }
 </style>

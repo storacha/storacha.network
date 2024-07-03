@@ -17,8 +17,8 @@ const networks: Network[] = [
 
 <template>
   <div class="grid grid-cols-1 box-border gap-0 bg-brand-1 lg:grid-cols-2">
-    <div class="min-h-170 p-6 color-brand-1 md:p-12">
-      <div class="s-block-inner s-block flex flex-col bg-brand-4 sm:float-right">
+    <div class="s-block ml-a color-brand-1">
+      <div class="s-block-inner bg-brand-4">
         <Heading type="h2" class="font-medium">
           Join the Community
         </Heading>

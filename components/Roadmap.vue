@@ -166,7 +166,7 @@ onUnmounted(() => {
   }
 }
 
-@screen lg {
+@media (min-width: 1024px) {
   .card {
     scroll-snap-align: start;
   }

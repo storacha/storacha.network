@@ -11,6 +11,9 @@
         :action="{ text: 'SIGN UP FOR EARLY ACCESS', href: $config.public.mailingListUrl }"
       />
     </Section>
+    <Section class="bg-brand-4">
+      <Roadmap />
+    </Section>
     <Section class="" full-width>
       <div class="grid grid-cols-1 gap-0 lg:grid-cols-2">
         <div class="bg-brand-2">

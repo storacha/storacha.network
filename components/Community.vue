@@ -16,14 +16,14 @@ const networks: Network[] = [
 </script>
 
 <template>
-  <div class="grid grid-cols-1 box-border gap-0 bg-brand-1 md:grid-cols-2">
+  <div class="grid grid-cols-1 box-border gap-0 bg-brand-1 lg:grid-cols-2">
     <div class="min-h-170 p-6 color-brand-1 md:p-12">
       <div class="s-block-inner s-block flex flex-col bg-brand-4 sm:float-right">
         <Heading type="h2" class="font-medium">
           Join the Community
         </Heading>
-        <div class="grid grid-cols-1 my-a gap-6 sm:grid-cols-2">
-          <AppLink v-for="n in networks" :key="n.name" class="my-4 flex hover:color-brand-3" :href="n.url">
+        <div class="networks grid grid-flow-dense gap-6 py-12">
+          <AppLink v-for="n in networks" :key="n.name" class="flex items-center hover:color-brand-3" :href="n.url">
             <div class="h-12 w-12 flex items-center justify-center border-1 b-brand-1 rounded-full">
               <img class="h-12 w-12 w-full p-3" :src="n.logo" :alt="n.name">
             </div>
@@ -40,16 +40,19 @@ const networks: Network[] = [
       </div>
     </div>
     <div class="s-block community-img box-border">
-      <div class="s-block-inner min-h-100vw border-2 sm:min-h-full">
+      <div class="s-block-inner min-h-50vw border-2 lg:min-h-full">
         <div class="flex flex-col justify-center" />
       </div>
     </div>
   </div>
 </template>
 
-<style scoped lang="postcss">
+<style lang="postcss">
+.networks {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
 .s-block {
-  @apply h-full max-w-3xl w-full p-6 md:p-12;
+  @apply h-full lg:max-w-3xl w-full py-12 px-6 sm:p-12;
 }
 .s-block-inner {
   @apply rounded-3xl p-8 md:p-12;
@@ -57,6 +60,6 @@ const networks: Network[] = [
 .community-img {
   background-image: url('/img/community-bg.webp');
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
 }
 </style>

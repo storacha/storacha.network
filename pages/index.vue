@@ -11,9 +11,6 @@
         :action="{ text: 'SIGN UP FOR EARLY ACCESS', href: $config.public.mailingListUrl }"
       />
     </Section>
-    <Section class="bg-brand-4">
-      <Roadmap />
-    </Section>
     <Section class="" full-width>
       <div class="grid grid-cols-1 gap-0 lg:grid-cols-2">
         <div class="bg-brand-2">
@@ -28,7 +25,7 @@
             <h2 class="color-brand-3 font-500 h1">
               Storacha is decentralized storage, but a hot new take.
             </h2>
-            <div class="my-12 gap-12 color-brand-3 sm:columns-2 p1">
+            <div class="my-12 gap-12 color-brand-3 xl:columns-2 p1">
               <p>
                 Storacha transforms web3.storage into a community-driven, decentralized hot storage network. Proven to handle petabytes of data with large enterprise support, Storacha effortlessly manages massive data flows.
               </p>
@@ -39,6 +36,9 @@
           </div>
         </div>
       </div>
+    </Section>
+    <Section class="bg-brand-4 py-12">
+      <Roadmap />
     </Section>
     <Section full-width>
       <Community />

@@ -14,9 +14,9 @@
     <Section class="" full-width>
       <div class="grid grid-cols-1 gap-0 lg:grid-cols-2">
         <div class="bg-brand-2">
-          <div class="s-block ml-a flex">
-            <div class="flex flex-col items-center justify-center">
-              <img src="/img/storacha-neon.svg" alt="Storacha Network ">
+          <div class="s-block ml-a flex flex-col items-center justify-center">
+            <div>
+              <img class="w-full" src="/img/storacha-neon.svg" alt="Storacha Network ">
             </div>
           </div>
         </div>

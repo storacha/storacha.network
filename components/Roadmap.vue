@@ -21,11 +21,54 @@ const cards = [{
   title: 'Open and permissionless retrieval network at scale',
   description: 'In this milestone, the capabilities of the decentralized retrieval network are built upon and massively expanded. The retrieval network becomes open and permissionless to enable massive scaling, similar to the developments observed in the Saturn network. The storage network is further scaled.',
 }]
+
+const isDragging = ref(false)
+const cursorPos = ref([0, 0])
+const el = ref<Element>()
+
+function onMouseDown(ev: MouseEvent) {
+  isDragging.value = true
+  cursorPos.value = [ev.clientX, ev.clientY]
+  window.addEventListener('mousemove', onMouseHold)
+}
+
+function onMouseUp() {
+  window.removeEventListener('mousemove', onMouseHold)
+  isDragging.value = false
+}
+
+function onMouseHold(ev: MouseEvent) {
+  ev.preventDefault()
+
+  requestAnimationFrame(() => {
+    const delta = [
+      ev.pageX - cursorPos.value[0],
+      ev.pageY - cursorPos.value[1],
+    ]
+
+    cursorPos.value = [ev.pageX, ev.pageY]
+
+    if (!el.value)
+      return
+    el.value.scrollBy({
+      left: -delta[0],
+      top: -delta[1],
+    })
+  })
+}
+
+onMounted(() => {
+  window.addEventListener('mouseup', onMouseUp)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('mouseup', onMouseUp)
+})
 </script>
 
 <template>
   <div class="flex flex-col gap-12 2xl:grid-margins sm:flex-row">
-    <div class="w-80 px-6">
+    <div class="w-80 px-4">
       <Heading type="h3" class="color-brand-3 font-medium">
         Our Sizzling Roadmap
       </Heading>
@@ -33,7 +76,15 @@ const cards = [{
         Check out how we’re cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!
       </p>
     </div>
-    <div class="cards">
+    <div
+      ref="el"
+      class="cards" :style="{
+        cursor: isDragging ? 'grabbing' : 'grab',
+        scrollSnapType: isDragging ? '' : '',
+      }"
+      @mousedown="onMouseDown"
+      @mouseup="onMouseUp"
+    >
       <div v-for="card in cards" :key="card.name" class="card p-8">
         <div class="pill" :class="{ 'pill-active': card.active }">
           <span class="b-1 rounded-full px-4 py-2 p3 text-xs">{{ card.status }}</span>
@@ -59,19 +110,13 @@ const cards = [{
   @apply color-brand-3 bg-brand-4;
 }
 .cards {
-  cursor: grab;
   display: grid;
   grid-auto-columns: calc(100% - 2rem);
   grid-column-gap: 10px;
   grid-auto-flow: column;
   list-style: none;
   overflow-x: scroll;
-  scroll-snap-type: x mandatory;
   width: 100%;
-
-}
-.card:first-child {
-  margin-left: 1rem;
 }
 
 .card:last-child {
@@ -85,33 +130,47 @@ const cards = [{
   scroll-snap-align: center;
   transition: all 0.2s;
   @apply bg-brand-3;
+  margin-bottom: 1rem;
 }
 
 .cards::-webkit-scrollbar {
-  display: none;
+  height: 12px;
+  display: block;
 }
 
-@media (min-width: 1000px) {
+.cards::-webkit-scrollbar-thumb,
+.cards::-webkit-scrollbar-track {
+  border-radius: 92px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+  @apply bg-brand-3;
+}
+
+.cards::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+@media (hover: none) {
   .card {
-    margin-bottom: 1rem;
+    margin: 0;
+  }
+  .cards {
+    scroll-snap-type: x mandatory;
   }
   .cards::-webkit-scrollbar {
-    height: 12px;
-    display: block;
+    display: none;
+  }
+  .card:first-child {
+    margin-left: 1rem;
+  }
+}
+
+@screen lg {
+  .card {
+    scroll-snap-align: start;
   }
 
-  .cards::-webkit-scrollbar-thumb,
-  .cards::-webkit-scrollbar-track {
-    border-radius: 92px;
-  }
-
-  .cards::-webkit-scrollbar-thumb {
-    @apply bg-brand-3;
-  }
-
-  .cards::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
   .cards {
     grid-auto-columns: calc(50% - 5rem);
     grid-column-gap: 20px;

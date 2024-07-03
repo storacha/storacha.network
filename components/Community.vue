@@ -52,7 +52,7 @@ const networks: Network[] = [
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .s-block {
-  @apply h-full lg:max-w-3xl w-full py-12 px-6 sm:p-12;
+  @apply h-full lg:max-w-3xl w-full py-8 px-4 sm:p-12;
 }
 .s-block-inner {
   @apply rounded-3xl p-8 md:p-12;

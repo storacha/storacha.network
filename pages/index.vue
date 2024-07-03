@@ -37,7 +37,7 @@
         </div>
       </div>
     </Section>
-    <Section class="bg-brand-4 py-12">
+    <Section class="bg-brand-4 py-12" full-width>
       <Roadmap />
     </Section>
     <Section full-width>

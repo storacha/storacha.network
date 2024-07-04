@@ -39,8 +39,8 @@ withDefaults(defineProps<Props>(), {
           </div>
         </div>
       </div>
-      <div class="my-12">
-        <img class="max-h-70vh" alt="Storacha Illustration" src="/img/storacha-il.png">
+      <div class="mx-a my-12">
+        <img class="max-h-75vh" alt="Storacha Illustration" src="/img/storacha-il.png">
       </div>
     </div>
   </div>

@@ -23,7 +23,7 @@ const networks: Network[] = [
           Join the Community
         </Heading>
         <div class="my-a py-12">
-          <div class="networks grid grid-flow-dense gap-12">
+          <div class="networks grid grid-flow-dense gap-6 md:gap-12">
             <AppLink v-for="n in networks" :key="n.name" class="flex items-center hover:color-brand-3" :href="n.url">
               <div class="h-12 w-12 flex items-center justify-center border-1 b-brand-1 rounded-full">
                 <img class="h-12 w-12 w-full p-3" :src="n.logo" :alt="n.name">

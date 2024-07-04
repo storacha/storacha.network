@@ -123,6 +123,8 @@ onUnmounted(() => {
   list-style: none;
   overflow-x: scroll;
   width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .card {
@@ -155,10 +157,6 @@ onUnmounted(() => {
   user-select: none;
 }
 
-.card:last-child {
-  margin-right: 1rem;
-}
-
 @media (hover: none) {
   .card {
     margin: 0;
@@ -168,9 +166,6 @@ onUnmounted(() => {
   }
   .cards::-webkit-scrollbar {
     display: none;
-  }
-  .card:first-child {
-    margin-left: 1rem;
   }
 }
 

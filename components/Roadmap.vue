@@ -68,7 +68,7 @@ onUnmounted(() => {
 
 <template>
   <div class="roadmap flex flex-col gap-12 sm:flex-row">
-    <div class="pr-4 sm:w-33%">
+    <div class="grid-margins sm:w-33% xl:p-0">
       <Heading type="h3" class="color-brand-3 font-medium">
         Our Sizzling Roadmap
       </Heading>
@@ -105,7 +105,7 @@ onUnmounted(() => {
 
 <style lang="postcss" scoped>
 .roadmap {
-  margin-left: max(1rem, calc(100vw - 1280px)/2 + 1rem);
+  margin-left: max(0rem, calc(100vw - 1280px)/2 + 1rem);
 }
 .pill span {
   @apply color-brand-4 uppercase text-xs;
@@ -179,7 +179,7 @@ onUnmounted(() => {
     scroll-snap-align: start;
   }
   .cards {
-    grid-auto-columns: calc(45% - 5rem);
+    grid-auto-columns: calc(55% - 5rem);
     grid-column-gap: 1.5rem;
   }
 }

@@ -3,13 +3,15 @@ defineProps<{ fullWidth?: boolean, padding?: boolean }>()
 </script>
 
 <template>
-  <div :class="{ 'py-12': padding }">
+  <div :class="{ 'section-padding': padding }">
     <div class="outer body" :class="{ 'grid-margins': !fullWidth }">
       <slot />
     </div>
   </div>
 </template>
 
-<style>
-
+<style lang="postcss">
+.section-padding {
+  @apply py-6 sm:py-12
+}
 </style>

@@ -10,7 +10,7 @@
     <Section full-width>
       <MissionBlock />
     </Section>
-    <Section class="bg-brand-4 py-6 sm:py-12" full-width>
+    <Section class="bg-brand-4" full-width padding>
       <Roadmap />
     </Section>
     <Section full-width>

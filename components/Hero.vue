@@ -19,7 +19,7 @@ withDefaults(defineProps<Props>(), {
 <template>
   <!-- hero -->
   <div id="hero-bg" class="min-h-100vh flex">
-    <div class="w-full flex flex-col items-center justify-between gap-8 sm:flex-row">
+    <div class="w-full flex flex-col items-center justify-between sm:flex-row sm:gap-8">
       <div class="mt-50 flex items-center sm:mt-0 sm:min-h-100vh">
         <div class="ml-a flex flex-1 flex-col sm:text-left">
           <div>

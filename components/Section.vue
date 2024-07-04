@@ -12,6 +12,6 @@ defineProps<{ fullWidth?: boolean, padding?: boolean }>()
 
 <style lang="postcss">
 .section-padding {
-  @apply py-6 sm:py-12
+  @apply py-6 py-8 lg:py-12
 }
 </style>

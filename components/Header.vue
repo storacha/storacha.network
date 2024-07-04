@@ -49,7 +49,7 @@ function toggleMobileMenu() {
 <template>
   <header
     ref="header" class="a-enter top-0 z-50 w-full transform transition duration-300 ease-out" :class="[
-      nav.isTransparent ? 'bg-transparent' : 'bg-white/80 backdrop-blur-md',
+      nav.isTransparent ? 'bg-transparent' : 'is-active bg-white/60 backdrop-blur-md',
       noHero ? 'static' : 'fixed',
       {
         '-translate-y-full': nav.isSticky,
@@ -59,9 +59,9 @@ function toggleMobileMenu() {
     ]"
     v-bind="$attrs"
   >
-    <div class="grid-margins h-30 flex items-center justify-between">
+    <div class="grid-margins h-30 flex items-center justify-between transition-all">
       <AppLink class="ident transition hover:opacity-75" href="/" title="">
-        <Ident :site-name="siteName" class="xl:-ml-30px" />
+        <Ident :site-name="siteName" class="ident" />
       </AppLink>
       <nav class="hidden max-w-lg w-full justify-right md:flex">
         <AppLink v-for="link in headerLinks" :key="link.text" :href="link.link" class="nav-link relative ml-24">
@@ -77,6 +77,17 @@ function toggleMobileMenu() {
 </template>
 
 <style scoped lang="postcss">
+.ident {
+  @apply w-40 md:w-50;
+}
+.is-active {
+  .ident {
+    @apply w-30 md:w-40 -ml-2 md:-ml-2.5;
+  }
+  .grid-margins {
+    @apply h-20 md:h-25;
+  }
+}
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }

@@ -67,9 +67,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="roadmap flex flex-col gap-12 sm:flex-row">
-    <div class="grid-margins sm:w-33% xl:p-0">
-      <Heading type="h3" class="color-brand-3 font-medium">
+  <div class="roadmap flex flex-col gap-8 sm:flex-row sm:gap-0">
+    <div class="grid-margins lg:mr-4 lg:mt-12 sm:w-33% xl:pl-0">
+      <Heading type="h2" class="color-brand-3 font-medium">
         Our Sizzling Roadmap
       </Heading>
       <p class="mt-4 text-base color-brand-3 p1">

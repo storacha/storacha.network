@@ -78,14 +78,14 @@ function toggleMobileMenu() {
 
 <style scoped lang="postcss">
 .ident {
-  @apply w-40 md:w-50;
+  @apply scale-90 md:scale-100 origin-left translate-y-0.7rem;
 }
 .is-active {
   .ident {
-    @apply w-30 md:w-40 -ml-2 md:-ml-2.5;
+    @apply scale-80 translate-x--0.7rem translate-y-0;
   }
   .grid-margins {
-    @apply h-20 md:h-25;
+    @apply h-25;
   }
 }
 @keyframes fadeIn {

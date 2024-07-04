@@ -18,7 +18,7 @@ const networks: Network[] = [
 <template>
   <div class="grid grid-cols-1 box-border gap-0 bg-brand-1 lg:grid-cols-2">
     <div class="s-block ml-a color-brand-1">
-      <div class="s-block-inner bg-brand-4">
+      <div class="s-block-inner ml-a bg-brand-4">
         <Heading type="h2" class="font-medium">
           Join the Community
         </Heading>
@@ -52,10 +52,13 @@ const networks: Network[] = [
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .s-block {
-  @apply h-full lg:max-w-3xl w-full py-8 px-4 sm:p-12;
+  @apply h-full w-full p-4 sm:p-12;
 }
 .s-block-inner {
-  @apply rounded-3xl p-8 md:p-12;
+  @apply rounded-3xl p-8 md:px-12 py-15%;
+}
+.s-block > div {
+  @apply max-w-full xl:max-w-xl;
 }
 .community-img {
   background-image: url('/img/community-bg.webp');

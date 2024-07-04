@@ -7,7 +7,7 @@
         </div>
       </div>
     </div>
-    <div class="s-block">
+    <div class="s-block bg-white">
       <div class="flex flex-col items-center">
         <h2 class="color-brand-3 font-500 h1">
           Storacha is decentralized storage, but a hot new take.

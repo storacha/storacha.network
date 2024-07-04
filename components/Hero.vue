@@ -21,7 +21,7 @@ withDefaults(defineProps<Props>(), {
   <div id="hero-bg" class="min-h-100vh flex">
     <div class="w-full flex flex-col items-center justify-between gap-8 sm:flex-row">
       <div class="mt-50 flex items-center sm:mt-0 sm:min-h-100vh">
-        <div class="flex flex-1 flex-col sm:text-left">
+        <div class="ml-a flex flex-1 flex-col sm:text-left">
           <div>
             <Heading type="h1" class="mb-8 max-w-xl text-5xl color-brand-3 font-500 heading lg:text-7xl md:text-6xl">
               {{ headline }}
@@ -39,8 +39,8 @@ withDefaults(defineProps<Props>(), {
           </div>
         </div>
       </div>
-      <div class="my-12 mix-blend-plus-lighter">
-        <img class="max-h-70vh" alt="Storacha Illustration" src="/img/storacha-il.png">
+      <div class="mx-a my-12">
+        <img class="max-h-75vh" alt="Storacha Illustration" src="/img/storacha-il.png">
       </div>
     </div>
   </div>

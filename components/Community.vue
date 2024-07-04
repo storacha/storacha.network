@@ -17,31 +17,33 @@ const networks: Network[] = [
 
 <template>
   <div class="grid grid-cols-1 box-border gap-0 bg-brand-1 lg:grid-cols-2">
-    <div class="s-block ml-a color-brand-1">
-      <div class="s-block-inner bg-brand-4">
+    <div class="s-block color-brand-1">
+      <div class="s-block-inner flex flex-col bg-brand-4 lg:ml-a">
         <Heading type="h2" class="font-medium">
           Join the Community
         </Heading>
-        <div class="networks grid grid-flow-dense gap-6 py-12">
-          <AppLink v-for="n in networks" :key="n.name" class="flex items-center hover:color-brand-3" :href="n.url">
-            <div class="h-12 w-12 flex items-center justify-center border-1 b-brand-1 rounded-full">
-              <img class="h-12 w-12 w-full p-3" :src="n.logo" :alt="n.name">
-            </div>
-            <div class="px-4">
-              <Heading type="h4" class="font-500">
-                {{ n.name }}
-              </Heading>
-              <p class="p3">
-                {{ n.description }}
-              </p>
-            </div>
-          </AppLink>
+        <div class="my-a py-12">
+          <div class="networks grid grid-flow-dense gap-6 md:gap-12">
+            <AppLink v-for="n in networks" :key="n.name" class="flex items-center hover:color-brand-3" :href="n.url">
+              <div class="h-12 w-12 flex items-center justify-center border-1 b-brand-1 rounded-full">
+                <img class="h-12 w-12 w-full p-3" :src="n.logo" :alt="n.name">
+              </div>
+              <div class="px-4">
+                <Heading type="h4" class="font-500">
+                  {{ n.name }}
+                </Heading>
+                <p class="p3">
+                  {{ n.description }}
+                </p>
+              </div>
+            </AppLink>
+          </div>
         </div>
       </div>
     </div>
-    <div class="s-block community-img box-border">
-      <div class="s-block-inner min-h-50vw border-2 lg:min-h-full">
-        <div class="flex flex-col justify-center" />
+    <div class="s-block community-img">
+      <div class="s-block-inner h-full border-2">
+        <div class="" />
       </div>
     </div>
   </div>
@@ -52,10 +54,14 @@ const networks: Network[] = [
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .s-block {
-  @apply h-full lg:max-w-3xl w-full py-8 px-4 sm:p-12;
+  @apply p-6 lg:p-12;
 }
 .s-block-inner {
-  @apply rounded-3xl p-8 md:p-12;
+  @apply rounded-3xl p-8 md:p-12 aspect-ratio-1/1;
+  width: 100%;
+}
+.s-block > div {
+  @apply lg:max-w-xl;
 }
 .community-img {
   background-image: url('/img/community-bg.webp');

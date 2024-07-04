@@ -59,9 +59,9 @@ function toggleMobileMenu() {
     ]"
     v-bind="$attrs"
   >
-    <div class="h-30 flex items-center justify-between grid-margins">
+    <div class="grid-margins h-30 flex items-center justify-between">
       <AppLink class="ident transition hover:opacity-75" href="/" title="">
-        <Ident :site-name="siteName" />
+        <Ident :site-name="siteName" class="xl:-ml-30px" />
       </AppLink>
       <nav class="hidden max-w-lg w-full justify-right md:flex">
         <AppLink v-for="link in headerLinks" :key="link.text" :href="link.link" class="nav-link relative ml-24">

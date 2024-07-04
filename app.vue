@@ -14,7 +14,7 @@ defineOgImage({ url: '/img/storacha-og-card.png', width: 1200, height: 630, alt:
 
 <style lang="postcss">
 html {
-  @apply antialiased;
+  @apply antialiased bg-brand-4;
 }
 
 p a {

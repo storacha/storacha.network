@@ -67,8 +67,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-12 2xl:grid-margins sm:flex-row">
-    <div class="w-80 px-4">
+  <div class="roadmap flex flex-col gap-12 sm:flex-row">
+    <div class="grid-margins sm:w-33% xl:p-0">
       <Heading type="h3" class="color-brand-3 font-medium">
         Our Sizzling Roadmap
       </Heading>
@@ -86,7 +86,7 @@ onUnmounted(() => {
       @mousedown="onMouseDown"
       @mouseup="onMouseUp"
     >
-      <div v-for="card in cards" :key="card.name" class="card p-8">
+      <div v-for="card in cards" :key="card.name" class="card s-block-inner">
         <div class="pill" :class="{ 'pill-active': card.active }">
           <span class="b-1 rounded-full px-4 py-2 p3 text-xs">{{ card.status }}</span>
         </div>
@@ -104,6 +104,9 @@ onUnmounted(() => {
 </template>
 
 <style lang="postcss" scoped>
+.roadmap {
+  margin-left: max(0rem, calc(100vw - 1280px)/2 + 1rem);
+}
 .pill span {
   @apply color-brand-4 uppercase text-xs;
 }
@@ -120,6 +123,8 @@ onUnmounted(() => {
   list-style: none;
   overflow-x: scroll;
   width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .card {
@@ -128,7 +133,7 @@ onUnmounted(() => {
   scroll-snap-align: center;
   transition: all 0.2s;
   margin-bottom: 1rem;
-  @apply bg-brand-3 rounded-3rem py-15%;
+  @apply bg-brand-3;
 }
 
 .cards::-webkit-scrollbar {
@@ -152,10 +157,6 @@ onUnmounted(() => {
   user-select: none;
 }
 
-.card:last-child {
-  margin-right: 1rem;
-}
-
 @media (hover: none) {
   .card {
     margin: 0;
@@ -166,9 +167,6 @@ onUnmounted(() => {
   .cards::-webkit-scrollbar {
     display: none;
   }
-  .card:first-child {
-    margin-left: 1rem;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -176,7 +174,7 @@ onUnmounted(() => {
     scroll-snap-align: start;
   }
   .cards {
-    grid-auto-columns: calc(45% - 5rem);
+    grid-auto-columns: calc(55% - 5rem);
     grid-column-gap: 1.5rem;
   }
 }

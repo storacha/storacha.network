@@ -32,7 +32,7 @@ const networks: Network[] = [
                 <Heading type="h4" class="font-500">
                   {{ n.name }}
                 </Heading>
-                <p class="p3">
+                <p class="p3 text-sm">
                   {{ n.description }}
                 </p>
               </div>
@@ -43,7 +43,7 @@ const networks: Network[] = [
     </div>
     <div class="s-block community-img">
       <div class="s-block-inner h-full border-2">
-        <div class="" />
+        <div />
       </div>
     </div>
   </div>
@@ -57,7 +57,8 @@ const networks: Network[] = [
   @apply p-6 lg:p-12;
 }
 .s-block-inner {
-  @apply rounded-3xl p-8 md:p-12 aspect-ratio-1/1;
+  @apply rounded-3xl p-8 md:p-12;
+  min-height: min(100vmin, 35rem);
   width: 100%;
 }
 .s-block > div {

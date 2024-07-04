@@ -5,12 +5,14 @@
 <template>
   <div>
     <footer class="bg-brand-3 py-8 color-white">
-      <div class="grid grid-cols-3 gap-12 p3 text-sm grid-margins sm:text-base">
-        <div>© 2024 Storacha. All rights reserved.</div>
-        <div class="text-center">
+      <div class="grid grid-cols-1 grid-margins gap-12 text-xs sm:grid-cols-3 sm:text-base">
+        <div>
+          © 2024 Storacha. All rights reserved.
+        </div>
+        <div class="hidden text-center">
           * * *
         </div>
-        <div class="text-right">
+        <div class="hidden text-right">
           Privacy
         </div>
       </div>

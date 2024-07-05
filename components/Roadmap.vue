@@ -86,7 +86,7 @@ onUnmounted(() => {
       @mousedown="onMouseDown"
       @mouseup="onMouseUp"
     >
-      <div v-for="card in cards" :key="card.name" class="card s-block-inner">
+      <div v-for="card in cards" :key="card.name" class="s-block-inner card">
         <div class="pill" :class="{ 'pill-active': card.active }">
           <span class="b-1 rounded-full px-4 py-2 p3 text-xs">{{ card.status }}</span>
         </div>

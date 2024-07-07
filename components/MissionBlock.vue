@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-1 gap-0 lg:grid-cols-2">
-    <div class="bg-brand-2">
+    <div class="order-last bg-brand-2 lg:order-none">
       <div class="s-block ml-a flex flex-col items-center justify-center">
         <div class="lg:ml-a">
           <img class="w-full" src="/img/storacha-neon.svg" alt="Storacha Network ">

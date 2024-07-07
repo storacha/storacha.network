@@ -82,10 +82,10 @@ function toggleMobileMenu() {
 }
 .is-active {
   .ident {
-    @apply scale-80 translate-x--0.7rem translate-y-0;
+    @apply scale-75 translate-y-0 translate-x--0.5rem md:scale-80 md:translate-x--0.7rem;
   }
   .grid-margins {
-    @apply h-25;
+    @apply h-20 md:h-25;
   }
 }
 @keyframes fadeIn {

@@ -39,8 +39,14 @@ withDefaults(defineProps<Props>(), {
           </div>
         </div>
       </div>
-      <div class="mx-a my-12">
-        <img class="max-h-75vh" alt="Storacha Illustration" src="/img/storacha-il.png">
+      <div class="my-12 w-full">
+        <NuxtImg
+          class="ml-a max-w-150 w-full"
+          alt="Storacha Illustration"
+          src="/img/storacha-il.webp"
+          width="800"
+          height="902"
+        />
       </div>
     </div>
   </div>

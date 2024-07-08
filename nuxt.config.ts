@@ -9,9 +9,21 @@ export default defineNuxtConfig({
     },
   },
 
+  routeRules: {
+    // excluded from sitemap and robots, remove these when populated and ready for indexing
+    '/privacy': { index: false },
+    '/terms': { index: false },
+  },
+
   css: [
     '@unocss/reset/tailwind.css',
   ],
+
+  nitro: {
+    prerender: {
+      routes: ['/'],
+    },
+  },
 
   modules: [
     '@nuxt/eslint',
@@ -60,7 +72,7 @@ export default defineNuxtConfig({
 
   // reduce CLS by calculating font metrics ahead of load
   fontMetrics: {
-    fonts: ['DM Sans', 'Epilogue', 'Erode', 'Fira Mono'],
+    fonts: ['DM Sans', 'Epilogue'],
   },
 
   site: {
@@ -75,10 +87,6 @@ export default defineNuxtConfig({
     twitter: '@storachanetwork',
     splash: false,
     // seoKit
-  },
-
-  linkChecker: {
-    enabled: false,
   },
 
   plausible: {

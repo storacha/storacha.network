@@ -41,11 +41,11 @@ withDefaults(defineProps<Props>(), {
       </div>
       <div class="my-12 w-full">
         <NuxtImg
-          class="ml-a max-w-150 w-full"
+          class="ml-a max-w-140 w-full"
           alt="Storacha Illustration"
           src="/img/storacha-il.webp"
           width="800"
-          height="902"
+          height="908"
         />
       </div>
     </div>

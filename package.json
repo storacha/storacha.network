@@ -16,6 +16,9 @@
     "clean": "rm -rf .nuxt dist node_modules pnpm-lock.yaml",
     "release": "pnpx bumpp --commit --push --tag"
   },
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.22.0",
     "@iconify-json/carbon": "^1.1.36",

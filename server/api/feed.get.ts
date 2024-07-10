@@ -18,8 +18,13 @@ async function fetchPosts(username: string) {
   return posts
 }
 
-export default defineEventHandler(async (event) => {
+export default defineCachedEventHandler(async (event) => {
   const config = useRuntimeConfig(event)
-  const posts = await fetchPosts(config.public.medium as string)
-  return posts
-})
+  try {
+    const posts = await fetchPosts(config.public.medium as string)
+    return posts
+  }
+  catch (err) {
+    return { err }
+  }
+}, { maxAge: 60 * 5 }) // cache API response for 5 minutes

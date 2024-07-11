@@ -23,7 +23,7 @@ export default defineCachedEventHandler(async (event) => {
     const posts = await fetchPosts(config.public.medium)
     return posts
   }
-  catch (err) {
-    return { err }
+  catch (e) {
+    throw createError({ status: 500, message: 'Failed to fetch posts' })
   }
 }, { maxAge: 60 * 5 }) // cache API response for 5 minutes

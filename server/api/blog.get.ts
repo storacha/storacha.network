@@ -1,4 +1,5 @@
 import Parser from 'rss-parser'
+import type { Feed, Item } from '~/types/blog'
 
 async function getFeed(username: string) {
   const rss = await $fetch<string>(`https://medium.com/feed/@${username}`)
@@ -6,7 +7,7 @@ async function getFeed(username: string) {
 }
 
 async function parseRSS(rss: string) {
-  const parser = new Parser()
+  const parser = new Parser<Feed, Item>()
   const feed = await parser.parseString(rss)
   return feed
 }

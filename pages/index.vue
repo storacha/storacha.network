@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+
+</script>
+
 <template>
   <TransitionProvider>
     <Section class="bg-brand-4">

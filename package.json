@@ -28,7 +28,7 @@
     "@nuxt/image": "^1.7.0",
     "@nuxtjs/fontaine": "^0.4.3",
     "@nuxtjs/plausible": "^1.0.0",
-    "@nuxtjs/seo": "2.0.0-rc.11",
+    "@nuxtjs/seo": "2.0.0-rc.12",
     "@unocss/eslint-config": "^0.61.3",
     "@unocss/nuxt": "^0.61.3",
     "@unocss/preset-icons": "^0.61.3",

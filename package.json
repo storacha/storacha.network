@@ -16,6 +16,9 @@
     "clean": "rm -rf .nuxt dist node_modules pnpm-lock.yaml",
     "release": "pnpx bumpp --commit --push --tag"
   },
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.22.0",
     "@iconify-json/carbon": "^1.1.36",
@@ -33,7 +36,7 @@
     "@vueuse/nuxt": "^10.11.0",
     "eslint": "9.6.0",
     "nuxt": "^3.12.3",
-    "radix-vue": "^1.9.0",
+    "radix-vue": "^1.9.1",
     "vue-tsc": "^2.0.26"
   },
   "pnpm": {

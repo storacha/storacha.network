@@ -19,12 +19,6 @@ export default defineNuxtConfig({
     '@unocss/reset/tailwind.css',
   ],
 
-  nitro: {
-    prerender: {
-      routes: ['/'],
-    },
-  },
-
   modules: [
     '@nuxt/eslint',
     '@nuxt/content',

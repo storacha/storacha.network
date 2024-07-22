@@ -3,7 +3,6 @@
     "source.fixAll.eslint": "explicit"
   },
   "editor.formatOnSave": false,
-  "eslint.runtime": "node",
   "eslint.rules.customizations": [
     { "rule": "style/*", "severity": "off" },
     { "rule": "*-indent", "severity": "off" },

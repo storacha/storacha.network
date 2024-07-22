@@ -28,7 +28,7 @@ export default defineNuxtConfig({
     '@nuxtjs/plausible',
     '@nuxtjs/seo',
     '@nuxt/image',
-    "@nuxt/scripts"
+    '@nuxt/scripts',
   ],
 
   eslint: {
@@ -55,7 +55,6 @@ export default defineNuxtConfig({
     // TODO: fix payload extraction for IPFS hosting
     // see: https://github.com/nuxt/nuxt/issues/19478
     // payloadExtraction: false,
-    componentIslands: true,
   },
 
   sitemap: {
@@ -65,13 +64,14 @@ export default defineNuxtConfig({
     ],
   },
 
-  // reduce CLS by calculating font metrics ahead of load
   fontMetrics: {
+    // reduce CLS by calculating font metrics ahead of load
     fonts: ['DM Sans', 'Epilogue'],
   },
 
   site: {
-    // seoKit
+    // @nuxtjs/seo
+    // @see https://nuxtseo.com/site-config/api/config
     url: PUBLIC_SITE_URL,
     name: 'Storacha - Decentralized Hot Storage Layer on Filecoin',
     description: 'Storacha is a decentralized hot storage network for data at scale, offering user-owned data with decentralized permissioning and leveraging Filecoin and IPFS. Rebranded from web3.storage.',
@@ -79,9 +79,7 @@ export default defineNuxtConfig({
     identity: {
       type: 'Organization',
     },
-    twitter: '@storachanetwork',
     splash: false,
-    // seoKit
   },
 
   plausible: {
@@ -90,9 +88,12 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      contactEmail: 'hello@storacha.network',
-      twitter: 'https://twitter.com/storachanetwork',
-      medium: 'storacha',
+      site: {
+        // nuxt-site-config runtime overrides/defaults
+        twitter: 'storachanetwork',
+        medium: 'storacha',
+        email: 'hello@storacha.network',
+      },
       mailingListUrl: 'https://945c6cfe.sibforms.com/serve/MUIFAJsqje9uA4owcVGYYaQWZarreW_oOzT9j0aXOY1QcOdsXQ7ZjvWvrpXKqNm9sBilY3Pum8s9CyPAkA2ELLEyJp3DVvzEDFg-Ov967IegSH6PXRAG6ulFhavIwebzTu3XsMZbpnyWbsDp5hexye1aXcFs4C9oIFFJWX2Aar8ElyUJDCPSsoeMAdj6puyREL1zUrjNpq2ZobYx',
     },
   },

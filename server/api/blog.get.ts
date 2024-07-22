@@ -21,7 +21,7 @@ async function fetchPosts(username: string) {
 export default defineCachedEventHandler(async (event) => {
   const config = useRuntimeConfig(event)
   try {
-    const posts = await fetchPosts(config.public.medium)
+    const posts = await fetchPosts(config.public.site.medium)
     return posts
   }
   catch (e) {

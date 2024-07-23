@@ -30,7 +30,7 @@ export default defineCachedEventHandler(async (event) => {
   catch (e: any) {
     if (e.cause)
       // rethrow the original error
-      throw createError(e)
+      throw createError(e.cause)
     // throw a generic error
     throw createError({ status: 500, message: 'Failed to fetch posts' })
   }

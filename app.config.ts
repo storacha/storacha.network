@@ -1,40 +1,42 @@
+// @unocss-include
+
 export default defineAppConfig({
   socialNetworks: [
     {
       name: 'Discord',
       description: 'Get involved',
       url: 'https://discord.gg/jwANgTVjgF',
-      icon: '/img/i-discord.svg',
+      icon: 'i-simple-icons:discord',
     },
     {
       name: 'X',
       description: 'Read the latest',
       url: 'https://x.com/storachanetwork',
-      icon: '/img/i-x.svg',
+      icon: 'i-simple-icons:x',
     },
     {
       name: 'GitHub',
       description: 'Build with us',
       url: 'https://github.com/storacha-network',
-      icon: '/img/i-github.svg',
+      icon: 'i-simple-icons:github',
     },
     {
       name: 'Reddit',
       description: 'See more',
       url: 'https://www.reddit.com/r/Storacha',
-      icon: '/img/i-reddit.svg',
+      icon: 'i-simple-icons:reddit',
     },
     {
       name: 'Farcaster',
       description: 'Join discussion',
       url: 'https://warpcast.com/storacha',
-      icon: '/img/i-farcaster.svg',
+      icon: 'i-simple-icons:farcaster',
     },
     {
       name: 'Medium',
       description: 'Read our blog',
       url: 'https://medium.com/@storacha',
-      icon: '/img/i-medium.svg',
+      icon: 'i-simple-icons:medium',
     },
   ],
   email: 'hello@storacha.network',

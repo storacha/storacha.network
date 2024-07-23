@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 interface SocialNetwork {
-  name?: string
-  description?: string
+  name: string
+  description: string
   url: string
   icon: string
 }
@@ -23,7 +23,7 @@ const { networks } = defineProps<CommunityProps>()
           <div class="networks grid grid-flow-dense gap-6 md:gap-12">
             <AppLink v-for="n in networks" :key="n.name" class="flex items-center hover:color-brand-3" :href="n.url">
               <div class="h-12 w-12 flex items-center justify-center border-1 b-brand-1 rounded-full">
-                <div :class="n.icon" class="p-3" :title="n.name" aria-hidden="true" />
+                <div :class="n.icon" class="p-3" :aria-label="`${n.description} on ${n.name}`" />
               </div>
               <div class="px-4">
                 <Heading type="h4" class="font-500">

@@ -79,23 +79,19 @@ export default defineNuxtConfig({
     identity: {
       type: 'Organization',
     },
-    splash: false,
+    twitter: '@storachanetwork',
+  },
+
+  runtimeConfig: {
+    // public runtime config
+    public: {
+      // feed URL used for /api/blog
+      blogFeedUrl: 'https://medium.com/feed/@storacha',
+    },
   },
 
   plausible: {
     autoOutboundTracking: true,
-  },
-
-  runtimeConfig: {
-    public: {
-      site: {
-        // nuxt-site-config runtime overrides/defaults
-        twitter: 'storachanetwork',
-        medium: 'storacha',
-        email: 'hello@storacha.network',
-      },
-      mailingListUrl: 'https://945c6cfe.sibforms.com/serve/MUIFAJsqje9uA4owcVGYYaQWZarreW_oOzT9j0aXOY1QcOdsXQ7ZjvWvrpXKqNm9sBilY3Pum8s9CyPAkA2ELLEyJp3DVvzEDFg-Ov967IegSH6PXRAG6ulFhavIwebzTu3XsMZbpnyWbsDp5hexye1aXcFs4C9oIFFJWX2Aar8ElyUJDCPSsoeMAdj6puyREL1zUrjNpq2ZobYx',
-    },
   },
 
   unocss: {

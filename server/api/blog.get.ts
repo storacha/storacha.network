@@ -1,8 +1,8 @@
 import Parser from 'rss-parser'
 import type { Feed, Item } from '~/types/blog'
 
-async function getFeed(username: string) {
-  const rss = await $fetch<string>(`https://medium.com/feed/@${username}`)
+async function getFeed(feedUrl: string) {
+  const rss = await $fetch<string>(feedUrl)
   return rss
 }
 
@@ -21,10 +21,17 @@ async function fetchPosts(username: string) {
 export default defineCachedEventHandler(async (event) => {
   const config = useRuntimeConfig(event)
   try {
-    const posts = await fetchPosts(config.public.site.medium)
+    const feedUrl = config.public.blogFeedUrl
+    if (!feedUrl)
+      throw createError({ message: 'Please add a valid blogFeedUrl to your public runtime config' })
+    const posts = await fetchPosts(feedUrl)
     return posts
   }
-  catch (e) {
+  catch (e: any) {
+    if (e.cause)
+      // rethrow the original error
+      throw createError(e)
+    // throw a generic error
     throw createError({ status: 500, message: 'Failed to fetch posts' })
   }
 }, { maxAge: 60 * 5 }) // cache API response for 5 minutes

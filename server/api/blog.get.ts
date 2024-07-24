@@ -22,7 +22,7 @@ async function fetchPosts(username: string) {
     const images = Array.from(post['content:encoded']
       .matchAll(regex))
       .map(match => match[1])
-      .filter(url => !!url)
+      .filter(Boolean)
 
     return images.length ? { ...post, images } : post
   })

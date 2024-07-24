@@ -18,10 +18,13 @@ async function fetchPosts(username: string) {
 
   // transform posts and extract images to a new array key
   posts.items = posts.items.map((post) => {
-    const images = (post['content:encoded']?.match(/<img.*?src="([^"]*)"/g))
-      ?.map(imgTag => imgTag.match(/src="([^"]*)"/)?.[1])
-      ?.filter((src): src is string => !!src)
-    return { ...post, images }
+    const regex = /<img.*?src="(.*?)"/g
+    const images = Array.from(post['content:encoded']
+      .matchAll(regex))
+      .map(match => match[1])
+      .filter(url => !!url)
+
+    return images.length ? { ...post, images } : post
   })
 
   return posts

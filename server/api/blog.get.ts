@@ -15,6 +15,15 @@ async function parseRSS(rss: string) {
 async function fetchPosts(username: string) {
   const rss = await getFeed(username)
   const posts = await parseRSS(rss)
+
+  // transform posts and extract images to a new array key
+  posts.items = posts.items.map((post) => {
+    const images = (post['content:encoded']?.match(/<img.*?src="([^"]*)"/g))
+      ?.map(imgTag => imgTag.match(/src="([^"]*)"/)?.[1])
+      ?.filter((src): src is string => !!src)
+    return { ...post, images }
+  })
+
   return posts
 }
 

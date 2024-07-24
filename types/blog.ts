@@ -22,6 +22,7 @@ export interface Item {
   'guid': string
   'categories': string[]
   'isoDate': string
+  'images'?: string[]
 }
 
 export interface Image {

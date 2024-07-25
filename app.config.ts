@@ -39,6 +39,23 @@ export default defineAppConfig({
       icon: 'i-simple-icons:medium',
     },
   ],
+  footerLinks: {
+    resources: [
+      { name: 'Quickstart Guide', url: '' },
+      { name: 'FAQ', url: '' },
+      { name: 'Contact Us', url: '' },
+      { name: 'Terms of Service', url: '' },
+      { name: 'Service Agreement', url: '' },
+      { name: 'Privacy Policy', url: '' },
+      { name: 'Status', url: '' },
+    ],
+    getStarted: [
+      { name: 'JS Client', url: '' },
+      { name: 'CLI', url: '' },
+      { name: 'Web UI', url: '' },
+      { name: 'Open an issue', url: '' },
+    ],
+  },
   email: 'hello@storacha.network',
   mailingListUrl: 'https://945c6cfe.sibforms.com/serve/MUIFAJsqje9uA4owcVGYYaQWZarreW_oOzT9j0aXOY1QcOdsXQ7ZjvWvrpXKqNm9sBilY3Pum8s9CyPAkA2ELLEyJp3DVvzEDFg-Ov967IegSH6PXRAG6ulFhavIwebzTu3XsMZbpnyWbsDp5hexye1aXcFs4C9oIFFJWX2Aar8ElyUJDCPSsoeMAdj6puyREL1zUrjNpq2ZobYx',
 })

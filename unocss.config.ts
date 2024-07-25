@@ -67,7 +67,7 @@ export default defineConfig({
         sans: ['DM Sans:300,400,500', { name: 'DM Sans fallback', provider: 'none' }],
         heading: ['Epilogue:300,400,500', { name: 'Poppins fallback', provider: 'none' }],
         serif: ['Erode'],
-        mono: ['Fira Mono:400,700', { name: 'Fira Mono fallback', provider: 'none' }],
+        mono: ['DM Mono:400', { name: 'DM Mono fallback', provider: 'none' }],
       },
     }),
   ],

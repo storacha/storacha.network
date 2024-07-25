@@ -66,7 +66,7 @@ export default defineNuxtConfig({
 
   fontMetrics: {
     // reduce CLS by calculating font metrics ahead of load
-    fonts: ['DM Sans', 'Epilogue'],
+    fonts: ['Epilogue', 'DM Sans', 'DM Mono'],
   },
 
   site: {

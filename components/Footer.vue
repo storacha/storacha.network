@@ -3,21 +3,21 @@
 </script>
 
 <template>
-  <div>
-    <footer class="bg-brand-3 py-8 color-white">
-      <div class="grid grid-cols-1 grid-margins gap-12 text-xs sm:text-base">
+  <footer class="bg-brand-4 py-8 color-brand-3">
+    <div class="grid-margins border-2 b-brand-3 rounded-2xl py-12">
+      <div class="grid grid-cols-3 gap-12 text-xs sm:text-base">
         <div>
           © 2024 Storacha. All rights reserved.
         </div>
-        <div class="hidden text-center">
-          * * *
+        <div class="flex justify-center text-center">
+          <SocialNetworks />
         </div>
-        <div class="hidden text-right">
+        <div class="text-right">
           Privacy
         </div>
       </div>
-    </footer>
-  </div>
+    </div>
+  </footer>
 </template>
 
 <style>

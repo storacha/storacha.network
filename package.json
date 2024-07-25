@@ -39,7 +39,7 @@
     "eslint": "^9.7.0",
     "nuxt": "^3.12.4",
     "radix-vue": "^1.9.2",
-    "vue-tsc": "^2.0.28"
+    "vue-tsc": "^2.0.29"
   },
   "pnpm": {
     "peerDependencyRules": {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { mailingListUrl, socialNetworks } = useAppConfig()
+const { mailingList, socialNetworks } = useAppConfig()
 </script>
 
 <template>
@@ -8,7 +8,7 @@ const { mailingListUrl, socialNetworks } = useAppConfig()
       <Hero
         headline="Super h🔥t decentralized data at scale."
         description="COMING SOON 2024"
-        :action="{ text: 'SIGN UP FOR EARLY ACCESS', href: mailingListUrl }"
+        :action="{ text: 'SIGN UP FOR EARLY ACCESS', href: mailingList.url }"
       />
     </Section>
     <Section full-width>

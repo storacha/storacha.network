@@ -37,7 +37,7 @@ export default defineConfig({
     },
   },
   shortcuts: [
-    ['btn', 'py-3 px-8 whitespace-nowrap bg-brand-3 text-white text-sm md:text-base font-semibold rounded-full cursor-pointer inline-block focus:outline-none scale-[0.99] hover:scale-100 active:scale-[0.98] transition duration-150'],
+    ['btn', 'py-4 px-8 whitespace-nowrap bg-brand-3 text-white text-sm md:text-base font-heading uppercase rounded-full cursor-pointer inline-block focus:outline-none scale-[0.99] hover:(scale-100 no-underline) active:scale-[0.98] transition duration-150'],
     ['btn-primary', 'bg-brand-1 text-brand-light'],
     ['btn-outline', 'bg-transparent text-brand-dark border border-brand-dark'],
     ['btn-link', 'text-brand-dark underline'],

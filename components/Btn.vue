@@ -19,8 +19,8 @@ defineProps<Props>()
         'w-full block text-center': full,
       }"
   >
-    <div class="flex items-center gap-1">
-      <span v-if="icon" class="mr-1 inline-block h-4 w-4" :class="icon" aria-hidden="true" /><slot />
+    <div class="flex items-end gap-2 leading-none">
+      <span v-if="icon" class="inline-block" :class="icon" aria-hidden="true" /><slot />
     </div>
   </AppLink>
 </template>

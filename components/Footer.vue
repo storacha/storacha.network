@@ -5,15 +5,15 @@ const { footerLinks } = useAppConfig()
 <template>
   <footer class="bg-brand-4 py-8 color-brand-3">
     <div class="grid-margins border-2 b-brand-3 rounded-2xl py-12">
-      <div class="grid grid-cols-3 gap-12 text-xs sm:text-base">
+      <div class="grid cols-1 gap-6 text-xs lg:cols-3 sm:cols-2 sm:text-base">
         <div>
           <MailingListSignup />
         </div>
-        <div class="flex justify-center text-center">
+        <div class="flex text-center lg:justify-center">
           <SocialNetworks class="h-12 items-center" />
         </div>
         <div>
-          <div class="grid cols-2">
+          <div class="grid cols-1 gap-8 lg:cols-2">
             <div>
               <Heading class="mb font-500" type="h5">
                 Resources

@@ -10,7 +10,7 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
           <MailingListSignup />
         </div>
         <div class="flex text-center lg:justify-center">
-          <SocialNetworks class="h-12 items-center" />
+          <SocialNetworks class="h-12 items-center" icon-class="hover:color-brand-1 hover:scale-110" />
         </div>
         <div>
           <div class="grid cols-1 gap-8 lg:cols-2">

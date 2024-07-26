@@ -7,10 +7,10 @@
     <div class="grid-margins border-2 b-brand-3 rounded-2xl py-12">
       <div class="grid grid-cols-3 gap-12 text-xs sm:text-base">
         <div>
-          © 2024 Storacha. All rights reserved.
+          <MailingListSignup />
         </div>
         <div class="flex justify-center text-center">
-          <SocialNetworks />
+          <SocialNetworks class="h-12 items-center" />
         </div>
         <div class="text-right">
           Privacy

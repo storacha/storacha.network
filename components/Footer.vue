@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-
+const { footerLinks } = useAppConfig()
 </script>
 
 <template>
@@ -12,9 +12,37 @@
         <div class="flex justify-center text-center">
           <SocialNetworks class="h-12 items-center" />
         </div>
-        <div class="text-right">
-          Privacy
+        <div>
+          <div class="grid cols-2">
+            <div>
+              <Heading class="mb font-500" type="h5">
+                Resources
+              </Heading>
+              <ul>
+                <li v-for="link in footerLinks.resources" :key="link.url">
+                  <AppLink :href="link.url">
+                    {{ link.text }}
+                  </AppLink>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <Heading class="mb font-500" type="h5">
+                Getting Started
+              </Heading>
+              <ul>
+                <li v-for="link in footerLinks.getStarted" :key="link.url">
+                  <AppLink :href="link.url">
+                    {{ link.text }}
+                  </AppLink>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="mt-24 color-brand-3">
+        <img src="/assets/storacha-wm.svg" alt="Storacha Logo" class="mx-auto w-full" loading="lazy">
       </div>
     </div>
   </footer>

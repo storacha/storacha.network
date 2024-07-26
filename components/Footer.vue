@@ -42,7 +42,7 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
         </div>
       </div>
       <div class="mt-24 color-brand-3">
-        <img src="/assets/storacha-wm.svg" alt="Storacha Logo" class="mx-auto w-full" loading="lazy">
+        <img src="/img/storacha-wm.svg" alt="Storacha" aria-hidden="true" class="mx-auto w-full" loading="lazy">
       </div>
     </div>
   </footer>

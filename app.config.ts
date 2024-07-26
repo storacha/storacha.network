@@ -1,5 +1,6 @@
 // @unocss-include
 
+// global app config
 export default defineAppConfig({
   socialNetworks: [
     {
@@ -39,6 +40,27 @@ export default defineAppConfig({
       icon: 'i-simple-icons:medium',
     },
   ],
+  footerLinks: {
+    resources: [
+      { text: 'Quickstart Guide', url: '' },
+      { text: 'FAQ', url: '' },
+      { text: 'Contact Us', url: '' },
+      { text: 'Terms of Service', url: '' },
+      { text: 'Service Agreement', url: '' },
+      { text: 'Privacy Policy', url: '' },
+      { text: 'Status', url: '' },
+    ],
+    getStarted: [
+      { text: 'JS Client', url: '' },
+      { text: 'CLI', url: '' },
+      { text: 'Web UI', url: '' },
+      { text: 'Open an issue', url: '' },
+    ],
+  },
   email: 'hello@storacha.network',
-  mailingListUrl: 'https://945c6cfe.sibforms.com/serve/MUIFAJsqje9uA4owcVGYYaQWZarreW_oOzT9j0aXOY1QcOdsXQ7ZjvWvrpXKqNm9sBilY3Pum8s9CyPAkA2ELLEyJp3DVvzEDFg-Ov967IegSH6PXRAG6ulFhavIwebzTu3XsMZbpnyWbsDp5hexye1aXcFs4C9oIFFJWX2Aar8ElyUJDCPSsoeMAdj6puyREL1zUrjNpq2ZobYx',
+  mailingList: {
+    icon: 'i-carbon:email',
+    url: 'https://945c6cfe.sibforms.com/serve/MUIFAJsqje9uA4owcVGYYaQWZarreW_oOzT9j0aXOY1QcOdsXQ7ZjvWvrpXKqNm9sBilY3Pum8s9CyPAkA2ELLEyJp3DVvzEDFg-Ov967IegSH6PXRAG6ulFhavIwebzTu3XsMZbpnyWbsDp5hexye1aXcFs4C9oIFFJWX2Aar8ElyUJDCPSsoeMAdj6puyREL1zUrjNpq2ZobYx',
+    label: 'Join our mailing list',
+  },
 })

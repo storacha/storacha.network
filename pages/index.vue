@@ -20,19 +20,14 @@ const { mailingList, socialNetworks } = useAppConfig()
     <Section full-width>
       <Community :networks="socialNetworks" />
     </Section>
-    <Section
-      class="overflow-hidden bg-brand-2"
-    >
-      <template #bg>
-        <div class="pre-footer-bg" />
-      </template>
-      <PreFooter class="min-h-lg" heading="Hello" :cta="{ text: 'See Roadmap', href: '/' }" />
-    </Section>
+    <PreFooter
+      class="bg-brand-2"
+      heading="Where will Storacha go next?"
+      :cta="{ text: 'See Roadmap', href: '/' }"
+    />
   </TransitionProvider>
 </template>
 
 <style lang="postcss" scoped>
-.pre-footer-bg {
-  background: url('/img/racha-footer.svg') no-repeat right bottom / cover;
-}
+
 </style>

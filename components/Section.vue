@@ -4,13 +4,10 @@ defineProps<{ fullWidth?: boolean, padding?: boolean }>()
 
 <template>
   <section class="section" :class="{ 'with-padding': padding, 'with-bg': $slots.bg }">
-    <slot name="outer" />
-
     <div v-if="$slots.bg" class="with-bg pointer-events-none absolute inset-0 z-0" aria-hidden="true">
       <slot name="bg" />
     </div>
-
-    <div class="outer body" :class="{ 'grid-margins': !fullWidth }">
+    <div class="body" :class="{ 'grid-margins': !fullWidth }">
       <slot />
     </div>
   </section>

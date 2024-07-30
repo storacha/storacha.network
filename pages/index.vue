@@ -20,6 +20,7 @@ const { mailingList, socialNetworks } = useAppConfig()
     <Section full-width>
       <Community :networks="socialNetworks" />
     </Section>
+    <Pricing />
     <PreFooter
       class="bg-brand-2"
       heading="Where will Storacha go next?"

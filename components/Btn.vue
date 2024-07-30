@@ -1,12 +1,14 @@
 <script setup lang="ts">
-interface Props {
+import type { AppLinkProps } from './AppLink.vue'
+
+export interface BtnProps {
   primary?: boolean
   outline?: boolean
   full?: boolean
   icon?: string
   slim?: boolean
 }
-defineProps<Props>()
+defineProps<BtnProps & AppLinkProps>()
 </script>
 
 <template>

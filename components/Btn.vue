@@ -1,14 +1,31 @@
 <script setup lang="ts">
 import type { AppLinkProps } from './AppLink.vue'
 
-export interface BtnProps {
+export interface BtnProps extends AppLinkProps {
   primary?: boolean
   outline?: boolean
   full?: boolean
   icon?: string
   slim?: boolean
-}
-defineProps<BtnProps & AppLinkProps>()
+};
+
+const props = withDefaults(
+  defineProps<BtnProps>(),
+  {
+    prefetch: undefined,
+    noPrefetch: undefined,
+    noRel: undefined,
+    replace: undefined,
+    external: undefined,
+    custom: undefined,
+  },
+)
+
+// destruct the link props and keep them reactive
+const linkProps = computed(() => {
+  const { primary, outline, full, icon, slim, ...rest } = props
+  return rest
+})
 </script>
 
 <template>
@@ -20,6 +37,7 @@ defineProps<BtnProps & AppLinkProps>()
         'btn-slim': slim,
         'w-full block text-center': full,
       }"
+    v-bind="linkProps"
   >
     <div class="flex items-end gap-2 leading-none">
       <span v-if="icon" class="inline-block" :class="icon" aria-hidden="true" /><slot />

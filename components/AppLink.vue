@@ -1,14 +1,19 @@
 <script setup lang="ts">
-export interface AppLinkProps { href?: string, to?: string }
+import type { NuxtLinkProps } from '#app/components'
+
+export type AppLinkProps = NuxtLinkProps
 defineProps<AppLinkProps>()
 
-function isExternal(href: string | undefined) {
+function isExternal(href: NuxtLinkProps['href']) {
   return typeof href === 'string' ? (href?.startsWith('http') || href?.startsWith('//')) : false
 }
 </script>
 
 <template>
-  <NuxtLink class="inline-block cursor-pointer" :href="href || to" :target="isExternal(href || to) ? '_blank' : undefined">
+  <NuxtLink
+    class="inline-block cursor-pointer"
+    :href="href || to" :target="isExternal(href || to) ? '_blank' : undefined"
+  >
     <slot />
   </NuxtLink>
 </template>

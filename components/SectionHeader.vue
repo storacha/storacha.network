@@ -11,17 +11,17 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div>
-    <Heading type="h5" class="uppercase">
+  <div class="flex flex-col gap-4">
+    <Heading type="h4" class="uppercase">
       {{ eyebrow }}
     </Heading>
-    <Heading type="h2">
+    <Heading type="h1" class="font-medium">
       {{ title }}
     </Heading>
     <p class="prose">
       {{ description }}
     </p>
-    <div>
+    <div class="flex flex-col gap-4 sm:flex-row">
       <Btn
         v-for="action in actions"
         :key="action.label"

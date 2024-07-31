@@ -3,7 +3,6 @@ import type { BtnProps } from './Btn.vue'
 
 interface PricingCardProps {
   tier: 'Mild' | 'Medium' | 'Extra Spicy'
-  description?: string
   price: string
   features: [string, string?][]
   unit: 'mo' | 'yr'
@@ -13,7 +12,6 @@ interface PricingCardProps {
 }
 
 withDefaults(defineProps<PricingCardProps>(), {
-  description: '',
   currency: '$',
 })
 </script>
@@ -40,7 +38,3 @@ withDefaults(defineProps<PricingCardProps>(), {
     </div>
   </Card>
 </template>
-
-<style>
-
-</style>

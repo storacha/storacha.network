@@ -24,7 +24,7 @@ withDefaults(defineProps<PricingCardProps>(), {
       </Heading>
       <ul class="flex flex-col gap-4">
         <li v-for="[feat, desc], i in features" :key="i">
-          <Heading type="h5">
+          <Heading type="h4">
             {{ feat }}
           </Heading>
           <p v-if="desc" class="text-sm color-brand-3">

@@ -8,6 +8,7 @@ export interface BtnProps extends AppLinkProps {
   full?: boolean
   icon?: string
   slim?: boolean
+  text?: string
 };
 
 const props = defineProps<BtnProps>()
@@ -27,7 +28,7 @@ const forwardProps = useForwardProps(reactiveOmit(props, ['primary', 'outline', 
     v-bind="forwardProps"
   >
     <div class="flex items-end gap-2 leading-none">
-      <span v-if="icon" class="inline-block" :class="icon" aria-hidden="true" /><slot />
+      <span v-if="icon" class="inline-block" :class="icon" aria-hidden="true" /><slot>{{ text }}</slot>
     </div>
   </AppLink>
 </template>

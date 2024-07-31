@@ -10,7 +10,7 @@
         title="How h🔥t would you like it?"
         class="text-center"
       />
-      <div class="grid grid-cols-1 mt-12 gap-4 lg:grid-cols-3 sm:grid-cols-2">
+      <div class="grid grid-cols-1 mt-12 gap-4 sm:grid-cols-3">
         <PricingCard
           tier="Mild"
           price="0"

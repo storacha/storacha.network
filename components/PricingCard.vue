@@ -7,7 +7,7 @@ interface PricingCardProps {
   features: [string, string?][]
   unit: 'mo' | 'yr'
   icon: string
-  currency: '$' | '€' | '£'
+  currency?: '$' | '€' | '£'
   action?: BtnProps
 }
 

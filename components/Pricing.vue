@@ -4,48 +4,45 @@
 
 <template>
   <Section class="bg-brand-4" full-width padding>
-    <div class="grid-margins">
+    <div class="grid-margins color-brand-3">
       <SectionHeader
         eyebrow="Find your plan"
         title="How h🔥t would you like it?"
-        class="text-center color-brand-3"
+        class="text-center"
       />
       <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 sm:grid-cols-2">
         <PricingCard
-          title="Mild"
+          tier="Mild"
           price="0"
           unit="mo"
+          icon="🌶"
           :features="[
-            '5GB Storage',
-            'Additional at $0.15/GB per month',
-            '5GB egress',
-            'Additional at $0.15/GB per month',
+            ['5GB Storage', 'Additional at $0.15/GB per month'],
+            ['5GB egress', 'Additional at $0.15/GB per month'],
           ]"
-          action="START STORING"
+          :action="{ text: 'START STORING', href: '/' }"
         />
         <PricingCard
-          title="Medium"
+          tier="Medium"
           price="10"
           unit="mo"
+          icon="🌶🌶"
           :features="[
-            '100GB Storage',
-            'Additional at $0.05/GB per month',
-            '100GB egress',
-            'Additional at $0.05/GB per month ',
+            ['100GB Storage', 'Additional at $0.05/GB per month'],
+            ['100GB egress', 'Additional at $0.05/GB per month '],
           ]"
-          action="START STORING"
+          :action="{ text: 'START STORING', href: '/' }"
         />
         <PricingCard
-          title="Extra Spicy"
+          tier="Extra Spicy"
           price="100"
           unit="mo"
+          icon="🌶🌶🌶"
           :features="[
-            '2TB Storage',
-            'Additional at $0.03/GB per month',
-            '2TB egress',
-            'Additional at $0.03/GB per month',
+            ['2TB Storage', 'Additional at $0.03/GB per month'],
+            ['2TB egress', 'Additional at $0.03/GB per month'],
           ]"
-          action="START STORING"
+          :action="{ text: 'START STORING', href: '/' }"
         />
       </div>
     </div>

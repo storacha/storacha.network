@@ -4,13 +4,16 @@
 
 <template>
   <Section class="bg-brand-4" full-width padding>
+    <template #bg>
+      <div class="pricing-bg" />
+    </template>
     <div class="grid-margins color-brand-3">
       <SectionHeader
         eyebrow="Find your plan"
         title="How h🔥t would you like it?"
         class="text-center"
       />
-      <div class="grid grid-cols-1 mt-12 gap-4 sm:grid-cols-3">
+      <div class="grid grid-cols-1 mb-50 mt-12 gap-4 sm:grid-cols-3">
         <PricingCard
           tier="Mild"
           price="0"
@@ -49,6 +52,11 @@
   </Section>
 </template>
 
-<style>
-
+<style lang="postcss" scoped>
+.pricing-bg {
+  background: url('/img/racha-pricing.webp') no-repeat left -3em bottom -9em / 1500px;
+  @screen sm {
+    background: url('/img/racha-pricing.webp') no-repeat bottom -10em left -6em / cover;
+  }
+}
 </style>

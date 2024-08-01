@@ -1,10 +1,11 @@
 <script lang="ts" setup>
+import type { BtnProps } from './Btn.vue'
+
 interface Props {
   heading?: string
   cta?: {
     text: string
-    href: string
-  }
+  } & BtnProps
 }
 defineProps<Props>()
 </script>
@@ -21,7 +22,7 @@ defineProps<Props>()
           <Heading v-if="heading" type="h3" class="color-brand-3 font-medium">
             {{ heading }}
           </Heading>
-          <Btn v-if="cta" :href="cta.href">
+          <Btn v-if="cta" v-bind="cta">
             {{ cta.text }}
           </Btn>
         </div>

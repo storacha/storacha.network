@@ -1,12 +1,19 @@
 <script setup lang="ts">
-interface Props {
+import { useForwardProps } from 'radix-vue'
+import type { AppLinkProps } from './AppLink.vue'
+
+export interface BtnProps extends AppLinkProps {
   primary?: boolean
   outline?: boolean
   full?: boolean
   icon?: string
   slim?: boolean
-}
-defineProps<Props>()
+  text?: string
+};
+
+const props = defineProps<BtnProps>()
+
+const forwardProps = useForwardProps(reactiveOmit(props, ['primary', 'outline', 'full', 'icon', 'slim']))
 </script>
 
 <template>
@@ -18,9 +25,10 @@ defineProps<Props>()
         'btn-slim': slim,
         'w-full block text-center': full,
       }"
+    v-bind="forwardProps"
   >
     <div class="flex items-end gap-2 leading-none">
-      <span v-if="icon" class="inline-block" :class="icon" aria-hidden="true" /><slot />
+      <span v-if="icon" class="inline-block" :class="icon" aria-hidden="true" /><slot>{{ text }}</slot>
     </div>
   </AppLink>
 </template>

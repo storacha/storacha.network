@@ -1,14 +1,23 @@
 <script setup lang="ts">
-export interface AppLinkProps { href?: string, to?: string }
-defineProps<AppLinkProps>()
+import { useForwardProps } from 'radix-vue'
+import type { NuxtLinkProps } from '#app'
 
-function isExternal(href: string | undefined) {
+export interface AppLinkProps extends NuxtLinkProps {}
+
+const props = defineProps<AppLinkProps>()
+
+function isExternal(href: NuxtLinkProps['href']) {
   return typeof href === 'string' ? (href?.startsWith('http') || href?.startsWith('//')) : false
 }
+const forwardProps = useForwardProps(reactiveOmit(props, ['target']))
 </script>
 
 <template>
-  <NuxtLink class="inline-block cursor-pointer" :href="href || to" :target="isExternal(href || to) ? '_blank' : undefined">
+  <NuxtLink
+    class="inline-block cursor-pointer"
+    :target="target || (isExternal(href || to) ? '_blank' : undefined)"
+    v-bind="forwardProps"
+  >
     <slot />
   </NuxtLink>
 </template>

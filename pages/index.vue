@@ -11,8 +11,21 @@ const { mailingList, socialNetworks } = useAppConfig()
         :action="{ text: 'SIGN UP FOR EARLY ACCESS', href: mailingList.url }"
       />
     </Section>
-    <Section full-width>
-      <MissionBlock />
+    <Section class="bg-brand-6 min-h-200 flex items-center justify-center">
+      <p>Hero</p>
+    </Section>
+    <Intro />
+    <Section class="min-h-200 flex items-center justify-center">
+      <p>Intro</p>
+    </Section>
+    <Section class="min-h-200 flex items-center justify-center bg-brand-5">
+      <p>USPs</p>
+    </Section>
+    <Section class="min-h-200 flex items-center justify-center">
+      <p>Network Diagram</p>
+    </Section>
+    <Section class="min-h-200 flex items-center justify-center bg-brand-3">
+      <p>Key Features</p>
     </Section>
     <Section class="bg-brand-4" full-width padding>
       <Roadmap />
@@ -21,6 +34,9 @@ const { mailingList, socialNetworks } = useAppConfig()
       <Community :networks="socialNetworks" />
     </Section>
     <Pricing />
+    <Section class="min-h-200 flex items-center justify-center bg-brand-2">
+      <p>Ecosystem</p>
+    </Section>
     <PreFooter
       class="bg-brand-2"
       heading="Where will Storacha go next?"

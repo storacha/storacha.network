@@ -15,7 +15,7 @@ defineProps<Props>()
     <Heading type="h4" class="uppercase">
       {{ eyebrow }}
     </Heading>
-    <Heading type="h1" class="font-medium">
+    <Heading type="h1" class="max-w-5xl font-medium">
       {{ title }}
     </Heading>
     <p class="prose">

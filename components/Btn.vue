@@ -36,7 +36,7 @@ const forwardProps = useForwardProps(reactiveOmit(props, [
       }"
     v-bind="forwardProps"
   >
-    <div class="flex items-end gap-2 leading-none">
+    <div class="flex items-end justify-center gap-2 leading-none">
       <span v-if="icon" class="inline-block" :class="icon" aria-hidden="true" /><slot>{{ text }}</slot>
     </div>
   </AppLink>

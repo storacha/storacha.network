@@ -22,7 +22,7 @@ defineProps<Props>()
     <p class="prose">
       {{ description }}
     </p>
-    <div class="flex flex-col gap-4 sm:flex-row">
+    <div class="flex flex-col gap-4 sm:flex-row" :class="{ 'justify-center': center }">
       <Btn
         v-for="action in actions"
         :key="action.label"

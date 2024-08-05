@@ -4,7 +4,7 @@ defineProps<{ fullWidth?: boolean, padding?: boolean }>()
 
 <template>
   <section class="section" :class="{ 'with-padding': padding, 'with-bg': $slots.bg }">
-    <SectionBackground v-if="$slots.bg">
+    <SectionBackground v-if="$slots.bg" class="body">
       <slot name="bg" />
     </SectionBackground>
     <div class="body" :class="{ 'grid-margins': !fullWidth }">
@@ -19,12 +19,5 @@ section.with-padding {
 }
 section.with-bg {
   @apply relative;
-  .body:not(.with-bg) {
-    @apply relative;
-  }
-}
-/* set root bg to expand */
-.with-bg:slotted(> div) {
-  @apply h-full w-full;
 }
 </style>

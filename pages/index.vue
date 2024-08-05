@@ -4,24 +4,22 @@ const { mailingList, socialNetworks } = useAppConfig()
 
 <template>
   <TransitionProvider>
-    <Section class="bg-brand-4">
+    <Section class="bg-brand-2">
       <Hero
-        headline="Super h🔥t decentralized data at scale."
-        description="COMING SOON 2024"
-        :action="{ text: 'SIGN UP FOR EARLY ACCESS', href: mailingList.url }"
+        eyebrow="Introducing Storacha"
+        title="Super h🔥t decentralized data at scale."
+        description="Storacha’s open hot storage network scales IPFS and Filecoin"
+        :actions="[{ label: 'SIGN UP FOR EARLY ACCESS', href: mailingList.url }]"
       />
-    </Section>
-    <Section class="min-h-200 flex items-center justify-center bg-brand-6">
-      <p>Hero</p>
     </Section>
     <Intro />
     <Section class="bg-brand-6 color-brand-3" padding>
       <USPs />
     </Section>
-    <Section class="min-h-200 flex items-center justify-center">
+    <Section class="min-h-200 flex items-center justify-center bg-gray-2 uppercase">
       <p>Network Diagram</p>
     </Section>
-    <Section class="min-h-200 flex items-center justify-center bg-brand-3">
+    <Section class="min-h-200 flex items-center justify-center bg-brand-3 color-white uppercase">
       <p>Key Features</p>
     </Section>
     <Section class="bg-brand-4" full-width padding>
@@ -31,7 +29,7 @@ const { mailingList, socialNetworks } = useAppConfig()
       <Community :networks="socialNetworks" />
     </Section>
     <Pricing />
-    <Section class="min-h-200 flex items-center justify-center bg-brand-2">
+    <Section class="min-h-200 flex items-center justify-center bg-brand-2 uppercase">
       <p>Ecosystem</p>
     </Section>
     <PreFooter

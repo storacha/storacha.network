@@ -1,19 +1,10 @@
 <script setup lang="ts">
-interface Action {
-  text: string
-  href: string
-  icon?: string
-}
+import { useForwardProps } from 'radix-vue'
+import type { SectionHeaderProps } from './SectionHeader.vue'
 
-interface Props {
-  headline: string
-  description: string
-  eyebrow?: string
-  action?: Action
-}
-withDefaults(defineProps<Props>(), {
-
-})
+interface HeroProps extends SectionHeaderProps {}
+const props = withDefaults(defineProps<HeroProps>(), {})
+const forwardProps = useForwardProps(props)
 </script>
 
 <template>
@@ -21,22 +12,8 @@ withDefaults(defineProps<Props>(), {
   <div id="hero-bg" class="min-h-100vh flex">
     <div class="w-full flex flex-col items-center justify-between sm:flex-row sm:gap-8">
       <div class="mt-50 flex items-center sm:mt-0 sm:min-h-100vh">
-        <div class="ml-a flex flex-1 flex-col sm:text-left">
-          <div>
-            <Heading type="h1" class="mb-8 max-w-xl text-5xl color-brand-3 font-500 heading lg:text-7xl md:text-6xl">
-              {{ headline }}
-            </Heading>
-          </div>
-          <div class="mb-6 w-full">
-            <h3 class="font-norma1 max-w-lg color-brand-3 font-500 p1">
-              {{ description }}
-            </h3>
-          </div>
-          <div v-if="action" class="mt-6 w-full">
-            <Btn :href="action.href" :icon="action.icon">
-              {{ action.text }}
-            </Btn>
-          </div>
+        <div class="ml-a flex flex-1 flex-col gap-12 lg:max-w-220 sm:text-left">
+          <SectionHeader v-bind="forwardProps" class="color-brand-3 !gap-12" />
         </div>
       </div>
       <div class="my-12 w-full">

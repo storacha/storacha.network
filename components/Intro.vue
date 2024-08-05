@@ -18,9 +18,6 @@
       ]"
     />
   </Section>
-  <Section class="bg-brand-6 color-brand-3" padding>
-    <p>USPs</p>
-  </Section>
 </template>
 
 <style>

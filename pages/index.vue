@@ -11,14 +11,11 @@ const { mailingList, socialNetworks } = useAppConfig()
         :action="{ text: 'SIGN UP FOR EARLY ACCESS', href: mailingList.url }"
       />
     </Section>
-    <Section class="bg-brand-6 min-h-200 flex items-center justify-center">
+    <Section class="min-h-200 flex items-center justify-center bg-brand-6">
       <p>Hero</p>
     </Section>
     <Intro />
-    <Section class="min-h-200 flex items-center justify-center">
-      <p>Intro</p>
-    </Section>
-    <Section class="min-h-200 flex items-center justify-center bg-brand-5">
+    <Section class="min-h-100 flex items-center justify-center bg-brand-6">
       <p>USPs</p>
     </Section>
     <Section class="min-h-200 flex items-center justify-center">

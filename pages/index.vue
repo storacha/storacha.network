@@ -5,7 +5,7 @@ const { mailingList, socialNetworks } = useAppConfig()
 <template>
   <TransitionProvider>
     <Section class="bg-brand-2">
-      <Hero
+      <HeroHome
         eyebrow="Introducing Storacha"
         title="Super h🔥t decentralized data at scale."
         description="Storacha’s open hot storage network scales IPFS and Filecoin"

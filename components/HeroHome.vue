@@ -16,15 +16,7 @@ const forwardProps = useForwardProps(props)
           <SectionHeader v-bind="forwardProps" class="color-brand-3 !gap-12" />
         </div>
       </div>
-      <div class="my-12 w-full">
-        <NuxtImg
-          class="ml-a max-w-140 w-full"
-          alt="Storacha Illustration"
-          src="/img/storacha-il.webp"
-          width="800"
-          height="908"
-        />
-      </div>
+      <div class="my-12 w-full" />
     </div>
   </div>
 </template>

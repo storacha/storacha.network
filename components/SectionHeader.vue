@@ -1,25 +1,25 @@
 <script lang="ts" setup>
 import type { BtnProps } from './Btn.vue'
 
-interface Props {
+export interface SectionHeaderProps {
   title: string
   center?: boolean
   eyebrow?: string
   description?: string
   actions?: BtnProps[] & { label: string }[]
 }
-defineProps<Props>()
+defineProps<SectionHeaderProps>()
 </script>
 
 <template>
-  <div class="flex flex-col gap-4" :class="{ 'text-center': center }">
+  <div class="section-header" :class="{ 'text-center': center }">
     <Heading type="h4" class="uppercase">
       {{ eyebrow }}
     </Heading>
     <Heading type="h1" class="max-w-5xl font-medium" :class="{ 'mx-a': center }">
       {{ title }}
     </Heading>
-    <p class="prose">
+    <p class="prose h4">
       {{ description }}
     </p>
     <div class="flex flex-col gap-4 sm:flex-row" :class="{ 'justify-center': center }">
@@ -34,6 +34,8 @@ defineProps<Props>()
   </div>
 </template>
 
-<style>
-
+<style lang="postcss" scoped>
+.section-header {
+  @apply flex flex-col gap-6;
+}
 </style>

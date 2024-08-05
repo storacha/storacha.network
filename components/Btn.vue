@@ -4,6 +4,7 @@ import type { AppLinkProps } from './AppLink.vue'
 
 export interface BtnProps extends AppLinkProps {
   primary?: boolean
+  secondary?: boolean
   outline?: boolean
   full?: boolean
   icon?: string
@@ -13,7 +14,14 @@ export interface BtnProps extends AppLinkProps {
 
 const props = defineProps<BtnProps>()
 
-const forwardProps = useForwardProps(reactiveOmit(props, ['primary', 'outline', 'full', 'icon', 'slim']))
+const forwardProps = useForwardProps(reactiveOmit(props, [
+  'primary',
+  'secondary',
+  'outline',
+  'full',
+  'icon',
+  'slim',
+]))
 </script>
 
 <template>
@@ -21,6 +29,7 @@ const forwardProps = useForwardProps(reactiveOmit(props, ['primary', 'outline', 
     class="btn" :class="
       {
         'btn-primary': primary,
+        'btn-secondary': secondary,
         'btn-outline': outline,
         'btn-slim': slim,
         'w-full block text-center': full,

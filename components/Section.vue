@@ -4,9 +4,9 @@ defineProps<{ fullWidth?: boolean, padding?: boolean }>()
 
 <template>
   <section class="section" :class="{ 'with-padding': padding, 'with-bg': $slots.bg }">
-    <div v-if="$slots.bg" class="with-bg pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+    <SectionBackground v-if="$slots.bg">
       <slot name="bg" />
-    </div>
+    </SectionBackground>
     <div class="body" :class="{ 'grid-margins': !fullWidth }">
       <slot />
     </div>
@@ -19,7 +19,7 @@ section.with-padding {
 }
 section.with-bg {
   @apply relative;
-  .body {
+  .body:not(.with-bg) {
     @apply relative;
   }
 }

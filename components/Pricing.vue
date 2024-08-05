@@ -11,7 +11,7 @@
       <SectionHeader
         eyebrow="Find your plan"
         title="How h🔥t would you like it?"
-        class="text-center"
+        center
       />
       <div class="grid grid-cols-1 mb-50 mt-12 gap-4 sm:grid-cols-3">
         <PricingCard

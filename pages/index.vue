@@ -15,8 +15,8 @@ const { mailingList, socialNetworks } = useAppConfig()
       <p>Hero</p>
     </Section>
     <Intro />
-    <Section class="min-h-100 flex items-center justify-center bg-brand-6">
-      <p>USPs</p>
+    <Section class="bg-brand-6 color-brand-3" padding>
+      <USPs />
     </Section>
     <Section class="min-h-200 flex items-center justify-center">
       <p>Network Diagram</p>

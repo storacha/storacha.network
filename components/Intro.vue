@@ -6,7 +6,7 @@
   <Section class="bg-brand-6 color-brand-3" padding>
     <template #bg>
       <div class="grid-margins hidden items-center justify-right opacity-50 transition-all md:flex lg:opacity-100">
-        <img width="250px" src="/public/img/intro-spot.svg" alt="Storacha Folder">
+        <img width="250" src="/public/img/intro-spot.svg" alt="Storacha Folder">
       </div>
     </template>
     <SectionHeader

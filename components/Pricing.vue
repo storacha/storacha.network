@@ -54,9 +54,9 @@
 
 <style lang="postcss" scoped>
 .pricing-bg {
-  background: url('/img/racha-pricing.webp') no-repeat left -3em bottom -9em / 1500px;
-  @screen sm {
-    background: url('/img/racha-pricing.webp') no-repeat bottom -10em left -6em / cover;
+  background: url('/img/racha-pricing.svg') no-repeat left -3em bottom -9em / 1500px;
+  @screen xl {
+    background: url('/img/racha-pricing.svg') no-repeat bottom -10em left 1em / 120%;
   }
 }
 </style>

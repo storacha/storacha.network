@@ -12,7 +12,7 @@
       <Split>
         <SplitCell :bg="{ outer: 'bg-brand-2' }" />
         <SplitCell :bg="{ outer: 'bg-white' }" padding>
-          <div class="flex items-center color-brand-3 md:my-24">
+          <div class="flex items-center color-brand-3">
             <div>
               <Heading type="h2" class="font-medium">
                 About Storacha

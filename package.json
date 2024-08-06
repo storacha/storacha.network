@@ -29,7 +29,7 @@
     "@nuxt/image": "^1.7.0",
     "@nuxt/scripts": "^0.6.5",
     "@nuxtjs/fontaine": "^0.4.3",
-    "@nuxtjs/plausible": "^1.0.1",
+    "@nuxtjs/plausible": "^1.0.2",
     "@nuxtjs/seo": "^2.0.0-rc.16",
     "@unocss/eslint-config": "^0.61.9",
     "@unocss/nuxt": "^0.61.9",
@@ -38,7 +38,7 @@
     "@vueuse/nuxt": "^10.11.0",
     "eslint": "^9.8.0",
     "nuxt": "^3.12.4",
-    "radix-vue": "^1.9.2",
+    "radix-vue": "^1.9.3",
     "vue-tsc": "^2.0.29"
   },
   "pnpm": {

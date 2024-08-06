@@ -53,8 +53,8 @@ export default defineConfig({
     ['h4', 'heading text-xl md:text-2xl font-normal'],
     ['h5', 'heading text-lg font-normal'],
     ['h6', 'heading text-base font-normal'],
-    ['p1', 'text-base sm:text-xl font-sans font-normal'],
-    ['p2', 'text-base sm:text-xl font-sans font-normal'],
+    ['p1', 'text-base font-sans font-normal md:text-lg'],
+    ['p2', 'text-base font-sans font-normal md:text-lg'],
     ['p3', 'text-base font-sans font-normal'],
   ],
   presets: [

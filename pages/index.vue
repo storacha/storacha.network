@@ -22,9 +22,6 @@ const { mailingList, socialNetworks } = useAppConfig()
     <Section class="min-h-200 flex items-center justify-center bg-brand-3 color-white uppercase">
       <p>Key Features</p>
     </Section>
-    <Section class="bg-brand-4" full-width padding>
-      <Roadmap />
-    </Section>
     <Section full-width>
       <Community :networks="socialNetworks" />
     </Section>
@@ -35,7 +32,7 @@ const { mailingList, socialNetworks } = useAppConfig()
     <PreFooter
       class="bg-brand-2"
       heading="Where will Storacha go next?"
-      :cta="{ text: 'See Roadmap', href: '/' }"
+      :cta="{ text: 'See Roadmap', href: '/roadmap' }"
     />
   </TransitionProvider>
 </template>

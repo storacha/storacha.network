@@ -43,8 +43,8 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2(magicast@0.3.4)(rollup@4.20.0)
       '@nuxtjs/seo':
-        specifier: ^2.0.0-rc.17
-        version: 2.0.0-rc.17(h3@1.12.0)(magicast@0.3.4)(rollup@4.20.0)(vite@5.3.5(@types/node@22.1.0)(terser@5.31.3))(vue@3.4.36(typescript@5.5.4))
+        specifier: ^2.0.0-rc.18
+        version: 2.0.0-rc.18(h3@1.12.0)(magicast@0.3.4)(rollup@4.20.0)(vite@5.3.5(@types/node@22.1.0)(terser@5.31.3))(vue@3.4.36(typescript@5.5.4))
       '@unocss/eslint-config':
         specifier: ^0.61.9
         version: 0.61.9(eslint@9.8.0)(typescript@5.5.4)
@@ -1004,8 +1004,8 @@ packages:
   '@nuxtjs/robots@4.0.2':
     resolution: {integrity: sha512-7hpAbSXjrzZNZ2vvzJf5E9H8+yVxJlPNY5wP/MSOWlw3pEJzTJQilAFsJj+jofocGj9y3iNDeqv/a5v/Lz8ppg==}
 
-  '@nuxtjs/seo@2.0.0-rc.17':
-    resolution: {integrity: sha512-vp/x8lUEuKXuxpXkzU294bpmmlel0HP3aripzHfxZhX3GbeZMglybjv+XFrJlpvXd0LDHbzfe06vZr+5xJK+WQ==}
+  '@nuxtjs/seo@2.0.0-rc.18':
+    resolution: {integrity: sha512-oJwhys1ukzxdQZOragIPFcsfbbR9Gf+5a993lFhR3jYbB6Izs4Bro4sZMeP11wuiv50U74/5dAantjmxep1xfA==}
 
   '@nuxtjs/sitemap@6.0.0-beta.1':
     resolution: {integrity: sha512-qLpMWAGr4vyTt2F1WYiA4Cv5ubxvjvd7LNW8Zt917O50Jcs3qSNiGPjFuDYDf9mTNGbkxtDyRti0/uESa5WP2A==}
@@ -6975,7 +6975,7 @@ snapshots:
       - vite
       - vue
 
-  '@nuxtjs/seo@2.0.0-rc.17(h3@1.12.0)(magicast@0.3.4)(rollup@4.20.0)(vite@5.3.5(@types/node@22.1.0)(terser@5.31.3))(vue@3.4.36(typescript@5.5.4))':
+  '@nuxtjs/seo@2.0.0-rc.18(h3@1.12.0)(magicast@0.3.4)(rollup@4.20.0)(vite@5.3.5(@types/node@22.1.0)(terser@5.31.3))(vue@3.4.36(typescript@5.5.4))':
     dependencies:
       '@nuxt/kit': 3.12.4(magicast@0.3.4)(rollup@4.20.0)
       '@nuxtjs/robots': 4.0.2(magicast@0.3.4)(rollup@4.20.0)(vite@5.3.5(@types/node@22.1.0)(terser@5.31.3))(vue@3.4.36(typescript@5.5.4))

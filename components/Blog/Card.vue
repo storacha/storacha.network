@@ -6,8 +6,10 @@ defineProps<{
   item: Item
 }>()
 
+const appConfig = useAppConfig()
+
 function formatDate(dateStr: string) {
-  return useDateFormat(dateStr, useAppConfig().dateFormat || 'MMM DD, YYYY')
+  return useDateFormat(dateStr, appConfig.dateFormat || 'MMM DD, YYYY')
 }
 </script>
 

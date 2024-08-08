@@ -9,19 +9,21 @@ defineProps<CardProps>()
 
 <template>
   <div class="card" :class="[{ 'is-inherit': inheritColor }]">
-    <template v-if="title || icon">
+    <header v-if="title || icon || $slots.header">
       <slot name="header">
         <div class="card-header flex items-center justify-between">
           <Heading v-if="title" type="h6" class="uppercase">
             {{ title }}
           </Heading>
-          <i v-if="icon" class="icon ml-a">{{ icon }}</i>
+          <div v-if="icon" class="icon ml-a">
+            {{ icon }}
+          </div>
         </div>
       </slot>
-      <div class="card-body">
-        <slot />
-      </div>
-    </template>
+    </header>
+    <div class="card-body">
+      <slot />
+    </div>
   </div>
 </template>
 

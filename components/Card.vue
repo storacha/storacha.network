@@ -29,7 +29,7 @@ defineProps<CardProps>()
 
 <style lang="postcss" scoped>
 .card {
-  @apply b-1 color-brand-3 b-brand-3 bg-white rounded-lg flex-inline flex-col min-h-50;
+  @apply overflow-hidden b-1 color-brand-3 b-brand-3 bg-white rounded-lg flex-inline flex-col min-h-50;
 }
 .card-body {
   @apply p-4 grow color-current;

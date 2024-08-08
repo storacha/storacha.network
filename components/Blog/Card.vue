@@ -5,12 +5,6 @@ import type { Item } from '~/types/blog'
 defineProps<{
   item: Item
 }>()
-
-const appConfig = useAppConfig()
-
-function formatDate(dateStr: string) {
-  return useDateFormat(dateStr, appConfig.dateFormat || 'MMM DD, YYYY')
-}
 </script>
 
 <template>
@@ -32,7 +26,7 @@ function formatDate(dateStr: string) {
             {{ item.title }}
           </Heading>
           <time class="h5 text-sm" :datetime="item.isoDate">
-            {{ formatDate(item.isoDate) }}
+            {{ useAppDateFormat(item.isoDate) }}
           </time>
           <div class="hidden text-base p1" v-html="`${item['content:encodedSnippet'].slice(0, 120)}...`" />
         </div>

@@ -6,14 +6,19 @@ defineProps<{
   item: Item
 }>()
 
-function formatDate(dateStr: string) { return useDateFormat(dateStr, 'MMM DD, YY') }
+function formatDate(dateStr: string) { return useDateFormat(dateStr, 'MMM DD, YYYY') }
 </script>
 
 <template>
-  <Card>
+  <Card class="blog-card">
     <template #header>
       <AppLink :href="item.link" class="aspect-ratio-video overflow-hidden">
-        <img :src="item.images?.[0]" :alt="item.title" class="h-full w-full object-cover object-left">
+        <img
+          :src="item.images?.[0]"
+          loading="lazy"
+          :alt="item.title"
+          class="h-full w-full object-cover object-left"
+        >
       </AppLink>
     </template>
     <article>
@@ -25,13 +30,18 @@ function formatDate(dateStr: string) { return useDateFormat(dateStr, 'MMM DD, YY
           <time class="h5 text-sm" :datetime="item.isoDate">
             {{ formatDate(item.isoDate) }}
           </time>
-          <div class="text-base p1" v-html="`${item['content:encodedSnippet'].slice(0, 120)}...`" />
+          <div class="hidden text-base p1" v-html="`${item['content:encodedSnippet'].slice(0, 120)}...`" />
         </div>
       </AppLink>
     </article>
   </Card>
 </template>
 
-<style>
-
+<style lang="postcss" scoped>
+.blog-card img {
+  @apply opacity-80 transition-opacity;
+}
+.blog-card:hover img {
+  @apply opacity-100
+}
 </style>

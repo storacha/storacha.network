@@ -2,6 +2,7 @@
 
 // global app config
 export default defineAppConfig({
+  dateFormat: 'MMM DD, YYYY',
   socialNetworks: [
     {
       name: 'Discord',

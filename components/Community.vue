@@ -39,9 +39,7 @@ const { networks } = defineProps<CommunityProps>()
       </div>
     </div>
     <div class="s-block community-img">
-      <div class="s-block-inner h-full border-2">
-        <div />
-      </div>
+      <BlogCell />
     </div>
   </div>
 </template>

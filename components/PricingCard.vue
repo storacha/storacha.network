@@ -27,7 +27,7 @@ withDefaults(defineProps<PricingCardProps>(), {
           <Heading type="h4">
             {{ feat }}
           </Heading>
-          <p v-if="desc" class="text-sm color-brand-3">
+          <p v-if="desc" class="text-sm font-sans">
             {{ desc }}
           </p>
         </li>

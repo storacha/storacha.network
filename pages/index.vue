@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { mailingList, socialNetworks } = useAppConfig()
+const { mailingList } = useAppConfig()
 </script>
 
 <template>
@@ -22,12 +22,12 @@ const { mailingList, socialNetworks } = useAppConfig()
     <Section class="min-h-200 flex items-center justify-center bg-brand-3 color-white uppercase">
       <p>Key Features</p>
     </Section>
-    <Section full-width>
-      <Community :networks="socialNetworks" />
-    </Section>
     <Pricing />
     <Section class="min-h-200 flex items-center justify-center bg-brand-2 uppercase">
       <p>Ecosystem</p>
+    </Section>
+    <Section full-width>
+      <Community />
     </Section>
     <PreFooter
       class="bg-brand-2"

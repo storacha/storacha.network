@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <Section class="bg-brand-4" full-width padding>
+  <Section class="bg-brand-4" padding full-width>
     <template #bg>
       <div class="pricing-bg" />
     </template>

@@ -1,7 +1,3 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
   <Split class="bg-brand-2">
     <SplitCell padding>
@@ -14,7 +10,3 @@
     </SplitCell>
   </Split>
 </template>
-
-<style lang="postcss">
-
-</style>

@@ -54,6 +54,7 @@ const cards = [{
   @apply color-brand-3 bg-brand-4;
 }
 
+/*
 :deep(.carousel::-webkit-scrollbar-thumb) {
   @apply bg-brand-3;
 }
@@ -61,4 +62,5 @@ const cards = [{
 :deep(.carousel::-webkit-scrollbar-track) {
   @apply bg-brand-4;
 }
+ */
 </style>

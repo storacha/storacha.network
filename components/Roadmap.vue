@@ -24,37 +24,28 @@ const cards = [{
 </script>
 
 <template>
-  <div class="roadmap flex flex-col gap-8 sm:flex-row sm:gap-0">
-    <div class="grid-margins lg:mr-4 lg:mt-12 sm:w-33% xl:pl-0">
-      <Heading type="h2" class="color-brand-3 font-medium">
-        Our Sizzling Roadmap
-      </Heading>
-      <p class="mt-4 text-base color-brand-3 p1">
-        Check out how we’re cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!
-      </p>
-    </div>
-    <Carousel>
-      <CardCell v-for="card in cards" :key="card.name" class="card bg-brand-3">
-        <div class="pill" :class="{ 'pill-active': card.active }">
-          <span class="b-1 rounded-full px-4 py-2 p3 text-xs">{{ card.status }}</span>
-        </div>
-        <div class="card-body mt-8 color-brand-4">
-          <Heading type="h3">
-            {{ card.title }}
-          </Heading>
-          <p class="mt-6 text-sm p1 sm:text-base">
-            {{ card.description }}
-          </p>
-        </div>
-      </CardCell>
-    </Carousel>
-  </div>
+  <CarouselSection
+    class="roadmap"
+    title="Our Sizzling Roadmap"
+    description="Check out how we’re cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!"
+  >
+    <CardCell v-for="card in cards" :key="card.name" class="card bg-brand-3">
+      <div class="pill" :class="{ 'pill-active': card.active }">
+        <span class="b-1 rounded-full px-4 py-2 p3 text-xs">{{ card.status }}</span>
+      </div>
+      <div class="card-body mt-8 color-brand-4">
+        <Heading type="h3">
+          {{ card.title }}
+        </Heading>
+        <p class="mt-6 text-sm p1 sm:text-base">
+          {{ card.description }}
+        </p>
+      </div>
+    </CardCell>
+  </CarouselSection>
 </template>
 
 <style lang="postcss" scoped>
-.roadmap {
-  margin-left: max(0rem, calc(100vw - 1280px)/2 + 1rem);
-}
 .pill span {
   @apply color-brand-4 uppercase text-xs;
 }
@@ -63,11 +54,11 @@ const cards = [{
   @apply color-brand-3 bg-brand-4;
 }
 
-.carousel::-webkit-scrollbar-thumb {
+:deep(.carousel::-webkit-scrollbar-thumb) {
   @apply bg-brand-3;
 }
 
-.carousel::-webkit-scrollbar-track {
+:deep(.carousel::-webkit-scrollbar-track) {
   @apply bg-brand-4;
 }
 </style>

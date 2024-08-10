@@ -16,10 +16,10 @@ defineProps<SectionHeaderProps>()
     <Heading type="h4" class="uppercase">
       {{ eyebrow }}
     </Heading>
-    <Heading type="h1" class="max-w-5xl font-medium" :class="{ 'mx-a': center }">
+    <Heading type="h1" class="max-w-22ch text-pretty font-medium" :class="{ 'mx-a max-w-35ch': center }">
       {{ title }}
     </Heading>
-    <p class="prose h4">
+    <p class="max-w-50ch text-pretty prose p1">
       {{ description }}
     </p>
     <div class="flex flex-col gap-4 sm:flex-row" :class="{ 'justify-center': center }">

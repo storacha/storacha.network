@@ -42,8 +42,6 @@ defineProps<Props>()
   .pre-footer {
     @apply pb-50 pt-20;
   }
-}
-@screen sm {
   .pre-footer-bg {
     background-size: cover;
     background-position: bottom -1px right;

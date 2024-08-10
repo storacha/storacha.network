@@ -19,8 +19,8 @@ const { mailingList } = useAppConfig()
     <Section class="min-h-200 flex items-center justify-center bg-gray-2 uppercase">
       <p>Network Diagram</p>
     </Section>
-    <Section class="min-h-200 flex items-center justify-center bg-brand-3 color-white uppercase">
-      <p>Key Features</p>
+    <Section class="bg-brand-3 color-brand-4" full-width padding>
+      <KeyFeatures />
     </Section>
     <Pricing />
     <Section class="bg-white color-brand-1" padding>

@@ -17,9 +17,9 @@ defineProps<Props>()
     </template>
 
     <div class="pre-footer">
-      <div class="grid-margins py-20 sm:(pb-50 pt-30)">
+      <div class="grid-margins">
         <div class="flex flex-col items-center justify-center gap-8 sm:flex-row">
-          <Heading v-if="heading" type="h3" class="color-brand-3 font-medium">
+          <Heading v-if="heading" type="h3" class="text-center color-brand-3 font-medium">
             {{ heading }}
           </Heading>
           <Btn v-if="cta" v-bind="cta">
@@ -33,10 +33,34 @@ defineProps<Props>()
 
 <style lang="postcss" scoped>
 .pre-footer-bg {
-  background: url('/img/racha-footer.svg') no-repeat right bottom -2px / cover;
-  @screen lg {
-    background-size: 150%;
-    background-position: bottom -10px right;
+  background: url('/img/racha-footer.svg') no-repeat right -2rem bottom -1px / 500%;
+}
+.pre-footer {
+  @apply pb-30 pt-5;
+}
+@screen sm {
+  .pre-footer {
+    @apply pb-50 pt-20;
+  }
+}
+@screen sm {
+  .pre-footer-bg {
+    background-size: cover;
+    background-position: bottom -1px right;
+  }
+}
+@screen xl {
+  .pre-footer {
+    @apply pb-60;
+  }
+}
+@screen 2xl {
+  .pre-footer {
+    @apply pb-90;
+  }
+  .pre-footer-bg {
+    background-size: 3500px;
+    background-position: bottom -1px right;
   }
 }
 </style>

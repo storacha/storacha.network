@@ -6,7 +6,7 @@ withDefaults(defineProps<Props>(), { type: 'h2' })
 </script>
 
 <template>
-  <component :is="type" :class="type">
+  <component :is="type" :class="type" class="text-pretty">
     <slot />
   </component>
 </template>

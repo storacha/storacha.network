@@ -38,7 +38,7 @@
         </SplitCell>
       </Split>
     </Section>
-    <Section class="bg-brand-4" full-width padding>
+    <Section class="bg-brand-4 color-brand-3" full-width padding>
       <Roadmap />
     </Section>
   </TransitionProvider>

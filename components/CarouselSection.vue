@@ -9,10 +9,10 @@ defineProps<CarouselSection>()
 <template>
   <div class="carousel-section flex flex-col gap-8 sm:flex-row sm:gap-0">
     <div class="grid-margins lg:mr-4 lg:mt-12 sm:w-33% xl:pl-0">
-      <Heading type="h2" class="color-brand-3 font-medium">
+      <Heading type="h2" class="font-medium">
         {{ title }}
       </Heading>
-      <p class="mt-4 text-base color-brand-3 p1">
+      <p class="mt-4 text-base p1">
         {{ description }}
       </p>
     </div>

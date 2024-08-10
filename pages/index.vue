@@ -23,8 +23,8 @@ const { mailingList } = useAppConfig()
       <p>Key Features</p>
     </Section>
     <Pricing />
-    <Section class="min-h-200 flex items-center justify-center bg-brand-2 uppercase">
-      <p>Ecosystem</p>
+    <Section class="bg-white color-brand-1" padding>
+      <Ecosystem />
     </Section>
     <Section full-width>
       <Community />

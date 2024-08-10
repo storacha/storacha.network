@@ -41,7 +41,7 @@ export default defineConfig({
     ['btn', 'py-4 px-8 whitespace-nowrap bg-brand-3 text-white text-sm md:text-base font-heading uppercase rounded-full cursor-pointer inline-block focus:outline-none scale-[0.99] hover:(scale-100 no-underline) active:scale-[0.98] transition duration-150'],
     ['btn-primary', 'bg-brand-1 text-brand-4'],
     ['btn-secondary', 'bg-white text-brand-3'],
-    ['btn-outline', 'bg-transparent text-brand-dark border border-brand-dark'],
+    ['btn-outline', 'bg-transparent text-color-current b-1 b-color-current'],
     ['btn-link', 'text-brand-dark underline'],
     ['btn-slim', 'py-2 px-4 text-sm font-normal'],
     ['grid-margins', 'max-w-screen-xl mx-auto px-6'],

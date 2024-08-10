@@ -55,10 +55,10 @@ const cards = [{
     description="Check out how we’re cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!"
   >
     <CardCell v-for="card in cards" :key="card.title" class="card bg-brand-4 color-brand-3">
-      <div class="pill h-15 w-15 flex-inline items-center justify-center rounded-full bg-white p-4">
+      <div class="pill h-3em w-3em flex-inline items-center justify-center rounded-full bg-white">
         <Icon :i="card.icon" />
       </div>
-      <div class="card-body mt-8 color-brand-3">
+      <div class="card-body mt-6 color-brand-3">
         <Heading type="h3" class="font-medium">
           {{ card.title }}
         </Heading>
@@ -75,6 +75,6 @@ const cards = [{
 
 <style lang="postcss" scoped>
 .pill {
-  @apply color-brand-3 text-lg;
+  @apply color-brand-3 text-base sm:text-lg;
 }
 </style>

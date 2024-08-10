@@ -36,7 +36,7 @@
     "@unocss/preset-icons": "^0.61.9",
     "@vueuse/core": "^10.11.1",
     "@vueuse/nuxt": "^10.11.1",
-    "eslint": "^9.8.0",
+    "eslint": "^9.9.0",
     "nuxt": "^3.12.4",
     "radix-vue": "^1.9.3",
     "vue-tsc": "^2.0.29"

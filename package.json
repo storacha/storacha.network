@@ -20,7 +20,7 @@
     "rss-parser": "^3.13.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.25.0",
+    "@antfu/eslint-config": "^2.25.1",
     "@iconify-json/carbon": "^1.1.37",
     "@iconify-json/simple-icons": "^1.1.112",
     "@nuxt/content": "^2.13.2",

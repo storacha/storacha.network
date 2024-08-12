@@ -74,8 +74,8 @@ function toggleMobileMenu() {
           {{ link.text }}
         </AppLink>
       </nav>
-      <button aria-label="Toggle Mobile Menu" class="mobile-nav-link sm:visible md:hidden" @click="toggleMobileMenu">
-        <div class="hamburger-icon h-8 w-8" />
+      <button aria-label="Toggle Mobile Menu" class="mobile-nav-link md:hidden" @click="toggleMobileMenu">
+        <div class="hamburger-icon relative h-8 w-8 text-brand-3" />
       </button>
     </div>
   </header>
@@ -111,23 +111,18 @@ function toggleMobileMenu() {
   @apply text-dark bg-transparent;
 }
 
-.hamburger-icon {
-  @apply relative text-brand-3;
-}
-
 .hamburger-icon::before,
 .hamburger-icon::after {
   content: '';
   background-color: currentColor;
   height: 2px;
-  @apply absolute;
-  @apply w-full;
-  @apply left-0;
-  @apply transition-transform;
-  @apply duration-300;
-  @apply ease-in-out;
-  @apply origin-center;
-  @apply transform;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  transform-origin: center;
 }
 
 .hamburger-icon::before {

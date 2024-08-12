@@ -2,7 +2,7 @@
 import type { NavLinks } from '~/types/navLinks'
 
 interface HeaderProps {
-  noHero: boolean
+  noHero?: boolean
   siteName: string
   links: NavLinks
 }
@@ -55,7 +55,7 @@ function toggleMobileMenu() {
 <template>
   <header
     ref="header" class="a-enter top-0 z-50 w-full transform transition duration-300 ease-out" :class="[
-      nav.isTransparent ? 'bg-transparent' : 'is-active bg-white/60 backdrop-blur-md',
+      nav.isTransparent ? 'bg-transparent' : 'is-active',
       noHero ? 'static' : 'fixed',
       {
         '-translate-y-full': nav.isSticky,
@@ -65,12 +65,12 @@ function toggleMobileMenu() {
     ]"
     v-bind="$attrs"
   >
-    <div class="grid-margins h-30 flex items-center justify-between transition-all">
-      <AppLink class="ident transition hover:opacity-75" href="/" title="">
-        <Ident :site-name="siteName" class="ident" />
+    <div class="grid-margins h-20 flex items-center justify-between transition-all">
+      <AppLink class="ident transition" href="/" title="">
+        <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" />
       </AppLink>
-      <nav class="hidden max-w-lg w-full justify-right md:flex">
-        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link relative ml-24">
+      <nav class="navbar hidden max-w-lg justify-right gap-1 b-2 b-brand-3 md:flex">
+        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link btn-secondary btn-slim btn">
           {{ link.text }}
         </AppLink>
       </nav>
@@ -79,20 +79,12 @@ function toggleMobileMenu() {
       </button>
     </div>
   </header>
-  <MobileMenu :active="nav.mobileActive" :links="mobileLinks" class="bg-brand-3/80 text-dark backdrop-blur-md" v-bind="$attrs" @navigate="nav.mobileActive = false" />
+  <MobileMenu :active="nav.mobileActive" :links="mobileLinks" class="bg-brand-3/80 text-white backdrop-blur-md" v-bind="$attrs" @navigate="nav.mobileActive = false" />
 </template>
 
 <style scoped lang="postcss">
-.ident {
-  @apply scale-90 md:scale-100 origin-left translate-y-0.7rem;
-}
-.is-active {
-  .ident {
-    @apply scale-75 translate-y-0 translate-x--0.5rem md:scale-80 md:translate-x--0.7rem;
-  }
-  .grid-margins {
-    @apply h-20 md:h-25;
-  }
+.navbar {
+  @apply bg-brand-4 rounded-full p-1;
 }
 @keyframes fadeIn {
   0% { opacity: 0; }
@@ -120,7 +112,7 @@ function toggleMobileMenu() {
 }
 
 .hamburger-icon {
-  @apply relative;
+  @apply relative text-brand-3;
 }
 
 .hamburger-icon::before,
@@ -159,11 +151,15 @@ function toggleMobileMenu() {
   @apply -rotate-45;
 }
 
+.mobile-nav-open .hamburger-icon {
+  @apply text-white;
+}
+
 a:hover:not(.ident) {
-  @apply b-b-1 b-black;
+  @apply !btn-active;
 }
 
 .router-link-active:not(.ident) {
-  @apply b-b-1 b-black;
+  @apply !btn-active;
 }
 </style>

@@ -1,14 +1,20 @@
 <script setup lang='ts'>
-defineProps({
-  noHero: Boolean,
-  siteName: String,
-})
+import type { NavLinks } from '~/types/navLinks'
+
+interface HeaderProps {
+  noHero: boolean
+  siteName: string
+  links: NavLinks
+}
+
+const props = defineProps<HeaderProps>()
 
 const headerLinks = [
-  { text: 'Home', link: '/' },
+  ...props.links,
 ]
 
 const mobileLinks = [
+  { text: 'Home', href: '/' },
   ...headerLinks,
 ]
 
@@ -64,7 +70,7 @@ function toggleMobileMenu() {
         <Ident :site-name="siteName" class="ident" />
       </AppLink>
       <nav class="hidden max-w-lg w-full justify-right md:flex">
-        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.link" class="nav-link relative ml-24">
+        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link relative ml-24">
           {{ link.text }}
         </AppLink>
       </nav>
@@ -159,10 +165,5 @@ a:hover:not(.ident) {
 
 .router-link-active:not(.ident) {
   @apply b-b-1 b-black;
-}
-
-/* hide menu for landing */
-.mobile-nav-link, nav {
-  @apply hidden;
 }
 </style>

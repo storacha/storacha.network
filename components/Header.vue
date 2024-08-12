@@ -70,7 +70,7 @@ function toggleMobileMenu() {
         <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" />
       </AppLink>
       <nav class="navbar hidden max-w-lg justify-right gap-1 b-2 b-brand-3 md:flex">
-        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link btn-secondary btn-slim btn">
+        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link btn-secondary btn-slim btn" active-class="btn-active">
           {{ link.text }}
         </AppLink>
       </nav>
@@ -153,13 +153,5 @@ function toggleMobileMenu() {
 
 .mobile-nav-open .hamburger-icon {
   @apply text-white;
-}
-
-a:hover:not(.ident) {
-  @apply !btn-active;
-}
-
-.router-link-active:not(.ident) {
-  @apply !btn-active;
 }
 </style>

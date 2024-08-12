@@ -1,14 +1,20 @@
 <script setup lang='ts'>
-defineProps({
-  noHero: Boolean,
-  siteName: String,
-})
+import type { NavLinks } from '~/types/navLinks'
+
+interface HeaderProps {
+  noHero?: boolean
+  siteName: string
+  links: NavLinks
+}
+
+const props = defineProps<HeaderProps>()
 
 const headerLinks = [
-  { text: 'Home', link: '/' },
+  ...props.links,
 ]
 
 const mobileLinks = [
+  { text: 'Home', href: '/' },
   ...headerLinks,
 ]
 
@@ -49,7 +55,7 @@ function toggleMobileMenu() {
 <template>
   <header
     ref="header" class="a-enter top-0 z-50 w-full transform transition duration-300 ease-out" :class="[
-      nav.isTransparent ? 'bg-transparent' : 'is-active bg-white/60 backdrop-blur-md',
+      nav.isTransparent ? 'bg-transparent' : 'is-active',
       noHero ? 'static' : 'fixed',
       {
         '-translate-y-full': nav.isSticky,
@@ -59,34 +65,26 @@ function toggleMobileMenu() {
     ]"
     v-bind="$attrs"
   >
-    <div class="grid-margins h-30 flex items-center justify-between transition-all">
-      <AppLink class="ident transition hover:opacity-75" href="/" title="">
-        <Ident :site-name="siteName" class="ident" />
+    <div class="grid-margins h-20 flex items-center justify-between transition-all">
+      <AppLink class="ident transition" href="/" title="">
+        <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" />
       </AppLink>
-      <nav class="hidden max-w-lg w-full justify-right md:flex">
-        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.link" class="nav-link relative ml-24">
+      <nav class="navbar hidden max-w-lg justify-right gap-1 b-2 b-brand-3 md:flex">
+        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link btn-secondary btn-slim btn" active-class="btn-active">
           {{ link.text }}
         </AppLink>
       </nav>
-      <button aria-label="Toggle Mobile Menu" class="mobile-nav-link sm:visible md:hidden" @click="toggleMobileMenu">
-        <div class="hamburger-icon h-8 w-8" />
+      <button aria-label="Toggle Mobile Menu" class="mobile-nav-link md:hidden" @click="toggleMobileMenu">
+        <div class="hamburger-icon relative h-8 w-8 text-brand-3" />
       </button>
     </div>
   </header>
-  <MobileMenu :active="nav.mobileActive" :links="mobileLinks" class="bg-brand-3/80 text-dark backdrop-blur-md" v-bind="$attrs" @navigate="nav.mobileActive = false" />
+  <MobileMenu :active="nav.mobileActive" :links="mobileLinks" class="bg-brand-3/80 text-white backdrop-blur-md" v-bind="$attrs" @navigate="nav.mobileActive = false" />
 </template>
 
 <style scoped lang="postcss">
-.ident {
-  @apply scale-90 md:scale-100 origin-left translate-y-0.7rem;
-}
-.is-active {
-  .ident {
-    @apply scale-75 translate-y-0 translate-x--0.5rem md:scale-80 md:translate-x--0.7rem;
-  }
-  .grid-margins {
-    @apply h-20 md:h-25;
-  }
+.navbar {
+  @apply bg-brand-4 rounded-full p-1;
 }
 @keyframes fadeIn {
   0% { opacity: 0; }
@@ -113,23 +111,18 @@ function toggleMobileMenu() {
   @apply text-dark bg-transparent;
 }
 
-.hamburger-icon {
-  @apply relative;
-}
-
 .hamburger-icon::before,
 .hamburger-icon::after {
   content: '';
   background-color: currentColor;
   height: 2px;
-  @apply absolute;
-  @apply w-full;
-  @apply left-0;
-  @apply transition-transform;
-  @apply duration-300;
-  @apply ease-in-out;
-  @apply origin-center;
-  @apply transform;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  transform-origin: center;
 }
 
 .hamburger-icon::before {
@@ -153,16 +146,7 @@ function toggleMobileMenu() {
   @apply -rotate-45;
 }
 
-a:hover:not(.ident) {
-  @apply b-b-1 b-black;
-}
-
-.router-link-active:not(.ident) {
-  @apply b-b-1 b-black;
-}
-
-/* hide menu for landing */
-.mobile-nav-link, nav {
-  @apply hidden;
+.mobile-nav-open .hamburger-icon {
+  @apply text-white;
 }
 </style>

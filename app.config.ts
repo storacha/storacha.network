@@ -3,6 +3,9 @@
 // global app config
 export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
+  headerLinks: [
+    { text: 'Roadmap', href: '/roadmap' },
+  ],
   socialNetworks: [
     {
       name: 'Discord',

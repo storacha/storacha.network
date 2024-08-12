@@ -3,8 +3,8 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
 </script>
 
 <template>
-  <footer class="bg-brand-4 py-8 color-brand-3">
-    <div class="grid-margins border-2 b-brand-3 rounded-2xl py-12">
+  <footer class="grid-margins bg-brand-4 py-8 color-brand-3">
+    <div class="border-3 b-current rounded-10 px-6 py-5 md:rounded-20 md:pt-12">
       <div class="grid cols-1 gap-6 text-xs lg:cols-3 sm:cols-2 sm:text-base">
         <div>
           <MailingListSignup />
@@ -13,7 +13,7 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
           <SocialNetworks class="h-12 items-center" icon-class="hover:color-brand-1 hover:scale-110" />
         </div>
         <div>
-          <div class="grid cols-1 gap-8 lg:cols-2">
+          <div class="grid cols-1 gap-6 lg:cols-2">
             <div>
               <Heading class="mb font-500" type="h5">
                 Resources
@@ -41,13 +41,9 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
           </div>
         </div>
       </div>
-      <div class="mt-24 color-brand-3">
+      <div class="mb-2 mt-8 sm:mt-16">
         <img src="/img/storacha-wm.svg" alt="Storacha" aria-hidden="true" class="mx-auto w-full" loading="lazy">
       </div>
     </div>
   </footer>
 </template>
-
-<style>
-
-</style>

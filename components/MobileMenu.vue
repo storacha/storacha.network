@@ -20,7 +20,7 @@ defineEmits(['navigate'])
             </h1>
           </nav>
         </div>
-        <!-- SocialLinks -->
+        <SocialNetworks />
       </div>
     </div>
   </Transition>

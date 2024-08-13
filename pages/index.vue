@@ -9,7 +9,7 @@ const { mailingList } = useAppConfig()
         <div class="relative inset-0 grid-margins h-200vh h-full w-full" loading="lazy">
           <img width="100%" class="absolute top-0" src="/public/img/hero/back.webp" alt="" loading="lazy">
           <div class="absolute left-0 top-0 h-full w-full from-transparent to-brand-2 bg-gradient-to-l" t-skip />
-          <img width="40%" class="absolute left-30% top-[max(-10vw,-100px)]" src="/public/img/hero/racha.webp" alt="" loading="lazy">
+          <img width="40%" class="t-bob absolute left-30% top-[max(-10vw,-100px)]" src="/public/img/hero/racha.webp" alt="" loading="lazy">
           <img width="100%" class="absolute top-[min(640px,50vw)]" src="/public/img/hero/front.webp" alt="" loading="lazy">
           <img class="absolute bottom-0 hidden" src="/public/img/hero/transition.webp" alt="" loading="lazy">
         </div>
@@ -58,5 +58,20 @@ const { mailingList } = useAppConfig()
 </template>
 
 <style lang="postcss" scoped>
+@keyframes bob {
+  0% {
+    transform: translateY(-5px);
+  }
 
+  50% {
+    transform:  translateY(10px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+.t-bob {
+  animation: 5s ease-in-out 5s infinite both bob;
+}
 </style>

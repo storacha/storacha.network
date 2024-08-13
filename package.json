@@ -38,7 +38,7 @@
     "@vueuse/nuxt": "^10.11.1",
     "eslint": "^9.9.0",
     "nuxt": "^3.12.4",
-    "radix-vue": "^1.9.3",
+    "radix-vue": "^1.9.4",
     "vue-tsc": "^2.0.29"
   },
   "pnpm": {

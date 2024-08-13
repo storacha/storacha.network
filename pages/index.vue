@@ -6,11 +6,11 @@ const { mailingList } = useAppConfig()
   <TransitionProvider>
     <Section class="bg-brand-2">
       <template #bg>
-        <div class="relative inset-0 grid-margins h-200vh h-full w-full" loading="lazy">
-          <img width="100%" class="absolute top-0" src="/public/img/hero/back.webp" alt="" loading="lazy">
+        <div class="relative inset-0 grid-margins hidden w-full md:block" loading="lazy">
+          <img class="absolute left-0 top-0 w-full" src="/public/img/hero/back.webp" alt="" loading="lazy">
           <div class="absolute left-0 top-0 h-full w-full from-transparent to-brand-2 bg-gradient-to-l" t-skip />
           <img width="40%" class="t-bob absolute left-30% top-[max(-10vw,-100px)]" src="/public/img/hero/racha.webp" alt="" loading="lazy">
-          <img width="100%" class="absolute top-[min(640px,50vw)]" src="/public/img/hero/front.webp" alt="" loading="lazy">
+          <img class="absolute left-0 top-[min(600px,47vw)] object-cover" src="/public/img/hero/front.webp" alt="" loading="lazy">
           <img class="absolute bottom-0 hidden" src="/public/img/hero/transition.webp" alt="" loading="lazy">
         </div>
       </template>
@@ -72,6 +72,6 @@ const { mailingList } = useAppConfig()
 }
 
 .t-bob {
-  animation: 5s ease-in-out 5s infinite both bob;
+  animation: 5s ease-in-out 3s infinite both bob;
 }
 </style>

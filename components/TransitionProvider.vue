@@ -20,7 +20,9 @@ onMounted(() => {
                 observerElement.unobserve(target)
             }
             else {
-              target.classList.add('opacity-0')
+              if (!isSetup.value) {
+                target.classList.add('opacity-0')
+              }
             }
             if (!isSetup.value && i === entries.length - 1)
               isSetup.value = true

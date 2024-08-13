@@ -11,7 +11,7 @@ const { mailingList } = useAppConfig()
           <div class="absolute left-0 top-0 h-full w-full from-transparent to-brand-2 bg-gradient-to-l" t-skip />
           <img width="40%" class="t-bob absolute left-30% top-[max(-10vw,-100px)]" src="/public/img/hero/racha.webp" alt="" loading="lazy">
           <img class="absolute left-0 top-[min(600px,47vw)] object-cover" src="/public/img/hero/front.webp" alt="" loading="lazy">
-          <img class="absolute bottom-0 hidden" src="/public/img/hero/transition.webp" alt="" loading="lazy">
+          <img class="absolute bottom--200px left-0" width="500px" src="/public/img/hero/transition.webp" alt="" loading="lazy">
         </div>
       </template>
       <HeroHome

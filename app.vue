@@ -3,7 +3,7 @@ defineOgImage({ url: '/img/storacha-og-card.png', width: 1200, height: 630, alt:
 </script>
 
 <template>
-  <NuxtLoadingIndicator color="#EAEAE0" style="opacity: 1;" />
+  <NuxtLoadingIndicator color="#BDE0FF" style="opacity: 1;" />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

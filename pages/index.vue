@@ -60,18 +60,18 @@ const { mailingList } = useAppConfig()
 <style lang="postcss" scoped>
 @keyframes bob {
   0% {
-    transform: translateY(-5px);
+    transform: translateY(0px);
   }
 
   50% {
     transform:  translateY(10px);
   }
   100% {
-    transform: translateY(-5px);
+    transform: translateY(0px);
   }
 }
 
-.t-bob {
-  animation: 5s ease-in-out 3s infinite both bob;
+.t-setup .t-bob {
+  animation: slide-enter 2s both 1, 5s ease-in-out 3s infinite both bob;
 }
 </style>

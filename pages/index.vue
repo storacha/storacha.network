@@ -22,7 +22,7 @@ const { mailingList } = useAppConfig()
       />
       <Split>
         <SplitCell />
-        <SplitCell class="bg-white color-brand-3" padding>
+        <SplitCell class="mx--6 bg-white color-brand-3" padding>
           <SectionHeader
             title="Storacha is decentralized storage, but a hot new take."
           />

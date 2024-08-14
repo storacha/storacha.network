@@ -22,6 +22,7 @@ defineProps<SectionHeaderProps>()
     <p v-if="description" class="max-w-50ch text-pretty prose p1">
       {{ description }}
     </p>
+    <slot />
     <div v-if="actions" class="flex flex-col gap-4 sm:flex-row" :class="{ 'justify-center': center }">
       <Btn
         v-for="action in actions"

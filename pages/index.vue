@@ -78,9 +78,8 @@ const { mailingList } = useAppConfig()
   0% {
     transform: translateY(0px);
   }
-
   50% {
-    transform:  translateY(10px);
+    transform: translateY(10px);
   }
   100% {
     transform: translateY(0px);
@@ -88,6 +87,6 @@ const { mailingList } = useAppConfig()
 }
 
 .t-setup .t-bob {
-  animation: slide-enter 2s both 1, 5s ease-in-out 3s infinite both bob;
+  animation: 5s ease-in-out 3s infinite both bob;
 }
 </style>

@@ -13,16 +13,17 @@ defineProps<SectionHeaderProps>()
 
 <template>
   <div class="section-header" :class="{ 'text-center': center }">
-    <Heading type="h4" class="uppercase">
+    <Heading v-if="eyebrow" type="h4" class="uppercase">
       {{ eyebrow }}
     </Heading>
-    <Heading type="h1" class="max-w-22ch text-pretty font-medium" :class="{ 'mx-a max-w-35ch': center }">
+    <Heading v-if="title" type="h1" class="max-w-22ch text-pretty font-medium" :class="{ 'mx-a max-w-35ch': center }">
       {{ title }}
     </Heading>
-    <p class="max-w-50ch text-pretty prose p1">
+    <p v-if="description" class="max-w-50ch text-pretty prose p1">
       {{ description }}
     </p>
-    <div class="flex flex-col gap-4 sm:flex-row" :class="{ 'justify-center': center }">
+    <slot />
+    <div v-if="actions" class="flex flex-col gap-4 sm:flex-row" :class="{ 'justify-center': center }">
       <Btn
         v-for="action in actions"
         :key="action.label"

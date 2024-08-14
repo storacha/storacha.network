@@ -4,13 +4,17 @@ import type { SectionHeaderProps } from './SectionHeader.vue'
 
 interface HeroProps extends SectionHeaderProps {}
 const props = withDefaults(defineProps<HeroProps>(), {})
-const forwardProps = useForwardProps(props)
+const forwardProps = useForwardProps(reactiveOmit(props, ['description']))
 </script>
 
 <template>
   <HeroBase class="min-h-100vh">
     <template #left>
-      <SectionHeader v-bind="forwardProps" class="color-brand-3 !gap-12" />
+      <SectionHeader v-bind="forwardProps" class="color-brand-3 !gap-12">
+        <Heading type="h5" class="uppercase !text-balance">
+          {{ description }}
+        </Heading>
+      </SectionHeader>
     </template>
   </HeroBase>
 </template>

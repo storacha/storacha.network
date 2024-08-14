@@ -20,7 +20,9 @@ onMounted(() => {
                 observerElement.unobserve(target)
             }
             else {
-              target.classList.add('opacity-0')
+              if (!isSetup.value) {
+                target.classList.add('opacity-0')
+              }
             }
             if (!isSetup.value && i === entries.length - 1)
               isSetup.value = true
@@ -50,6 +52,11 @@ onMounted(() => {
 <style lang="postcss">
 .t-root:not(.t-setup) .body > * {
   opacity: 0;
+}
+
+.t-setup .animate-slide-enter > [t-skip] {
+  opacity: 100;
+  animation: none;
 }
 
 @keyframes slide-enter {

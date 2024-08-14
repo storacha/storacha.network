@@ -6,12 +6,13 @@ const { mailingList } = useAppConfig()
   <TransitionProvider>
     <Section class="overflow-hidden bg-brand-2">
       <template #bg>
-        <div class="relative inset-0 grid-margins hidden md:block" loading="lazy">
-          <img class="absolute inset-0" src="/public/img/hero/back.webp" alt="" loading="lazy">
-          <div class="absolute inset-0 from-transparent to-brand-2 bg-gradient-to-l" t-skip />
-          <img width="40%" class="t-bob absolute left-30% top-[max(-10vw,-100px)]" src="/public/img/hero/racha.webp" alt="" loading="lazy">
-          <img class="absolute inset-0 top-[min(600px,47vw)] w-full" src="/public/img/hero/front.webp" alt="" loading="lazy">
-          <img class="absolute bottom--200px left-0" width="500px" src="/public/img/hero/transition.webp" alt="" loading="lazy">
+        <div class="grid-margins flex flex-col items-center justify-center transition-all !h-100vh lg:scale-90 md:scale-70 xl:scale-110">
+          <div class="animate-slide-enter relative hidden h-[min(920px,100vh)] w-1240px md:block">
+            <img class="absolute inset-0" src="/public/img/hero/back.webp" alt="" loading="lazy">
+            <div class="absolute inset-0 from-transparent to-brand-2 bg-gradient-to-l" t-skip />
+            <img width="35%" class="t-bob absolute left-33% top--5%" src="/public/img/hero/racha.webp" alt="" loading="lazy">
+            <img class="absolute inset-0 top-520px w-full" src="/public/img/hero/front.webp" alt="" loading="lazy">
+          </div>
         </div>
       </template>
       <HeroHome
@@ -21,7 +22,9 @@ const { mailingList } = useAppConfig()
         :actions="[{ label: 'SIGN UP FOR EARLY ACCESS', href: mailingList.url }]"
       />
       <Split>
-        <SplitCell />
+        <SplitCell>
+          <img class="absolute bottom--200px left-0 hidden md:block" width="500px" src="/public/img/hero/transition.webp" alt="" loading="lazy">
+        </SplitCell>
         <SplitCell class="mx--6 bg-white color-brand-3" padding>
           <SectionHeader
             title="Storacha is decentralized storage, but a hot new take."

@@ -12,7 +12,7 @@ defineProps<SplitCellProps>()
 <template>
   <div class="split-cell" :class="bg?.outer">
     <div
-      class="h-full flex items-center xl:aspect-ratio-square md:max-w-160"
+      class="h-full md:max-w-160"
       :class="[bg?.inner, { 'py-12 px-6 md:p-12': padding }]"
     >
       <slot />

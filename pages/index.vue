@@ -9,15 +9,15 @@ const { mailingList } = useAppConfig()
         <div class="grid-margins flex flex-col items-center justify-center transition-all !h-100vh lg:scale-90 md:scale-70 xl:scale-110">
           <div class="animate-slide-enter relative hidden h-[min(920px,100vh)] w-1240px md:block">
             <img
-              class="absolute inset-0 w-full" src="/public/img/hero/back.webp"
-              srcset="/public/img/hero/back.webp, /public/img/hero/back2x.webp 2x"
+              class="absolute inset-0 w-full" src="/img/hero/back.webp"
+              srcset="/img/hero/back.webp, /img/hero/back2x.webp 2x"
               alt="" loading="eager"
             >
-            <div class="absolute inset-0 w-full from-transparent to-brand-2 bg-gradient-to-l" t-skip />
-            <img width="35%" class="t-bob absolute left-33% top--5%" src="/public/img/hero/racha.svg" alt="" loading="eager">
+            <div class="absolute inset-0 w-full from-transparent to-brand-2 bg-gradient-to-tl" t-skip />
+            <img width="35%" class="t-bob absolute left-33% top--5%" src="/img/hero/racha.svg" alt="" loading="eager">
             <img
-              class="absolute inset-0 top-520px w-full" src="/public/img/hero/front.webp"
-              srcset="/public/img/hero/front.webp, /public/img/hero/front2x.webp 2x"
+              class="absolute inset-0 top-520px w-full" src="/img/hero/front.webp"
+              srcset="/img/hero/front.webp, /img/hero/front2x.webp 2x"
               alt="" loading="eager"
             >
           </div>
@@ -31,7 +31,7 @@ const { mailingList } = useAppConfig()
       />
       <Split>
         <SplitCell>
-          <img class="absolute bottom--200px left-0 hidden md:block" width="500px" src="/public/img/hero/transition.webp" alt="">
+          <img class="absolute bottom--200px left-0 hidden md:block" width="500px" src="/img/hero/transition.webp" alt="">
         </SplitCell>
         <SplitCell class="mx--6 bg-white color-brand-3" padding>
           <SectionHeader

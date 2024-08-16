@@ -27,10 +27,10 @@ export default defineAppConfig({
       icon: 'i-simple-icons:github',
     },
     {
-      name: 'Reddit',
-      description: 'See more',
-      url: 'https://www.reddit.com/r/Storacha',
-      icon: 'i-simple-icons:reddit',
+      name: 'Medium',
+      description: 'Read our blog',
+      url: 'https://medium.com/@storacha',
+      icon: 'i-simple-icons:medium',
     },
     {
       name: 'Farcaster',
@@ -39,10 +39,10 @@ export default defineAppConfig({
       icon: 'i-simple-icons:farcaster',
     },
     {
-      name: 'Medium',
-      description: 'Read our blog',
-      url: 'https://medium.com/@storacha',
-      icon: 'i-simple-icons:medium',
+      name: 'Reddit',
+      description: 'See more',
+      url: 'https://www.reddit.com/r/Storacha',
+      icon: 'i-simple-icons:reddit',
     },
   ],
   footerLinks: {

@@ -6,19 +6,26 @@ const { mailingList } = useAppConfig()
   <TransitionProvider>
     <Section class="overflow-hidden bg-brand-2">
       <template #bg>
-        <div class="grid-margins flex flex-col items-center justify-center transition-all !h-100vh lg:scale-90 md:scale-70 xl:scale-110">
-          <div class="animate-slide-enter relative hidden h-[min(920px,100vh)] w-1240px md:block">
+        <div class="grid-margins flex flex-col items-center justify-center transition-all !h-100vh lg:scale-90 md:scale-70 xl:scale-100">
+          <div class="animate-slide-enter relative hidden h-[min(1024px,100vh)] w-screen-xl md:block">
             <img
-              class="absolute inset-0 w-full" src="/img/hero/back.webp"
-              srcset="/img/hero/back.webp, /img/hero/back2x.webp 2x"
+              class="absolute inset-0" src="/img/hero/back.webp"
+              srcset="/img/hero/back.webp, /img/hero/back@2x.webp 2x"
               alt="" loading="eager"
+              height="1108"
+              width="1551"
             >
-            <div class="absolute inset-0 w-full from-transparent to-brand-2 bg-gradient-to-tl" t-skip />
-            <img width="35%" class="t-bob absolute left-33% top--5%" src="/img/hero/racha.svg" alt="" loading="eager">
+            <div class="absolute inset-0 w-full h-screen-lg from-transparent to-brand-2 bg-gradient-to-tl" t-skip />
             <img
-              class="absolute inset-0 top-520px w-full" src="/img/hero/front.webp"
-              srcset="/img/hero/front.webp, /img/hero/front2x.webp 2x"
+              class="t-bob absolute left-26% top--640px" src="/img/hero/racha.svg" alt="" loading="eager"
+              width="495"
+            >
+            <img
+              class="absolute inset-0 left--42px top-608px" src="/img/hero/front.webp"
+              srcset="/img/hero/front.webp, /img/hero/front@2x.webp 2x"
               alt="" loading="eager"
+              height="1406"
+              width="1612"
             >
           </div>
         </div>
@@ -30,9 +37,7 @@ const { mailingList } = useAppConfig()
         :actions="[{ label: 'SIGN UP FOR EARLY ACCESS', href: mailingList.url }]"
       />
       <Split>
-        <SplitCell>
-          <img class="absolute bottom--200px left-0 hidden md:block" width="500px" src="/img/hero/transition.webp" alt="">
-        </SplitCell>
+        <SplitCell />
         <SplitCell class="mx--6 bg-white color-brand-3" padding>
           <SectionHeader
             title="Storacha is decentralized storage, but a hot new take."

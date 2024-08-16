@@ -6,18 +6,20 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
   <footer class="grid-margins bg-brand-4 py-8 color-brand-3">
     <div class="border-3 b-current rounded-10 px-6 py-5 md:rounded-20 md:pt-12">
       <div class="grid cols-1 gap-6 text-xs lg:cols-3 sm:cols-2 sm:text-base">
-        <div>
+        <div class="h-13">
           <MailingListSignup />
         </div>
-        <div class="flex text-center lg:justify-center">
-          <SocialNetworks class="h-12 items-center" icon-class="hover:color-brand-1 hover:scale-110" />
+        <div class="header flex text-1.2em lg:justify-center">
+          <SocialNetworks class="items-center" icon-class="hover:color-brand-1 hover:scale-110" />
         </div>
         <div>
           <div class="grid cols-1 gap-6 lg:cols-2">
             <div>
-              <Heading class="mb font-500" type="h5">
-                Resources
-              </Heading>
+              <div class="header align-middle">
+                <Heading class="font-semibold" type="h5">
+                  Resources
+                </Heading>
+              </div>
               <ul>
                 <li v-for="link in resources" :key="link.url">
                   <AppLink :href="link.url">
@@ -27,9 +29,11 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
               </ul>
             </div>
             <div>
-              <Heading class="mb font-500" type="h5">
-                Getting Started
-              </Heading>
+              <div class="header">
+                <Heading class="font-semibold" type="h5">
+                  Getting Started
+                </Heading>
+              </div>
               <ul>
                 <li v-for="link in getStarted" :key="link.url">
                   <AppLink :href="link.url">
@@ -47,3 +51,14 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
     </div>
   </footer>
 </template>
+
+<style lang="postcss" scoped>
+@screen md {
+  .header {
+    @apply h-13 flex items-center;
+    h5 {
+      @apply text-nowrap;
+    }
+  }
+}
+</style>

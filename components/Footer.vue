@@ -6,7 +6,7 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
   <footer class="grid-margins bg-brand-4 py-8 color-brand-3">
     <div class="border-3 b-current rounded-10 px-6 py-5 md:rounded-20 md:pt-12">
       <div class="grid cols-1 gap-6 text-xs lg:cols-3 sm:cols-2 sm:text-base">
-        <div class="h-13">
+        <div class="header">
           <MailingListSignup />
         </div>
         <div class="header flex text-1.2em lg:justify-center">

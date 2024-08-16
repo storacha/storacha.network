@@ -17,8 +17,8 @@ const { mailingList } = useAppConfig()
             >
             <div class="absolute inset-0 w-full from-transparent to-brand-2 bg-gradient-to-tl" t-skip />
             <img
-              class="t-bob absolute left-28% top--800px" src="/img/hero/racha.svg" alt="" loading="eager"
-              height="1542" width="559"
+              class="t-bob absolute left-25% top--650px" src="/img/hero/racha.svg" alt="" loading="eager"
+              width="495"
             >
             <img
               class="absolute inset-0 left--40px top-590px" src="/img/hero/front.webp"

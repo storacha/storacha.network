@@ -13,14 +13,7 @@
     <Heading type="h4" class="text-center">
       THE STORACHA ECOSYSTEM
     </Heading>
-    <div class="grid grid-cols-1 mt-12 w-full gap-4 md:grid-cols-3">
-      <div
-        v-for="i in 3" :key="i"
-        class="aspect-ratio-video flex items-center justify-center rounded-2xl bg-gray-2 text-gray-6"
-      >
-        {{ i }}
-      </div>
-    </div>
+    <EcosystemGrid class="mt-12" />
   </Section>
 </template>
 

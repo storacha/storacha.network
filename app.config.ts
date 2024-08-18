@@ -5,6 +5,7 @@ export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
   headerLinks: [
     { text: 'Roadmap', href: '/roadmap' },
+    { text: 'Ecosystem', href: '/ecosystem' },
     { text: 'Node Providers', href: '/node-providers' },
   ],
   socialNetworks: [

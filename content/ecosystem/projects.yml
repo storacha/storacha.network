@@ -1,0 +1,16 @@
+- name: NFT.Storage
+  description: 'Classic.nft.storage ensures the secure and efficient storage of NFT assets and metadata, managing large collections with tens of thousands of NFTs on Storacha, guaranteeing they are always readily accessible and quickly retrievable.'
+- name: OpenSea
+  description: The world\'s largest NFT marketplace, OpenSea, leverages Storacha to secure and efficiently retrieve end-users\' NFT collections via IPFS, ensuring optimal performance.
+- name: Tatum
+  description: A blockchain development platform that utilizes Storacha to provide IPFS storage services, offering seamless integration, scalability, and enhanced user control.
+- name: Fleek
+  description: A decentralized compute platform (DePin) that stores large-scale compute data and logs on Storacha for fast and efficient retrieval via CID.
+- name: 3s Game Studio
+  description: A game studio that built an unreal plugin to use Storacha for progressive game installs and distribution of game binaries leveraging the power of content-addressed data storage and user-owned game assets.
+- name: Magic Eden
+  description: The leading NFT marketplace on Solana relies on Storacha to store NFT collections, ensuring fast and reliable retrieval speeds.
+- name: Station
+  description: An analytics and verification network for DePIN and Web3 ecosystems that harnesses Storacha to securely store compute logs and reports, ensuring comprehensive backups on Filecoin.
+- name: Glitter Protocol
+  description: A blockchain-based data platform that leverages Storacha as its decentralized storage infrastructure, providing robust and scalable solutions for its customers.

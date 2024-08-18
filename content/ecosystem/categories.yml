@@ -1,12 +1,18 @@
-- name: Gaming
+- id: gaming
+  name: Gaming
   icon: 👾
-- name: Web3 Infrastructure
+- id: web3_infra
+  name: Web3 Infrastructure
   icon: ⚙️
-- name: DEPIN & Compute
+- id: depin_compute
+  name: DEPIN & Compute
   icon: 💻
-- name: NFTS & Metaverse
+- id: nfts_metaverse
+  name: NFTS & Metaverse
   icon: 🖼
-- name: AI
+- id: ai
+  name: AI
   icon: ✨
-- name: Decentralized Social
+- id: de_social
+  name: Decentralized Social
   icon: 📱

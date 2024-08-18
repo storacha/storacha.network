@@ -57,6 +57,7 @@ export default defineConfig({
     ['p1', 'text-base font-sans font-normal md:text-lg'],
     ['p2', 'text-base font-sans font-normal md:text-lg'],
     ['p3', 'text-base font-sans font-normal'],
+    ['p4', 'text-sm font-sans font-normal'],
   ],
   presets: [
     presetUno(),
@@ -65,12 +66,19 @@ export default defineConfig({
     }),
     presetTypography(),
     presetWebFonts({
-      provider: 'fontshare',
       fonts: {
-        sans: ['DM Sans:300,400,500', { name: 'DM Sans fallback', provider: 'none' }],
-        heading: ['Epilogue:300,400,500', { name: 'Poppins fallback', provider: 'none' }],
-        serif: ['Erode'],
-        mono: ['DM Mono:400', { name: 'DM Mono fallback', provider: 'none' }],
+        heading: [
+          { name: 'Epilogue', weights: ['400', '500', '600'], provider: 'bunny' },
+          { name: 'Epilogue fallback', provider: 'none' },
+        ],
+        sans: [
+          { name: 'DM Sans', weights: ['400', '500'], provider: 'bunny' },
+          { name: 'DM Sans fallback', provider: 'none' },
+        ],
+        mono: [
+          { name: 'DM Mono', provider: 'bunny' },
+          { name: 'DM Mono fallback', provider: 'none' },
+        ],
       },
     }),
   ],

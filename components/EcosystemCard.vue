@@ -22,6 +22,7 @@ import { AvatarFallback, AvatarImage, AvatarRoot } from 'radix-vue'
         CT
       </AvatarFallback>
     </AvatarRoot>
+    <slot />
   </div>
 </template>
 

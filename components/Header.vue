@@ -100,6 +100,10 @@ function toggleMobileMenu() {
   }
 }
 
+.is-active {
+  @apply bg-white/80 backdrop-blur-sm;
+}
+
 .a-enter {
   animation: fadeIn 1s ease forwards, slideIn 0.5s ease forwards;;
 }

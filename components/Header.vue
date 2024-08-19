@@ -102,6 +102,9 @@ function toggleMobileMenu() {
 
 .is-active {
   @apply bg-white/80 backdrop-blur-sm;
+  .navbar {
+    @apply bg-transparent;
+  }
 }
 
 .a-enter {

@@ -14,12 +14,8 @@ function getCategory(id: string) {
   <div class="grid grid-cols-1 w-full gap-4 md:grid-cols-3">
     <EcosystemCard
       v-for="p in projects" :key="p.name"
-    >
-      {{ p.name }}
-      <p>{{ p.description }}</p>
-      {{ p.url }}
-      {{ getCategory(p.categories?.[0]) }}
-    </EcosystemCard>
+      :category="getCategory(p.categories?.[0])"
+    />
   </div>
 </template>
 

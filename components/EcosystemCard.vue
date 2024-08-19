@@ -1,13 +1,20 @@
 <script lang="ts" setup>
 import { AvatarFallback, AvatarImage, AvatarRoot } from 'radix-vue'
+import type { Ecosystem } from '~/types'
+
+interface EcosystemCardProps {
+  category?: Ecosystem['category']
+}
+
+defineProps<EcosystemCardProps>()
 </script>
 
 <template>
   <div
     class="relative aspect-ratio-video flex rounded-2xl bg-brand-1 p-4 text-white"
   >
-    <CategoryPill class="absolute right-4 top-4">
-      👾 GAMING
+    <CategoryPill v-if="category" class="absolute right-4 top-4">
+      {{ category.icon }} {{ category.name }}
     </CategoryPill>
     <AvatarRoot class="bg-blackA3 h-[45px] w-[45px] inline-flex select-none items-center justify-center overflow-hidden rounded-full align-middle">
       <AvatarImage

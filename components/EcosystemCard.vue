@@ -3,7 +3,7 @@ import { AvatarFallback, AvatarImage, AvatarRoot } from 'radix-vue'
 import type { Ecosystem } from '~/types'
 
 interface EcosystemCardProps {
-  category?: Ecosystem['category']
+  category?: Ecosystem.Category
 }
 
 defineProps<EcosystemCardProps>()

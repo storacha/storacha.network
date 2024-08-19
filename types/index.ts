@@ -1,4 +1,4 @@
 export * from './blog'
 export * from './content'
-export * from './ecosystem'
+export * as Ecosystem from './ecosystem'
 export * from './navLinks'

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { Ecosystem, JsonParsedContent, ParsedContent } from '~/types'
 
-const projects = await queryContent<ParsedContent<Ecosystem['project']>>('/ecosystem/projects').sort({ name: 1 }).find()
-const categories = await queryContent<JsonParsedContent<Ecosystem['categoryList']>>('/ecosystem/categories').findOne()
+const projects = await queryContent<ParsedContent<Ecosystem.Project>>('/ecosystem/projects').sort({ name: 1 }).find()
+const categories = await queryContent<JsonParsedContent<Ecosystem.CategoryList>>('/ecosystem/categories').findOne()
 
 // select category from id
 function getCategory(id: string) {
@@ -18,7 +18,3 @@ function getCategory(id: string) {
     />
   </div>
 </template>
-
-<style>
-
-</style>

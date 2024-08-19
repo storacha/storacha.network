@@ -1,0 +1,5 @@
+name: Station
+description: An analytics and verification network for DePIN and Web3 ecosystems that harnesses Storacha to securely store compute logs and reports, ensuring comprehensive backups on Filecoin.
+url: https://www.filstation.app/
+categories:
+  - depin_compute

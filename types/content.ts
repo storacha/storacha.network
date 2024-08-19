@@ -1,6 +1,6 @@
-import type { ParsedContent as DefaultParsedContent } from '@nuxt/content/'
+import type { ParsedContent as DefaultParsedContent, ParsedContentMeta } from '@nuxt/content/'
 
-export interface JsonParsedContent<T> extends Omit<DefaultParsedContent, 'body'> {
+export interface JsonParsedContent<T> extends ParsedContentMeta {
   body: T
 }
 export type ParsedContent<T> = DefaultParsedContent & T

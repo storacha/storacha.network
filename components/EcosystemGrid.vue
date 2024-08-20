@@ -1,12 +1,22 @@
 <script lang="ts" setup>
-import type { Ecosystem, JsonParsedContent, ParsedContent } from '~/types'
+import type { Ecosystem, ParsedContent } from '~/types'
 
-const projects = await queryContent<ParsedContent<Ecosystem.Project>>('/ecosystem/projects').sort({ name: 1 }).find()
-const categories = await queryContent<JsonParsedContent<Ecosystem.CategoryList>>('/ecosystem/categories').findOne()
+interface ParsedEcosystemCategories extends ParsedContent<{
+  body: Ecosystem.CategoryList
+}> {}
+
+const { data: projects } = await useAsyncData(
+  'eco_projects',
+  () => queryContent<ParsedContent<Ecosystem.Project>>('/ecosystem/projects').sort({ name: 1 }).find(),
+)
+const { data: categories } = await useAsyncData(
+  'eco_categories',
+  () => queryContent<ParsedEcosystemCategories>('/ecosystem/categories').findOne(),
+)
 
 // select category from id
 function getCategory(id: string) {
-  return categories.body?.find(c => c.id === id)
+  return categories.value?.body?.find(c => c.id === id)
 }
 </script>
 

@@ -18,7 +18,7 @@ const hostname = new URL(props.action?.href || '').hostname
 <template>
   <div
     class="ecosystem-card overflow-hidden rounded-2xl bg-brand-1 bg-cover text-white"
-    :style="`background-image: url(/img/ecosystem/categories/${category.id}.jpg)`"
+    :style="`background-image: url(/img/ecosystem/categories/${category.id}.webp)`"
   >
     <div class="relative aspect-ratio-video flex flex-col gap-4 bg-gradient-from-transparent to-brand-1 to-80% bg-gradient-to-b p-4 [&:hover>.back]:opacity-100">
       <CategoryPill v-if="category" class="absolute right-4 top-4">

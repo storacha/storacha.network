@@ -12,7 +12,8 @@ interface EcosystemCardProps {
   }
 }
 
-defineProps<EcosystemCardProps>()
+const props = defineProps<EcosystemCardProps>()
+const hostname = new URL(props.action?.href || '').hostname
 </script>
 
 <template>
@@ -23,11 +24,12 @@ defineProps<EcosystemCardProps>()
       {{ category.icon }} {{ category.name }}
     </CategoryPill>
     <div class="avatar mt-a">
-      <AvatarRoot class="h-[45px] w-[45px] inline-flex select-none items-center justify-center overflow-hidden rounded-full align-middle">
+      <AvatarRoot class="h-[32px] w-[32px] inline-flex select-none items-center justify-center overflow-hidden rounded-full align-middle">
         <AvatarImage
+          v-if="hostname"
           class="h-full w-full rounded-[inherit] object-cover"
-          src="https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80"
-          alt="Colm Tuite"
+          :src="`https://icons.duckduckgo.com/ip3/${hostname}.ico`"
+          :alt="title"
         />
         <AvatarFallback
           class="h-full w-full flex items-center justify-center bg-white text-[15px] font-medium leading-1"
@@ -43,8 +45,8 @@ defineProps<EcosystemCardProps>()
     <div v-if="description" class="flex items-center gap-1 lh-none">
       Read More<Icon i="i-carbon:arrow-right" />
     </div>
-    <AppLink :href="action?.href" class="back absolute inset-0 flex flex-col p-4 opacity-0 backdrop-blur-xl transition-all">
-      <div class="flex grow">
+    <AppLink :href="action?.href" class="back absolute inset-0 flex flex-col gap-4 p-4 opacity-0 backdrop-blur-xl transition-all">
+      <div class="mt-a flex">
         {{ description }}
       </div>
       <div v-if="action" class="flex items-center gap-1 lh-none">

@@ -21,7 +21,7 @@ function getCategory(id: string) {
 </script>
 
 <template>
-  <div class="grid grid-cols-1 w-full gap-4 md:grid-cols-3">
+  <div class="grid grid-cols-1 w-full gap-4 font-sans md:grid-cols-3">
     <EcosystemCard
       v-for="p in projects" :key="p.name"
       :category="getCategory(p.categories?.[0])"

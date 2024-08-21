@@ -27,7 +27,7 @@ function getCategory(id: string) {
       :category="getCategory(p.categories?.[0])"
       :title="p.name"
       :description="p.description"
-      :action="{ text: 'Visit Website ->', href: p.url }"
+      :action="{ text: 'Visit Website', href: p.url }"
     />
   </div>
 </template>

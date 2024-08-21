@@ -3,7 +3,13 @@ import { AvatarFallback, AvatarImage, AvatarRoot } from 'radix-vue'
 import type { Ecosystem } from '~/types'
 
 interface EcosystemCardProps {
+  title: string
+  description: string
   category?: Ecosystem.Category
+  action?: {
+    text: string
+    href: string
+  }
 }
 
 defineProps<EcosystemCardProps>()
@@ -11,7 +17,7 @@ defineProps<EcosystemCardProps>()
 
 <template>
   <div
-    class="relative aspect-ratio-video flex rounded-2xl bg-brand-1 p-4 text-white"
+    class="relative aspect-ratio-video flex flex-col overflow-hidden rounded-2xl bg-brand-1 p-4 text-white [&:hover>.back]:opacity-100"
   >
     <CategoryPill v-if="category" class="absolute right-4 top-4">
       {{ category.icon }} {{ category.name }}
@@ -29,6 +35,20 @@ defineProps<EcosystemCardProps>()
         CT
       </AvatarFallback>
     </AvatarRoot>
+    <Heading type="h4">
+      {{ title }}
+    </Heading>
+    <div>Read More -></div>
+    <div class="back absolute inset-0 flex flex-col p-4 opacity-0 backdrop-blur-xl transition-all">
+      <div class="flex grow p-4">
+        {{ description }}
+      </div>
+      <div v-if="action">
+        <AppLink :href="action.href">
+          {{ action.text }}
+        </AppLink>
+      </div>
+    </div>
     <slot />
   </div>
 </template>

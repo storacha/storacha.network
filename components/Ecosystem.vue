@@ -13,7 +13,7 @@
     <Heading type="h4" class="text-center">
       THE STORACHA ECOSYSTEM
     </Heading>
-    <EcosystemGrid class="mt-12" />
+    <EcosystemGrid class="mt-12" :limit="3" />
   </Section>
 </template>
 

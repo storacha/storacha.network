@@ -25,6 +25,9 @@ function getCategory(id: string) {
     <EcosystemCard
       v-for="p in projects" :key="p.name"
       :category="getCategory(p.categories?.[0])"
+      :title="p.name"
+      :description="p.description"
+      :action="{ text: 'Visit Website ->', href: p.url }"
     />
   </div>
 </template>

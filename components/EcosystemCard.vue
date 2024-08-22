@@ -12,8 +12,11 @@ interface EcosystemCardProps {
   icon?: string
 }
 
-const props = defineProps<EcosystemCardProps>()
-const hostname = computed(() => props.action?.href && new URL(props.action.href).hostname)
+defineProps<EcosystemCardProps>()
+
+function getHostname(url: string) {
+  return new URL(url).hostname
+}
 
 function getIcon(icon, hostname) {
   if (icon) {
@@ -36,10 +39,10 @@ function getIcon(icon, hostname) {
         {{ category.icon }} {{ category.name }}
       </CategoryPill>
       <div class="avatar mt-a">
-        <div v-if="icon || hostname" class="h-[48px] w-[48px] inline-flex select-none items-center justify-center overflow-hidden b-1 rounded-full bg-white align-middle">
+        <div v-if="icon || action" class="h-[48px] w-[48px] inline-flex select-none items-center justify-center overflow-hidden b-1 rounded-full bg-white align-middle">
           <img
             class="h-full w-full rounded-[inherit] object-cover"
-            :src="getIcon(icon, hostname)"
+            :src="getIcon(icon, getHostname(action?.href))"
             :alt="title"
             loading="lazy"
           >

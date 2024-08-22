@@ -7,7 +7,7 @@
     eyebrow="Get Involved"
     title="Storacha is open sauce, it needs you. 🌶️"
     description="Stay in touch and be one of the first to add some serious heat to your network with our blazing fast, decentralized storage and retrieval solutions!"
-    :actions="[{ label: 'BECOME A NODE PROVIDER', href: '/', primary: true }, { label: 'SIGN UP FOR OUR NEWSLETTER', href: '/', outline: true }]"
+    :actions="[{ label: 'BECOME A NODE PROVIDER', href: '/', primary: true }]"
   />
   <Section class="ecosystem mt-12" full-width>
     <Heading type="h4" class="text-center">

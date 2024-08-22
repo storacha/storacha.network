@@ -64,7 +64,7 @@ const { mailingList } = useAppConfig()
       <KeyFeatures />
     </Section>
     <Pricing />
-    <Section class="bg-white color-brand-1" padding>
+    <Section id="ecosystem" class="bg-white color-brand-1" padding>
       <Ecosystem />
     </Section>
     <Section full-width>

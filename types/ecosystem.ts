@@ -9,6 +9,7 @@ export interface Project {
   description: string
   url: string
   categories: Category['id'][]
+  icon?: string
 }
 
 export type ProjectList = Project[]

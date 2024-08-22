@@ -38,6 +38,7 @@ function getCategory(id: string) {
       :title="p.name"
       :description="p.description"
       :action="{ text: 'Visit Website', href: p.url }"
+      :icon="p.icon"
     />
   </div>
 </template>

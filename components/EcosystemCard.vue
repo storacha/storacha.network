@@ -9,10 +9,21 @@ interface EcosystemCardProps {
     text: string
     href: string
   }
+  icon?: string
 }
 
 const props = defineProps<EcosystemCardProps>()
 const hostname = new URL(props.action?.href || '').hostname
+
+function getIcon(icon, hostname) {
+  if (icon) {
+    return icon.startsWith('http') ? icon : `/img/ecosystem/icons/${icon}`
+  }
+  else if (hostname) {
+    // use DuckDuckGo favicon service as a fallback
+    return `https://icons.duckduckgo.com/ip3/${hostname}.ico`
+  }
+}
 </script>
 
 <template>
@@ -25,10 +36,10 @@ const hostname = new URL(props.action?.href || '').hostname
         {{ category.icon }} {{ category.name }}
       </CategoryPill>
       <div class="avatar mt-a">
-        <div v-if="hostname" class="h-[32px] w-[32px] inline-flex select-none items-center justify-center overflow-hidden rounded-full align-middle">
+        <div v-if="hostname" class="h-[48px] w-[48px] inline-flex select-none items-center justify-center overflow-hidden b-1 rounded-full bg-white align-middle">
           <img
             class="h-full w-full rounded-[inherit] object-cover"
-            :src="`https://icons.duckduckgo.com/ip3/${hostname}.ico`"
+            :src="getIcon(icon, hostname)"
             :alt="title"
           >
         </div>

@@ -14,6 +14,11 @@
       THE STORACHA ECOSYSTEM
     </Heading>
     <EcosystemGrid class="mt-12" :limit="3" />
+    <div class="mt-10 flex items-center justify-center p1">
+      <AppLink href="/ecosystem" primary class="flex items-center gap-1 lh-none">
+        Explore Full Ecosystem<Icon i="i-carbon:arrow-right" />
+      </AppLink>
+    </div>
   </Section>
 </template>
 

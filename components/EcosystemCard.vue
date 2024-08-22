@@ -15,7 +15,7 @@ interface EcosystemCardProps {
 defineProps<EcosystemCardProps>()
 
 function getHostname(url: string) {
-  return new URL(url).hostname
+  return url && new URL(url).hostname
 }
 
 function getIcon(icon, hostname) {

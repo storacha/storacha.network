@@ -18,7 +18,7 @@ function stateChange(event: any) {
     <div class="my-6 w-full flex items-center justify-center">
       <ScriptYouTubePlayer
         ref="video"
-        class="overflow-hidden rounded-2xl" :video-id="videoId" width="850"
+        class="overflow-hidden rounded-2xl" :video-id="videoId" :width="850"
         :player-vars="{ color: 'white' }"
         :placeholder-attrs="{
           src: `https://i.ytimg.com/vi_webp/${videoId}/maxresdefault.webp`,

@@ -1,0 +1,6 @@
+name: Tatum
+description: A blockchain development platform that utilizes Storacha to provide IPFS storage services, offering seamless integration, scalability, and enhanced user control.
+url: https://tatum.io
+categories:
+  - web3_infra
+icon: tatum.webp

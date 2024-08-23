@@ -15,14 +15,14 @@ function stateChange(event: any) {
 
 <template>
   <div>
-    <div class="my-6 w-full flex items-center justify-center">
+    <div class="w-full flex items-center justify-center">
       <ScriptYouTubePlayer
         ref="video"
-        class="overflow-hidden rounded-2xl" :video-id="videoId" :width="850"
+        class="overflow-hidden rounded-2xl" :video-id="videoId" :width="853"
         :player-vars="{ color: 'white' }"
         :placeholder-attrs="{
           src: `https://i.ytimg.com/vi_webp/${videoId}/maxresdefault.webp`,
-          style: { objectFit: 'cover' },
+          style: { objectFit: 'cover', backgroundColor: 'white' },
         }"
         @ready="isLoaded = true"
         @state-change="stateChange"

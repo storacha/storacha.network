@@ -57,8 +57,8 @@ const { mailingList } = useAppConfig()
     <Section class="bg-brand-6 color-brand-3" padding>
       <USPs />
     </Section>
-    <Section class="">
-      <YouTubePlayer video-id="SUUqvagLZSA" />
+    <Section class="bg-brand-6 pb-12">
+      <YouTubePlayer video-id="NDdLc6Axzfk" />
     </Section>
     <Section class="bg-brand-3 color-brand-4" full-width padding>
       <KeyFeatures />

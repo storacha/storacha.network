@@ -1,5 +1,8 @@
 <script setup lang="ts">
+/// <reference types="youtube" />
+
 import type { ImgHTMLAttributes } from 'vue'
+import { defu } from 'defu'
 
 interface YouTubePlayerProps {
   videoId: string
@@ -25,11 +28,9 @@ function stateChange(event: any) {
       <ScriptYouTubePlayer
         ref="video"
         class="overflow-hidden rounded-2xl" :video-id="videoId"
-        :player-vars="{ color: 'white', rel: 0, ...playerVars }"
+        :player-vars="defu(playerVars, { color: 'white', rel: 0 })"
         :width="width" :height="height"
-        :placeholder-attrs="{
-          src: `https://i.ytimg.com/vi_webp/${videoId}/maxresdefault.webp`,
-          ...placeholderAttrs }"
+        :placeholder-attrs="defu(placeholderAttrs, { src: `https://i.ytimg.com/vi_webp/${videoId}/maxresdefault.webp` })"
         @ready="isLoaded = true"
         @state-change="stateChange"
       >

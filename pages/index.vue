@@ -58,7 +58,15 @@ const { mailingList } = useAppConfig()
       <USPs />
     </Section>
     <Section class="bg-brand-6 pb-12">
-      <YouTubePlayer video-id="NDdLc6Axzfk" />
+      <YouTubePlayer
+        video-id="NDdLc6Axzfk"
+        :player-vars="{ loop: 1, playlist: 'NDdLc6Axzfk' }"
+        :placeholder-attrs="{
+          src: '/img/video/storacha-network-illustration.webp',
+          style: { objectFit: 'cover', backgroundColor: '#FFE4AF' } }"
+        :width="1232"
+        :height="693"
+      />
     </Section>
     <Section class="bg-brand-3 color-brand-4" full-width padding>
       <KeyFeatures />

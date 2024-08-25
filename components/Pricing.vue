@@ -3,9 +3,11 @@
 </script>
 
 <template>
-  <Section class="bg-brand-4" padding full-width>
+  <Section class="overflow-y-clip bg-brand-4" padding>
     <template #bg>
-      <div class="pricing-bg" />
+      <div class="grid-margins">
+        <img class="racha-pricing" src="/img/hero/racha.svg" alt="" aria-hidden="true" t-skip>
+      </div>
     </template>
     <div class="grid-margins color-brand-3">
       <SectionHeader
@@ -53,10 +55,10 @@
 </template>
 
 <style lang="postcss" scoped>
-.pricing-bg {
-  background: url('/img/racha-pricing.svg') no-repeat left -3em bottom -9em / 1500px;
-  @screen xl {
-    background: url('/img/racha-pricing.svg') no-repeat bottom -10em left 1em / 120%;
-  }
+.racha-pricing {
+  position: absolute;
+  bottom: 0;
+  transform-origin: bottom left;
+  transform: scaleX(-1) rotate(-65deg) translateX(-60%) translateY(5%);
 }
 </style>

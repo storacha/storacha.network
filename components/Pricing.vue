@@ -1,9 +1,5 @@
-<script lang="ts" setup>
-
-</script>
-
 <template>
-  <Section class="overflow-y-clip bg-brand-4" padding>
+  <Section class="overflow-clip bg-brand-4" padding>
     <template #bg>
       <div class="grid-margins">
         <img class="racha-pricing" src="/img/hero/racha.svg" alt="" aria-hidden="true" t-skip>
@@ -59,6 +55,6 @@
   position: absolute;
   bottom: 0;
   transform-origin: bottom left;
-  transform: scaleX(-1) rotate(-65deg) translateX(-60%) translateY(5%);
+  transform: scaleX(-1) rotate(-65deg) translateX(-60%) translateY(4%);
 }
 </style>

@@ -63,7 +63,8 @@ const { mailingList } = useAppConfig()
         :player-vars="{ loop: 1, playlist: 'NDdLc6Axzfk' }"
         :placeholder-attrs="{
           src: '/img/video/storacha-network-illustration.webp',
-          style: { objectFit: 'cover', backgroundColor: '#FFE4AF' } }"
+          class: 'bg-brand-6',
+          style: { objectFit: 'cover' } }"
         :width="1232"
         :height="693"
       />

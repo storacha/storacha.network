@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 </script>
 
 <template>
@@ -10,6 +9,7 @@
 
 <style lang="postcss" scoped>
 .ribbon {
+  --default-color: theme('colors.brand.3');
   width: 170px;
   height: 170px;
   overflow: hidden;
@@ -22,14 +22,14 @@
   z-index: -1;
   content: '';
   display: block;
-  border: 5px solid hsl(from theme('colors.brand.3') h s 40);
+  border: 5px solid hsl(from var(--default-color) h s 40);
 }
 .ribbon span {
   position: absolute;
   display: block;
   width: 280px;
   padding: 16px 0;
-  background-color: theme('colors.brand.3');
+  background-color: var(--default-color);
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   line-height: 1rem;
   text-transform: uppercase;

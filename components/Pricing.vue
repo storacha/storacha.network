@@ -44,6 +44,7 @@
             ['2TB egress', 'Additional at $0.03/GB per month'],
           ]"
           :action="{ text: 'START STORING', href: '/' }"
+          ribbon="🔥 Best Value 🔥 Best Value"
         />
       </div>
     </div>

@@ -9,6 +9,7 @@ interface PricingCardProps {
   icon: string
   currency?: '$' | '€' | '£'
   action?: BtnProps
+  ribbon?: string
 }
 
 withDefaults(defineProps<PricingCardProps>(), {
@@ -17,7 +18,7 @@ withDefaults(defineProps<PricingCardProps>(), {
 </script>
 
 <template>
-  <Card :title="tier" :icon="icon" inherit-color>
+  <Card :title="tier" :icon="icon" inherit-color :ribbon="ribbon">
     <div class="pricing-inner flex flex-col gap-8">
       <Heading type="h1" class="font-medium">
         {{ currency }}{{ price }}/{{ unit }}

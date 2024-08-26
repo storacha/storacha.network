@@ -34,6 +34,7 @@
   line-height: 1rem;
   text-transform: uppercase;
   text-align: center;
+  text-wrap: nowrap;
 }
 .ribbon-top-right {
   top: -10px;

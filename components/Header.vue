@@ -20,7 +20,7 @@ const mobileLinks = [
 
 // state
 const { x, y } = useWindowScroll()
-const header = ref('header')
+const header = ref()
 const nav = reactive({
   isVisible: true,
   isSticky: true,
@@ -81,6 +81,14 @@ function toggleMobileMenu() {
   </header>
   <MobileMenu :active="nav.mobileActive" :links="mobileLinks" class="bg-brand-3/80 text-white backdrop-blur-md" v-bind="$attrs" @navigate="nav.mobileActive = false" />
 </template>
+
+<style>
+html {
+  --header-height: 80px;
+  /* apply global header scroll-padding */
+  scroll-padding-top: var(--header-height);
+}
+</style>
 
 <style scoped lang="postcss">
 .navbar {

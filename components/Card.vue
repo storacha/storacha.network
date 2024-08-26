@@ -3,6 +3,7 @@ interface CardProps {
   title?: string
   icon?: string
   inheritColor?: boolean
+  ribbon?: string
 }
 defineProps<CardProps>()
 </script>
@@ -24,12 +25,15 @@ defineProps<CardProps>()
     <div class="card-body">
       <slot />
     </div>
+    <Ribbon v-if="ribbon">
+      {{ ribbon }}
+    </Ribbon>
   </div>
 </template>
 
 <style lang="postcss" scoped>
 .card {
-  @apply overflow-hidden b-1 color-brand-3 b-brand-3 bg-white rounded-lg flex-inline flex-col min-h-50;
+  @apply relative b-1 color-brand-3 b-brand-3 bg-white rounded-lg flex-inline flex-col min-h-50;
 }
 .card-body {
   @apply p-4 grow color-current;

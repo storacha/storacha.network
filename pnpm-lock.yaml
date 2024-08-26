@@ -45,6 +45,9 @@ importers:
       '@nuxtjs/seo':
         specifier: ^2.0.0-rc.19
         version: 2.0.0-rc.19(h3@1.12.0)(magicast@0.3.4)(rollup@4.21.0)(vite@5.4.2(@types/node@22.4.1)(terser@5.31.6))(vue@3.4.38(typescript@5.5.4))
+      '@types/youtube':
+        specifier: ^0.1.0
+        version: 0.1.0
       '@unocss/eslint-config':
         specifier: ^0.62.2
         version: 0.62.2(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
@@ -60,6 +63,9 @@ importers:
       '@vueuse/nuxt':
         specifier: ^11.0.1
         version: 11.0.1(magicast@0.3.4)(nuxt@3.12.4(@parcel/watcher@2.4.1)(@types/node@22.4.1)(eslint@9.9.0(jiti@1.21.6))(ioredis@5.4.1)(magicast@0.3.4)(optionator@0.9.4)(rollup@4.21.0)(terser@5.31.6)(typescript@5.5.4)(vite@5.4.2(@types/node@22.4.1)(terser@5.31.6))(vue-tsc@2.0.29(typescript@5.5.4)))(rollup@4.21.0)(vue@3.4.38(typescript@5.5.4))
+      defu:
+        specifier: ^6.1.4
+        version: 6.1.4
       eslint:
         specifier: ^9.9.0
         version: 9.9.0(jiti@1.21.6)
@@ -1485,6 +1491,9 @@ packages:
 
   '@types/youtube@0.0.50':
     resolution: {integrity: sha512-d4GpH4uPYp9W07kc487tiq6V/EUHl18vZWFMbQoe4Sk9LXEWzFi/BMf9x7TI4m7/j7gU3KeX8H6M8aPBgykeLw==}
+
+  '@types/youtube@0.1.0':
+    resolution: {integrity: sha512-Pg33m3X2mFgdmhtvzOlAfUfgOa3341N3/2JCrVY/mXVxb4hagcqqEG6w4vGCfB64StQNWHSj/T8Eotb1Rko/FQ==}
 
   '@typescript-eslint/eslint-plugin@8.2.0':
     resolution: {integrity: sha512-02tJIs655em7fvt9gps/+4k4OsKULYGtLBPJfOsmOq1+3cdClYiF0+d6mHu6qDnTcg88wJBkcPLpQhq7FyDz0A==}
@@ -7447,6 +7456,8 @@ snapshots:
   '@types/web-bluetooth@0.0.20': {}
 
   '@types/youtube@0.0.50': {}
+
+  '@types/youtube@0.1.0': {}
 
   '@typescript-eslint/eslint-plugin@8.2.0(@typescript-eslint/parser@8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)':
     dependencies:

@@ -57,8 +57,17 @@ const { mailingList } = useAppConfig()
     <Section class="bg-brand-6 color-brand-3" padding>
       <USPs />
     </Section>
-    <Section class="min-h-200 flex items-center justify-center bg-gray-2 uppercase">
-      <p>Network Diagram</p>
+    <Section class="bg-brand-6 pb-12">
+      <YouTubePlayer
+        video-id="NDdLc6Axzfk"
+        :player-vars="{ loop: 1, playlist: 'NDdLc6Axzfk' }"
+        :placeholder-attrs="{
+          src: '/img/video/storacha-network-illustration.webp',
+          class: 'bg-brand-6',
+          style: { objectFit: 'cover' } }"
+        :width="1232"
+        :height="693"
+      />
     </Section>
     <Section class="bg-brand-3 color-brand-4" full-width padding>
       <KeyFeatures />

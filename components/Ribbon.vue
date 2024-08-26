@@ -4,14 +4,14 @@
 
 <template>
   <div class="ribbon ribbon-top-right">
-    <span class="text-white font-sans"><slot /></span>
+    <span class="text-white font-semibold font-mono"><slot /></span>
   </div>
 </template>
 
 <style lang="postcss" scoped>
 .ribbon {
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   overflow: hidden;
   position: absolute;
   z-index: 1;
@@ -27,7 +27,7 @@
 .ribbon span {
   position: absolute;
   display: block;
-  width: 225px;
+  width: 280px;
   padding: 16px 0;
   background-color: theme('colors.brand.3');
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
@@ -53,8 +53,8 @@
   right: 0;
 }
 .ribbon-top-right span {
-  left: -25px;
-  top: 30px;
+  left: -40px;
+  top: 42px;
   transform: rotate(45deg);
 }
 </style>

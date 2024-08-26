@@ -5,7 +5,7 @@
         <img class="racha-pricing" src="/img/hero/racha.svg" alt="" aria-hidden="true" t-skip>
       </div>
     </template>
-    <div class="grid-margins color-brand-3">
+    <div class="color-brand-3">
       <SectionHeader
         eyebrow="Find your plan"
         title="How h🔥t would you like it?"

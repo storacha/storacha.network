@@ -14,7 +14,7 @@
       title="Why settle for mild when you can make it spicy with Storacha?"
       :actions="[
         { label: 'START STORING', href: '/' },
-        { label: 'BECOME A NODE PROVIDER', href: '/', secondary: true },
+        { label: 'BECOME A NODE PROVIDER', href: '/node-providers', secondary: true },
       ]"
     />
   </Section>

@@ -8,7 +8,7 @@ defineProps<{
 </script>
 
 <template>
-  <Card class="blog-card">
+  <Card class="blog-card overflow-clip">
     <template #header>
       <AppLink :href="item.link" class="aspect-ratio-video overflow-hidden">
         <img

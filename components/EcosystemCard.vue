@@ -14,11 +14,11 @@ interface EcosystemCardProps {
 
 defineProps<EcosystemCardProps>()
 
-function getHostname(url: string) {
+function getHostname(url?: string) {
   return url && new URL(url).hostname
 }
 
-function getIcon(icon, hostname) {
+function getIcon(icon?: string, hostname?: string) {
   if (icon) {
     return icon.startsWith('http') ? icon : `/img/ecosystem/icons/${icon}`
   }

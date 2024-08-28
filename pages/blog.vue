@@ -17,7 +17,7 @@ const medium = useSocialNetwork('medium')
       />
     </Section>
     <Section class="bg-white" padding>
-      <div class="blog-cell grid gap-4 sm:cols-3">
+      <div class="blog-cell grid gap-4 lg:cols-3 md:cols-2">
         <BlogCard
           v-for="item in blog?.items"
           :key="item.title"

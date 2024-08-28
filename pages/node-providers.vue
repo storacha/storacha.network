@@ -4,6 +4,20 @@ const appConfig = useAppConfig()
 const gitHubUrl = useSocialNetwork('github')?.url
 const discordUrl = useSocialNetwork('discord')?.url
 const mailingListUrl = appConfig.mailingList.url
+
+const nodes = [{
+  id: 'storage',
+  title: 'Storage Node',
+  description: 'The first nodes to roll-out: Spice up Storacha storage by running our first hotshot nodes! Keep keep Storacha’s  data sizzling and accessible, andin exchange  you’ll rack up rewards!',
+}, {
+  id: 'retrieval',
+  title: 'Retrieval Node',
+  description: 'Coming soon: Our lightning-fast Retrieval Nodes! Run a node to cache and fetch data effortlessly, serving users and earning you rewards. Stay tuned – the rewards will be worth it!',
+}, {
+  id: 'indexing',
+  title: 'Indexing Node',
+  description: 'Coming soon: Our Indexing Nodes will track data locations, helping users find what they need. Get excited – they’re on the way!',
+}]
 </script>
 
 <template>
@@ -47,6 +61,30 @@ const mailingListUrl = appConfig.mailingList.url
           </div>
         </SplitCell>
       </Split>
+    </Section>
+    <Section class="bg-brand-4" padding>
+      <div class="color-brand-3">
+        <SectionHeader
+          eyebrow="The Storacha Network"
+          title="Types of Nodes"
+          center
+        />
+      </div>
+      <div class="grid grid-cols-1 mt-12 gap-4 sm:grid-cols-3">
+        <Card v-for="node in nodes" :key="node.title" :title="node.title">
+          <div class="flex flex-col gap-8">
+            <Heading type="h3" class="hidden text-center font-medium">
+              {{ node.title }}
+            </Heading>
+            <div class="min-h-30 flex items-center justify-center">
+              <img :src="`/img/nodes/${node.id}.png`" :alt="node.title" class="max-h-24">
+            </div>
+            <p class="font-sans p1">
+              {{ node.description }}
+            </p>
+          </div>
+        </Card>
+      </div>
     </Section>
     <Section full-width>
       <Split>

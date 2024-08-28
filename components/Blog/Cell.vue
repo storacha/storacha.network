@@ -1,11 +1,13 @@
 <script lang="ts" setup>
 const { data: blog } = await useLazyFetch('/api/blog')
+// limit to 3 blog items
+const items = computed(() => blog.value?.items.slice(0, 3))
 </script>
 
 <template>
   <div class="blog-cell grid gap-4 sm:cols-2">
     <BlogCard
-      v-for="item in blog?.items"
+      v-for="item in items"
       :key="item.title"
       :item="item"
       class="grid-rows-subgrid"

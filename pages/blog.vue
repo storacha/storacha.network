@@ -8,11 +8,10 @@ const medium = useSocialNetwork('medium')
     <Section class="bg-brand-4">
       <Hero
         class="min-h-150"
-        eyebrow="Blazing Hot News"
         title="Storacha Blog"
         description="The latest and greatest from the Storacha team."
         :actions="[
-          { label: 'Subscript on Medium', href: medium?.url },
+          { label: 'Subscribe on Medium', href: medium?.url },
         ]"
       />
     </Section>

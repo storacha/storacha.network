@@ -6,6 +6,7 @@ export default defineAppConfig({
   headerLinks: [
     { text: 'Roadmap', href: '/roadmap' },
     { text: 'Ecosystem', href: '/ecosystem' },
+    { text: 'Blog', href: '/blog' },
     { text: 'Node Providers', href: '/node-providers' },
   ],
   socialNetworks: [

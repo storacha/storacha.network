@@ -65,7 +65,7 @@ const nodes = [{
     <Section class="bg-brand-4" padding>
       <div class="color-brand-3">
         <SectionHeader
-          eyebrow="The Storacha Network"
+          eyebrow="Storacha Network"
           title="Types of Nodes"
           center
         />

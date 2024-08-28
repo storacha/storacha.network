@@ -8,10 +8,10 @@ const forwardProps = useForwardProps(reactiveOmit(props, ['description']))
 </script>
 
 <template>
-  <HeroBase class="min-h-100vh">
+  <HeroBase class="home min-h-100vh">
     <template #left>
-      <SectionHeader v-bind="forwardProps" class="color-brand-3 !gap-12">
-        <Heading type="h5" class="uppercase !text-balance">
+      <SectionHeader v-bind="forwardProps" class="color-brand-3 !gap-10">
+        <Heading type="h4" class="uppercase !text-balance">
           {{ description }}
         </Heading>
       </SectionHeader>

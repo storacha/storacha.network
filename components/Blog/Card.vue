@@ -4,6 +4,7 @@ import type { Item } from '~/types/blog'
 
 defineProps<{
   item: Item
+  showSnippet?: boolean
 }>()
 </script>
 
@@ -28,7 +29,7 @@ defineProps<{
           <time class="h5 text-sm" :datetime="item.isoDate">
             {{ useAppDateFormat(item.isoDate) }}
           </time>
-          <div class="hidden text-base p1" v-html="`${item['content:encodedSnippet'].slice(0, 120)}...`" />
+          <div v-if="showSnippet" class="mt-a text-base p1" v-html="`${item['content:encodedSnippet'].slice(0, 200)}...`" />
         </div>
       </AppLink>
     </article>

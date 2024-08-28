@@ -23,6 +23,7 @@ const medium = useSocialNetwork('medium')
           :key="item.title"
           :item="item"
           class="grid-rows-subgrid"
+          show-snippet
         />
       </div>
     </Section>

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 const appConfig = useAppConfig()
 
-const gitHubUrl = appConfig.socialNetworks.find(s => s.name === 'Github')?.url
-const discordUrl = appConfig.socialNetworks.find(s => s.name === 'Discord')?.url
+const gitHubUrl = useSocialNetwork('github')?.url
+const discordUrl = useSocialNetwork('discord')?.url
 const mailingListUrl = appConfig.mailingList.url
 </script>
 

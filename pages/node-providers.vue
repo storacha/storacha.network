@@ -11,6 +11,7 @@ const mailingListUrl = appConfig.mailingList.url
     <Section class="bg-brand-4">
       <Hero
         class="min-h-150"
+        eyebrow="Get Started"
         title="Node Providers"
         description="Join the waitlist to be the first to participate!"
         :actions="[

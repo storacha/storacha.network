@@ -10,7 +10,7 @@ const forwardProps = useForwardProps(props)
 <template>
   <HeroBase>
     <template #left>
-      <SectionHeader v-bind="forwardProps" class="color-brand-3 !gap-12" />
+      <SectionHeader v-bind="forwardProps" class="color-brand-3" />
     </template>
   </HeroBase>
 </template>

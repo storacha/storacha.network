@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const start = useActions('start')
+</script>
+
 <template>
   <Section class="overflow-clip bg-brand-4" padding>
     <template #bg>
@@ -21,7 +25,7 @@
             ['5GB Storage', 'Additional at $0.15/GB per month'],
             ['5GB egress', 'Additional at $0.15/GB per month'],
           ]"
-          :action="{ text: 'START STORING', href: '/' }"
+          :action="start"
         />
         <PricingCard
           tier="Medium"
@@ -32,7 +36,7 @@
             ['100GB Storage', 'Additional at $0.05/GB per month'],
             ['100GB egress', 'Additional at $0.05/GB per month '],
           ]"
-          :action="{ text: 'START STORING', href: '/' }"
+          :action="start"
         />
         <PricingCard
           tier="Extra Spicy"
@@ -43,7 +47,7 @@
             ['2TB Storage', 'Additional at $0.03/GB per month'],
             ['2TB egress', 'Additional at $0.03/GB per month'],
           ]"
-          :action="{ text: 'START STORING', href: '/' }"
+          :action="start"
           ribbon="🔥 Best Value 🔥 Best Value"
         />
       </div>

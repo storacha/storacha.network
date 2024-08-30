@@ -7,7 +7,7 @@ const mailingList = useActions('mailingList')
   <SectionHeader
     eyebrow="Get Involved"
     title="Storacha is open sauce, it needs you. 🌶️"
-    description="Stay in touch and be one of the first to add some serious heat to your network with our blazing fast, decentralized storage and retrieval solutions!"
+    description="Become part of the ecosystem and build on top of Storacha’s blazing fast, decentralized storage and retrieval network or contribute to the protocol and interfaces!"
     :actions="[{ text: 'Join Dev Community', href: discord?.href, primary: true }, { outline: true, ...mailingList }]"
   />
   <Section class="ecosystem mt-12" full-width>

@@ -6,7 +6,7 @@
         eyebrow="Learn More"
         title="Roadmap"
         description="Igniting the path to decentralized storage 🔥"
-        :actions="[{ label: 'Start Storing', href: '/' }, { label: 'Learn More', href: '/', secondary: true }]"
+        :actions="[{ text: 'Start Storing', href: '/' }, { text: 'Learn More', href: '/', secondary: true }]"
       />
     </Section>
     <Section full-width>

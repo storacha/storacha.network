@@ -3,12 +3,14 @@
 // global app config
 export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
+  actions: [
+    { text: 'Start Storing', href: 'https://console.storacha.network/' },
+  ],
   headerLinks: [
     { text: 'Roadmap', href: '/roadmap' },
     { text: 'Ecosystem', href: '/ecosystem' },
     { text: 'Node Providers', href: '/node-providers' },
     { text: 'Blog', href: '/blog' },
-    { text: 'Start Storing', href: 'https://console.storacha.network/' },
   ],
   socialNetworks: [
     {
@@ -69,6 +71,6 @@ export default defineAppConfig({
   mailingList: {
     icon: 'i-carbon:email',
     url: 'https://945c6cfe.sibforms.com/serve/MUIFAJsqje9uA4owcVGYYaQWZarreW_oOzT9j0aXOY1QcOdsXQ7ZjvWvrpXKqNm9sBilY3Pum8s9CyPAkA2ELLEyJp3DVvzEDFg-Ov967IegSH6PXRAG6ulFhavIwebzTu3XsMZbpnyWbsDp5hexye1aXcFs4C9oIFFJWX2Aar8ElyUJDCPSsoeMAdj6puyREL1zUrjNpq2ZobYx',
-    label: 'Join our mailing list',
+    text: 'Join our mailing list',
   },
 })

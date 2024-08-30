@@ -12,7 +12,7 @@ const medium = useSocialNetwork('medium')
         title="Storacha Blog"
         description="The latest and greatest from the Storacha team."
         :actions="[
-          { label: 'Follow on Medium', href: medium?.url },
+          { text: 'Follow on Medium', href: medium?.url },
         ]"
       />
     </Section>

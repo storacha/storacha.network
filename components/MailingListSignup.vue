@@ -1,9 +1,7 @@
 <script lang="ts" setup>
-const { mailingList: { url, icon, label } } = useAppConfig()
+const { mailingList: { url, icon, text } } = useAppConfig()
 </script>
 
 <template>
-  <Btn :href="url" :icon="icon">
-    {{ label }}
-  </Btn>
+  <Btn :href="url" :icon="icon" :text="text" />
 </template>

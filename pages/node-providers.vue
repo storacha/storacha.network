@@ -29,8 +29,8 @@ const nodes = [{
         title="Node Providers"
         description="Join the waitlist to be the first to participate!"
         :actions="[
-          { label: 'Join Waitlist', href: mailingListUrl },
-          { label: 'Join Community', href: discordUrl, secondary: true }]"
+          { text: 'Join Waitlist', href: mailingListUrl },
+          { text: 'Join Community', href: discordUrl, secondary: true }]"
       />
     </Section>
     <Section full-width>

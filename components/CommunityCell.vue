@@ -1,12 +1,5 @@
 <script lang="ts" setup>
-interface SocialNetwork {
-  name: string
-  description: string
-  url: string
-  icon: string
-}
-const appConfig = useAppConfig()
-const networks = appConfig.socialNetworks as SocialNetwork[]
+const networks = useActions('socialNetworks')
 </script>
 
 <template>
@@ -16,7 +9,7 @@ const networks = appConfig.socialNetworks as SocialNetwork[]
     </Heading>
     <div class="my-a pt-8">
       <div class="networks grid grid-flow-dense gap-6 md:gap-12">
-        <AppLink v-for="n in networks" :key="n.name" class="flex items-center transition-all hover:(scale-102 color-brand-1)" :href="n.url">
+        <AppLink v-for="n in networks" :key="n.name" class="flex items-center transition-all hover:(scale-102 color-brand-1)" :href="n.href">
           <div class="h-12 w-12 flex items-center justify-center border-1 b-current rounded-full">
             <div :class="n.icon" class="p-3" :aria-label="`${n.description} on ${n.name}`" />
           </div>

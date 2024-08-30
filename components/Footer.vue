@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { footerLinks: { getStarted, resources } } = useAppConfig()
+const { getStarted, resources } = useActions('footerLinks')
 </script>
 
 <template>
@@ -21,8 +21,8 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
                 </Heading>
               </div>
               <ul>
-                <li v-for="link in resources" :key="link.url">
-                  <AppLink :href="link.url">
+                <li v-for="link in resources" :key="link.href">
+                  <AppLink :href="link.href">
                     {{ link.text }}
                   </AppLink>
                 </li>
@@ -35,8 +35,8 @@ const { footerLinks: { getStarted, resources } } = useAppConfig()
                 </Heading>
               </div>
               <ul>
-                <li v-for="link in getStarted" :key="link.url">
-                  <AppLink :href="link.url">
+                <li v-for="link in getStarted" :key="link.href">
+                  <AppLink :href="link.href">
                     {{ link.text }}
                   </AppLink>
                 </li>

@@ -6,7 +6,7 @@ export interface SectionHeaderProps {
   center?: boolean
   eyebrow?: string
   description?: string
-  actions?: BtnProps[] & { label: string }[]
+  actions?: BtnProps[]
 }
 defineProps<SectionHeaderProps>()
 </script>
@@ -26,11 +26,9 @@ defineProps<SectionHeaderProps>()
     <div v-if="actions" class="flex flex-col gap-4 sm:flex-row" :class="{ 'justify-center': center }">
       <Btn
         v-for="action in actions"
-        :key="action.label"
+        :key="action.text"
         v-bind="action"
-      >
-        {{ action.label }}
-      </Btn>
+      />
     </div>
   </div>
 </template>

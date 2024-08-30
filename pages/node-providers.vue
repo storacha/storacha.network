@@ -1,14 +1,11 @@
 <script lang="ts" setup>
-const appConfig = useAppConfig()
-
-const gitHubUrl = useSocialNetwork('github')?.url
-const discordUrl = useSocialNetwork('discord')?.url
-const mailingListUrl = appConfig.mailingList.url
+const discord = useSocialNetwork('discord')
+const mailingList = useActions('mailingList')
 
 const nodes = [{
   id: 'storage',
   title: 'Storage Node',
-  description: 'The first nodes to roll-out: Spice up Storacha storage by running our first hotshot nodes! Keep keep Storacha’s  data sizzling and accessible, and in exchange  you’ll rack up rewards!',
+  description: 'The first nodes to roll-out: Spice up Storacha storage by running our first hotshot nodes! Keep keep Storacha’s data sizzling and accessible, and in exchange you’ll rack up rewards!',
 }, {
   id: 'retrieval',
   title: 'Retrieval Node',
@@ -29,8 +26,8 @@ const nodes = [{
         title="Node Providers"
         description="Join the waitlist to be the first to participate!"
         :actions="[
-          { label: 'Join Waitlist', href: mailingListUrl },
-          { label: 'Join Community', href: discordUrl, secondary: true }]"
+          { text: 'Join Waitlist', href: mailingList.href },
+          { text: 'Join Community', href: discord?.href, secondary: true }]"
       />
     </Section>
     <Section full-width>
@@ -54,7 +51,7 @@ const nodes = [{
                   </ul>
                 </p>
               </div>
-              <Btn :href="gitHubUrl">
+              <Btn href="https://github.com/storacha-network/w3cli">
                 Get Started!
               </Btn>
             </div>

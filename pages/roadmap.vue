@@ -1,3 +1,8 @@
+<script setup lang="ts">
+const start = useActions('start')
+const docs = useActions('docs')
+</script>
+
 <template>
   <TransitionProvider>
     <Section class="bg-brand-4">
@@ -6,7 +11,7 @@
         eyebrow="Learn More"
         title="Roadmap"
         description="Igniting the path to decentralized storage 🔥"
-        :actions="[{ label: 'Start Storing', href: '/' }, { label: 'Learn More', href: '/', secondary: true }]"
+        :actions="[start, { text: 'Learn More', href: docs.href, secondary: true }]"
       />
     </Section>
     <Section full-width>

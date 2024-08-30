@@ -1,5 +1,5 @@
 <script setup>
-const appConfig = useAppConfig()
+const headerLinks = useActions('headerLinks').concat(useActions('start'))
 const siteConfig = useSiteConfig()
 </script>
 
@@ -8,7 +8,7 @@ const siteConfig = useSiteConfig()
     <Header
       :site-name="siteConfig.name"
       class="font-medium heading"
-      :links="appConfig.headerLinks"
+      :links="headerLinks"
     />
     <main class="min-h-70vh">
       <slot />

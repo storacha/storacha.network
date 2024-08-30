@@ -52,14 +52,14 @@ function getIcon(icon?: string, hostname?: string) {
         {{ title }}
       </Heading>
       <div v-if="description" class="flex items-center gap-1 lh-none">
-        Read More<Icon i="i-carbon:arrow-right" />
+        Read More<AppIcon i="i-carbon:arrow-right" />
       </div>
       <AppLink :href="action?.href" class="back absolute inset-0 flex flex-col gap-4 p-4 opacity-0 backdrop-blur-xl transition-all">
         <div class="mt-a flex">
           {{ description }}
         </div>
         <div v-if="action" class="flex items-center gap-1 lh-none">
-          {{ action.text }}<Icon i="i-carbon:arrow-up-right" />
+          {{ action.text }}<AppIcon i="i-carbon:arrow-up-right" />
         </div>
       </AppLink>
       <slot />

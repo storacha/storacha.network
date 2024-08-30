@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const { mailingList } = useAppConfig()
+const start = useActions('start')
 </script>
 
 <template>
@@ -34,7 +34,7 @@ const { mailingList } = useAppConfig()
         eyebrow="Introducing Storacha"
         title="Super h🔥t decentralized data at scale."
         description="Storacha’s open hot storage network scales IPFS and Filecoin"
-        :actions="[{ label: 'SIGN UP FOR EARLY ACCESS', href: mailingList.url }]"
+        :actions="[start]"
       />
       <Split>
         <SplitCell />

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-
+const start = useActions('start')
+const docs = useActions('docs')
 </script>
 
 <template>
@@ -13,9 +14,8 @@
       eyebrow="Get Started"
       title="Why settle for mild when you can make it spicy with Storacha?"
       :actions="[
-        { label: 'START STORING', href: '/' },
-        { label: 'BECOME A NODE PROVIDER', href: '/node-providers', secondary: true },
-      ]"
+        start,
+        { ...docs, text: 'Learn More', secondary: true }]"
     />
   </Section>
 </template>

@@ -69,8 +69,8 @@ function toggleMobileMenu() {
       <AppLink class="ident transition" href="/" title="">
         <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" />
       </AppLink>
-      <nav class="navbar hidden max-w-lg justify-right gap-1 b-2 b-brand-3 md:flex">
-        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link btn-secondary btn-slim btn" active-class="btn-active">
+      <nav class="navbar hidden justify-right gap-1 b-2 b-brand-3 md:flex">
+        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link bg-transparent btn-secondary btn-slim btn hover:bg-white" active-class="btn-active">
           {{ link.text }}
         </AppLink>
       </nav>
@@ -93,6 +93,9 @@ html {
 <style scoped lang="postcss">
 .navbar {
   @apply bg-brand-4 rounded-full p-1;
+  > a:last-child {
+    @apply btn btn-slim;
+  }
 }
 @keyframes fadeIn {
   0% { opacity: 0; }
@@ -109,7 +112,7 @@ html {
 }
 
 .is-active {
-  @apply bg-white/80 backdrop-blur-sm;
+  @apply bg-white/90 backdrop-blur-sm;
   .navbar {
     @apply bg-transparent;
   }

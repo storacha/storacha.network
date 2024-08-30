@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-const { mailingList: { url, icon, text } } = useAppConfig()
+const mailingList = useActions('mailingList')
 </script>
 
 <template>
-  <Btn :href="url" :icon="icon" :text="text" />
+  <Btn v-bind="mailingList" />
 </template>

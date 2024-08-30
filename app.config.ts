@@ -5,6 +5,7 @@ export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
   actions: {
     start: { text: 'Start Storing', href: 'https://console.storacha.network/' },
+    docs: { text: 'Docs', href: 'https://docs.storacha.network' },
     headerLinks: [
       { text: 'Roadmap', href: '/roadmap' },
       { text: 'Ecosystem', href: '/ecosystem' },

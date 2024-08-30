@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-const gitHub = useSocialNetwork('github')
 const discord = useSocialNetwork('discord')
 const mailingList = useActions('mailingList')
 
@@ -52,7 +51,7 @@ const nodes = [{
                   </ul>
                 </p>
               </div>
-              <Btn :href="gitHub?.href">
+              <Btn href="https://github.com/storacha-network/w3cli">
                 Get Started!
               </Btn>
             </div>

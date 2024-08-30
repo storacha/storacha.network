@@ -27,7 +27,7 @@ function stateChange(event: any) {
     <ScriptYouTubePlayer
       ref="video"
       class="overflow-clip rounded-2xl" :video-id="videoId"
-      :player-vars="defu(playerVars, { color: 'white', rel: 0 })"
+      :player-vars="defu(playerVars, { color: 'white', rel: 0 } as YT.PlayerVars)"
       :width="width" :height="height"
       :placeholder-attrs="defu(placeholderAttrs, { src: `https://i.ytimg.com/vi_webp/${videoId}/maxresdefault.webp` })"
       @ready="isLoaded = true"

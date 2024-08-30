@@ -56,7 +56,7 @@ const cards = [{
   >
     <CardCell v-for="card in cards" :key="card.title" class="card bg-brand-4 color-brand-3">
       <div class="pill h-3em w-3em flex-inline items-center justify-center rounded-full bg-white">
-        <Icon :i="card.icon" />
+        <AppIcon :i="card.icon" />
       </div>
       <div class="card-body mt-6 color-brand-3">
         <Heading type="h3" class="font-medium">

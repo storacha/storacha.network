@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-interface IconProps {
+interface AppIconProps {
   i: string
 }
-defineProps<IconProps>()
+defineProps<AppIconProps>()
 </script>
 
 <template>

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-
+const discord = useSocialNetwork('discord')
+const mailingList = useActions('mailingList')
 </script>
 
 <template>
@@ -7,7 +8,7 @@
     eyebrow="Get Involved"
     title="Storacha is open sauce, it needs you. 🌶️"
     description="Stay in touch and be one of the first to add some serious heat to your network with our blazing fast, decentralized storage and retrieval solutions!"
-    :actions="[{ text: 'BECOME A NODE PROVIDER', href: '/node-providers', primary: true }]"
+    :actions="[{ text: 'Join Dev Community', href: discord?.href, primary: true }, { outline: true, ...mailingList }]"
   />
   <Section class="ecosystem mt-12" full-width>
     <Heading type="h4" class="text-center">

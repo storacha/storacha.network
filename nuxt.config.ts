@@ -37,6 +37,10 @@ export default defineNuxtConfig({
     },
   },
 
+  typescript: {
+    typeCheck: true,
+  },
+
   features: {
     inlineStyles: false,
   },

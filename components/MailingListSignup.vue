@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { Dialog, DialogContent, DialogTrigger } from '~/components/Modal/mailingList'
 
+defineOptions({
+  inheritAttrs: false,
+})
+
 const mailingList = useActions('mailingList')
 
 const { width, height } = useWindowSize()
@@ -15,7 +19,7 @@ const iframeHeight = computed(() => {
 <template>
   <Dialog>
     <DialogTrigger as-child>
-      <Btn v-bind="mailingList" @click.prevent />
+      <Btn v-bind="{ ...mailingList, ...$attrs }" @click.prevent />
     </DialogTrigger>
     <DialogContent>
       <iframe width="100%" :height="iframeHeight" :src="mailingList.href" frameborder="0" scrolling="auto" style="display: block;margin: auto;max-width: 100%;" />

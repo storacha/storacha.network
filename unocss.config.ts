@@ -14,10 +14,14 @@ export default defineConfig({
       keyframes: {
         slideDown: '{from{height:0}to{height:var(--radix-accordion-content-height)}}',
         slideUp: '{from{height:var(--radix-accordion-content-height)}to{height:0}}',
+        overlayShow: '{from{opacity:0}to{opacity:1}}',
+        contentShow: `{from{opacity:0;transform:'translate(-50%,-48%) scale(0.96)'}to{opacity:1;transform:'translate(-50%,-50%) scale(1)';}}`,
       },
       durations: {
         slideDown: '300ms',
         slideUp: '300ms',
+        overlayShow: '150ms',
+        contentShow: '150ms',
       },
       timingFns: {
         slideDown: 'cubic-bezier(0.87, 0, 0.13, 1)',

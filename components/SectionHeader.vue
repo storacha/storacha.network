@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import Btn from './Btn.vue'
 import type { BtnProps } from './Btn.vue'
 
 export interface SectionHeaderProps {
@@ -6,7 +7,7 @@ export interface SectionHeaderProps {
   center?: boolean
   eyebrow?: string
   description?: string
-  actions?: BtnProps[]
+  actions?: BtnProps[] & { asComponent?: Component }[]
 }
 defineProps<SectionHeaderProps>()
 </script>
@@ -24,7 +25,8 @@ defineProps<SectionHeaderProps>()
     </p>
     <slot />
     <div v-if="actions" class="flex flex-col gap-4 sm:flex-row" :class="{ 'justify-center': center }">
-      <Btn
+      <component
+        :is="action.asComponent ? action.asComponent : Btn"
         v-for="action in actions"
         :key="action.text"
         v-bind="action"

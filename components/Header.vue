@@ -91,6 +91,10 @@ html {
 </style>
 
 <style scoped lang="postcss">
+header {
+  /* prevents layout shift when the body is set to overflow-hidden */
+  padding-right: var(--scrollbar-width);
+}
 .navbar {
   @apply bg-brand-4 rounded-full p-1;
   > a:last-child {

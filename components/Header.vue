@@ -54,7 +54,7 @@ function toggleMobileMenu() {
 
 <template>
   <header
-    ref="header" class="a-enter top-0 z-50 w-full transform transition duration-300 ease-out" :class="[
+    ref="header" class="header a-enter top-0 z-50 w-full transform transition duration-300 ease-out" :class="[
       nav.isTransparent ? 'bg-transparent' : 'is-active',
       noHero ? 'static' : 'fixed',
       {
@@ -91,6 +91,10 @@ html {
 </style>
 
 <style scoped lang="postcss">
+header.header {
+  /* stops layout shift with the body is overflow-hidden */
+  padding-right: var(--scrollbar-width);
+}
 .navbar {
   @apply bg-brand-4 rounded-full p-1;
   > a:last-child {

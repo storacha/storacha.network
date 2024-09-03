@@ -10,8 +10,9 @@ const mailingList = useActions('mailingList')
 const { width, height } = useWindowSize()
 
 const iframeHeight = computed(() => {
-  if (width.value < 768)
-    return height.value - 200
+  if (width.value < 768) {
+    return height.value - 100
+  }
   return 540
 })
 </script>

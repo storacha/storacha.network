@@ -14,7 +14,7 @@ export default defineAppConfig({
     ],
     mailingList: {
       icon: 'i-carbon:email',
-      href: 'https://945c6cfe.sibforms.com/serve/MUIFAKzuXT1iiGUeRfGD3adZ86kpwArveQS6J5AdNNS_2B4qLpiEsaIwadUSJt8EtwfEKJo65KWl7Q0qjJP96f58WsvHw5rrvow1Ut2yrrjNRXml4wgDqZuekqqWpVUw06B1KjcAmMGY69QYkqYmSiwRgNHGwUbYb7ai8o-1vCmVcxyYVJ5Xd5Wu9G-V2QNREHAAxgm8KfdegPRi',
+      href: 'https://945c6cfe.sibforms.com/serve/MUIFANdsXk2F0aFIaq6KQzBpojKAoGeN3FdEXKjlP2hZb_H-cBfO4fjXDMnywa3KaC1yOM3SxKoh3Fzzi5efQC7D6iZkhrUP_Ld7_fZ-Dp-5-MpNy6IBEn6c0vMoBaGXfRJoyblfZ8bDisfV6JL1gVjNAMkPl-Fsi9zTXwGQJgfWdLkdQhxz6bU0MM2LHUT0tD67Io1UgdE0INRv',
       text: 'Join mailing list',
     },
     email: { text: 'Contact Us', href: 'mailto:support@storacha.network' },

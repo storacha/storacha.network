@@ -20,9 +20,7 @@ async function fetchPosts(username: string) {
   posts.items = posts.items.map((post) => {
     const regex = /<img.*?src="(.*?)"/g
     const images = Array.from(post['content:encoded']
-      .matchAll(regex))
-      .map(match => match[1])
-      .filter(Boolean)
+      .matchAll(regex)).map(match => match[1]).filter(Boolean)
 
     return images.length ? { ...post, images } : post
   })

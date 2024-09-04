@@ -1,5 +1,5 @@
 <script setup>
-const headerLinks = useActions('headerLinks').concat(useActions('start'))
+const headerLinks = [...useActions('headerLinks'), useActions('start')]
 const siteConfig = useSiteConfig()
 </script>
 

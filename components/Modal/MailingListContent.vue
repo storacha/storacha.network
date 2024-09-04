@@ -10,7 +10,7 @@ const emitsAsProps = useEmitAsProps(emits)
 <template>
   <DialogPortal>
     <DialogOverlay class="fixed inset-0 z-100 bg-black/30 data-[state=open]:animate-overlayShow" />
-    <DialogContent class="fixed left-[50%] top-[50%] z-[100] max-h-[90vh] max-w-[540px] w-[90vw] translate-x-[-50%] translate-y-[-50%] overflow-clip rounded-2xl bg-white md:max-h-600px data-[state=open]:animate-contentShow focus:outline-none" v-bind="{ ...props, ...emitsAsProps }">
+    <DialogContent class="fixed left-[50%] top-[50%] z-[100] max-h-[95vh] max-w-[540px] w-[90vw] translate-x-[-50%] translate-y-[-50%] overflow-clip rounded-2xl bg-white md:max-h-600px data-[state=open]:animate-contentShow focus:outline-none" v-bind="{ ...props, ...emitsAsProps }">
       <VisuallyHidden>
         <DialogTitle>Mailing List Signup</DialogTitle>
         <DialogDescription>

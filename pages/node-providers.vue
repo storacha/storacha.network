@@ -43,13 +43,11 @@ const nodes = [{
                 <p>
                   Storacha is open sauce. We need you. While you wait to run your own nodes, contribute in other ways:
                 </p>
-                <p>
-                  <ul>
-                    <li>Get started with the w3cli on Github.</li>
-                    <li>Collaborate with our dev team on Discord.</li>
-                    <li>Learn about the network and future node types below.</li>
-                  </ul>
-                </p>
+                <ul>
+                  <li>Get started with the w3cli on Github.</li>
+                  <li>Collaborate with our dev team on Discord.</li>
+                  <li>Learn about the network and future node types below.</li>
+                </ul>
               </div>
               <Btn href="https://github.com/storacha-network/w3cli">
                 Get Started!

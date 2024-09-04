@@ -32,12 +32,12 @@ const docs = useActions('docs')
                 </p>
                 <p>
                   We balance decentralization with performance through:
-                  <ul>
-                    <li>Open Access: Anyone can join and contribute.</li>
-                    <li>Easy Exit: Data owners can move their data anytime.</li>
-                  </ul>
-                  Turn up the heat with Storacha and spark the future of decentralized storage.
                 </p>
+                <ul>
+                  <li>Open Access: Anyone can join and contribute.</li>
+                  <li>Easy Exit: Data owners can move their data anytime.</li>
+                </ul>
+                <p>Turn up the heat with Storacha and spark the future of decentralized storage.</p>
               </div>
             </div>
           </div>

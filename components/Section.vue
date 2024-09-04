@@ -15,7 +15,7 @@ defineProps<{ fullWidth?: boolean, padding?: boolean }>()
 
 <style lang="postcss" scoped>
 section.with-padding {
-  @apply py-6 py-8 lg:py-12;
+  @apply section-py;
 }
 section.with-bg {
   @apply relative;

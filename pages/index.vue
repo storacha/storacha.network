@@ -54,10 +54,10 @@ const start = useActions('start')
       </Split>
     </Section>
     <Intro />
-    <Section class="bg-brand-6 color-brand-3" padding>
+    <Section class="bg-brand-6 color-brand-3">
       <USPs />
     </Section>
-    <Section class="bg-brand-6 pb-12">
+    <Section class="bg-brand-6" padding>
       <YouTubePlayer
         video-id="NDdLc6Axzfk"
         :player-vars="{ loop: 1, playlist: 'NDdLc6Axzfk' }"

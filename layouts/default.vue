@@ -13,6 +13,8 @@ const siteConfig = useSiteConfig()
     <main class="min-h-70vh">
       <slot />
     </main>
-    <Footer class="p3" />
+    <Section padding>
+      <Footer class="p3" />
+    </Section>
   </div>
 </template>

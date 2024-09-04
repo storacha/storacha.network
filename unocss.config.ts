@@ -52,6 +52,7 @@ export default defineConfig({
     ['grid-margins', 'max-w-screen-xl mx-auto px-6'],
     ['grid-margins-max', 'm-a max-w-screen-2xl'],
     ['heading', 'font-heading'],
+    ['section-py', 'py-15'],
     ['h1', 'heading text-4xl md:text-5xl lg:text-6xl font-normal'],
     ['h2', 'heading text-3xl md:text-4xl lg:text-5xl font-normal'],
     ['h3', 'heading text-2xl md:text-3xl font-normal'],

@@ -18,7 +18,7 @@ const emitsAsProps = useEmitAsProps(emits)
         </DialogDescription>
       </VisuallyHidden>
       <slot />
-      <DialogClose class="absolute right-3 top-3 h-8 w-8 inline-flex appearance-none items-center justify-center rounded-full text-[#3d3f42] hover:bg-gray-100 focus:shadow-[0_0_0_2px] focus:shadow-gray-300 focus:outline-none">
+      <DialogClose class="absolute right-3 top-3 h-7 w-7 inline-flex appearance-none items-center justify-center rounded-full text-[#3d3f42] transition-colors hover:bg-brand-3 hover:text-white focus:shadow-[0_0_0_2px] focus:shadow-brand-3 focus:outline-none">
         <span class="i-carbon:close" />
         <span class="sr-only">Close</span>
       </DialogClose>

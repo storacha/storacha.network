@@ -12,9 +12,7 @@ interface PricingCardProps {
   ribbon?: string
 }
 
-withDefaults(defineProps<PricingCardProps>(), {
-  currency: '$',
-})
+const { currency = '$' } = defineProps<PricingCardProps>()
 </script>
 
 <template>

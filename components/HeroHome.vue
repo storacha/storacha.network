@@ -3,7 +3,7 @@ import { useForwardProps } from 'radix-vue'
 import type { SectionHeaderProps } from './SectionHeader.vue'
 
 interface HeroProps extends SectionHeaderProps {}
-const props = withDefaults(defineProps<HeroProps>(), {})
+const props = defineProps<HeroProps>()
 const forwardProps = useForwardProps(reactiveOmit(props, ['description']))
 </script>
 

@@ -2,7 +2,7 @@
 interface Props {
   type?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
-withDefaults(defineProps<Props>(), { type: 'h2' })
+const { type = 'h2' } = defineProps<Props>()
 </script>
 
 <template>

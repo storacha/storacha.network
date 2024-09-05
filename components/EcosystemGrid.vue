@@ -9,14 +9,12 @@ interface ParsedEcosystemCategories extends ParsedContent<{
   body: Ecosystem.CategoryList
 }> {}
 
-const props = withDefaults(defineProps<EcosystemGridProps>(), {
-  limit: 0,
-})
+const { limit = 0 } = defineProps<EcosystemGridProps>()
 
 // fetch projects and categories
 const { data: projects } = await useAsyncData(
-  `eco_projects_${props.limit}`,
-  () => queryContent<ParsedContent<Ecosystem.Project>>('/ecosystem/projects').limit(props.limit).find(),
+  `eco_projects_${limit}`,
+  () => queryContent<ParsedContent<Ecosystem.Project>>('/ecosystem/projects').limit(limit).find(),
 )
 
 const { data: categories } = await useAsyncData(

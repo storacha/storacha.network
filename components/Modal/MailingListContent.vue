@@ -10,7 +10,7 @@ const emitsAsProps = useEmitAsProps(emits)
 <template>
   <DialogPortal>
     <DialogOverlay class="fixed inset-0 z-100 bg-black/30 data-[state=open]:animate-overlayShow" />
-    <DialogContent class="fixed left-[50%] top-[50%] z-[100] max-h-[95vh] max-w-[540px] w-[90vw] translate-x-[-50%] translate-y-[-50%] overflow-clip rounded-2xl bg-white md:max-h-600px data-[state=open]:animate-contentShow focus:outline-none" v-bind="{ ...props, ...emitsAsProps }">
+    <DialogContent class="fixed left-[50%] top-[50%] z-[100] max-h-[98vh] max-w-[580px] w-[90vw] translate-x-[-50%] translate-y-[-50%] overflow-clip rounded-2xl bg-white md:max-h-600px data-[state=open]:animate-contentShow focus:outline-none" v-bind="{ ...props, ...emitsAsProps }">
       <VisuallyHidden>
         <DialogTitle>Mailing List Signup</DialogTitle>
         <DialogDescription>
@@ -18,7 +18,7 @@ const emitsAsProps = useEmitAsProps(emits)
         </DialogDescription>
       </VisuallyHidden>
       <slot />
-      <DialogClose class="absolute right-[10px] top-[10px] h-[25px] w-[25px] inline-flex appearance-none items-center justify-center rounded-full hover:bg-brand-3 hover:text-white focus:shadow-[0_0_0_2px] focus:shadow-brand-3 focus:outline-none">
+      <DialogClose class="absolute right-3 top-3 h-8 w-8 inline-flex appearance-none items-center justify-center rounded-full text-[#3d3f42] hover:bg-gray-100 focus:shadow-[0_0_0_2px] focus:shadow-gray-300 focus:outline-none">
         <span class="i-carbon:close" />
         <span class="sr-only">Close</span>
       </DialogClose>

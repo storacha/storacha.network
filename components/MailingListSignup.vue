@@ -13,7 +13,7 @@ const iframeHeight = computed(() => {
   if (width.value < 768) {
     return height.value - 100
   }
-  return 560
+  return 580
 })
 </script>
 

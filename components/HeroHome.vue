@@ -16,5 +16,12 @@ const forwardProps = useForwardProps(reactiveOmit(props, ['description']))
         </Heading>
       </SectionHeader>
     </template>
+    <template #right>
+      <div class="flex items-center justify-center md:hidden">
+        <div class="aspect-ratio-square overflow-clip b-5 b-brand-3 rounded-[40px]">
+          <img class="h-full w-auto object-cover object-[63%_50%]" src="/img/hero/hero-fixed.webp" :alt="title" aria-hidden="true">
+        </div>
+      </div>
+    </template>
   </HeroBase>
 </template>

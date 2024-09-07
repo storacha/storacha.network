@@ -1,8 +1,8 @@
 <script setup lang="ts">
 /// <reference types="youtube" />
 
-import type { ImgHTMLAttributes } from 'vue'
 import { defu } from 'defu'
+import type { ImgHTMLAttributes } from 'vue'
 
 interface YouTubePlayerProps {
   videoId: string

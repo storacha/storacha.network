@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DialogClose, DialogContent, type DialogContentEmits, type DialogContentProps, DialogDescription, DialogOverlay, DialogPortal, DialogTitle, VisuallyHidden, useEmitAsProps } from 'radix-vue'
+import { DialogClose, DialogContent, type DialogContentEmits, type DialogContentProps, DialogDescription, DialogOverlay, DialogPortal, DialogTitle, useEmitAsProps, VisuallyHidden } from 'radix-vue'
 
 const props = defineProps<DialogContentProps>()
 const emits = defineEmits<DialogContentEmits>()

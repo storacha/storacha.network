@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.12.2",
   "private": true,
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.10.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -22,7 +22,7 @@
     "@nuxt/content": "^2.13.2",
     "@nuxt/devtools": "^1.4.1",
     "@nuxt/image": "^1.8.0",
-    "@nuxt/scripts": "^0.8.4",
+    "@nuxt/scripts": "^0.8.5",
     "@nuxtjs/fontaine": "^0.4.3",
     "@nuxtjs/plausible": "^1.0.2",
     "@nuxtjs/seo": "^2.0.0-rc.21",

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-/// <reference types="youtube" />
-
 import { defu } from 'defu'
 import type { ImgHTMLAttributes } from 'vue'
 

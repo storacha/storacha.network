@@ -67,7 +67,7 @@ function toggleMobileMenu() {
   >
     <div class="grid-margins h-20 flex items-center justify-between transition-all">
       <AppLink class="ident transition" href="/" title="">
-        <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" />
+        <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" :invert="nav.mobileActive" />
       </AppLink>
       <nav class="navbar hidden justify-right gap-1 b-2 b-brand-3 md:flex">
         <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link bg-transparent btn-secondary btn-slim hover:(btn-active bg-white) btn" active-class="btn-active">

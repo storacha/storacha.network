@@ -3,9 +3,9 @@ defineProps<{ siteName: string | undefined, invert?: boolean }>()
 </script>
 
 <template>
-  <Heading type="h4" class="ident transition-all">
-    <img v-if="invert" src="/img/storacha-bug.svg" :alt="siteName" class="h-full">
-    <img v-else src="/img/storacha-bug.svg" :alt="siteName" class="h-full">
+  <div class="ident transition-all">
+    <img v-if="invert" src="/img/storacha-bug-invert.svg" :alt="siteName" class="h-full">
+    <img v-else class="h-full" src="/img/storacha-bug.svg" :alt="siteName">
     <span class="hidden">{{ siteName }}</span>
-  </Heading>
+  </div>
 </template>

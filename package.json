@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.5.1",
-    "@nuxt/eslint": "^0.5.6",
+    "@nuxt/eslint": "^0.5.7",
     "@types/youtube": "^0.1.0",
     "@unocss/eslint-config": "^0.62.3",
     "eslint": "^9.10.0",

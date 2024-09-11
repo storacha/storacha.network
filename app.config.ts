@@ -29,7 +29,7 @@ export default defineAppConfig({
         { text: 'Status', href: 'https://status.storacha.network' },
       ],
       getStarted: [
-        { text: 'JS Client', href: 'https://github.com/storacha-network/w3up/tree/main/packages/w3up-client#readme' },
+        { text: 'JS Client', href: 'https://github.com/storacha/w3up/tree/main/packages/w3up-client#readme' },
         { text: 'CLI', href: 'https://docs.storacha.network/w3cli' },
         { text: 'Web UI', href: 'https://console.storacha.network' },
       ],
@@ -50,7 +50,7 @@ export default defineAppConfig({
       {
         name: 'GitHub',
         description: 'Build with us',
-        href: 'https://github.com/storacha-network',
+        href: 'https://github.com/storacha',
         icon: 'i-simple-icons:github',
       },
       {

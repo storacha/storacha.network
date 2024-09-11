@@ -50,7 +50,7 @@ const nodes = [{
                   <li>Learn about the network and future node types below.</li>
                 </ul>
               </div>
-              <Btn href="https://github.com/storacha-network/w3cli">
+              <Btn href="https://github.com/storacha/w3cli">
                 Get Started!
               </Btn>
             </div>

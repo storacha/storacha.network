@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useForwardProps } from 'radix-vue'
 import type { AppLinkProps } from './AppLink.vue'
+import { useForwardProps } from 'radix-vue'
 
 export interface BtnProps extends AppLinkProps {
   primary?: boolean

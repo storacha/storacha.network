@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useForwardProps } from 'radix-vue'
 import type { SectionHeaderProps } from './SectionHeader.vue'
+import { useForwardProps } from 'radix-vue'
 
 interface HeroProps extends SectionHeaderProps {}
 const props = defineProps<HeroProps>()

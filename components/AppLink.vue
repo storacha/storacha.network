@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useForwardProps } from 'radix-vue'
 import type { NuxtLinkProps } from '#app'
+import { useForwardProps } from 'radix-vue'
 
 export interface AppLinkProps extends NuxtLinkProps {}
 

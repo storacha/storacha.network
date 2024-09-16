@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import Btn from './Btn.vue'
 import type { BtnProps } from './Btn.vue'
+import Btn from './Btn.vue'
 
 export interface SectionHeaderProps {
   title: string

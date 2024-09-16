@@ -3,7 +3,7 @@ const start = useActions('start')
 </script>
 
 <template>
-  <Section class="overflow-clip bg-brand-4" padding>
+  <Section id="pricing" class="overflow-clip bg-brand-4" padding>
     <template #bg>
       <div class="grid-margins">
         <img class="racha-pricing" src="/img/hero/racha.svg" alt="" aria-hidden="true" t-skip>

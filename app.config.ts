@@ -24,7 +24,6 @@ export default defineAppConfig({
         { text: 'FAQ', href: 'https://docs.storacha.network/faq' },
         { text: 'Contact Us', href: 'mailto:support@storacha.network' },
         { text: 'Terms of Service', href: 'https://docs.storacha.network/terms' },
-        { text: 'Service Agreement', href: 'https://docs.storacha.network/service-level-agreement' },
         { text: 'Privacy Policy', href: 'https://docs.storacha.network/privacy-policy' },
         { text: 'Status', href: 'https://status.storacha.network' },
       ],

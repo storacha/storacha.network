@@ -19,7 +19,7 @@ export default defineAppConfig({
     },
     nodeWaitlist: {
       icon: 'i-carbon:email',
-      href: 'https://945c6cfe.sibforms.com/serve/MUIFACg2NfyigJGXVYyCFvV6RB5eR-JVFi1pm6wc1woVKT3yHLkIkWa5Bf-ljjCgo5UHezhlTHrK4RaDGVNW8Osetx_g04H2Qzrfkr1Pn09qvwX91kpE54zHOGLzxx1-IJE8UqG0yTHQYnDLEUujW9RfKlKrL0LjdeVk6qOoRWPLRlOB7FDqNG1Ij79Km79eqDuil9UIIaHbay44',
+      href: 'https://945c6cfe.sibforms.com/serve/MUIFAG8iCnsvJLc29QEJIeSCk-XQ5SVO9W9D8oO42tSXD_b_b-Ejx_WguwyuAThVF0DCuJ5cAILyu5IJjUwrj37aB8kPxK7mvSv5ypCdFXqaQ3s0caqU0eCVjLGshIXxr6YWvjnjMcZ96bmuOHRP69wjYM6V-gcDoXxBRm9676J-EYd-8xWgsLfiGVMbcSsY1hwX3g5NUF35wxsW',
       text: 'Join Waitlist',
     },
     email: { text: 'Contact Us', href: 'mailto:support@storacha.network' },

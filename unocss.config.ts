@@ -47,7 +47,6 @@ export default defineConfig({
     ['btn-secondary', 'bg-white text-brand-3'],
     ['btn-outline', 'bg-transparent text-color-current b-1 b-color-current'],
     ['btn-link', 'text-brand-dark underline'],
-    ['btn-active', 'text-brand-3 underline underline-offset-5 underline-solid underline-1'],
     ['btn-slim', 'py-2 px-4 text-sm font-normal'],
     ['grid-margins', 'max-w-screen-xl mx-auto px-6'],
     ['grid-margins-max', 'm-a max-w-screen-2xl'],

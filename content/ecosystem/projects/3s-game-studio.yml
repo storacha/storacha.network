@@ -1,5 +1,5 @@
 name: 3s Game Studio
-description: A game studio that built an unreal plugin to use Storacha for progressive game installs and distribution of game binaries leveraging the power of content-addressed data storage and user-owned game assets.
+description: A game studio built an Unreal plugin to use Storacha for progressive game installs and distributing game binaries with content-addressed storage and user-owned assets.
 url: https://www.3studio.online/
 categories:
   - gaming

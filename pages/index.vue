@@ -76,7 +76,7 @@ const start = useActions('start')
     <Section id="ecosystem" class="bg-white color-brand-1" padding>
       <Ecosystem />
     </Section>
-    <Section full-width>
+    <Section full-width class="text-brand-3">
       <Community />
     </Section>
     <PreFooter

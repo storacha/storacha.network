@@ -2,6 +2,7 @@
 import MailingListSignup from '~/components/MailingListSignup.vue'
 
 const discord = useSocialNetwork('discord')
+const nodeWaitlist = useActions('nodeWaitlist')
 
 const nodes = [{
   id: 'storage',
@@ -27,7 +28,7 @@ const nodes = [{
         title="Node Providers"
         description="Join the waitlist to be the first to participate!"
         :actions="[
-          { text: 'Join Waitlist', asComponent: MailingListSignup },
+          { mailingList: nodeWaitlist, asComponent: MailingListSignup },
           { text: 'Join Community', href: discord?.href, secondary: true }]"
       />
     </Section>

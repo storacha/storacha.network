@@ -70,7 +70,7 @@ function toggleMobileMenu() {
         <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" :invert="nav.mobileActive" />
       </AppLink>
       <nav class="navbar hidden justify-right gap-1 b-2 b-brand-3 md:flex">
-        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link bg-transparent btn-secondary btn-slim hover:(btn-active bg-white) btn" active-class="btn-active">
+        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link btn-secondary btn-slim hover:(btn-active bg-white) btn" active-class="btn-active">
           {{ link.text }}
         </AppLink>
       </nav>
@@ -95,6 +95,19 @@ header {
   /* prevents layout shift when the body is set to overflow-hidden */
   padding-right: var(--scrollbar-width);
 }
+
+.btn-active:after,
+.nav-link:hover:after {
+  @apply bg-brand-3;
+  bottom: 8px;
+  content: "";
+  height: 1px;
+  left: 50%;
+  margin-left: -10px;
+  position: absolute;
+  width: 20px;
+}
+
 .navbar {
   @apply bg-brand-4 rounded-full p-1;
   > a:last-child {

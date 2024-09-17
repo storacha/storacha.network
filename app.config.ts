@@ -14,12 +14,12 @@ export default defineAppConfig({
     ],
     mailingList: {
       icon: 'i-carbon:email',
-      href: 'https://945c6cfe.sibforms.com/serve/MUIFANdsXk2F0aFIaq6KQzBpojKAoGeN3FdEXKjlP2hZb_H-cBfO4fjXDMnywa3KaC1yOM3SxKoh3Fzzi5efQC7D6iZkhrUP_Ld7_fZ-Dp-5-MpNy6IBEn6c0vMoBaGXfRJoyblfZ8bDisfV6JL1gVjNAMkPl-Fsi9zTXwGQJgfWdLkdQhxz6bU0MM2LHUT0tD67Io1UgdE0INRv',
+      href: 'https://945c6cfe.sibforms.com/serve/MUIFAOom2AtelLIYvFII91Z7ohm-e_pdRCS6DYtA0a5Cvn5DfuG0YQrPRnKbp7OXbJq4ogT7oejPXZFPtyS3L6ZgUvL0tJ3bP6_7sgO6kprVKqTHJECQ4WJeangGIU7MpK0mMx-3XVF3v6sNSYq2Vy1LaAltLwmnB-DE7QjXdLk9XM_AcErDhQoYPqms63o_IeGxnirl6AJcYuCO',
       text: 'Join Mailing List',
     },
     nodeWaitlist: {
       icon: 'i-carbon:email',
-      href: 'https://945c6cfe.sibforms.com/serve/MUIFABPdOlSeT3B49vS8xsGbrLflPWbsp7J2Ynxfky18WWpyFxCCBEhPdNon4xCyw-3FNNUOE3GUu4rRwLCyg-vQmiB9gIQrqnfczpBMtz9GyhL1ujmx2-5VbV2uRUAe68oDjgbKAjPycsx0_g8XWV7mcTIlkIgqkrVq6OSv9Wc6bnwW_8UM6fDVfhbr_Ohm93kuaKJdWZdqABpF',
+      href: 'https://945c6cfe.sibforms.com/serve/MUIFACg2NfyigJGXVYyCFvV6RB5eR-JVFi1pm6wc1woVKT3yHLkIkWa5Bf-ljjCgo5UHezhlTHrK4RaDGVNW8Osetx_g04H2Qzrfkr1Pn09qvwX91kpE54zHOGLzxx1-IJE8UqG0yTHQYnDLEUujW9RfKlKrL0LjdeVk6qOoRWPLRlOB7FDqNG1Ij79Km79eqDuil9UIIaHbay44',
       text: 'Join Waitlist',
     },
     email: { text: 'Contact Us', href: 'mailto:support@storacha.network' },

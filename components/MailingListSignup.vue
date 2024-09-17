@@ -1,11 +1,16 @@
 <script lang="ts" setup>
+import type { AppConfig } from 'nuxt/schema'
 import { Dialog, DialogContent, DialogTrigger } from '~/components/Modal/mailingList'
+
+interface MailingListProps {
+  mailingList?: AppConfig['actions']['mailingList']
+}
 
 defineOptions({
   inheritAttrs: false,
 })
 
-const mailingList = useActions('mailingList')
+const { mailingList = useActions('mailingList') } = defineProps<MailingListProps>()
 
 const { width, height } = useWindowSize()
 

@@ -70,7 +70,7 @@ function toggleMobileMenu() {
         <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" :invert="nav.mobileActive" />
       </AppLink>
       <nav class="navbar hidden justify-right gap-1 b-2 b-brand-3 md:flex">
-        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link btn-secondary btn-slim hover:(btn-active bg-white) btn" active-class="btn-active">
+        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link hover:btn-active btn-secondary btn-slim btn hover:(bg-white)" active-class="btn-active">
           {{ link.text }}
         </AppLink>
       </nav>

@@ -105,11 +105,12 @@ export default defineNuxtConfig({
 
   devtools: {
     enabled: true,
+    componentInspector: false, // disabled until patched: https://github.com/nuxt/devtools/issues/722
   },
 
   compatibilityDate: '2024-07-02',
 
   nitro: {
-    preset: 'cloudflare-pages'
+    preset: 'cloudflare-pages',
   },
 })

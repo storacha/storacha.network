@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxt/image',
     '@nuxt/scripts',
+    'nitro-cloudflare-dev',
   ],
 
   eslint: {
@@ -107,4 +108,8 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-07-02',
+
+  nitro: {
+    preset: 'cloudflare-pages'
+  },
 })

@@ -1,0 +1,14 @@
+name: pnpm
+description: 'Setup node & pnpm'
+
+runs:
+  using: 'composite'
+  steps:
+    - uses: pnpm/action-setup@v2
+      with:
+        version: 9
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 20
+        registry-url: 'https://registry.npmjs.org'
+        cache: 'pnpm'

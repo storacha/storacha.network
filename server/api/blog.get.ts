@@ -38,10 +38,8 @@ export default defineCachedEventHandler(async (event) => {
     return posts
   }
   catch (e: any) {
-    if (e.cause)
-      // rethrow the original error
-      throw createError(e.cause)
+    console.error(e)
     // throw a generic error
-    throw createError({ status: 500, message: 'Failed to fetch posts' })
+    throw createError({ status: 500, message: `Failed to fetch posts: ${e.message}` })
   }
 }, { maxAge: 60 * 5 }) // cache API response for 5 minutes

@@ -29,7 +29,9 @@ defineProps<{
           <time class="h5 text-sm" :datetime="item.pubDate">
             {{ useAppDateFormat(item.pubDate) }}
           </time>
-          <div v-if="showSnippet" class="text-base p1" v-html="item.snippet" />
+          <p v-if="showSnippet" class="text-base p1">
+            {{ item.snippet }}
+          </p>
         </div>
       </AppLink>
     </article>

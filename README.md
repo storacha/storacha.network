@@ -1,4 +1,6 @@
-# Storacha Network Website
+# Storacha Website
+
+![Storacha Network](./public/img/storacha-og-card.png)
 
 ### Pre requisites
 
@@ -25,10 +27,23 @@ pnpm dev
 
 ### Build for production
 
+The build environment will be detected and the appropriate server(less) transforms will be applied:
+
 ```bash
-# build optimised static site
-pnpm generate
+# build production site bundle
+pnpm build
 
 # launch a webserver to preview the site
 pnpm preview
 ```
+
+#### You can also build a static version with:
+
+```bash
+# build optimised static site bundle
+pnpm generate
+```
+
+## Code Style and Linting
+- [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+- [ESLint v9](https://eslint.org/)

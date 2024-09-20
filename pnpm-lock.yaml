@@ -51,8 +51,8 @@ importers:
         specifier: ^6.1.4
         version: 6.1.4
       radix-vue:
-        specifier: ^1.9.5
-        version: 1.9.5(vue@3.5.6(typescript@5.6.2))
+        specifier: ^1.9.6
+        version: 1.9.6(vue@3.5.6(typescript@5.6.2))
       rss-parser:
         specifier: ^3.13.0
         version: 3.13.0
@@ -4462,8 +4462,8 @@ packages:
   queue@6.0.2:
     resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
 
-  radix-vue@1.9.5:
-    resolution: {integrity: sha512-vtCq+WDAZj5BQtJiChGf/oC7w3y7jaod3agcntgph7fD6aqdcghLZYcUWdgT/XNJs2bEsk+3cjK3ONPRNeFcuQ==}
+  radix-vue@1.9.6:
+    resolution: {integrity: sha512-legrn9jHbEpbJS4QYrA0VmIafj1bmc4MSVzN55WZatGiXMJg3oFrQL5QxpiURJciS+OlATbKA2KAGkMuuLA0LA==}
     peerDependencies:
       vue: '>= 3.2.0'
 
@@ -11341,7 +11341,7 @@ snapshots:
     dependencies:
       inherits: 2.0.4
 
-  radix-vue@1.9.5(vue@3.5.6(typescript@5.6.2)):
+  radix-vue@1.9.6(vue@3.5.6(typescript@5.6.2)):
     dependencies:
       '@floating-ui/dom': 1.6.11
       '@floating-ui/vue': 1.1.5(vue@3.5.6(typescript@5.6.2))

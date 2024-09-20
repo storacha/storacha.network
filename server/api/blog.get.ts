@@ -1,18 +1,34 @@
-import * as RSS from 'rss-to-json'
+import { XMLParser } from 'fast-xml-parser'
+import type { Feed } from '~/types/blog'
 
-async function fetchPosts(url: string) {
-  const data = await RSS.parse(url)
+async function getFeed(feedUrl: string) {
+  const rss = await $fetch<string>(feedUrl)
+  return rss
+}
+
+async function fetchPosts(url: string): Promise<Feed> {
+  console.log('fetching posts')
+  const rss = await getFeed(url)
+  const root = new XMLParser().parse(rss)
+  const { channel } = root.rss
+
+  console.log('channel items:', channel.item)
 
   const regex = /<img.*?src="(.*?)"/g
-  // transform posts and extract images to a new array key
-  data.items = data.items.map((post) => {
-    const images = Array.from(String(post.content_encoded)
-      .matchAll(regex)).map(match => match[1]).filter(Boolean)
-
-    return images.length ? { ...post, images } : post
-  })
-
-  return data
+  return {
+    // transform posts and extract images to a new array key
+    items: channel.item.map((post: any) => {
+      const images = Array.from(String(post['content:encoded'])
+        .matchAll(regex)).map(match => match[1]).filter(Boolean)
+      return {
+        title: post.title,
+        pubDate: post.pubDate,
+        isoDate: post.isoDate,
+        link: post.link,
+        images
+      }
+    })
+  }
 }
 
 export default defineCachedEventHandler(async (event) => {
@@ -25,7 +41,7 @@ export default defineCachedEventHandler(async (event) => {
     return posts
   }
   catch (e: any) {
-    console.error(e)
+    console.error('failed to get blog posts:', e)
     // throw a generic error
     throw createError({ status: 500, message: `Failed to fetch posts: ${e.message}` })
   }

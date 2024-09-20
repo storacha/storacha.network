@@ -29,7 +29,7 @@ defineProps<{
           <time class="h5 text-sm" :datetime="item.isoDate">
             {{ useAppDateFormat(item.isoDate) }}
           </time>
-          <div v-if="showSnippet" class="text-base p1" v-html="`${item['content:encodedSnippet'].slice(0, 200)}...`" />
+          <!-- <div v-if="showSnippet" class="text-base p1" v-html="`${item['content:encodedSnippet'].slice(0, 200)}...`" /> -->
         </div>
       </AppLink>
     </article>

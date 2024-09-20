@@ -1,13 +1,7 @@
 import * as RSS from 'rss-to-json'
 
-async function getFeed(feedUrl: string) {
-  const rss = await $fetch<string>(feedUrl)
-  return rss
-}
-
 async function fetchPosts(url: string) {
-  const rss = await getFeed(url)
-  const data = await RSS.parse(rss)
+  const data = await RSS.parse(url)
 
   const regex = /<img.*?src="(.*?)"/g
   // transform posts and extract images to a new array key

@@ -4,6 +4,7 @@ export interface Feed {
 
 export interface Item {
   title: string
+  snippet: string
   link: string
   pubDate: string
   isoDate: string

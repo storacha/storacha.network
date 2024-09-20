@@ -12,16 +12,19 @@ async function fetchPosts(url: string): Promise<Feed> {
   const root = new XMLParser().parse(rss)
   const { channel } = root.rss
 
-  console.log('channel items:', channel.item)
-
   const regex = /<img.*?src="(.*?)"/g
   return {
     // transform posts and extract images to a new array key
     items: channel.item.map((post: any) => {
       const images = Array.from(String(post['content:encoded'])
         .matchAll(regex)).map(match => match[1]).filter(Boolean)
+      let snippet = post['content:encoded'].replace(/(<([^>]+)>)/gi, '')
+      if (snippet.length > 200) {
+        snippet = snippet.slice(0, 200) + '...'
+      }
       return {
         title: post.title,
+        snippet,
         pubDate: post.pubDate,
         isoDate: post.isoDate,
         link: post.link,

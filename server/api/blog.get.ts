@@ -1,4 +1,4 @@
-import Parser from 'rss-parser'
+import Parser from 'rss-parser/dist/rss-parser.min.js'
 import type { Feed, Item } from '~/types/blog'
 
 async function getFeed(feedUrl: string) {

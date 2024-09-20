@@ -17,9 +17,11 @@ async function fetchPosts(username: string) {
   const posts = await parseRSS(rss)
 
   // transform posts and extract images to a new array key
+  // @ts-ignore
   posts.items = posts.items.map((post) => {
     const regex = /<img.*?src="(.*?)"/g
     const images = Array.from(post['content:encoded']
+      // @ts-ignore
       .matchAll(regex)).map(match => match[1]).filter(Boolean)
 
     return images.length ? { ...post, images } : post

@@ -6,7 +6,7 @@ async function fetchPosts(url: string) {
   const regex = /<img.*?src="(.*?)"/g
   // transform posts and extract images to a new array key
   data.items = data.items.map((post) => {
-    const images = Array.from(String(post.description)
+    const images = Array.from(String(post.content_encoded)
       .matchAll(regex)).map(match => match[1]).filter(Boolean)
 
     return images.length ? { ...post, images } : post

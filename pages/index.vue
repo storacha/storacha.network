@@ -59,8 +59,8 @@ const start = useActions('start')
     </Section>
     <Section class="bg-brand-6" padding>
       <YouTubePlayer
-        video-id="NDdLc6Axzfk"
-        :player-vars="{ loop: 1, playlist: 'NDdLc6Axzfk' }"
+        video-id="KmMMGQulQgw"
+        :player-vars="{ loop: 1, playlist: 'KmMMGQulQgw' }"
         :placeholder-attrs="{
           src: '/img/video/storacha-network-illustration.webp',
           class: 'bg-brand-6',

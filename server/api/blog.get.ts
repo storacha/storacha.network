@@ -7,7 +7,6 @@ async function getFeed(feedUrl: string) {
 }
 
 async function fetchPosts(url: string): Promise<Feed> {
-  console.log('fetching posts')
   const rss = await getFeed(url)
   const root = new XMLParser().parse(rss)
   const { channel } = root.rss
@@ -18,9 +17,9 @@ async function fetchPosts(url: string): Promise<Feed> {
     items: channel.item.map((post: any) => {
       const images = Array.from(String(post['content:encoded'])
         .matchAll(regex)).map(match => match[1]).filter(Boolean)
-      let snippet = post['content:encoded'].replace(/(<([^>]+)>)/gi, '')
+      let snippet = post['content:encoded'].replace(/(<([^>]+)>)/g, '')
       if (snippet.length > 200) {
-        snippet = snippet.slice(0, 200) + '...'
+        snippet = `${snippet.slice(0, 200)}...`
       }
       return {
         title: post.title,
@@ -28,9 +27,9 @@ async function fetchPosts(url: string): Promise<Feed> {
         pubDate: post.pubDate,
         isoDate: post.isoDate,
         link: post.link,
-        images
+        images,
       }
-    })
+    }),
   }
 }
 

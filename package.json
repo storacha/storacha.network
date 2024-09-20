@@ -32,7 +32,7 @@
     "@vueuse/nuxt": "^11.1.0",
     "defu": "^6.1.4",
     "radix-vue": "^1.9.6",
-    "rss-parser": "^3.13.0",
+    "rss-to-json": "^2.1.1",
     "unocss": "^0.62.4"
   },
   "devDependencies": {

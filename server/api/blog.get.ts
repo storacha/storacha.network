@@ -1,33 +1,24 @@
-import Parser from 'rss-parser/dist/rss-parser.min.js'
-import type { Feed, Item } from '~/types/blog'
+import * as RSS from 'rss-to-json'
 
 async function getFeed(feedUrl: string) {
   const rss = await $fetch<string>(feedUrl)
   return rss
 }
 
-async function parseRSS(rss: string) {
-  const parser = new Parser<Feed, Item>()
-  const feed = await parser.parseString(rss)
-  return feed
-}
+async function fetchPosts(url: string) {
+  const rss = await getFeed(url)
+  const data = await RSS.parse(rss)
 
-async function fetchPosts(username: string) {
-  const rss = await getFeed(username)
-  const posts = await parseRSS(rss)
-
+  const regex = /<img.*?src="(.*?)"/g
   // transform posts and extract images to a new array key
-  // @ts-ignore
-  posts.items = posts.items.map((post) => {
-    const regex = /<img.*?src="(.*?)"/g
-    const images = Array.from(post['content:encoded']
-      // @ts-ignore
+  data.items = data.items.map((post) => {
+    const images = Array.from(String(post.description)
       .matchAll(regex)).map(match => match[1]).filter(Boolean)
 
     return images.length ? { ...post, images } : post
   })
 
-  return posts
+  return data
 }
 
 export default defineCachedEventHandler(async (event) => {

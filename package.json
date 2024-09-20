@@ -31,6 +31,7 @@
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
     "defu": "^6.1.4",
+    "events": "^3.3.0",
     "radix-vue": "^1.9.6",
     "rss-parser": "^3.13.0",
     "unocss": "^0.62.4"

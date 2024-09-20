@@ -29,7 +29,6 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
     '@nuxt/image',
     '@nuxt/scripts',
-    'nitro-cloudflare-dev',
   ],
 
   eslint: {

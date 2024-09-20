@@ -26,10 +26,10 @@ defineProps<{
           <Heading type="h5" class="font-medium">
             {{ item.title }}
           </Heading>
-          <time class="h5 text-sm" :datetime="item.isoDate">
-            {{ useAppDateFormat(item.isoDate) }}
+          <time class="h5 text-sm" :datetime="item.pubDate">
+            {{ useAppDateFormat(item.pubDate) }}
           </time>
-          <div v-if="showSnippet" class="text-base p1" v-html="`${item.snippet}`" />
+          <div v-if="showSnippet" class="text-base p1" v-html="item.snippet" />
         </div>
       </AppLink>
     </article>

@@ -64,7 +64,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm
-      - run: pnpm build
+      - run: pnpm build --preset=cloudflare_pages
       - name: Deploy build to Cloudflare Pages
         uses: mathiasvr/command-output@v1.1.0
         id: cloudflare

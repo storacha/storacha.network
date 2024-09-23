@@ -1,8 +1,8 @@
-# Storacha Website
+# Storacha website
 
 ![Storacha Network](./public/img/storacha-og-card.png)
 
-### Pre requisites
+### Local setup
 
 ```bash
 # install node LTS/Current
@@ -44,6 +44,10 @@ pnpm preview
 pnpm generate
 ```
 
-## Code Style and Linting
+## Code style and linting
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 - [ESLint v9](https://eslint.org/)
+
+## License
+
+Dual-licensed under [MIT + Apache 2.0](./LICENSE.md)

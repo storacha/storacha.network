@@ -2,7 +2,11 @@
 
 ![Storacha Network](./public/img/storacha-og-card.png)
 
-### Local setup
+## Contributing
+
+Feel free to join in. All welcome. [Open an issue](https://github.com/storacha/storacha.network/issues)!
+
+### Prerequisites
 
 ```bash
 # install node LTS/Current
@@ -15,9 +19,9 @@ corepack enable
 pnpm i
 ```
 
-### Run developer mode locally
+### Run dev mode
 
-To build a local copy, run the following:
+To start in development mode locally run the following:
 
 ```bash
 # serve with hot reload at localhost:3000

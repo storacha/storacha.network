@@ -23,7 +23,7 @@ jobs:
       - uses: ./.github/actions/pnpm
       - run: pnpm build --preset=cloudflare_pages
       - name: Deploy preview build to Cloudflare Pages
-        uses: mathiasvr/command-output@v1.1.0
+        uses: mathiasvr/command-output@v2.0.0
         id: cloudflare
         with:
           run: npx wrangler pages deploy --project-name storacha-website-staging --branch "$GITHUB_REF_NAME" --commit-hash "$GITHUB_SHA" ${{ env.outputDir }}
@@ -31,7 +31,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
       - name: Find Cloudflare Pages preview URL
-        uses: mathiasvr/command-output@v1.1.0
+        uses: mathiasvr/command-output@v2.0.0
         id: cloudflare_url
         with:
           run: egrep -o 'https?://[^ ]+' <(echo "${{ steps.cloudflare.outputs.stdout }}")
@@ -66,7 +66,7 @@ jobs:
       - uses: ./.github/actions/pnpm
       - run: pnpm build --preset=cloudflare_pages
       - name: Deploy build to Cloudflare Pages
-        uses: mathiasvr/command-output@v1.1.0
+        uses: mathiasvr/command-output@v2.0.0
         id: cloudflare
         with:
           run: npx wrangler pages deploy --project-name storacha-website --branch "main" --commit-hash "$GITHUB_SHA" ${{ env.outputDir }}
@@ -74,7 +74,7 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
       - name: Find Cloudflare Pages preview URL
-        uses: mathiasvr/command-output@v1.1.0
+        uses: mathiasvr/command-output@v2.0.0
         id: cloudflare_url
         with:
           run: egrep -o 'https?://[^ ]+' <(echo "${{ steps.cloudflare.outputs.stdout }}")

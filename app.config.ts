@@ -65,6 +65,12 @@ export default defineAppConfig({
         icon: 'i-simple-icons:medium',
       },
       {
+        name: 'YouTube',
+        description: 'Watch our demos',
+        href: 'https://www.youtube.com/@StorachaNetwork',
+        icon: 'i-simple-icons:youtube',
+      },
+      {
         name: 'Farcaster',
         description: 'Join discussion',
         href: 'https://warpcast.com/storacha',

@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@iconify-json/carbon": "^1.2.1",
-    "@iconify-json/simple-icons": "^1.2.4",
+    "@iconify-json/simple-icons": "^1.2.5",
     "@nuxt/content": "^2.13.2",
     "@nuxt/devtools": "^1.5.1",
     "@nuxt/image": "^1.8.0",
@@ -43,7 +43,7 @@
     "nuxt": "^3.13.2",
     "typescript": "^5.6.2",
     "vue-tsc": "^2.1.6",
-    "wrangler": "^3.78.12"
+    "wrangler": "^3.79.0"
   },
   "pnpm": {
     "peerDependencyRules": {

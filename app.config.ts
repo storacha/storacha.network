@@ -72,9 +72,15 @@ export default defineAppConfig({
       },
       {
         name: 'Farcaster',
-        description: 'Join discussion',
+        description: 'Join the discussion',
         href: 'https://warpcast.com/storacha',
         icon: 'i-simple-icons:farcaster',
+      },
+      {
+        name: 'Bluesky',
+        description: 'Join the conversation',
+        href: 'https://bsky.app/profile/storacha.network',
+        icon: 'i-simple-icons:bluesky',
       },
       {
         name: 'Reddit',

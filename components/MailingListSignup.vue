@@ -23,12 +23,14 @@ const iframeHeight = computed(() => {
 </script>
 
 <template>
-  <Dialog>
-    <DialogTrigger as-child>
-      <Btn v-bind="{ ...mailingList, ...$attrs }" @click.prevent />
-    </DialogTrigger>
-    <DialogContent>
-      <iframe width="100%" :height="iframeHeight" :src="mailingList.href" frameborder="0" scrolling="auto" style="display: block;margin: auto;max-width: 100%;" />
-    </DialogContent>
-  </Dialog>
+  <div>
+    <Dialog>
+      <DialogTrigger as-child>
+        <Btn v-bind="{ ...mailingList, ...$attrs }" @click.prevent />
+      </DialogTrigger>
+      <DialogContent>
+        <iframe width="100%" :height="iframeHeight" :src="mailingList.href" frameborder="0" scrolling="auto" style="display: block;margin: auto;max-width: 100%;" />
+      </DialogContent>
+    </Dialog>
+  </div>
 </template>

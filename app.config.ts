@@ -11,7 +11,7 @@ export default defineAppConfig({
       { text: 'Ecosystem', href: '/ecosystem' },
       { text: 'Node Providers', href: '/node-providers' },
       { text: 'Blog', href: '/blog' },
-      { text: 'Docs', href: '//docs.storacha.network' },
+      { text: 'Docs', href: 'https://docs.storacha.network' },
     ],
     mailingList: {
       icon: 'i-carbon:email',

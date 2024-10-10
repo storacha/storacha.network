@@ -79,7 +79,7 @@ function toggleMobileMenu() {
       </button>
     </div>
     <div class="text-brand-4 bg-brand-3 p-2 text-center">
-      Join our <a className="text-brand-5" href="https://hackathon.storacha.network">Halloween Hackathon 2024!</a>
+      Join our <a class="text-brand-5" href="https://hackathon.storacha.network">Halloween Hackathon 2024!</a>
       $6666 in DEVILISH prizes up for grabs. Apply before the 13th of October! 
     </div>
   </header>

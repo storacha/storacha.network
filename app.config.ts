@@ -3,6 +3,11 @@
 // global app config
 export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
+  notice: {
+    text: 'Join our Halloween Hackathon 2024! $6666 in DEVILISH prizes up for grabs. Apply before the 13th of October!',
+    href: 'https://hackathon.storacha.network',
+    displayUntil: '2024-10-14', // use ISO date format or final day +1 in yyyy-mm-dd
+  },
   actions: {
     start: { text: 'Start Storing', href: 'https://console.storacha.network/' },
     docs: { text: 'Docs', href: 'https://docs.storacha.network' },

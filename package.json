@@ -26,19 +26,19 @@
     "@nuxtjs/fontaine": "^0.4.3",
     "@nuxtjs/plausible": "^1.0.3",
     "@nuxtjs/seo": "^2.0.0-rc.23",
-    "@unocss/nuxt": "^0.63.3",
-    "@unocss/preset-icons": "^0.63.3",
+    "@unocss/nuxt": "^0.63.4",
+    "@unocss/preset-icons": "^0.63.4",
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
     "defu": "^6.1.4",
     "fast-xml-parser": "^4.5.0",
     "radix-vue": "^1.9.7",
-    "unocss": "^0.63.3"
+    "unocss": "^0.63.4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.7.3",
     "@nuxt/eslint": "^0.5.7",
-    "@unocss/eslint-config": "^0.63.3",
+    "@unocss/eslint-config": "^0.63.4",
     "eslint": "^9.12.0",
     "nuxt": "^3.13.2",
     "typescript": "^5.6.2",

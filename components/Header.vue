@@ -24,7 +24,7 @@ const header = ref()
 const nav = reactive({
   isVisible: true,
   isSticky: true,
-  isTransparent: true,
+  isTransparent: false,
   threshold: 100,
   offset: 300,
   mobileActive: false,
@@ -37,7 +37,7 @@ watch([x, y], useThrottleFn(([x, y], [px, py]) => {
   if (y > nav.threshold)
     nav.isTransparent = false
   else if (y <= nav.offset)
-    nav.isTransparent = true
+    nav.isTransparent = false
   // set nav sticky
   if (y > nav.offset && y > py + nav.threshold)
     nav.isVisible = false
@@ -77,6 +77,10 @@ function toggleMobileMenu() {
       <button aria-label="Toggle Mobile Menu" class="mobile-nav-link md:hidden" @click="toggleMobileMenu">
         <div class="hamburger-icon relative h-8 w-8 text-brand-3" />
       </button>
+    </div>
+    <div class="text-brand-4 bg-brand-3 p-2 text-center">
+      Join our <a className="text-brand-5" href="https://hackathon.storacha.network">Halloween Hackathon 2024!</a>
+      $6666 in DEVILISH prizes up for grabs. Apply before the 13th of October! 
     </div>
   </header>
   <MobileMenu :active="nav.mobileActive" :links="mobileLinks" class="bg-brand-3/80 text-white backdrop-blur-md" v-bind="$attrs" @navigate="nav.mobileActive = false" />

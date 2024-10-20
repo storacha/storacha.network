@@ -65,6 +65,7 @@ function toggleMobileMenu() {
     ]"
     v-bind="$attrs"
   >
+    <Notice v-bind="useAppConfig().notice" />
     <div class="grid-margins h-20 flex items-center justify-between transition-all">
       <AppLink class="ident transition" href="/" title="">
         <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" :invert="nav.mobileActive" />

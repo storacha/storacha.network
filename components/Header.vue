@@ -80,7 +80,7 @@ function toggleMobileMenu() {
     </div>
     <div class="text-brand-4 bg-brand-3 p-2 text-center">
       Join our <a class="text-brand-5" href="https://hackathon.storacha.network">Halloween Hackathon 2024!</a>
-      $6666 in DEVILISH prizes up for grabs. Apply before the 18th of October! 
+      $6666 in DEVILISH prizes up for grabs. Apply before the 13th of October! 
     </div>
   </header>
   <MobileMenu :active="nav.mobileActive" :links="mobileLinks" class="bg-brand-3/80 text-white backdrop-blur-md" v-bind="$attrs" @navigate="nav.mobileActive = false" />

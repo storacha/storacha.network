@@ -91,6 +91,7 @@ export default defineNuxtConfig({
     public: {
       // feed URL used for /api/blog
       blogFeedUrl: 'https://medium.com/feed/@storacha',
+      consoleUrl: import.meta.env.NUXT_PUBLIC_CONSOLE_URL || 'https://console.storacha.network',
     },
   },
 

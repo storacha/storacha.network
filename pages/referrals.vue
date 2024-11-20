@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FreeStorage from '~/components/FreeStorage.vue';
 import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
 </script>
 
@@ -7,10 +8,15 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
     <Section class="bg-brand-4 mt-16">
       <HeroBase>
         <template #right>
-          <SectionHeader class="min-h-150 color-brand-3" eyebrow="Earn Storage Credits and Racha Points"
+          <SectionHeader class="color-brand-3" eyebrow="Earn Storage Credits and Racha Points"
             title="Welcome to Storacha's Referral Program"
-            description="Ready to help others experience blazing-fast, decentralized storage? Here's your chance to spread the Storacha love while earning free storage for yourself!"
-            :actions="[{asComponent: ReferralCodeCreator}]" />
+            description="Ready to help others experience blazing-fast, decentralized storage? Here's your chance to spread the Storacha love while earning free storage for yourself!" />
+            <div class="color-brand-3 prose p1">
+            <p>
+              <b>Enter your email</b> and we will generate your unique referral code!
+            </p>
+            <ReferralCodeCreator />
+          </div>
         </template>
       </HeroBase>
     </Section>
@@ -46,6 +52,11 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
           </div>
         </SplitCell>
       </Split>
+    </Section>
+    <FreeStorage />
+    <Section class="bg-brand-6 color-brand-3" padding>
+      <ReferralProcess />
+      <ReferralCodeCreator class="pt-8"/>
     </Section>
   </TransitionProvider>
 </template>

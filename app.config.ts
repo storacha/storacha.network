@@ -17,7 +17,8 @@ export default defineAppConfig({
       { text: 'Node Providers', href: '/node-providers' },
       { text: 'Blog', href: '/blog' },
       { text: 'Docs', href: 'https://docs.storacha.network' },
-      { text: 'Referrals', href: '/referrals' },
+      // TODO: uncomment when we're ready for this to go live
+      // { text: 'Referrals', href: '/referrals' },
     ],
     mailingList: {
       icon: 'i-carbon:email',

@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import ReferredButton from '~/components/ReferredButton.vue';
+const route = useRoute()
+const config = useRuntimeConfig()
+const refcode = route.query.refcode
+const consoleSignupUrl = `${config.public.consoleUrl}?refcode=${refcode}`
 </script>
 
 <template>
@@ -7,10 +10,16 @@ import ReferredButton from '~/components/ReferredButton.vue';
     <Section class="bg-brand-4 mt-16">
       <HeroBase>
         <template #right>
-          <SectionHeader class="min-h-150 color-brand-3" eyebrow="A Master Racha Invited You"
+          <SectionHeader class="color-brand-3" eyebrow="A Master Racha Invited You"
             title="Receive up to Two Months of Free Storage"
-            description="Sign up now for a Lite plan and receive two months subscription free. Sign up to a Business plan and receive one month subscription for free. Continue using Storacha so both of you earn even more!"
-            :actions="[{asComponent: ReferredButton}]" />
+            description="Sign up now for a Lite plan and receive two months subscription free. Sign up to a Business plan and receive one month subscription for free. Continue using Storacha so both of you earn even more!" />
+          <div class="color-brand-3 prose">
+            <p>
+              For the full rundown on how it all works, check out our <b><a href="TODOtoslink">Terms &
+                  Conditions</a></b>.
+            </p>
+          </div>
+          <a :href="consoleSignupUrl" class="btn">Claim Your Discount</a>
         </template>
       </HeroBase>
     </Section>
@@ -30,8 +39,10 @@ import ReferredButton from '~/components/ReferredButton.vue';
                   data flows.
                 </p>
                 <p>
-                  It's the ultimate scaling solution for IPFS, adding the perfect kick to storage and retrieval, built on
-                  top of Filecoin. Plus, it guarantees verifiable, user-owned data. Whether you're scaling decentralised applications
+                  It's the ultimate scaling solution for IPFS, adding the perfect kick to storage and retrieval, built
+                  on
+                  top of Filecoin. Plus, it guarantees verifiable, user-owned data. Whether you're scaling decentralised
+                  applications
                   or infrastructure, Storacha delivers unmatched performance and reliability - season to taste.
                 </p>
               </div>
@@ -39,6 +50,9 @@ import ReferredButton from '~/components/ReferredButton.vue';
           </div>
         </SplitCell>
       </Split>
+    </Section>
+    <Section class="bg-brand-6 color-brand-3" full-width>
+      <ReferralPricing />
     </Section>
   </TransitionProvider>
 </template>

@@ -3,14 +3,14 @@ export interface ReferralCodeCreatorProps {
   referralsUrl: string
 }
 const route = useRoute()
+const config = useRuntimeConfig()
 const refcode = route.query.refcode
-const consoleSignupUrl =  `${process.env.VUE_APP_CONSOLE_URL}?refcode=${refcode}`
-
+const consoleSignupUrl = `${config.public.consoleUrl}?refcode=${refcode}`
 </script>
 
 <template>
   <div>
-    <div class="prose p1 color-brand-3">
+    <div class="color-brand-3 prose p1">
       <p>
         For the full rundown on how it all works, check out our <b><a href="TODOtoslink">Terms & Conditions</a></b>.
       </p>

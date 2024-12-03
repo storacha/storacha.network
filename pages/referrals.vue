@@ -44,7 +44,7 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
                   </li>
                 </ul>
                 <p>
-                  For the full rundown on how it all works, check out our <b><a href="#TODOneedurl">Terms &
+                  For the full rundown on how it all works, check out our <b><a href="https://docs.storacha.network/referral-terms/">Terms &
                       Conditions</a>.</b>
                 </p>
               </div>

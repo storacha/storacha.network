@@ -15,7 +15,7 @@ const consoleSignupUrl = `${config.public.consoleUrl}?refcode=${refcode}`
             description="Sign up now for a Lite plan and receive two months subscription free. Sign up to a Business plan and receive one month subscription for free. Continue using Storacha so both of you earn even more!" />
           <div class="color-brand-3 prose">
             <p>
-              For the full rundown on how it all works, check out our <b><a href="TODOtoslink">Terms &
+              For the full rundown on how it all works, check out our <b><a href="https://docs.storacha.network/referral-terms/">Terms &
                   Conditions</a></b>.
             </p>
           </div>

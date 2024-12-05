@@ -18,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+    environment:
+      name: ${{ (github.ref_name == 'main') && 'staging' || format('preview-{0}', github.ref_name) }}
+      url: ${{ (github.ref_name == 'main') && 'https://staging.storacha.network/' || steps.cloudflare_url.outputs.stdout }}      
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm
@@ -26,10 +29,11 @@ jobs:
         uses: mathiasvr/command-output@v2.0.0
         id: cloudflare
         with:
-          run: npx wrangler pages deploy --project-name storacha-website-staging --branch "$GITHUB_REF_NAME" --commit-hash "$GITHUB_SHA" ${{ env.outputDir }}
+          run: npx wrangler pages deploy --project-name "$CLOUDFLARE_PAGES_PROJECT_NAME" --branch "$GITHUB_REF_NAME" --commit-hash "$GITHUB_SHA" ${{ env.outputDir }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_PAGES_PROJECT_NAME: ${{ (github.ref_name == 'main') && 'storacha-website-staging' || 'storacha-website-preview' }}
       - name: Find Cloudflare Pages preview URL
         uses: mathiasvr/command-output@v2.0.0
         id: cloudflare_url
@@ -54,9 +58,26 @@ jobs:
           - ⛅️ ${{ steps.cloudflare_url.outputs.stdout }}
           " >> $GITHUB_STEP_SUMMARY
 
+  changelog:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    name: Changelog
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      releases_created: ${{ steps.tag-release.outputs.releases_created }}
+    steps:
+      - uses: GoogleCloudPlatform/release-please-action@v3
+        id: tag-release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          release-type: node
+          changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"chore","section":"Other Changes","hidden":false}]'
+
   release:
     name: Release
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.changelog.outputs.releases_created) || inputs.force_release
     runs-on: ubuntu-latest
     environment:
       name: production

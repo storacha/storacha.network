@@ -40,7 +40,7 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
                 </p>
                 <ul>
                   <li>You can refer up to <b>11 friends</b>.</li>
-                  <li>You can earn up to <b>8 months free Lite storage</b> or <b>3 months free Business storage</b>.
+                  <li>You can earn up to <b>8 months free Lite storage</b> and <b>3 months free Business storage</b>.
                   </li>
                 </ul>
                 <p>

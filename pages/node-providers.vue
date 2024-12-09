@@ -7,7 +7,7 @@ const nodeWaitlist = useActions('nodeWaitlist')
 const nodes = [{
   id: 'storage',
   title: 'Storage Node',
-  description: 'The first nodes to roll-out: Spice up Storacha storage by running our first hotshot nodes! Keep keep Storacha’s data sizzling and accessible, and in exchange you’ll rack up rewards!',
+  description: 'The first nodes to roll-out: Spice up Storacha storage by running our first hotshot nodes! Keep Storacha’s data sizzling and accessible, and in exchange you’ll rack up rewards!',
 }, {
   id: 'retrieval',
   title: 'Retrieval Node',

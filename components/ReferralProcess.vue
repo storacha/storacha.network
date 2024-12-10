@@ -3,17 +3,17 @@ const Steps = [
   {
     icon: '🔥',
     title: 'Share Your Referral Link',
-    description: `Enter your email and we'll generate your unique referral code. Once your referees have successfully signed up, they can choose between <b>2 months</b> of <b>Lite</b> or <b>1 month</b> of <b>Business</b> for free!`,
+    description: `Enter your email and we'll generate your unique referral code. Once your referees have successfully signed up, they can choose between <b>2 months</b> of <b>Lite/Medium</b> or <b>1 month</b> of <b>Business/Extra Spicy</b> for free!`,
   },
   {
     icon: '🔥🔥',
     title: 'They Become a Full Racha',
-    description: `If your friend starts paying for <b>Lite</b> for <b>2 more months</b> or <b>Business</b> for <b>1 more month</b> beyond their free trial, you'll earn your reward.`,
+    description: `If your friend starts paying for <b>Lite/Medium</b> for <b>2 more months</b> or <b>Business/Extra Spicy</b> for <b>1 more month</b> beyond their free trial, you'll be eligble for your Racha Points and Storage Credits.`,
   },
   {
     icon: '🔥🔥🔥',
     title: 'Your Receive Your Reward',
-    description: `For each referral you <b>earn Storage Credits</b> (20 for Lite, 100 for Business) and <b>Racha Points</b> (20 for Lite, 100 for Business), to contribute towards your storage subscription.`,
+    description: `For each referral, you can earn <b>Storage Credits</b> and <b>Racha Points</b>. You need to have a Storacha account to claim your rewards. You can apply your Storage Credits to your Lite/Medium or Business/Extra Spicy subscriptions.`,
   }
 ]
 </script>

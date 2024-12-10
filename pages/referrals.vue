@@ -10,7 +10,7 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
         <template #right>
           <SectionHeader class="color-brand-3" eyebrow="Earn Racha Points & Storage Credits"
             title="Refer your friends to Storacha!"
-            description="Share Storacha’s blazing-fast, decentralized storage and get rewarded with Racha Points and free subscription upgrades! It’s simple: the more friends you refer, the more perks you unlock!" />
+            description="Share Storacha’s blazing-fast, decentralized storage and get rewarded with Racha Points and Storage Credits! It’s simple: the more friends you refer, the more perks you unlock!" />
             <div class="color-brand-3 prose p1">
             <p>
               <b>Enter your email</b> and we will generate your unique referral code!
@@ -27,14 +27,14 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
           <div class="flex items-center color-brand-3">
             <div>
               <Heading type="h2" class="font-medium">
-                Earn Referral Rewards!
+                Earn Referral Rewards
               </Heading>
               <div class="prose p1">
                 <p>
-                  You can earn <b>Racha Points</b>, part of our soon to be announced Loyaly Program, and <b>Storage Credits</b> from every successful referral to Storacha!
+                  You can earn <b>Racha Points</b>, part of our soon to be announced Loyalty Program, and <b>Storage Credits</b> from every successful referral to Storacha!
                 </p>
                 <p>
-                  What you'll get:
+                  What you can get:
                 </p>
                 <ul>
                   <li><b>20 Racha Points</b> and <b>20 Storage Credits</b> for each successful Lite/Medium referral.</li>

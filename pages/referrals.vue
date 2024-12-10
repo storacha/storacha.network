@@ -8,9 +8,9 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
     <Section class="bg-brand-4 mt-16">
       <HeroBase>
         <template #right>
-          <SectionHeader class="color-brand-3" eyebrow="Earn Storage Credits and Racha Points"
-            title="Welcome to Storacha's Referral Program"
-            description="Ready to help others experience blazing-fast, decentralized storage? Here's your chance to spread the Storacha love while earning free storage for yourself!" />
+          <SectionHeader class="color-brand-3" eyebrow="Earn Racha Points & Storage Credits"
+            title="Refer your friends to Storacha!"
+            description="Share Storacha’s blazing-fast, decentralized storage and get rewarded with Racha Points and Storage Credits! It’s simple: the more friends you refer, the more perks you unlock!" />
             <div class="color-brand-3 prose p1">
             <p>
               <b>Enter your email</b> and we will generate your unique referral code!
@@ -27,24 +27,21 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
           <div class="flex items-center color-brand-3">
             <div>
               <Heading type="h2" class="font-medium">
-                Who Can Join?
+                Earn Referral Rewards
               </Heading>
               <div class="prose p1">
                 <p>
-                  Anyone can refer friends to Storacha! you don't have to be a user to share Storacha's spicy storage.
-                  To
-                  redeem your rewards, though, you'll need to sign up.
+                  You can earn <b>Racha Points</b>, part of our soon to be announced Loyalty Program, and <b>Storage Credits</b> from every successful referral to Storacha!
                 </p>
                 <p>
-                  Here are some quick details:
+                  What you can get:
                 </p>
                 <ul>
-                  <li>You can refer up to <b>11 friends</b>.</li>
-                  <li>You can earn up to <b>8 months free Lite storage</b> or <b>3 months free Business storage</b>.
-                  </li>
+                  <li><b>20 Racha Points</b> and <b>20 Storage Credits</b> for each successful Lite/Medium referral.</li>
+                  <li><b>100 Racha Points</b> and <b>100 Storage Credits</b> for each successful Business/Extra Spicy referral.</li>
                 </ul>
                 <p>
-                  For the full rundown on how it all works, check out our <b><a href="https://docs.storacha.network/referral-terms/">Terms &
+                  In total, you can earn up to <b>460 Racha Points and Storage Credits</b>. For the full rundown on how it all works, check out our <b><a href="https://docs.storacha.network/referral-terms/">Terms &
                       Conditions</a>.</b>
                 </p>
               </div>

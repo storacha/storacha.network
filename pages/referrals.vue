@@ -41,8 +41,8 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
                   <li><b>100 Racha Points</b> and <b>100 Storage Credits</b> for each successful Business/Extra Spicy referral.</li>
                 </ul>
                 <p>
-                  In total, you can earn up to <b>460 Racha Points and Storage Credits</b>. For the full rundown on how it all works, check out our <b><a href="https://docs.storacha.network/referral-terms/">Terms &
-                      Conditions</a>.</b>
+                  In total, you can earn up to <b>460 Racha Points and Storage Credits</b>. For the full rundown on how it all works, check
+                  out our <b><a href="https://docs.storacha.network/referral-terms/">Terms & Conditions</a>.</b>
                 </p>
               </div>
             </div>

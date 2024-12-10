@@ -81,6 +81,8 @@ jobs:
     environment:
       name: production
       url: https://storacha.network
+    needs:
+      - changelog
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm

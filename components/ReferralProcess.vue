@@ -8,12 +8,12 @@ const Steps = [
   {
     icon: '🔥🔥',
     title: 'They Become a Full Racha',
-    description: `If your friend starts paying for <b>Lite</b> for <b>2 more months</b> or <b>Business</b> for <b>1 more month</b> beyond their free trial, you'll earn your reward.`,
+    description: `If your friend starts paying for <b>Lite</b> for <b>2 more months</b> or <b>Business</b> for <b>1 more month</b> beyond their free trial, you'll be eligble for your Racha Points and Storage Credits.`,
   },
   {
     icon: '🔥🔥🔥',
     title: 'Your Receive Your Reward',
-    description: `For each referral you <b>earn Storage Credits</b> (20 for Lite, 100 for Business) and <b>Racha Points</b> (20 for Lite, 100 for Business), to contribute towards your storage subscription.`,
+    description: `For each referral you <b>earn Storage Credits</b> and <b>Racha Points</b>. You need to have a Storacha account to claim your rewards and can apply your Storage Credits to your Lite/Medium or Business/Extra Spicy subscriptions.`,
   }
 ]
 </script>

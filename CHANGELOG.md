@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.2](https://github.com/storacha/storacha.network/compare/v0.14.1...v0.14.2) (2024-12-10)
+
+
+### Bug Fixes
+
+* a couple more build fixes ([#96](https://github.com/storacha/storacha.network/issues/96)) ([0c894c5](https://github.com/storacha/storacha.network/commit/0c894c5fd848040f5f80a6b5ee9abd74c58704bd))
+
 ## [0.14.1](https://github.com/storacha/storacha.network/compare/v0.14.0...v0.14.1) (2024-12-10)
 
 

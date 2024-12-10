@@ -3,8 +3,8 @@
 
 <template>
   <Section class="bg-brand-6 color-brand-3" padding>
-    <SectionHeader eyebrow="How To Refer" title="Free Storage - For You and Your Rachas"
-      description="So, you're all about Storacha and want to bring more Rachas into the coop? Perfect!" />
+    <SectionHeader eyebrow="How To Refer" title="Start Referring to Earn Rewards"
+      description="Anyone can participate in the referral program - from seasoned Rachas to those who have yet to join the coop!" />
     <Split>
       <SplitCell>
         <p class="max-w-50ch text-pretty prose p1 py-4">

@@ -31,19 +31,17 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
               </Heading>
               <div class="prose p1">
                 <p>
-                  You can earn <b>Racha Points</b> and up to <b>460 Storage Credits</b> from successful referrals to Storacha.
+                  You can earn <b>Racha Points</b> and up to <b>Storage Credits</b> from every successful referral to Storacha.
                 </p>
                 <p>
-                  Here are some quick details:
+                  What you can earn:
                 </p>
                 <ul>
-                  <li><b>Racha Points</b> are part of our soon to be announced Loyalty Program.</li>
-                  <li>For every <b>successful Lite/Medium referral</b>, you'll earn 20 Storage Credits. Limit of 8 successful referrals for this tier.</li>
-                  <li>For every <b>successful Business/Extra Spicy referral</b>, you'll earn 100 Storage Credits. Limit of 3 successful referrals for this tier.
-                  </li>
+                  <li><b>20 Racha Points</b> and <b>20 Storage Credits</b> for each successful Lite/Medium referral, up to 8. That's 160 Storage Credits!</li>
+                  <li><b>100 Racha Points</b> and <b>100 Storage Credits</b> for each successful Business/Extra Spicy referral, up to 3. That's 300 Storage Credits!</li>
                 </ul>
                 <p>
-                  For the full rundown on how it all works, check out our <b><a href="https://docs.storacha.network/referral-terms/">Terms &
+                  In total, you can earn up to <b>406 Storage Credits</b>. You also don't need to be a Storacha user to start referring, you just need to join to claim your rewards. For the full rundown on how it all works, check out our <b><a href="https://docs.storacha.network/referral-terms/">Terms &
                       Conditions</a>.</b>
                 </p>
               </div>

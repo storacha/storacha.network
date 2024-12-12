@@ -3,7 +3,7 @@
 
 <template>
   <Section class="bg-brand-6 color-brand-3" padding>
-    <SectionHeader eyebrow="How To Refer" title="Start Referring Now"
+    <SectionHeader eyebrow="How To Refer" title="Start Referring Now!"
       description="Anyone can participate in the referral program - from seasoned Rachas to those who have yet to join the coop!" />
     <Split>
       <SplitCell>

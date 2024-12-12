@@ -12,7 +12,7 @@ const consoleSignupUrl = `${config.public.consoleUrl}?refcode=${refcode}`
         <template #right>
           <SectionHeader class="color-brand-3" eyebrow="A Master Racha Invited You"
             title="Receive up to Two Months of Free Storage"
-            description="Sign up now for a Lite/Medium plan and receive two months subscription free. Sign up to a Business/Extra Spicy plan and receive one month subscription for free. Continue using Storacha so both of you earn even more!" />
+            description="Sign up now for a Lite/Medium plan and receive two months subscription free. Sign up to a Business/Extra Spicy plan and receive one month subscription for free. Continue using Storacha to earn more rewards!" />
           <div class="color-brand-3 prose">
             <p>
               For the full rundown on how it all works, check out our <b><a href="https://docs.storacha.network/referral-terms/">Terms &

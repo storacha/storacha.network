@@ -6,7 +6,7 @@ export default defineAppConfig({
   notice: {
     text: 'EARN RACHA POINTS AND STORAGE CREDITS BY REFERRING FRIENDS <u>LEARN MORE</u>',
     href: 'https://storacha.network/referrals',
-    displayUntil: '2025-03-01', // use ISO date format or final day +1 in yyyy-mm-dd
+    displayUntil: '2025-12-31', // use ISO date format or final day +1 in yyyy-mm-dd
   },
   actions: {
     start: { text: 'Start Storing', href: 'https://console.storacha.network/' },

@@ -14,9 +14,8 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-if="isVisible" class="bg-brand-3 p-3 text-center text-sm text-brand-4">
-    <AppLink :href="href" class="block w-full">
-      {{ text }} <AppIcon i="i-carbon:arrow-right" class="inline-block" />
-    </AppLink>
+  <div v-if="isVisible" class="bg-brand-5 p-3 text-center text-sm text-brand-1"
+  :class="{ 'bg-brand-3': true}">
+    <AppLink :href="href" class="block w-full" v-html="text" />
   </div>
 </template>

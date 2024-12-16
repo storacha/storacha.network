@@ -4,9 +4,9 @@
 export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
   notice: {
-    text: 'Join our Halloween Hackathon 2024! $6666 in DEVILISH prizes up for grabs. Apply before the 13th of October!',
-    href: 'https://hackathon.storacha.network',
-    displayUntil: '2024-10-14', // use ISO date format or final day +1 in yyyy-mm-dd
+    text: 'EARN RACHA POINTS AND STORAGE CREDITS BY REFERRING FRIENDS <u>LEARN MORE</u>',
+    href: 'https://storacha.network/referrals',
+    displayUntil: '2025-03-01', // use ISO date format or final day +1 in yyyy-mm-dd
   },
   actions: {
     start: { text: 'Start Storing', href: 'https://console.storacha.network/' },
@@ -17,8 +17,7 @@ export default defineAppConfig({
       { text: 'Node Providers', href: '/node-providers' },
       { text: 'Blog', href: '/blog' },
       { text: 'Docs', href: 'https://docs.storacha.network' },
-      // TODO: uncomment when we're ready for this to go live
-      // { text: 'Referrals', href: '/referrals' },
+       { text: 'Referrals', href: '/referrals' },
     ],
     mailingList: {
       icon: 'i-carbon:email',

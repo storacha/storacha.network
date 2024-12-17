@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.15.2](https://github.com/storacha/storacha.network/compare/v0.15.1...v0.15.2) (2024-12-17)
+
+
+### Other Changes
+
+* buffer added ([#106](https://github.com/storacha/storacha.network/issues/106)) ([1e6dee2](https://github.com/storacha/storacha.network/commit/1e6dee28a7096ffdf806a465cc63023792eb0cdd))
+* copy update ([#107](https://github.com/storacha/storacha.network/issues/107)) ([78b182f](https://github.com/storacha/storacha.network/commit/78b182fba74c6ddeefa7d34a78b6afc967783e68))
+
 ## [0.15.1](https://github.com/storacha/storacha.network/compare/v0.15.0...v0.15.1) (2024-12-17)
 
 

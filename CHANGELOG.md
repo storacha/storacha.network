@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.15.0](https://github.com/storacha/storacha.network/compare/v0.14.3...v0.15.0) (2024-12-16)
+
+
+### Features
+
+* add referrals banner ([#102](https://github.com/storacha/storacha.network/issues/102)) ([adbbbe0](https://github.com/storacha/storacha.network/commit/adbbbe0785397668408677372cca30969fa640f1))
+
+## [0.14.3](https://github.com/storacha/storacha.network/compare/v0.14.2...v0.14.3) (2024-12-12)
+
+
+### Other Changes
+
+* copy update ([#98](https://github.com/storacha/storacha.network/issues/98)) ([3ec0b7b](https://github.com/storacha/storacha.network/commit/3ec0b7b076bba10f3ee2d3ee991be56ff5a77270))
+* update copy ([#101](https://github.com/storacha/storacha.network/issues/101)) ([1784600](https://github.com/storacha/storacha.network/commit/1784600fdcd045ec80014c46ddbb003377d7548d))
+* update copy ([#99](https://github.com/storacha/storacha.network/issues/99)) ([0437377](https://github.com/storacha/storacha.network/commit/04373777700bfffc027869d9fa602f46b83867c3))
+
 ## [0.14.2](https://github.com/storacha/storacha.network/compare/v0.14.1...v0.14.2) (2024-12-10)
 
 

@@ -8,7 +8,7 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
     <Section class="bg-brand-4 mt-16">
       <HeroBase>
         <template #right>
-          <SectionHeader class="color-brand-3" eyebrow="Earn Rewards"
+          <SectionHeader class="color-brand-3 mt-8" eyebrow="Earn Rewards"
             title="Refer your friends to Storacha!"
             description="Share Storacha’s blazing-fast, decentralized storage and get rewarded with Racha Points, part of our soon to be announced Loyalty Program, and Storage Credits! It’s simple: the more friends you refer, the more perks you unlock!" />
             <div class="color-brand-3 prose p1">

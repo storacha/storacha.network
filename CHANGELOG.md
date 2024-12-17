@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.0](https://github.com/storacha/storacha.network/compare/v0.14.3...v0.15.0) (2024-12-16)
+
+
+### Features
+
+* add referrals banner ([#102](https://github.com/storacha/storacha.network/issues/102)) ([adbbbe0](https://github.com/storacha/storacha.network/commit/adbbbe0785397668408677372cca30969fa640f1))
+
 ## [0.14.3](https://github.com/storacha/storacha.network/compare/v0.14.2...v0.14.3) (2024-12-12)
 
 

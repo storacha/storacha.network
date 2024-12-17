@@ -12,7 +12,7 @@ const Steps = [
   },
   {
     icon: '🔥🔥🔥',
-    title: 'Your Receive Your Reward',
+    title: 'You Receive Your Reward',
     description: `For each referral, you can earn <b>Storage Credits</b> and <b>Racha Points</b>. You need to have a Storacha account to claim your rewards. You can apply your Storage Credits to your Lite/Medium or Business/Extra Spicy subscriptions.`,
   }
 ]

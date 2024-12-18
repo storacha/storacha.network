@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.0](https://github.com/storacha/storacha.network/compare/v0.15.2...v0.16.0) (2024-12-18)
+
+
+### Features
+
+* add hero image for referrals page ([#109](https://github.com/storacha/storacha.network/issues/109)) ([a43cb42](https://github.com/storacha/storacha.network/commit/a43cb4295f3d320740ccf232860012bd7d4494b6))
+
 ## [0.15.2](https://github.com/storacha/storacha.network/compare/v0.15.1...v0.15.2) (2024-12-17)
 
 

@@ -9,7 +9,7 @@ const referralsUrl = `${config.public.consoleUrl}/referrals`
 
 <template>
   <form :action="referralsUrl" method="GET" class="flex flex-row space-x-2">
-    <input type="email" name="email" class="w-96 rounded-full px-4" placeholder="Email Address">
+    <input type="email" name="email" class="w-40 md:w-96 rounded-full px-4" placeholder="Email Address">
     <input type="submit" value="Generate Code" class="btn">
   </form>
 </template>

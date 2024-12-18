@@ -5,8 +5,8 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
 
 <template>
   <TransitionProvider>
-    <Section class="bg-brand-4 mt-16 referrals-bg">
-      <HeroBase class="min-h-150">
+    <Section class="bg-brand-4 referrals-bg">
+      <HeroBase class="sm:min-h-200">
         <template #left>
           <SectionHeader class="color-brand-3" eyebrow="Earn Racha Points & Storage Credits"
             title="Refer your friends to Storacha!"
@@ -58,7 +58,8 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
 <style lang="postcss" scoped>
 @screen xl {
   .referrals-bg {
-    background: url(/img/referrals/hero.png) no-repeat right; background-size: contain;
+    background: url(/img/referrals/hero.png) no-repeat right;
+    background-size: contain;
   }
 }
 </style>

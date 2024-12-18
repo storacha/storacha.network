@@ -5,13 +5,13 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
 
 <template>
   <TransitionProvider>
-    <Section class="bg-brand-4 mt-16">
-      <HeroBase>
-        <template #right>
-          <SectionHeader class="color-brand-3 mt-8" eyebrow="Earn Racha Points & Storage Credits"
+    <Section class="bg-brand-4 mt-16 referrals-bg">
+      <HeroBase class="min-h-150">
+        <template #left>
+          <SectionHeader class="color-brand-3" eyebrow="Earn Racha Points & Storage Credits"
             title="Refer your friends to Storacha!"
             description="Share Storacha’s blazing-fast, decentralized storage and get rewarded with Racha Points, part of our soon to be announced Loyalty Program, and Storage Credits! It’s simple: the more friends you refer, the more perks you unlock!" />
-            <div class="color-brand-3 prose p1">
+          <div class="color-brand-3 prose p1">
             <p>
               <b>Enter your email</b> and we will generate your unique referral code!
             </p>
@@ -54,3 +54,11 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue';
     </Section>
   </TransitionProvider>
 </template>
+
+<style lang="postcss" scoped>
+@screen xl {
+  .referrals-bg {
+    background: url(/img/referrals/hero.png) no-repeat right; background-size: contain;
+  }
+}
+</style>

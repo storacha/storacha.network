@@ -5,18 +5,18 @@ const medium = useSocialNetwork('medium')
 
 <template>
   <TransitionProvider>
-    <Section class="bg-brand-4">
-      <Hero
-        class="min-h-150"
-        eyebrow="Blazing Hot News"
-        title="Storacha Blog"
-        description="The latest and greatest from the Storacha team."
-        :actions="[
-          { text: 'Follow on Medium', href: medium?.href },
-        ]"
-      />
-    </Section>
     <Section class="bg-white" padding>
+      <div class="py-4 flex md:flex-row flex-col mt-20">
+        <div class="flex-none mb-4 md:mb-0">
+          <Heading type="h4" class="uppercase color-brand-3">
+            Blazing Hot News
+          </Heading>
+          <p class="max-w-50ch text-pretty prose p1 color-brand-3">The latest and greatest from the Storacha team.</p>
+        </div>
+        <div class="flex-auto md:text-right">
+          <Btn text="Follow on Medium" :href="medium?.href" />
+        </div>
+      </div>
       <div class="blog-cell grid gap-4 lg:cols-3 md:cols-2">
         <BlogCard
           v-for="item in blog?.items"

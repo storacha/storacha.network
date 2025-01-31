@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.1](https://github.com/storacha/storacha.network/compare/v0.16.0...v0.16.1) (2025-01-31)
+
+
+### Bug Fixes
+
+* reduce blog header height ([#114](https://github.com/storacha/storacha.network/issues/114)) ([c72d455](https://github.com/storacha/storacha.network/commit/c72d455195b609c71996696a5d721214fa7e7e64))
+
 ## [0.16.0](https://github.com/storacha/storacha.network/compare/v0.15.2...v0.16.0) (2024-12-18)
 
 

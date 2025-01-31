@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.4](https://github.com/storacha/storacha.network/compare/v0.16.3...v0.16.4) (2025-01-31)
+
+
+### Bug Fixes
+
+* remove transition on blog page ([#121](https://github.com/storacha/storacha.network/issues/121)) ([20406eb](https://github.com/storacha/storacha.network/commit/20406ebb280e26c70952254146c772a5b56321a0))
+
 ## [0.16.3](https://github.com/storacha/storacha.network/compare/v0.16.2...v0.16.3) (2025-01-31)
 
 

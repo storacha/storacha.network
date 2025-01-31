@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.3](https://github.com/storacha/storacha.network/compare/v0.16.2...v0.16.3) (2025-01-31)
+
+
+### Bug Fixes
+
+* make break words work ([#119](https://github.com/storacha/storacha.network/issues/119)) ([79fceb3](https://github.com/storacha/storacha.network/commit/79fceb3e0840c62a5ad0a44880f2a8c8e3ac30a0))
+
 ## [0.16.2](https://github.com/storacha/storacha.network/compare/v0.16.1...v0.16.2) (2025-01-31)
 
 

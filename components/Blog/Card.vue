@@ -29,7 +29,7 @@ defineProps<{
           <time class="h5 text-sm" :datetime="item.pubDate">
             {{ useAppDateFormat(item.pubDate) }}
           </time>
-          <p v-if="showSnippet" class="text-base p1">
+          <p v-if="showSnippet" class="text-base p1 break-words">
             {{ item.snippet }}
           </p>
         </div>

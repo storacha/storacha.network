@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.16.2](https://github.com/storacha/storacha.network/compare/v0.16.1...v0.16.2) (2025-01-31)
+
+
+### Bug Fixes
+
+* break-words on blog snippet ([#117](https://github.com/storacha/storacha.network/issues/117)) ([401f62b](https://github.com/storacha/storacha.network/commit/401f62ba40828fcfe441980a992338d2dcecd949))
+
 ## [0.16.1](https://github.com/storacha/storacha.network/compare/v0.16.0...v0.16.1) (2025-01-31)
 
 

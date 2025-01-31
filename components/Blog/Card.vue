@@ -21,7 +21,7 @@ defineProps<{
       </AppLink>
     </template>
     <article>
-      <AppLink :href="item.link">
+      <AppLink :href="item.link" style="display:block">
         <div class="flex flex-col gap-2">
           <Heading type="h5" class="font-medium">
             {{ item.title }}

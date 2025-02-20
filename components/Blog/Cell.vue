@@ -1,10 +1,6 @@
 <script lang="ts" setup>
-const { data: blog, error } = await useLazyFetch('/api/blog')
-if (error.value) {
-  console.error(error.value)
-}
-// limit to 2 blog items
-const items = error.value ? [] : computed(() => blog.value?.items.slice(0, 2))
+const { data: blog } = await useLazyFetch('/api/blog', { server: false })
+const items = computed(() => blog.value?.items.slice(0, 2))
 </script>
 
 <template>

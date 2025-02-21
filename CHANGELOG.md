@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.16.5](https://github.com/storacha/storacha.network/compare/v0.16.4...v0.16.5) (2025-02-20)
+
+
+### Bug Fixes
+
+* better error handling when pulling blog posts ([#123](https://github.com/storacha/storacha.network/issues/123)) ([45129e8](https://github.com/storacha/storacha.network/commit/45129e8af1cb08450e4357ef27cef70104161000))
+* don't try to load blog post data on the server ([#125](https://github.com/storacha/storacha.network/issues/125)) ([bbf308a](https://github.com/storacha/storacha.network/commit/bbf308af2460e5dbf90fb5f33e128366d4d3a5b3))
+
 ## [0.16.4](https://github.com/storacha/storacha.network/compare/v0.16.3...v0.16.4) (2025-01-31)
 
 

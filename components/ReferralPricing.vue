@@ -17,7 +17,7 @@ const start = useActions('start')
       />
       <div class="grid grid-cols-1 mb-50 mt-12 gap-4 sm:grid-cols-3">
         <PricingCard
-          tier="Mild"
+          tier="Starter"
           price="0"
           unit="mo"
           icon="🌶"
@@ -27,7 +27,7 @@ const start = useActions('start')
           ]"
         />
         <PricingCard
-          tier="Medium"
+          tier="Lite"
           price="10"
           unit="mo"
           icon="🌶🌶"
@@ -37,7 +37,7 @@ const start = useActions('start')
           ]"
         />
         <PricingCard
-          tier="Extra Spicy"
+          tier="Business"
           price="100"
           unit="mo"
           icon="🌶🌶🌶"

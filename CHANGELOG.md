@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.0](https://github.com/storacha/storacha.network/compare/v0.16.5...v0.17.0) (2025-03-25)
+
+
+### Features
+
+* cache blog items client side ([#128](https://github.com/storacha/storacha.network/issues/128)) ([15af12a](https://github.com/storacha/storacha.network/commit/15af12a24a04c0f2b74bacb911d15bf7196ad8b7))
+
 ## [0.16.5](https://github.com/storacha/storacha.network/compare/v0.16.4...v0.16.5) (2025-02-20)
 
 

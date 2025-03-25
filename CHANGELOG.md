@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.2](https://github.com/storacha/storacha.network/compare/v0.17.1...v0.17.2) (2025-03-25)
+
+
+### Bug Fixes
+
+* getCachedData return value ([#132](https://github.com/storacha/storacha.network/issues/132)) ([410d04e](https://github.com/storacha/storacha.network/commit/410d04e2815e2a2f68caef061666d92b1db361d4))
+
 ## [0.17.1](https://github.com/storacha/storacha.network/compare/v0.17.0...v0.17.1) (2025-03-25)
 
 

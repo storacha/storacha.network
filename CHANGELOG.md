@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.1](https://github.com/storacha/storacha.network/compare/v0.17.0...v0.17.1) (2025-03-25)
+
+
+### Bug Fixes
+
+* cache response ([#130](https://github.com/storacha/storacha.network/issues/130)) ([3956975](https://github.com/storacha/storacha.network/commit/3956975fa73edb32a7f34f15378700c2d4576dcf))
+
 ## [0.17.0](https://github.com/storacha/storacha.network/compare/v0.16.5...v0.17.0) (2025-03-25)
 
 

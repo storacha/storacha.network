@@ -37,12 +37,3 @@ defineProps<{
     </article>
   </Card>
 </template>
-
-<style lang="postcss" scoped>
-.blog-card img {
-  @apply opacity-80 transition-opacity;
-}
-.blog-card:hover img {
-  @apply opacity-100
-}
-</style>

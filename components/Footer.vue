@@ -9,7 +9,7 @@ const { getStarted, resources } = useActions('footerLinks')
         <div class="header">
           <MailingListSignup />
         </div>
-        <div class="header flex text-1.2em lg:justify-center">
+        <div class="flex text-1.2em lg:justify-center">
           <SocialNetworks class="items-center" icon-class="hover:color-brand-1 hover:scale-110" />
         </div>
         <div>

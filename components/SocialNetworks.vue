@@ -7,7 +7,7 @@ const socialNetworks = useActions('socialNetworks')
 </script>
 
 <template>
-  <div class="h-fit flex flex-wrap justify-center gap-4">
+  <div class="h-fit flex flex-wrap gap-4">
     <div v-for="n in socialNetworks" :key="n.name">
       <AppLink
         :href="n.href"

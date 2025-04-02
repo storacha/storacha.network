@@ -5,12 +5,12 @@ const { getStarted, resources } = useActions('footerLinks')
 <template>
   <footer class="bg-brand-4 color-brand-3">
     <div class="border-3 b-current rounded-10 px-6 py-5 md:rounded-20 md:pt-12">
-      <div class="grid cols-1 gap-6 text-xs lg:cols-3 sm:cols-2 sm:text-base">
+      <div class="grid cols-1 gap-6 text-xs lg:grid-cols-[auto_1fr_auto] md:cols-[auto_1fr] sm:text-base">
         <div class="header">
           <MailingListSignup />
         </div>
-        <div class="flex text-1.2em lg:justify-center">
-          <SocialNetworks class="items-center" icon-class="hover:color-brand-1 hover:scale-110" />
+        <div class="flex justify-start text-1.2em md:justify-center">
+          <SocialNetworks class="lg:justify-center" icon-class="hover:color-brand-1 hover:scale-110" />
         </div>
         <div>
           <div class="grid cols-1 gap-6 lg:cols-2">

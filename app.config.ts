@@ -49,7 +49,7 @@ export default defineAppConfig({
       {
         name: 'Discord',
         description: 'Get involved',
-        href: 'https://discord.gg/jwANgTVjgF',
+        href: 'https://discord.gg/pqa6Dn6RnP',
         icon: 'i-simple-icons:discord',
       },
       {

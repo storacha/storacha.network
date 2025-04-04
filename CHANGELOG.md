@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.17.3](https://github.com/storacha/storacha.network/compare/v0.17.2...v0.17.3) (2025-04-04)
+
+
+### Bug Fixes
+
+* discord invite link ([#137](https://github.com/storacha/storacha.network/issues/137)) ([caf96dc](https://github.com/storacha/storacha.network/commit/caf96dc7f51c98bf4ef7e0039ea0b9b009a5ab3a))
+
 ## [0.17.2](https://github.com/storacha/storacha.network/compare/v0.17.1...v0.17.2) (2025-03-25)
 
 

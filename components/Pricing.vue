@@ -24,7 +24,7 @@ const start = useActions('start')
           :features="[
             ['5GB Storage', 'Additional at $0.15/GB per month'],
             ['5GB egress', 'Additional at $0.15/GB per month'],
-            ['Support over Email & in Discord'],
+            ['Support in Email & Discord'],
           ]"
           :action="start"
         />
@@ -36,7 +36,7 @@ const start = useActions('start')
           :features="[
             ['100GB Storage', 'Additional at $0.05/GB per month'],
             ['100GB egress', 'Additional at $0.05/GB per month '],
-            ['Support over Email & in Discord'],
+            ['Support in Email & Discord'],
           ]"
           :action="start"
         />

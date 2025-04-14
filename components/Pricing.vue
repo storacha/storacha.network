@@ -46,6 +46,7 @@ const start = useActions('start')
           :features="[
             ['2TB Storage', 'Additional at $0.03/GB per month'],
             ['2TB egress', 'Additional at $0.03/GB per month'],
+            ['Dedicated Support Channel'],
           ]"
           :action="start"
           ribbon="🔥 Best Value 🔥 Best Value"

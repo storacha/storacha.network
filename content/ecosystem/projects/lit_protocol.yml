@@ -2,5 +2,5 @@ name: Lit Protocol
 description: Lit Protocol integrates with Storacha to encrypt data, store it securely, and enable seamless decryption using the new UCAN-based space/content/decrypt capability.
 url: https://www.litprotocol.com/
 categories:
-  - gaming
+  - web3_infra
 icon: 

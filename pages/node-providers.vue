@@ -21,9 +21,9 @@ const nodes = [{
 
 <template>
   <TransitionProvider>
-    <Section class="bg-brand-4">
+    <Section class="node-providers-bg bg-brand-4">
       <Hero
-        class="min-h-150"
+        class="min-h-150 lg:min-h-160"
         eyebrow="Get Started"
         title="Node Providers"
         description="Join the waitlist to be the first to participate!"
@@ -34,7 +34,7 @@ const nodes = [{
     </Section>
     <Section full-width>
       <Split>
-        <SplitCell :bg="{ outer: 'bg-brand-2' }" />
+        <SplitCell :bg="{ outer: 'bg-brand-2', inner: 'engage-bg' }" />
         <SplitCell :bg="{ outer: 'bg-white' }" padding>
           <div class="flex items-center color-brand-3">
             <div>
@@ -99,8 +99,30 @@ const nodes = [{
             </div>
           </div>
         </SplitCell>
-        <SplitCell :bg="{ outer: 'bg-brand-2' }" />
+        <SplitCell :bg="{ outer: 'bg-brand-2', inner: 'hardware-bg' }" />
       </Split>
     </Section>
   </TransitionProvider>
 </template>
+
+<style lang="postcss">
+.engage-bg {
+  background: url(/img/node-providers/engage.png) no-repeat bottom;
+  background-size: contain;
+}
+.hardware-bg {
+  background: url(/img/node-providers/hardware.png) no-repeat bottom;
+  background-size: contain;
+}
+@screen lg {
+  .node-providers-bg {
+    background: url(/img/node-providers/hero.png) no-repeat bottom right;
+    background-size: auto 80%;
+  }
+}
+@screen xl {
+  .node-providers-bg {
+    background-size: auto 95%;
+  }
+}
+</style>

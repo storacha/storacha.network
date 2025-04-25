@@ -5,18 +5,18 @@ const docs = useActions('docs')
 
 <template>
   <TransitionProvider>
-    <Section class="bg-brand-4">
+    <Section class="roadmap-bg bg-brand-2">
       <Hero
         class="min-h-150"
         eyebrow="Learn More"
         title="Roadmap"
-        description="Igniting the path to decentralized storage 🔥"
+        description="Igniting the path to decentralized storage"
         :actions="[start, { text: 'Learn More', href: docs.href, secondary: true }]"
       />
     </Section>
     <Section full-width>
       <Split>
-        <SplitCell :bg="{ outer: 'bg-brand-2' }" />
+        <SplitCell :bg="{ outer: 'bg-brand-2', inner: 'about-bg' }" />
         <SplitCell :bg="{ outer: 'bg-white' }" padding>
           <div class="flex items-center color-brand-3">
             <div>
@@ -49,3 +49,18 @@ const docs = useActions('docs')
     </Section>
   </TransitionProvider>
 </template>
+
+<style lang="postcss">
+.about-bg {
+  background: url(/img/roadmap/about.png) no-repeat center center;
+  background-size: contain;
+}
+@screen md {
+  .roadmap-bg {
+    background-image: url(/img/roadmap/hero.png);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+  }
+}
+</style>

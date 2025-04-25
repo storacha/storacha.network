@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.18.0](https://github.com/storacha/storacha.network/compare/v0.17.3...v0.18.0) (2025-04-25)
+
+
+### Features
+
+* add hero images ([#142](https://github.com/storacha/storacha.network/issues/142)) ([3f18ba6](https://github.com/storacha/storacha.network/commit/3f18ba6921b280a6dfcc68e812acf97d89eea98d))
+
 ## [0.17.3](https://github.com/storacha/storacha.network/compare/v0.17.2...v0.17.3) (2025-04-04)
 
 

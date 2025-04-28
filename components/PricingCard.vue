@@ -2,7 +2,7 @@
 import type { BtnProps } from './Btn.vue'
 
 interface PricingCardProps {
-  tier: 'Mild' | 'Medium' | 'Extra Spicy'
+  tier: 'Starter' | 'Lite' | 'Business'
   price: string
   features: [string, string?][]
   unit: 'mo' | 'yr'

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.0](https://github.com/storacha/storacha.network/compare/v0.18.0...v0.19.0) (2025-05-13)
+
+
+### Features
+
+* add new ecosystem partners ([#144](https://github.com/storacha/storacha.network/issues/144)) ([067403b](https://github.com/storacha/storacha.network/commit/067403b8e79a34d0c2d5d8b68819ffe040577f60))
+
 ## [0.18.0](https://github.com/storacha/storacha.network/compare/v0.17.3...v0.18.0) (2025-04-25)
 
 

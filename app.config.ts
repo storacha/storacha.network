@@ -12,12 +12,13 @@ export default defineAppConfig({
     start: { text: 'Start Storing', href: 'https://console.storacha.network/' },
     docs: { text: 'Docs', href: 'https://docs.storacha.network' },
     headerLinks: [
-      { text: 'Roadmap', href: '/roadmap' },
+      { text: 'Storacha AI', href: 'https://storacha.ai' },
       { text: 'Ecosystem', href: '/ecosystem' },
+      { text: 'Roadmap', href: '/roadmap' },
       { text: 'Node Providers', href: '/node-providers' },
       { text: 'Blog', href: '/blog' },
       { text: 'Docs', href: 'https://docs.storacha.network' },
-       { text: 'Referrals', href: '/referrals' },
+
     ],
     mailingList: {
       icon: 'i-carbon:email',

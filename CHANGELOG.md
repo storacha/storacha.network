@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.1](https://github.com/storacha/storacha.network/compare/v0.19.0...v0.19.1) (2025-05-13)
+
+
+### Bug Fixes
+
+* elizaos & mira logos ([#147](https://github.com/storacha/storacha.network/issues/147)) ([78870d0](https://github.com/storacha/storacha.network/commit/78870d0c66907438831d2a87a775573b8c37b48d))
+
 ## [0.19.0](https://github.com/storacha/storacha.network/compare/v0.18.0...v0.19.0) (2025-05-13)
 
 

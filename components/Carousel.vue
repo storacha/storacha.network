@@ -40,6 +40,7 @@ useEventListener(el, 'mouseup', onMouseUp)
 <template>
   <div
     ref="el"
+    tabindex="-1"
     class="carousel" :style="{
       cursor: isDragging ? 'grabbing' : 'grab',
       scrollSnapType: isDragging ? '' : '',

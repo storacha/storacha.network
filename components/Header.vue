@@ -67,7 +67,13 @@ function toggleMobileMenu() {
   >
     <Notice v-bind="useAppConfig().notice" />
     <div class="grid-margins h-20 flex items-center justify-between transition-all">
-      <AppLink class="ident transition" href="/" title="">
+      <AppLink
+        class="ident transition"
+        href="/"
+        title="Storacha Home"
+        aria-label="Storacha Home"
+        tabindex="0"
+      >
         <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" :invert="nav.mobileActive" />
       </AppLink>
       <nav class="navbar hidden justify-right gap-1 b-2 b-brand-3 md:flex">

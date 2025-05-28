@@ -54,7 +54,11 @@ function getIcon(icon?: string, hostname?: string) {
       <div v-if="description" class="flex items-center gap-1 lh-none">
         Read More<AppIcon i="i-carbon:arrow-right" />
       </div>
-      <AppLink :href="action?.href" class="back absolute inset-0 flex flex-col gap-4 p-4 opacity-0 backdrop-blur-xl transition-all">
+      <AppLink
+        :href="action?.href"
+        class="back absolute inset-0 flex flex-col gap-4 p-4 opacity-0 backdrop-blur-xl transition-all"
+        tabindex="0"
+      >
         <div class="mt-a flex">
           {{ description }}
         </div>

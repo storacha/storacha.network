@@ -17,6 +17,11 @@ html {
   @apply antialiased bg-brand-4;
 }
 
+/* Add global focus styles */
+:focus-visible {
+  @apply outline-none ring-2 ring-brand-1 ring-offset-2 rounded ring-offset-transparent;
+}
+
 p a {
   @apply transform decoration-1 decoration-gray/50 underline underline-offset-3;
 }

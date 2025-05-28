@@ -11,14 +11,12 @@ defineProps<{
 <template>
   <Card class="blog-card overflow-clip">
     <template #header>
-      <AppLink :href="item.link" class="aspect-ratio-video overflow-hidden">
-        <img
-          :src="item.images?.[0]"
-          loading="lazy"
-          :alt="item.title"
-          class="h-full w-full object-cover object-left"
-        >
-      </AppLink>
+      <img
+        :src="item.images?.[0]"
+        loading="lazy"
+        :alt="item.title"
+        class="h-full w-full object-cover object-left"
+      >
     </template>
     <article>
       <AppLink :href="item.link" style="display:block">
@@ -29,7 +27,7 @@ defineProps<{
           <time class="h5 text-sm" :datetime="item.pubDate">
             {{ useAppDateFormat(item.pubDate) }}
           </time>
-          <p v-if="showSnippet" class="text-base p1 break-words">
+          <p v-if="showSnippet" class="break-words text-base p1">
             {{ item.snippet }}
           </p>
         </div>

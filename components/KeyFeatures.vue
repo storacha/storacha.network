@@ -62,7 +62,7 @@ const cards = [{
         <Heading type="h3" class="font-medium">
           {{ card.title }}
         </Heading>
-        <Heading type="h5" class="mt-6 uppercase">
+        <Heading type="h4" class="mt-6 uppercase">
           {{ card.subTitle }}
         </Heading>
         <p class="mt-6 text-sm p1 sm:text-base">

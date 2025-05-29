@@ -13,9 +13,9 @@ defineProps<CardProps>()
     <header v-if="title || icon || $slots.header">
       <slot name="header">
         <div class="card-header flex items-center justify-between">
-          <Heading v-if="title" type="h6" class="uppercase">
+          <span v-if="title" class="uppercase">
             {{ title }}
-          </Heading>
+          </span>
           <div v-if="icon" class="icon ml-a">
             {{ icon }}
           </div>

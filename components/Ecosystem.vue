@@ -15,7 +15,7 @@ const discord = useSocialNetwork('discord')
     ]"
   />
   <Section class="ecosystem mt-12" full-width>
-    <Heading type="h4" class="text-center">
+    <Heading type="h3" class="text-center">
       THE STORACHA ECOSYSTEM
     </Heading>
     <EcosystemGrid class="mt-12" :limit="3" />

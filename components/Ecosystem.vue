@@ -11,7 +11,7 @@ const discord = useSocialNetwork('discord')
     description="Become part of the ecosystem and build on top of Storacha’s blazing fast, decentralized storage and retrieval network or contribute to the protocol and interfaces!"
     :actions="[
       { text: 'Join Dev Community', href: discord?.href, primary: true },
-      { outline: true, asComponent: MailingListSignup },
+      { outline: true, asComponent: MailingListSignup, class: 'w-full' },
     ]"
   />
   <Section class="ecosystem mt-12" full-width>

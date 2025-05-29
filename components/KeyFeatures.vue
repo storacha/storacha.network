@@ -24,7 +24,7 @@ const cards = [{
   subTitle: 'Solid Backup',
   icon: '🏢',
   status: 'Future',
-  description: 'Each piece of data gets a unique content address, ensuring everything is secure and verifiable. No more worries about data integrity!',
+  description: 'Store your data securely on a global decentralized network. Built-in verification ensures your backups stay safe and accessible.',
 }, {
   title: 'Redundancy',
   subTitle: 'Extra Layer of Safety',

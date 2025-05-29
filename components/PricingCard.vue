@@ -18,12 +18,12 @@ const { currency = '$' } = defineProps<PricingCardProps>()
 <template>
   <Card :title="tier" :icon="icon" inherit-color :ribbon="ribbon">
     <div class="pricing-inner flex flex-col gap-8">
-      <Heading type="h1" class="font-medium">
+      <Heading type="h2" class="font-medium">
         {{ currency }}{{ price }}/{{ unit }}
       </Heading>
       <ul class="flex flex-col gap-4">
         <li v-for="[feat, desc], i in features" :key="i">
-          <Heading type="h4">
+          <Heading type="h3">
             {{ feat }}
           </Heading>
           <p v-if="desc" class="text-sm font-sans">
@@ -32,7 +32,7 @@ const { currency = '$' } = defineProps<PricingCardProps>()
         </li>
       </ul>
       <div class="pricing-actions">
-        <Btn v-bind="action" v-if="action" />
+        <Btn v-if="action" v-bind="action" />
       </div>
     </div>
   </Card>

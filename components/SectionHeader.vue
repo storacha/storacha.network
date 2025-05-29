@@ -14,10 +14,10 @@ defineProps<SectionHeaderProps>()
 
 <template>
   <div class="section-header" :class="{ 'text-center': center }">
-    <Heading v-if="eyebrow" type="h4" class="uppercase">
+    <span v-if="eyebrow" class="text-2xl uppercase">
       {{ eyebrow }}
-    </Heading>
-    <Heading v-if="title" type="h1" class="max-w-22ch text-pretty font-medium" :class="{ 'mx-a max-w-35ch': center }">
+    </span>
+    <Heading v-if="title" type="h2" class="max-w-22ch text-pretty font-medium" :class="{ 'mx-a max-w-35ch': center }">
       {{ title }}
     </Heading>
     <p v-if="description" class="max-w-50ch text-pretty prose p1">

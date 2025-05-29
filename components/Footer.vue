@@ -16,7 +16,7 @@ const { getStarted, resources } = useActions('footerLinks')
           <div class="grid cols-1 gap-6 lg:cols-2">
             <div>
               <div class="header align-middle">
-                <Heading class="font-medium" type="h5">
+                <Heading class="font-medium" type="h4">
                   Resources
                 </Heading>
               </div>
@@ -30,7 +30,7 @@ const { getStarted, resources } = useActions('footerLinks')
             </div>
             <div>
               <div class="header">
-                <Heading class="font-medium" type="h5">
+                <Heading class="font-medium" type="h4">
                   Getting Started
                 </Heading>
               </div>

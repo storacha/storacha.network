@@ -37,6 +37,7 @@ const start = useActions('start')
             ['100GB egress', 'Additional at $0.05/GB per month '],
           ]"
           :action="start"
+          ribbon="🔥 Best Value 🔥 Best Value"
         />
         <PricingCard
           tier="Extra Spicy"
@@ -48,7 +49,6 @@ const start = useActions('start')
             ['2TB egress', 'Additional at $0.03/GB per month'],
           ]"
           :action="start"
-          ribbon="🔥 Best Value 🔥 Best Value"
         />
       </div>
     </div>

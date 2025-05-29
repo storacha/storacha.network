@@ -9,7 +9,7 @@ defineProps<{
 </script>
 
 <template>
-  <Card class="blog-card overflow-clip">
+  <Card class="blog-card !bg-brand-7 overflow-clip">
     <template #header>
       <AppLink :href="item.link" class="aspect-ratio-video overflow-hidden">
         <img
@@ -29,7 +29,7 @@ defineProps<{
           <time class="h5 text-sm" :datetime="item.pubDate">
             {{ useAppDateFormat(item.pubDate) }}
           </time>
-          <p v-if="showSnippet" class="text-base p1 break-words">
+          <p v-if="showSnippet" class="break-words text-base p1">
             {{ item.snippet }}
           </p>
         </div>

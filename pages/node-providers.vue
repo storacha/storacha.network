@@ -7,15 +7,15 @@ const nodeWaitlist = useActions('nodeWaitlist')
 const nodes = [{
   id: 'storage',
   title: 'Storage Node',
-  description: 'The first nodes to roll-out: Spice up Storacha storage by running our first hotshot nodes! Keep Storacha’s data sizzling and accessible, and in exchange you’ll rack up rewards!',
+  description: 'The first nodes to roll-out: Spice up Storacha storage by running our first hotshot nodes. Keep Storacha’s data sizzling and accessible, and in exchange you’ll rack up rewards.',
 }, {
   id: 'retrieval',
   title: 'Retrieval Node',
-  description: 'Coming soon: Our lightning-fast Retrieval Nodes! Run a node to cache and fetch data effortlessly, serving users and earning you rewards. Stay tuned – the rewards will be worth it!',
+  description: 'Coming soon: Our lightning-fast Retrieval Nodes! Run a node to cache and fetch data effortlessly, serving users and earning you rewards. Stay tuned – the rewards will be worth it.',
 }, {
   id: 'indexing',
   title: 'Indexing Node',
-  description: 'Coming soon: Our Indexing Nodes will track data locations, helping users find what they need. Get excited – they’re on the way!',
+  description: 'Coming soon: Our Indexing Nodes will track data locations, helping users find what they need. Get excited – they’re on the way.',
 }]
 </script>
 
@@ -46,13 +46,13 @@ const nodes = [{
                   Storacha is open sauce. We need you. While you wait to run your own nodes, contribute in other ways:
                 </p>
                 <ul>
-                  <li>Get started with the w3cli on Github.</li>
+                  <li>Get started with the <a href="https://github.com/storacha/w3cli">w3cli</a> on Github.</li>
                   <li>Collaborate with our dev team on Discord.</li>
                   <li>Learn about the network and future node types below.</li>
                 </ul>
               </div>
               <Btn href="https://github.com/storacha/w3cli">
-                Get Started!
+                Get Started
               </Btn>
             </div>
           </div>
@@ -93,7 +93,7 @@ const nodes = [{
               </Heading>
               <div class="prose p1">
                 <p>
-                  The Storacha network doesn't discriminate. Got a solid home server, or a sleek setup in a data center? As long as you have a trusty internet connection, you're in! We're here to make joining the party easy for everyone. Detailed hardware recommendations will be served hot with each new node type release. Stay tuned and follow us on Discord and X!
+                  The Storacha network doesn't discriminate. Got a solid home server, or a sleek setup in a data center? As long as you have a trusty internet connection, you're in! We're here to make joining the party easy for everyone. Detailed hardware recommendations will be served hot with each new node type release. Stay tuned and follow us on Discord and X.
                 </p>
               </div>
             </div>

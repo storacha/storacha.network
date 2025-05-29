@@ -14,7 +14,7 @@ const forwardProps = useForwardProps(reactiveOmit(props, ['target']))
 
 <template>
   <NuxtLink
-    class="inline-block cursor-pointer"
+    class="inline-block cursor-pointer text-center"
     :target="target || (isExternal(href || to) ? '_blank' : undefined)"
     v-bind="forwardProps"
   >

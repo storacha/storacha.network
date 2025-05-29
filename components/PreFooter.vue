@@ -22,7 +22,7 @@ defineProps<Props>()
           <Heading v-if="heading" type="h3" class="text-center color-brand-3 font-medium">
             {{ heading }}
           </Heading>
-          <Btn v-if="cta" v-bind="cta" secondary>
+          <Btn v-if="cta" v-bind="cta" secondary class="w-full sm:w-auto">
             {{ cta.text }}
           </Btn>
         </div>

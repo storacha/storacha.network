@@ -92,6 +92,12 @@ export default defineNuxtConfig({
       // feed URL used for /api/blog
       blogFeedUrl: 'https://medium.com/feed/@storacha',
       consoleUrl: import.meta.env.NUXT_PUBLIC_CONSOLE_URL || 'https://console.storacha.network',
+      // Ghost CMS settings
+      ghost: {
+        url: import.meta.env.NUXT_PUBLIC_GHOST_URL || 'https://your-ghost-cms-url',
+        key: import.meta.env.NUXT_PUBLIC_GHOST_KEY || 'your-ghost-content-api-key',
+        version: 'v5.0',
+      },
     },
   },
 

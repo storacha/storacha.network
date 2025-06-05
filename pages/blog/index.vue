@@ -3,7 +3,7 @@ const MAX_AGE = 1000 * 60 * 60
 const isExpired = (d: Date, maxAge = MAX_AGE) => Date.now() - d.getTime() > maxAge
 
 const { data: blog } = await useLazyFetch('/api/blog', {
-  getCachedData (key, nuxt) {
+  getCachedData(key, nuxt) {
     const defaultData = nuxt.isHydrating ? nuxt.payload.data[key] : nuxt.static.data[key]
     if (typeof globalThis.localStorage === 'undefined') {
       return defaultData
@@ -19,29 +19,32 @@ const { data: blog } = await useLazyFetch('/api/blog', {
     const items = JSON.parse(localStorage.getItem('blog:items') ?? '[]')
     return items.length ? { items } : defaultData
   },
-  onResponse ({ response }) {
+  onResponse({ response }) {
     if (typeof globalThis.localStorage !== 'undefined') {
       console.log('caching blog items')
       localStorage.setItem('blog:ts', new Date().toISOString())
       localStorage.setItem('blog:items', JSON.stringify(response._data.items))
     }
-  }
+  },
 })
 
-const medium = useSocialNetwork('medium')
+// Set page metadata
+useSeoMeta({
+  title: 'Blog - Storacha Network',
+  description: 'The latest and greatest from the Storacha team.',
+})
 </script>
 
 <template>
   <Section class="bg-white" padding>
-    <div class="py-4 flex md:flex-row flex-col mt-20">
-      <div class="flex-none mb-4 md:mb-0">
-        <Heading type="h4" class="uppercase color-brand-3">
+    <div class="mt-20 flex flex-col py-4 md:flex-row">
+      <div class="mb-4 flex-none md:mb-0">
+        <Heading type="h4" class="color-brand-3 uppercase">
           Blazing Hot News
         </Heading>
-        <p class="max-w-50ch text-pretty prose p1 color-brand-3">The latest and greatest from the Storacha team.</p>
-      </div>
-      <div class="flex-auto md:text-right">
-        <Btn text="Follow on Medium" :href="medium?.href" />
+        <p class="max-w-50ch text-pretty color-brand-3 prose p1">
+          The latest and greatest from the Storacha team.
+        </p>
       </div>
     </div>
     <div class="blog-cell grid gap-4 lg:cols-3 md:cols-2">

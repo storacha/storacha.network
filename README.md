@@ -48,6 +48,17 @@ pnpm preview
 pnpm generate
 ```
 
+## Setting up Ghost ECM local instance
+````bash
+cd storacha-network/
+docker-compose up -d
+````
+This will shoot up a Ghost instance on port 2368. You can access the ghost dashboard through `http://<your-public-ip>:2368/ghost`.
+You'll be prompted to make an admin account. After that :
+1) Go to settings -> integrations.
+2) Make a custom integration to generate a Content API Key and URL.
+3) Update these in `nuxt.config.tx`
+
 ## Code style and linting
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 - [ESLint v9](https://eslint.org/)

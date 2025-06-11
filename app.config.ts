@@ -65,12 +65,6 @@ export default defineAppConfig({
         icon: 'i-simple-icons:github',
       },
       {
-        name: 'Medium',
-        description: 'Read our blog',
-        href: 'https://medium.com/@storacha',
-        icon: 'i-simple-icons:medium',
-      },
-      {
         name: 'YouTube',
         description: 'Watch our demos',
         href: 'https://www.youtube.com/@StorachaNetwork',

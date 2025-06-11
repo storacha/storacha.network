@@ -43,4 +43,4 @@ export default defineCachedEventHandler(async (event) => {
       message: `Failed to fetch post: ${error.message}`,
     })
   }
-}, { maxAge: 60 * 60 }) // cache API response for 60 minutes
+})

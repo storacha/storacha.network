@@ -14,7 +14,7 @@ const Steps = [
     icon: '🔥🔥🔥',
     title: 'You Receive Your Reward',
     description: `For each referral, you can earn <b>Storage Credits</b> and <b>Racha Points</b>. You need to have a Storacha account to claim your rewards. You can apply your Storage Credits to your Lite/Medium or Business/Extra Spicy subscriptions.`,
-  }
+  },
 ]
 </script>
 
@@ -31,7 +31,7 @@ const Steps = [
       <Heading type="h3" class="uppercase">
         {{ title }}
       </Heading>
-      <p class="p1" v-html="description"></p>
+      <p class="p1" v-html="description" />
     </div>
   </div>
 </template>

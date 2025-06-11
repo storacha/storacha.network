@@ -11,17 +11,14 @@ const { data: blog } = await useLazyFetch('/api/blog', {
 
     const ts = new Date(localStorage.getItem('blog:ts') ?? 0)
     if (isExpired(ts)) {
-      console.log(`cache miss blog items (${Date.now() - ts.getTime()} > ${MAX_AGE})`)
       return defaultData
     }
 
-    console.log(`cache hit blog items (${Date.now() - ts.getTime()} < ${MAX_AGE})`)
     const items = JSON.parse(localStorage.getItem('blog:items') ?? '[]')
     return items.length ? { items } : defaultData
   },
   onResponse({ response }) {
     if (typeof globalThis.localStorage !== 'undefined') {
-      console.log('caching blog items')
       localStorage.setItem('blog:ts', new Date().toISOString())
       localStorage.setItem('blog:items', JSON.stringify(response._data.items))
     }

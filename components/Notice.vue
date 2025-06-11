@@ -17,6 +17,8 @@ onMounted(() => {
   <div
     v-if="isVisible" class="bg-brand-3 bg-brand-5 p-3 text-center text-sm text-brand-1"
   >
-    <AppLink :href="href" class="block w-full" v-html="text" />
+    <AppLink :href="href" class="block w-full">
+      <span v-html="text" />
+    </AppLink>
   </div>
 </template>

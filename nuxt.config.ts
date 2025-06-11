@@ -92,8 +92,8 @@ export default defineNuxtConfig({
       consoleUrl: import.meta.env.NUXT_PUBLIC_CONSOLE_URL || 'https://console.storacha.network',
       // Ghost CMS settings used for /blog
       ghost: {
-        url: import.meta.env.NUXT_PUBLIC_GHOST_URL || 'https://your-ghost-cms-url',
-        key: import.meta.env.NUXT_PUBLIC_GHOST_KEY || 'your-ghost-content-api-key',
+        url: import.meta.env.NUXT_PUBLIC_GHOST_URL || 'http://localhost:2368', // TODO: update this to your Ghost CMS URL
+        key: import.meta.env.NUXT_PUBLIC_GHOST_KEY,
         version: 'v5.0',
       },
     },

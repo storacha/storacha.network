@@ -6,11 +6,13 @@ services:
     ports:
       - 2368:2368
     environment:
+      # Configuration: https://ghost.org/docs/config
       database__client: mysql
       database__connection__host: db
       database__connection__user: root
       database__connection__password: example
       database__connection__database: ghost
+      security__staffDeviceVerification: false
       url: http://localhost:2368
     volumes:
       - ghost:/var/lib/ghost/content

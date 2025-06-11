@@ -66,7 +66,6 @@ NUXT_PUBLIC_GHOST_URL= <API URL>
 NUXT_PUBLIC_GHOST_KEY= <Content API key>
 ```
 
-
 ## Code style and linting
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
 - [ESLint v9](https://eslint.org/)

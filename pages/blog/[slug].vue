@@ -29,11 +29,7 @@ useSeoMeta({
 
 <template>
   <Section v-if="post" class="bg-white" padding>
-    <div class="mb-10 mt-20 py-4">
-      <Btn to="/blog" icon="i-heroicons-arrow-left" text="Back to all posts" />
-    </div>
-
-    <article class="blog-post lg:prose-xl max-w-none prose">
+    <article class="blog-post lg:prose-xl mt-24 max-w-none prose">
       <Heading type="h1">
         {{ post.title }}
       </Heading>

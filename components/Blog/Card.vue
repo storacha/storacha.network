@@ -6,6 +6,14 @@ defineProps<{
   item: Item
   showSnippet?: boolean
 }>()
+
+// Change the path as required
+const fallbackImage = '/img/fallback.webp'
+
+function handleImageError(event: Event) {
+  const target = event.target as HTMLImageElement
+  target.src = fallbackImage
+}
 </script>
 
 <template>
@@ -13,10 +21,11 @@ defineProps<{
     <template #header>
       <NuxtLink :to="item.link" class="aspect-ratio-video overflow-hidden">
         <img
-          :src="item.images?.[0]"
+          :src="item.images?.[0] || fallbackImage"
           loading="lazy"
           :alt="item.title"
           class="h-full w-full object-cover object-left"
+          @error="handleImageError"
         >
       </NuxtLink>
     </template>

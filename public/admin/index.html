@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Storacha CMS</title>
+    <script src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </head>
+  <body>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+
+      window.addEventListener('load', async () => {
+        try {
+          const res = await fetch('/admin/config.yml');
+          const yaml = await res.text();
+          const config = window.jsyaml.load(yaml);
+
+          if (!window.CMS) throw new Error('DecapCMS failed to load');
+          window.CMS.init({ config });
+        } catch (err) {
+          document.body.innerHTML =
+            '<h1>Failed to load DecapCMS</h1><pre>' + err + '</pre>';
+        }
+      });
+    </script>
+  </body>
+</html>

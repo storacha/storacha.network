@@ -12,9 +12,17 @@ export default defineAppConfig({
     start: { text: 'Start Storing', href: 'https://console.storacha.network/' },
     docs: { text: 'Docs', href: 'https://docs.storacha.network' },
     headerLinks: [
-      { text: 'Storacha AI', href: 'https://storacha.ai' },
+       {
+        text: 'Product',
+        dropdown: [
+          { text: 'Bluesky Storage', href: 'https://bsky.storage' },
+          { text: 'Storacha AI', href: 'https://storacha.ai' },
+          { text: 'Storacha Console', href: 'https://console.storacha.network/' },
+          { text: 'Roadmap', href: '/roadmap' },
+        ]
+      },
+      { text: 'Referrals', href: 'https://storacha.network/referrals'},
       { text: 'Ecosystem', href: '/ecosystem' },
-      { text: 'Roadmap', href: '/roadmap' },
       { text: 'Node Providers', href: '/node-providers' },
       { text: 'Blog', href: '/blog' },
       { text: 'Docs', href: 'https://docs.storacha.network' },

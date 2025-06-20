@@ -1,7 +1,10 @@
 <script setup lang="ts">
 interface Props {
   active: boolean
-  links: { text: string, href: string }[]
+  links: Array<
+    { text: string; href: string } |
+    { text: string; isGroup: true }
+  >
 }
 defineProps<Props>()
 defineEmits(['navigate'])
@@ -13,11 +16,18 @@ defineEmits(['navigate'])
       <div class="col-span-10 col-start-2 flex flex-col py-8">
         <div class="flex flex-grow flex-col justify-center">
           <nav>
-            <h1 v-for="{ text, href } in links" :key="href" class="mb-3">
-              <AppLink class="mobile-nav-link" :href="href" @click="$emit('navigate')">
-                {{ text }}
-              </AppLink>
-            </h1>
+            <div v-for="(link, index) in links" :key="index" class="mb-3">
+              <template v-if="'isGroup' in link">
+                <div class="uppercase text-sm font-semibold text-white/60 tracking-wide mb-2 mt-4">
+                  {{ link.text }}
+                </div>
+              </template>
+              <template v-else>
+                <AppLink class="mobile-nav-link" :href="link.href" @click="$emit('navigate')">
+                  {{ link.text }}
+                </AppLink>
+              </template>
+            </div>
           </nav>
         </div>
         <SocialNetworks />

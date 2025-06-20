@@ -9,16 +9,26 @@ interface HeaderProps {
 
 const props = defineProps<HeaderProps>()
 
-const headerLinks = [
-  ...props.links,
-]
+const headerLinks = [...props.links]
 
-const mobileLinks = [
+const mobileLinks: Array<{ text: string; href: string } | { text: string; isGroup: true }> = [
   { text: 'Home', href: '/' },
-  ...headerLinks,
+  ...headerLinks.flatMap(link => {
+    if (link.dropdown?.length) {
+      return [
+        { text: link.text, isGroup: true as const },
+        ...link.dropdown.map(sublink => ({
+          text: sublink.text,
+          href: sublink.href,
+        })),
+      ]
+    } else if (link.href) {
+      return [{ text: link.text, href: link.href }]
+    }
+    return []
+  })
 ]
 
-// state
 const { x, y } = useWindowScroll()
 const header = ref()
 const nav = reactive({
@@ -30,15 +40,12 @@ const nav = reactive({
   mobileActive: false,
 })
 
-// watch scroll position and update nav visibility state (throttled)
-// eslint-disable-next-line unused-imports/no-unused-vars
 watch([x, y], useThrottleFn(([x, y], [px, py]) => {
-  // set nav transparency
   if (y > nav.threshold)
     nav.isTransparent = false
   else if (y <= nav.offset)
     nav.isTransparent = true
-  // set nav sticky
+
   if (y > nav.offset && y > py + nav.threshold)
     nav.isVisible = false
   else if (y <= nav.offset)
@@ -71,9 +78,40 @@ function toggleMobileMenu() {
         <Ident :site-name="siteName" class="ident h-10 translate-x--1rem" :invert="nav.mobileActive" />
       </AppLink>
       <nav class="navbar hidden justify-right gap-1 b-2 b-brand-3 md:flex">
-        <AppLink v-for="link in headerLinks" :key="link.text" :href="link.href" class="nav-link hover:btn-active btn-secondary btn-slim btn hover:(bg-white)" active-class="btn-active">
-          {{ link.text }}
-        </AppLink>
+        <div
+          v-for="link in headerLinks"
+          :key="link.text"
+          class="relative group"
+        >
+          <template v-if="link.dropdown">
+            <div class="flex flex-col items-start">
+              <button class="nav-link btn btn-secondary btn-slim">
+                {{ link.text }}
+              </button>
+              <div class="dropdown-panel">
+                <AppLink
+                  v-for="sublink in link.dropdown"
+                  :key="sublink.text"
+                  :href="sublink.href"
+                  class="btn btn-slim btn-secondary w-full text-left hover:bg-brand-2 hover:text-white"
+                  @click="nav.mobileActive = false"
+                >
+                  {{ sublink.text }}
+                </AppLink>
+              </div>
+            </div>
+          </template>
+          <template v-else>
+            <AppLink
+              :href="link.href"
+              class="nav-link btn btn-slim"
+              :class="link.text === 'Start Storing' ? 'bg-brand-3 text-white hover:bg-brand-2' : 'btn-secondary hover:bg-white'"
+              active-class="btn-active"
+            >
+              {{ link.text }}
+            </AppLink>
+          </template>
+        </div>
       </nav>
       <button aria-label="Toggle Mobile Menu" class="mobile-nav-link md:hidden" @click="toggleMobileMenu">
         <div class="hamburger-icon relative h-8 w-8 text-brand-3" />
@@ -86,14 +124,12 @@ function toggleMobileMenu() {
 <style>
 html {
   --header-height: 80px;
-  /* apply global header scroll-padding */
   scroll-padding-top: var(--header-height);
 }
 </style>
 
 <style scoped lang="postcss">
 header {
-  /* prevents layout shift when the body is set to overflow-hidden */
   padding-right: var(--scrollbar-width);
 }
 
@@ -115,6 +151,22 @@ header {
     @apply btn btn-slim;
   }
 }
+
+.dropdown-panel {
+  @apply absolute left-0 top-full bg-white text-black rounded-xl shadow-lg z-50 min-w-[12rem] py-2 space-y-1;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.group:hover .dropdown-panel,
+.group:focus-within .dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
@@ -137,8 +189,9 @@ header {
 }
 
 .a-enter {
-  animation: fadeIn 1s ease forwards, slideIn 0.5s ease forwards;;
+  animation: fadeIn 1s ease forwards, slideIn 0.5s ease forwards;
 }
+
 .is-visible {
   @apply translate-y-0;
 }

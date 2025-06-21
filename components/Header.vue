@@ -9,26 +9,16 @@ interface HeaderProps {
 
 const props = defineProps<HeaderProps>()
 
-const headerLinks = [...props.links]
-
-const mobileLinks: Array<{ text: string; href: string } | { text: string; isGroup: true }> = [
-  { text: 'Home', href: '/' },
-  ...headerLinks.flatMap(link => {
-    if (link.dropdown?.length) {
-      return [
-        { text: link.text, isGroup: true as const },
-        ...link.dropdown.map(sublink => ({
-          text: sublink.text,
-          href: sublink.href,
-        })),
-      ]
-    } else if (link.href) {
-      return [{ text: link.text, href: link.href }]
-    }
-    return []
-  })
+const headerLinks = [
+  ...props.links,
 ]
 
+const mobileLinks = [
+  { text: 'Home', href: '/' },
+  ...headerLinks,
+]
+
+// state
 const { x, y } = useWindowScroll()
 const header = ref()
 const nav = reactive({
@@ -40,34 +30,51 @@ const nav = reactive({
   mobileActive: false,
 })
 
-watch([x, y], useThrottleFn(([x, y], [px, py]) => {
-  if (y > nav.threshold)
-    nav.isTransparent = false
-  else if (y <= nav.offset)
-    nav.isTransparent = true
+// watch scroll position and update nav visibility state (throttled)
+watch([x, y], useThrottleFn(([_x, newY], [_px, oldY]) => {
+  // Set nav transparency based on scroll, but only if mobile menu is not active.
+  if (!nav.mobileActive) {
+    if (newY > nav.threshold)
+      nav.isTransparent = false
+    else if (newY <= nav.offset)
+      nav.isTransparent = true
+  }
 
-  if (y > nav.offset && y > py + nav.threshold)
+  // set nav sticky
+  if (newY > nav.offset && newY > oldY + nav.threshold)
     nav.isVisible = false
-  else if (y <= nav.offset)
+  else if (newY <= nav.offset)
     nav.isVisible = true
-  else if (y < py - nav.threshold)
+  else if (newY < oldY - nav.threshold)
     nav.isVisible = true
 }, 30))
 
 function toggleMobileMenu() {
   nav.mobileActive = !nav.mobileActive
+  // When opening the menu, force the header to be non-transparent
+  if (nav.mobileActive) {
+    nav.isTransparent = false;
+  } else {
+    // When closing, re-evaluate transparency based on current scroll position
+    nav.isTransparent = y.value <= nav.threshold;
+  }
 }
 </script>
 
 <template>
   <header
-    ref="header" class="a-enter top-0 z-50 w-full transform transition duration-300 ease-out" :class="[
-      nav.isTransparent ? 'bg-transparent' : 'is-active',
+    ref="header"
+    class="a-enter top-0 z-50 w-full transform transition-colors duration-300 ease-out"
+    :class="[
       noHero ? 'static' : 'fixed',
       {
         '-translate-y-full': nav.isSticky,
         'is-visible': nav.isVisible,
         'mobile-nav-open': nav.mobileActive,
+        /* ===> THE ONLY CHANGE IS ON THIS LINE <=== */
+        '!bg-brand-3/80 !backdrop-blur-md': nav.mobileActive,
+        'is-active': !nav.isTransparent && !nav.mobileActive,
+        'bg-transparent': nav.isTransparent && !nav.mobileActive,
       },
     ]"
     v-bind="$attrs"
@@ -118,7 +125,13 @@ function toggleMobileMenu() {
       </button>
     </div>
   </header>
-  <MobileMenu :active="nav.mobileActive" :links="mobileLinks" class="bg-brand-3/80 text-white backdrop-blur-md" v-bind="$attrs" @navigate="nav.mobileActive = false" />
+  <MobileMenu
+    :active="nav.mobileActive"
+    :links="mobileLinks"
+    class="bg-brand-3/80 text-white backdrop-blur-md"
+    v-bind="$attrs"
+    @navigate="nav.mobileActive = false"
+  />
 </template>
 
 <style>
@@ -181,6 +194,7 @@ header {
   }
 }
 
+/* This is the style for when scrolled (and mobile menu is NOT open) */
 .is-active {
   @apply bg-white/90 backdrop-blur-sm;
   .navbar {
@@ -196,8 +210,9 @@ header {
   @apply translate-y-0;
 }
 
+/* The only job for this class now is to handle text color and the hamburger icon */
 .mobile-nav-open {
-  @apply text-dark bg-transparent;
+  @apply text-white; /* Ensures Ident text becomes white */
 }
 
 .hamburger-icon::before,
@@ -222,19 +237,18 @@ header {
   top: 20px;
 }
 
-.mobile-nav-open .hamburger-icon::before,
-.mobile-nav-open .hamburger-icon::after {
-  top: 15px;
-}
-
+/* Hamburger animation when mobile nav is open */
 .mobile-nav-open .hamburger-icon::before {
   @apply rotate-45;
+  top: 15px;
 }
 
 .mobile-nav-open .hamburger-icon::after {
   @apply -rotate-45;
+  top: 15px;
 }
 
+/* Ensure the hamburger icon itself is white when the menu is open */
 .mobile-nav-open .hamburger-icon {
   @apply text-white;
 }

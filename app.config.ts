@@ -5,16 +5,24 @@ export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
   notice: {
     text: 'EARN RACHA POINTS AND STORAGE CREDITS BY REFERRING FRIENDS <u>LEARN MORE</u>',
-    href: 'https://storacha.network/referrals',
+    href: '/referrals',
     displayUntil: '2025-12-31', // use ISO date format or final day +1 in yyyy-mm-dd
   },
   actions: {
     start: { text: 'Start Storing', href: 'https://console.storacha.network/' },
     docs: { text: 'Docs', href: 'https://docs.storacha.network' },
     headerLinks: [
-      { text: 'Storacha AI', href: 'https://storacha.ai' },
+       {
+        text: 'Product',
+        dropdown: [
+          { text: 'Bluesky Storage', href: 'https://bsky.storage' },
+          { text: 'Storacha AI', href: 'https://storacha.ai' },
+          { text: 'Storacha Console', href: 'https://console.storacha.network/' },
+          { text: 'Roadmap', href: '/roadmap' },
+        ]
+      },
+      { text: 'Referrals', href: '/referrals'},
       { text: 'Ecosystem', href: '/ecosystem' },
-      { text: 'Roadmap', href: '/roadmap' },
       { text: 'Node Providers', href: '/node-providers' },
       { text: 'Blog', href: '/blog' },
       { text: 'Docs', href: 'https://docs.storacha.network' },

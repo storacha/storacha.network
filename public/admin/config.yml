@@ -1,0 +1,23 @@
+backend:
+  name: test-repo
+
+media_folder: "public/img/uploads"
+public_folder: "/img/uploads"
+
+collections:
+  - name: blogcms
+    label: "Blog CMS"
+    folder: "content/blogcms"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - name: title
+        label: Title
+      - name: description
+        label: Description
+      - name: published
+        label: Published
+        widget: datetime
+      - name: body
+        label: Body
+        widget: markdown

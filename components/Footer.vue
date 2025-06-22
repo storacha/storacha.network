@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-const { getStarted, resources } = useActions('footerLinks')
+// This script is correct and fetches the necessary data.
+const { mailingList, footerLinks } = useAppConfig().actions
+const { getStarted, resources } = footerLinks
 </script>
 
 <template>
@@ -7,10 +9,16 @@ const { getStarted, resources } = useActions('footerLinks')
     <div class="border-3 b-current rounded-10 px-6 py-5 md:rounded-20 md:pt-12">
       <div class="grid cols-1 gap-6 text-xs lg:cols-3 sm:cols-2 sm:text-base">
         <div class="header">
-          <MailingListSignup />
+          <AppLink :href="mailingList.href" target="_blank" rel="noopener" class="btn inline-flex items-center gap-2">
+            <div :class="mailingList.icon" />
+            <span>{{ mailingList.text }}</span>
+          </AppLink>
         </div>
         <div class="header flex text-1.2em lg:justify-center">
-          <SocialNetworks class="items-center" icon-class="hover:color-brand-1 hover:scale-110" />
+          <SocialNetworks
+            class="items-center"
+            icon-class="text-2xl text-brand-3 transition hover:scale-110 hover:text-brand-1"
+          />
         </div>
         <div>
           <div class="grid cols-1 gap-6 lg:cols-2">

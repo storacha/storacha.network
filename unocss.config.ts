@@ -67,6 +67,9 @@ export default defineConfig({
     presetUno(),
     presetIcons({
       scale: 1.2,
+      collections: {
+        mdi: () => import('@iconify/json/json/mdi.json').then(i => i.default),
+      }
     }),
     presetTypography(),
     presetWebFonts({

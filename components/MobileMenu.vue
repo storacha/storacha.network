@@ -1,150 +1,138 @@
 <script setup lang="ts">
-interface DropdownItem {
-  text: string
-  href: string
-}
-
 interface NavLink {
   text: string
   href?: string
-  dropdown?: DropdownItem[]
+  dropdown?: { text: string; href: string }[]
 }
 
-interface Props {
+const props = defineProps<{
   active: boolean
   links: NavLink[]
+}>()
+
+const emit = defineEmits(['close-menu'])
+const openGroups = reactive<Record<string, boolean>>({})
+
+function getMenuIcon(text: string) {
+  const iconMap: Record<string, string> = {
+    'Home': 'i-carbon-home',
+    'Product': 'i-carbon-cube',
+    'Referrals': 'i-carbon-user-multiple',
+    'Ecosystem': 'i-carbon-network-3',
+    'Node Providers': 'i-carbon-cloud-service-management',
+    'Blog': 'i-carbon-blog',
+    'Docs': 'i-carbon-document',
+    'Start Storing': 'i-carbon-play-filled'
+  }
+  return iconMap[text] || 'i-carbon-dot-mark'
 }
 
-const props = defineProps<Props>()
-const emit = defineEmits(['navigate'])
-
-const openGroups = reactive<Record<string, boolean>>({})
+function getSubMenuIcon(text: string) {
+  const iconMap: Record<string, string> = {
+    'Bluesky Storage': 'i-arcticons-butterflymx',
+    'Storacha AI': 'i-carbon-watson-machine-learning',
+    'Storacha Console': 'i-carbon-dashboard',
+    'Roadmap': 'i-carbon-roadmap'
+  }
+  return iconMap[text] || 'i-carbon-arrow-right'
+}
 
 function toggleGroup(name: string) {
   openGroups[name] = !openGroups[name]
 }
 
-const MOBILE_BREAKPOINT = 1024
+function handleNavigate() {
+  emit('close-menu')
+}
 
 function handleResize() {
-  if (window.innerWidth >= MOBILE_BREAKPOINT && props.active) {
-    emit('navigate')
+  if (window.innerWidth >= 768 && props.active) {
+    emit('close-menu')
   }
 }
 
-onMounted(() => {
-  window.addEventListener('resize', handleResize)
+onMounted(() => { 
+  window.addEventListener('resize', handleResize) 
 })
 
-onUnmounted(() => {
-  window.removeEventListener('resize', handleResize)
+onUnmounted(() => { 
+  window.removeEventListener('resize', handleResize) 
 })
 
-watch(
-  () => props.active,
-  (isActive) => {
-    document.body.style.overflow = isActive ? 'hidden' : ''
-    if (!isActive) {
-      // Close all dropdowns when mobile menu is deactivated
-      Object.keys(openGroups).forEach(key => delete openGroups[key])
-    }
+watch(() => props.active, (isActive) => {
+  document.body.style.overflow = isActive ? 'hidden' : ''
+  if (!isActive) { 
+    Object.keys(openGroups).forEach(key => delete openGroups[key]) 
   }
-)
+})
 </script>
 
 <template>
-  <Transition name="transition-content" appear>
+  <Transition name="fade">
     <div
-      v-if="props.active"
-      class="mobile-nav fixed inset-0 z-40 flex flex-col bg-brand-3/80 backdrop-blur-md" @click.self="$emit('navigate')"
-      :class="$attrs.class" >
-      <div class="h-20 flex-shrink-0"></div>
+      v-if="active"
+      class="mobile-nav fixed inset-0 z-50 flex flex-col bg-brand-3/80 text-white backdrop-blur-md"
+    >
+      <Notice v-bind="useAppConfig().notice" />
+      <div class="h-20 flex flex-shrink-0 items-center justify-between">
+        <div class="grid-margins w-full flex items-center justify-between">
+          <AppLink href="/" @click="handleNavigate" class="flex items-center">
+            <Ident site-name="Storacha" class="h-10" :invert="true" />
+          </AppLink>
+          <button aria-label="Close Mobile Menu" @click="$emit('close-menu')">
+            <div class="i-carbon-close h-8 w-8" />
+          </button>
+        </div>
+      </div>
 
-      <div class="flex-grow overflow-y-auto">
-        <div class="grid grid-cols-12">
-          <div class="col-span-10 col-start-2 flex flex-col pt-32 pb-8 space-y-4">
-            <nav aria-label="Mobile navigation" class="flex-grow flex flex-col justify-start">
-              <ul>
-                <li
-                  v-for="(link, index) in props.links"
-                  :key="index"
-                  class="mb-3 last:mb-0"
-                >
-                  <template v-if="link.dropdown && link.dropdown.length">
-                    <button
-                      @click="toggleGroup(link.text)"
-                      :aria-expanded="!!openGroups[link.text]"
-                      :aria-controls="`submenu-${index}`"
-                      role="button"
-                      class="flex justify-between items-center w-full font-semibold uppercase tracking-wide text-white/80 hover:text-white px-0 py-4 rounded-md transition-shadow shadow-sm focus:outline-none border-b border-white/10"
-                    >
-                      <span class="mobile-nav-link font-semibold uppercase tracking-wide text-white/80 hover:text-white leading-none">
-                        {{ link.text }}
-                      </span>
-                      <svg
-                        :class="{ 'rotate-90': openGroups[link.text] }"
-                        class="w-5 h-5 text-white/80 transition-transform duration-300"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                      </svg>
+      <!-- Scrollable content area that takes available space -->
+      <div class="flex-1 overflow-y-auto flex flex-col min-h-0">
+        <!-- Menu content area - explicitly left aligned -->
+        <div class="grid-margins pt-4 self-start w-full">
+          <nav class="pl-0">
+            <ul>
+              <li v-for="link in links" :key="link.text">
+                <template v-if="link.dropdown">
+                  <h1 class="mb-3">
+                    <button class="mobile-nav-link flex w-full items-center justify-between" @click="toggleGroup(link.text)">
+                      <div class="flex items-center">
+                        <div class="w-10 h-10 flex items-center justify-center flex-shrink-0 mr-3">
+                          <AppIcon :i="getMenuIcon(link.text)" class="text-2xl" />
+                        </div>
+                        <span>{{ link.text }}</span>
+                      </div>
+                      <AppIcon i="i-carbon-chevron-right" class="text-3xl transition-transform duration-200" :class="{ 'rotate-90': openGroups[link.text] }" />
                     </button>
-
-                    <Transition
-                      enter-active-class="transition ease-out duration-300"
-                      enter-from-class="opacity-0 -translate-y-2"
-                      enter-to-class="opacity-100 translate-y-0"
-                      leave-active-class="transition ease-in duration-200"
-                      leave-from-class="opacity-100 translate-y-0"
-                      leave-to-class="opacity-0 -translate-y-2"
-                    >
-                      <ul
-                        v-show="openGroups[link.text]"
-                        :id="`submenu-${index}`"
-                        class="pl-6 border-l-2 border-white/30 space-y-2 bg-white/5 rounded-l mt-2"
-                        role="menu"
-                      >
-                        <li
-                          v-for="(child, childIndex) in link.dropdown"
-                          :key="childIndex"
-                          class="mb-2 last:mb-0"
-                          role="none"
-                        >
-                          <AppLink
-                            :href="child.href"
-                            class="mobile-nav-link dropdown-subitem block uppercase tracking-wide text-white/70 hover:text-white px-0 py-2 rounded-md transition-colors"
-                            role="menuitem"
-                            @click="$emit('navigate')"
-                          >
-                            {{ child.text }}
-                          </AppLink>
-                        </li>
-                      </ul>
-                    </Transition>
-                  </template>
-
-                  <template v-else>
-                    <AppLink
-                      :href="link.href"
-                      class="mobile-nav-link font-semibold uppercase tracking-wide text-white/80 hover:text-white px-0 py-4 rounded-md transition-shadow shadow-sm border-b border-white/10"
-                      @click="$emit('navigate')"
-                    >
+                  </h1>
+                  <ul v-show="openGroups[link.text]" class="mb-3 space-y-2 pl-6">
+                    <li v-for="sublink in link.dropdown" :key="sublink.href">
+                      <AppLink class="mobile-nav-sublink flex items-center" :href="sublink.href" @click="handleNavigate">
+                        <div class="w-8 h-8 flex items-center justify-center flex-shrink-0 mr-3 ml-5">
+                          <AppIcon :i="getSubMenuIcon(sublink.text)" class="text-lg opacity-70" />
+                        </div>
+                        {{ sublink.text }}
+                      </AppLink>
+                    </li>
+                  </ul>
+                </template>
+                <template v-else>
+                  <h1 class="mb-3">
+                    <AppLink class="mobile-nav-link flex items-center" :href="link.href" @click="handleNavigate">
+                      <div class="w-10 h-10 flex items-center justify-center flex-shrink-0 mr-3">
+                        <AppIcon :i="getMenuIcon(link.text)" class="text-2xl" />
+                      </div>
                       {{ link.text }}
                     </AppLink>
-                  </template>
-                </li>
-              </ul>
-            </nav>
-
-            <div class="mt-auto px-6 pt-8 pb-8">
-              <SocialNetworks />
-            </div>
-          </div>
+                  </h1>
+                </template>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        
+        <!-- Social networks pinned to actual bottom of screen -->
+        <div class="mt-auto pb-8 flex justify-center flex-shrink-0">
+          <SocialNetworks />
         </div>
       </div>
     </div>
@@ -152,37 +140,66 @@ watch(
 </template>
 
 <style scoped lang="postcss">
-/* This is essential: ensures the scrollable part takes up the remaining height */
-.mobile-nav > .flex-grow {
-  height: calc(100vh - var(--header-height));
-}
-
+/* Mobile menu best practices for touch targets and hierarchy */
 .mobile-nav-link {
   position: relative;
-  font-size: 1.25rem;
+  /* Level 1: Large text for primary navigation */
+  font-family: var(--un-font-heading);
+  font-size: 1.5rem; /* 24px - optimal for touch */
   line-height: 1.4;
-  font-weight: 600;
-  font-family: "Epilogue", Epilogue fallback;
+  font-weight: 500;
+  /* Minimum 44px touch target (Apple guidelines) */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  /* Override button scaling */
+  transform: none !important;
+  scale: 1 !important;
+  transition: none !important;
 }
 
-/* Dropdown submenu items slightly smaller */
-.dropdown-subitem.mobile-nav-link {
-  font-size: 1rem;
+.mobile-nav-link:hover,
+.mobile-nav-link:active,
+.mobile-nav-link:focus {
+  transform: none !important;
+  scale: 1 !important;
+}
+
+.mobile-nav-sublink {
+  /* Level 2: Slightly smaller but still easily tappable */
+  font-family: var(--un-font-heading);
+  font-size: 1.25rem; /* 20px - good hierarchy while remaining tappable */
+  line-height: 1.4;
   font-weight: 400;
-  line-height: 1.5;
+  color: white; /* White instead of grey for better readability */
+  /* Minimum 44px touch target */
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  /* Hover effect for better feedback */
+  transition: opacity 0.2s ease;
 }
 
-.transition-content-enter-active,
-.transition-content-leave-active {
-  @apply transition transform duration-300 ease-in-out opacity-100 scale-100;
+.mobile-nav-sublink:hover {
+  opacity: 0.8;
 }
 
-.transition-content-enter-from,
-.transition-content-leave-to {
-  @apply opacity-0 scale-105;
+.fade-enter-active,
+.fade-leave-active {
+  @apply transition-opacity duration-200 ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  @apply opacity-0;
 }
 
 .rotate-90 {
   transform: rotate(90deg);
+}
+
+.mobile-nav nav {
+  transform: translateZ(0);
+  will-change: auto;
 }
 </style>

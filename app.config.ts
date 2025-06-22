@@ -5,7 +5,7 @@ export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
   notice: {
     text: 'EARN RACHA POINTS AND STORAGE CREDITS BY REFERRING FRIENDS <u>LEARN MORE</u>',
-    href: 'https://storacha.network/referrals',
+    href: '/referrals',
     displayUntil: '2025-12-31', // use ISO date format or final day +1 in yyyy-mm-dd
   },
   actions: {
@@ -21,7 +21,7 @@ export default defineAppConfig({
           { text: 'Roadmap', href: '/roadmap' },
         ]
       },
-      { text: 'Referrals', href: 'https://storacha.network/referrals'},
+      { text: 'Referrals', href: '/referrals'},
       { text: 'Ecosystem', href: '/ecosystem' },
       { text: 'Node Providers', href: '/node-providers' },
       { text: 'Blog', href: '/blog' },

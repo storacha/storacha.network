@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.8.0",
-    "@nuxt/eslint": "^0.6.1",
+    "@nuxt/eslint": "^1.4.1",
     "@types/better-sqlite3": "^7.6.13",
     "@unocss/eslint-config": "^0.63.6",
     "eslint": "^9.13.0",

@@ -20,7 +20,7 @@
     "@iconify-json/carbon": "^1.2.4",
     "@iconify-json/simple-icons": "^1.2.10",
     "@iconify/json": "^2.2.351",
-    "@nuxt/content": "^2.13.4",
+    "@nuxt/content": "^3.6.1",
     "@nuxt/devtools": "^1.6.0",
     "@nuxt/image": "^1.8.1",
     "@nuxt/scripts": "^0.9.5",

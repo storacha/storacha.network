@@ -23,7 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm
-      - run: pnpm build --preset=cloudflare_pages
+      - name: Build site
+        run: pnpm build --preset=cloudflare_pages
+        env:
+          CI: true
+          NODE_ENV: production
       - name: Deploy preview build to Cloudflare Pages
         uses: mathiasvr/command-output@v2.0.0
         id: cloudflare
@@ -86,7 +90,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm
-      - run: pnpm build --preset=cloudflare_pages
+      - name: Build site
+        run: pnpm build --preset=cloudflare_pages
+        env:
+          CI: true
+          NODE_ENV: production
       - name: Deploy build to Cloudflare Pages
         uses: mathiasvr/command-output@v2.0.0
         id: cloudflare

@@ -31,6 +31,15 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
   ],
 
+  // Add this vite configuration to fix Cloudflare build
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ['unenv/runtime/mock/noop']
+      }
+    }
+  },
+
   eslint: {
     config: {
       standalone: false,

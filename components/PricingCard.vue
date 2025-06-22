@@ -35,7 +35,7 @@ const { currency = '$' } = defineProps<PricingCardProps>()
         <Btn 
           v-if="action" 
           v-bind="action" 
-          class="w-full sm:w-auto px-3 sm:px-8 py-2 sm:py-4 text-xs sm:text-sm md:text-base text-center justify-center"
+          class="w-full sm:w-auto"
         />
       </div>
     </div>

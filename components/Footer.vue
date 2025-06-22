@@ -9,15 +9,14 @@ const { getStarted, resources } = footerLinks
     <div class="border-3 b-current rounded-10 px-6 py-5 md:rounded-20 md:pt-12">
       <div class="grid cols-1 gap-6 text-xs lg:cols-3 sm:cols-2 sm:text-base">
         <div class="header flex justify-center sm:justify-start">
-          <AppLink 
+          <Btn 
             :href="mailingList.href" 
             target="_blank" 
-            rel="noopener" 
-            class="btn inline-flex items-center gap-1 sm:gap-2 text-sm sm:text-base px-2 sm:px-4 py-1 sm:py-2 min-w-0 max-w-full"
-          >
-            <div :class="mailingList.icon" class="flex-shrink-0" />
-            <span class="truncate min-w-0">{{ mailingList.text }}</span>
-          </AppLink>
+            rel="noopener"
+            :icon="mailingList.icon"
+            :text="mailingList.text"
+            class="min-w-0 max-w-full"
+          />
         </div>
         <div class="header flex text-1.2em lg:justify-center">
           <SocialNetworks

@@ -10,7 +10,7 @@ export interface BtnProps extends AppLinkProps {
   icon?: string
   slim?: boolean
   text?: string
-};
+}
 
 const props = defineProps<BtnProps>()
 
@@ -26,19 +26,21 @@ const forwardProps = useForwardProps(reactiveOmit(props, [
 
 <template>
   <AppLink
-    class="btn" :class="
-      {
-        'btn-primary': primary,
-        'btn-secondary': secondary,
-        'btn-outline': outline,
-        'btn-slim': slim,
-        'w-full block text-center': full,
-      }"
+    class="btn" 
+    :class="{
+      'btn-primary': primary,
+      'btn-secondary': secondary,
+      'btn-outline': outline,
+      'btn-slim': slim,
+      'w-full': full,
+    }"
     v-bind="forwardProps"
   >
-    <div class="max-h-4 flex items-end justify-center gap-1 leading-none">
-      <span v-if="icon" class="btn-icon inline-block v-middle" :class="icon" aria-hidden="true" />
-      <span class="btn-text"><slot>{{ text }}</slot></span>
-    </div>
+    <span class="flex items-center justify-center gap-2 min-h-full w-full">
+      <span v-if="icon" class="btn-icon flex-shrink-0" :class="icon" aria-hidden="true" />
+      <span class="btn-text whitespace-nowrap">
+        <slot>{{ text }}</slot>
+      </span>
+    </span>
   </AppLink>
 </template>

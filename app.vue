@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 defineOgImage({ url: '/img/storacha-og-card.png', width: 1200, height: 630, alt: 'Storacha - Decentralized Hot Storage Layer on Filecoin' })
 </script>
 
@@ -13,8 +14,14 @@ defineOgImage({ url: '/img/storacha-og-card.png', width: 1200, height: 630, alt:
 </template>
 
 <style lang="postcss">
-html {
+html, body {
   @apply antialiased bg-brand-4;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 p a {
@@ -24,6 +31,7 @@ p a {
 p a:hover {
   @apply decoration-gray decoration-2;
 }
+
 footer a:hover {
   @apply underline;
 }

@@ -22,6 +22,7 @@ function closeMobileMenu() {
 <template>
   <div class="animate-fade-in">
     <Header
+      v-show="!mobileMenuActive"
       :site-name="siteConfig.name"
       class="font-medium heading"
       :links="headerLinks"

@@ -24,12 +24,14 @@ defineProps<SectionHeaderProps>()
       {{ description }}
     </p>
     <slot />
-    <div v-if="actions" class="flex flex-col gap-4 sm:flex-row" :class="{ 'justify-center': center }">
+    <div v-if="actions" class="flex flex-col gap-4 sm:flex-row px-4 sm:px-0" :class="{ 'justify-center': center }">
       <component
         :is="action.asComponent ? action.asComponent : Btn"
         v-for="action in actions"
         :key="action.text"
         v-bind="action"
+        class="!w-full sm:!w-auto !px-2 sm:!px-8 !py-1 sm:!py-4 !text-xs sm:!text-sm md:!text-base text-center justify-center !max-w-full"
+        style="word-wrap: break-word; white-space: normal;"
       />
     </div>
   </div>

@@ -8,10 +8,15 @@ const { getStarted, resources } = footerLinks
   <footer class="bg-brand-4 color-brand-3">
     <div class="border-3 b-current rounded-10 px-6 py-5 md:rounded-20 md:pt-12">
       <div class="grid cols-1 gap-6 text-xs lg:cols-3 sm:cols-2 sm:text-base">
-        <div class="header">
-          <AppLink :href="mailingList.href" target="_blank" rel="noopener" class="btn inline-flex items-center gap-2">
-            <div :class="mailingList.icon" />
-            <span>{{ mailingList.text }}</span>
+        <div class="header flex justify-center sm:justify-start">
+          <AppLink 
+            :href="mailingList.href" 
+            target="_blank" 
+            rel="noopener" 
+            class="btn inline-flex items-center gap-1 sm:gap-2 text-sm sm:text-base px-2 sm:px-4 py-1 sm:py-2 min-w-0 max-w-full"
+          >
+            <div :class="mailingList.icon" class="flex-shrink-0" />
+            <span class="truncate min-w-0">{{ mailingList.text }}</span>
           </AppLink>
         </div>
         <div class="header flex text-1.2em lg:justify-center">
@@ -53,8 +58,8 @@ const { getStarted, resources } = footerLinks
           </div>
         </div>
       </div>
-      <div class="mb-2 mt-8 sm:mt-16">
-        <img src="/img/storacha-wm.svg" alt="Storacha" aria-hidden="true" class="mx-auto w-full" loading="lazy">
+      <div class="mb-2 mt-8 sm:mt-16 w-full overflow-hidden">
+        <img src="/img/storacha-wm.svg" alt="Storacha" aria-hidden="true" class="mx-auto max-w-full h-auto block" loading="lazy">
       </div>
     </div>
   </footer>

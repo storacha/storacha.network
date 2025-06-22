@@ -28,7 +28,6 @@ const { data: categories } = await useAsyncData(
 // select category from id with fallback to default category
 function getCategory(id: string): Ecosystem.Category {
   if (!id || !categories.value?.body) {
-    console.log('No category ID or categories data, using default:', { id, categories: categories.value })
     return { id: 'default', name: 'Other', icon: '📦' }
   }
   
@@ -36,10 +35,8 @@ function getCategory(id: string): Ecosystem.Category {
   const category = categories.value.body.find((c: Ecosystem.Category) => c.id === id)
   
   if (category) {
-    console.log('Found category for', id, ':', category)
     return category
   } else {
-    console.log('Category not found for', id, 'using default')
     return { id: 'default', name: 'Other', icon: '📦' }
   }
 }

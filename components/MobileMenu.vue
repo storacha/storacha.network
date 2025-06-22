@@ -72,6 +72,7 @@ watch(() => props.active, (isActive) => {
     <div
       v-if="active"
       class="mobile-nav fixed inset-0 z-50 flex flex-col bg-brand-3/80 text-white backdrop-blur-md"
+      style="min-height: 100vh; min-height: 100dvh;"
     >
       <Notice v-bind="useAppConfig().notice" />
       <div class="h-20 flex flex-shrink-0 items-center justify-between">
@@ -140,6 +141,22 @@ watch(() => props.active, (isActive) => {
 </template>
 
 <style scoped lang="postcss">
+/* Fix for mobile keyboard/viewport issues */
+.mobile-nav {
+  /* Ensure overlay always covers full screen even during keyboard transitions */
+  min-height: 100vh;
+  min-height: 100dvh; /* Modern dynamic viewport height */
+  width: 100vw;
+  width: 100dvw; /* Modern dynamic viewport width */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Prevent content from being affected by address bar changes */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+
 /* Mobile menu best practices for touch targets and hierarchy */
 .mobile-nav-link {
   position: relative;

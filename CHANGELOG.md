@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.19.2](https://github.com/storacha/storacha.network/compare/v0.19.1...v0.19.2) (2025-06-22)
+
+
+### Bug Fixes
+
+* resolve Cloudflare Pages build and complete Nuxt Content v3 migration ([#162](https://github.com/storacha/storacha.network/issues/162)) ([fa31265](https://github.com/storacha/storacha.network/commit/fa31265c64b9d5bf545f5f2016dad5af11c7b88c))
+* YT namespace and better-sqlite3 dependency for nuxt/content ([#160](https://github.com/storacha/storacha.network/issues/160)) ([8792435](https://github.com/storacha/storacha.network/commit/879243532f5ab2896d012afd476c48470aef54ab))
+
 ## [0.19.1](https://github.com/storacha/storacha.network/compare/v0.19.0...v0.19.1) (2025-05-13)
 
 

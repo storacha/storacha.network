@@ -44,12 +44,21 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
   ],
 
-  // Remove all Cloudflare-specific config - keep it simple
-  // nitro: {
-  //   ...(process.env.NODE_ENV === 'production' && {
-  //     preset: 'cloudflare-pages'
-  //   })
-  // },
+  // D1 database configuration for Nuxt Content v3
+  content: {
+    database: {
+      type: 'd1',
+      bindingName: 'DB' // This matches your Cloudflare binding name
+    }
+  },
+
+  // Nitro configuration for Cloudflare Pages
+  nitro: {
+    preset: 'cloudflare_pages',
+    prerender: {
+      crawlLinks: true,
+    },
+  },
 
   // Enhanced Vite configuration for Cloudflare + existing fix
   vite: {

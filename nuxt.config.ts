@@ -24,6 +24,12 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
   ],
 
+  nitro: {
+    output: {
+      dir: 'dist' 
+    }
+  },
+
   // Favicon and PWA configuration
   app: {
     head: {

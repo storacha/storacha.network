@@ -33,7 +33,7 @@ const start = useActions('start')
       <HeroHome
         eyebrow="Introducing Storacha"
         title="Super h🔥t decentralized data at scale."
-        description="Storacha’s open hot storage network scales IPFS and Filecoin"
+        description="Storacha's open hot storage network scales IPFS and Filecoin"
         :actions="[start]"
       />
       <Split>
@@ -47,7 +47,8 @@ const start = useActions('start')
               Storacha transforms web3.storage into a community-driven, decentralized hot storage network. Proven to handle petabytes of data with large enterprise support, Storacha effortlessly manages massive data flows.
             </p>
             <p>
-              It's the ultimate scaling solution for IPFS, adding the perfect kick to storage and retrieval, built on top of Filecoin. Plus, it guarantees verifiable, user-owned data. Whether you’re scaling decentralized applications or infrastructure, Storacha delivers unmatched performance and reliability — season to taste.            </p>
+              It's the ultimate scaling solution for IPFS, adding the perfect kick to storage and retrieval, built on top of Filecoin. Plus, it guarantees verifiable, user-owned data. Whether you're scaling decentralized applications or infrastructure, Storacha delivers unmatched performance and reliability — season to taste.
+            </p>
           </div>
         </SplitCell>
       </Split>

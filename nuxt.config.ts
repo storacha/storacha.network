@@ -1,10 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
 const PUBLIC_SITE_URL = import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://storacha.network'
 
 export default defineNuxtConfig({
-  // Enable SSR for proper server-side rendering
-  ssr: true,
-
   router: {
     options: {
       scrollBehaviorType: 'smooth',
@@ -15,10 +13,6 @@ export default defineNuxtConfig({
     // excluded from sitemap and robots, remove these when populated and ready for indexing
     '/privacy': { index: false },
     '/terms': { index: false },
-    // Prerender important pages for better performance
-    '/': { prerender: true },
-    '/ecosystem': { prerender: true },
-    '/blog': { prerender: true },
   },
 
   css: [
@@ -35,14 +29,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
   ],
-
-  // Optimized Nitro configuration
-  nitro: {
-    prerender: {
-      routes: ['/', '/ecosystem', '/blog'],
-      crawlLinks: true
-    }
-  },
 
   // Add this vite configuration to fix Cloudflare build
   vite: {
@@ -78,8 +64,9 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    // Enable payload extraction for better hydration
-    payloadExtraction: false,
+    // TODO: fix payload extraction for IPFS hosting
+    // see: https://github.com/nuxt/nuxt/issues/19478
+    // payloadExtraction: false,
   },
 
   sitemap: {

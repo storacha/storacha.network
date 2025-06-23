@@ -74,7 +74,7 @@ watch(() => props.active, (isActive) => {
       class="mobile-nav fixed inset-0 z-50 flex flex-col bg-brand-3/80 text-white backdrop-blur-md"
       style="min-height: 100vh; min-height: 100dvh;"
     >
-      <Notice v-bind="useAppConfig().notice" />
+      <!-- Remove Notice from here - let header's Notice show through -->
       <div class="h-20 flex flex-shrink-0 items-center justify-between">
         <div class="grid-margins w-full flex items-center justify-between">
           <AppLink href="/" @click="handleNavigate" class="flex items-center">

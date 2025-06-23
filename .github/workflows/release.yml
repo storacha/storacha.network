@@ -23,13 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm
-      - name: Build site (Static Generation)
-        run: pnpm generate
+      - name: Build site
+        run: pnpm build --preset=cloudflare_pages
         env:
           CI: true
           NODE_ENV: production
-          # Use static preset for generation
-          NITRO_PRESET: static
       - name: Deploy preview build to Cloudflare Pages
         uses: mathiasvr/command-output@v2.0.0
         id: cloudflare
@@ -92,13 +90,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm
-      - name: Build site (Static Generation)
-        run: pnpm generate
+      - name: Build site
+        run: pnpm build --preset=cloudflare_pages
         env:
           CI: true
           NODE_ENV: production
-          # Use static preset for production generation
-          NITRO_PRESET: static
       - name: Deploy build to Cloudflare Pages
         uses: mathiasvr/command-output@v2.0.0
         id: cloudflare

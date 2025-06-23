@@ -1,8 +1,7 @@
-// Updated for Nuxt Content v3
-import type { ParsedContentv2 as DefaultParsedContent, ParsedContentFile } from '@nuxt/content'
+// Basic content types without Nuxt Content dependency
 
-export interface JsonParsedContent<T> extends ParsedContentFile {
+export interface JsonParsedContent<T> {
   body: T
 }
 
-export type ParsedContent<T> = DefaultParsedContent & T
+export type ParsedContent<T> = T

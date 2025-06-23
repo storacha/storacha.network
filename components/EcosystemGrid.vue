@@ -1,84 +1,34 @@
 <script lang="ts" setup>
-import type { Ecosystem } from '~/types'
-
 interface EcosystemGridProps {
   limit?: number
 }
 
 const { limit = 0 } = defineProps<EcosystemGridProps>()
 
-// Fetch projects using queryCollection (correct for Nuxt Content v3)
-const { data: projects, pending: projectsPending } = await useAsyncData(
-  `eco_projects_${limit}`,
-  async () => {
-    try {
-      const result = await queryCollection('projects').all()
-      return limit > 0 ? result.slice(0, limit) : result
-    } catch (error) {
-      console.warn('Failed to fetch projects:', error)
-      return []
-    }
-  },
-  {
-    default: () => [],
-    server: true // Ensure this runs on server for prerendering
-  }
-)
+// Use the ecosystem composable for consistent data access
+const { getCategory, getProjects } = useEcosystem()
 
-// Fetch categories using queryCollection (correct for Nuxt Content v3)
-const { data: categories, pending: categoriesPending } = await useAsyncData(
-  'eco_categories',
-  async () => {
-    try {
-      const result = await queryCollection('categories').first()
-      return result || { body: [] }
-    } catch (error) {
-      console.warn('Failed to fetch categories:', error)
-      return { body: [] }
-    }
-  },
-  {
-    default: () => ({ body: [] }),
-    server: true // Ensure this runs on server for prerendering
-  }
-)
-
-function getCategory(id: string): Ecosystem.Category {
-  if (!id || !categories.value?.body) {
-    return { id: 'default', name: 'Other', icon: '📦' }
-  }
-  
-  const category = categories.value.body.find((c: Ecosystem.Category) => c.id === id)
-  return category || { id: 'default', name: 'Other', icon: '📦' }
-}
-
-// Simplified computed properties for loading states
-const isLoading = computed(() => projectsPending.value || categoriesPending.value)
+// Get projects with optional limit
+const projects = computed(() => getProjects(limit))
 const hasProjects = computed(() => projects.value && projects.value.length > 0)
 </script>
 
 <template>
   <div class="grid grid-cols-1 w-full gap-4 font-sans lg:grid-cols-3 md:grid-cols-2">
-    <template v-if="isLoading">
-      <div 
-        v-for="i in (limit || 3)" 
-        :key="`skeleton-${i}`" 
-        class="animate-pulse bg-gray-200 rounded-2xl aspect-ratio-video min-h-200"
-      ></div>
-    </template>
-    
-    <template v-else-if="hasProjects">
+    <!-- Projects loaded successfully -->
+    <template v-if="hasProjects">
       <EcosystemCard
-        v-for="(p, index) in projects" 
-        :key="`${p.name}-${index}`"
+        v-for="p in projects" 
+        :key="p.name"
         :category="getCategory(p.categories?.[0])"
         :title="p.name"
         :description="p.description"
         :action="{ text: 'Visit Website', href: p.url }"
-        :icon="p.icon || undefined"
+        :icon="p.icon"
       />
     </template>
-    
+
+    <!-- No projects found -->
     <div v-else class="col-span-full text-center py-8">
       <p>No ecosystem projects found.</p>
     </div>

@@ -13,17 +13,6 @@ export default defineNuxtConfig({
     // excluded from sitemap and robots, remove these when populated and ready for indexing
     '/privacy': { index: false },
     '/terms': { index: false },
-    // Remove prerender to fix build errors, just add caching headers
-    '/ecosystem': { 
-      headers: { 
-        'Cache-Control': 's-maxage=3600' 
-      }
-    },
-    '/': { 
-      headers: { 
-        'Cache-Control': 's-maxage=31536000' 
-      }
-    },
   },
 
   css: [
@@ -41,32 +30,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
   ],
-
-  // Remove all Cloudflare-specific config - keep it simple
-  // nitro: {
-  //   ...(process.env.NODE_ENV === 'production' && {
-  //     preset: 'cloudflare-pages'
-  //   })
-  // },
-
-  // Enhanced Vite configuration for Cloudflare + existing fix
-  vite: {
-    build: {
-      rollupOptions: {
-        external: ['unenv/runtime/mock/noop'],
-        output: {
-          // Optimize chunk naming for better caching
-          chunkFileNames: 'chunks/[name].[hash].js',
-          entryFileNames: 'entry/[name].[hash].js'
-        }
-      },
-      // Reduce chunk size for better edge performance
-      chunkSizeWarningLimit: 1000,
-    },
-    ssr: {
-      noExternal: ['@nuxt/content']
-    }
-  },
 
   eslint: {
     config: {
@@ -96,8 +59,6 @@ export default defineNuxtConfig({
     // TODO: fix payload extraction for IPFS hosting
     // see: https://github.com/nuxt/nuxt/issues/19478
     // payloadExtraction: false,
-    
-    // Remove Cloudflare experimental features for now to ensure build works
   },
 
   sitemap: {

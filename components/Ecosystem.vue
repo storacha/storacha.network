@@ -8,10 +8,10 @@ const discord = useSocialNetwork('discord')
   <SectionHeader
     eyebrow="Get Involved"
     title="Storacha is open sauce, it needs you. 🌶️"
-    description="Become part of the ecosystem and build on top of Storacha's blazing fast, decentralized storage and retrieval network or contribute to the protocol and interfaces!"
+    description="Become part of the ecosystem and build on top of Storacha’s blazing fast, decentralized storage and retrieval network or contribute to the protocol and interfaces!"
     :actions="[
       { text: 'Join Dev Community', href: discord?.href, primary: true },
-      { asComponent: MailingListSignup, outline: true },
+      { outline: true, asComponent: MailingListSignup },
     ]"
   />
   <Section class="ecosystem mt-12" full-width>

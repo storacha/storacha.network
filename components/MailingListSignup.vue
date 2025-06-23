@@ -12,25 +12,47 @@ defineOptions({
 
 const { mailingList = useActions('mailingList') } = defineProps<MailingListProps>()
 
-const { width, height } = useWindowSize()
+// Move window size logic inside ClientOnly to avoid SSR issues
+const iframeHeight = ref(580) // default height
 
-const iframeHeight = computed(() => {
-  if (width.value < 768) {
-    return height.value - 100
+function updateIframeHeight() {
+  if (process.client) {
+    const { width, height } = useWindowSize()
+    iframeHeight.value = computed(() => {
+      if (width.value < 768) {
+        return height.value - 100
+      }
+      return 580
+    }).value
   }
-  return 580
+}
+
+onMounted(() => {
+  updateIframeHeight()
 })
 </script>
 
 <template>
-  <div>
+  <ClientOnly>
     <Dialog>
       <DialogTrigger as-child>
-        <Btn v-bind="{ ...mailingList, ...$attrs }" @click.prevent />
+        <Btn v-bind="{ ...mailingList, ...$attrs }" @click.prevent class="flex items-center justify-center text-center" />
       </DialogTrigger>
       <DialogContent>
-        <iframe width="100%" :height="iframeHeight" :src="mailingList.href" frameborder="0" scrolling="auto" style="display: block;margin: auto;max-width: 100%;" />
+        <iframe 
+          width="100%" 
+          :height="iframeHeight" 
+          :src="mailingList.href" 
+          frameborder="0" 
+          scrolling="auto" 
+          style="display: block;margin: auto;max-width: 100%;" 
+        />
       </DialogContent>
     </Dialog>
-  </div>
+    <template #fallback>
+      <a :href="mailingList.href" target="_blank" v-bind="$attrs" class="btn btn-outline flex items-center justify-center text-center">
+        Join Mailing List
+      </a>
+    </template>
+  </ClientOnly>
 </template>

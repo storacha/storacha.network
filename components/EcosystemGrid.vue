@@ -7,25 +7,39 @@ interface EcosystemGridProps {
 
 const { limit = 0 } = defineProps<EcosystemGridProps>()
 
-// Fetch projects. The `queryCollection` API is correct for v3.
-// The `default` option is a robust safeguard against errors.
+// Fetch projects using queryCollection (correct for Nuxt Content v3)
 const { data: projects, pending: projectsPending } = await useAsyncData(
   `eco_projects_${limit}`,
   async () => {
-    const result = await queryCollection('projects').all()
-    return limit > 0 ? result.slice(0, limit) : result
+    try {
+      const result = await queryCollection('projects').all()
+      return limit > 0 ? result.slice(0, limit) : result
+    } catch (error) {
+      console.warn('Failed to fetch projects:', error)
+      return []
+    }
   },
   {
-    default: () => []
+    default: () => [],
+    server: true // Ensure this runs on server for prerendering
   }
 )
 
-// Fetch categories.
+// Fetch categories using queryCollection (correct for Nuxt Content v3)
 const { data: categories, pending: categoriesPending } = await useAsyncData(
   'eco_categories',
-  () => queryCollection('categories').first(),
+  async () => {
+    try {
+      const result = await queryCollection('categories').first()
+      return result || { body: [] }
+    } catch (error) {
+      console.warn('Failed to fetch categories:', error)
+      return { body: [] }
+    }
+  },
   {
-    default: () => ({ body: [] })
+    default: () => ({ body: [] }),
+    server: true // Ensure this runs on server for prerendering
   }
 )
 
@@ -38,7 +52,7 @@ function getCategory(id: string): Ecosystem.Category {
   return category || { id: 'default', name: 'Other', icon: '📦' }
 }
 
-// Simplified computed properties for loading states.
+// Simplified computed properties for loading states
 const isLoading = computed(() => projectsPending.value || categoriesPending.value)
 const hasProjects = computed(() => projects.value && projects.value.length > 0)
 </script>

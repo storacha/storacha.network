@@ -3,8 +3,7 @@
 const PUBLIC_SITE_URL = import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://storacha.network'
 
 export default defineNuxtConfig({
-  ssr: true, // Keep SSR enabled - critical for SEO and Cloudflare deployment
-  
+    
   router: {
     options: {
       scrollBehaviorType: 'smooth',
@@ -15,13 +14,15 @@ export default defineNuxtConfig({
     // excluded from sitemap and robots, remove these when populated and ready for indexing
     '/privacy': { index: false },
     '/terms': { index: false },
-    // Remove prerender to fix build errors, just add caching headers
+    // For static generation, prerender these routes
     '/ecosystem': { 
+      prerender: true,
       headers: { 
         'Cache-Control': 's-maxage=3600' 
       }
     },
     '/': { 
+      prerender: true,
       headers: { 
         'Cache-Control': 's-maxage=31536000' 
       }
@@ -44,20 +45,26 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
   ],
 
-  // D1 database configuration for Nuxt Content v3
+  // Content configuration for static generation with collections
   content: {
+    // Default SQLite configuration works for static generation
+    // During build, Content v3 will use a local SQLite database to process collections
+    // The database is only used during build time, not runtime
     database: {
-      type: 'd1',
-      bindingName: 'DB' // This matches your Cloudflare binding name
+      type: 'sqlite',
+      filename: './.nuxt/content.db'
     }
   },
 
-  // Nitro configuration for Cloudflare Pages
+  // Nitro configuration for static generation  
   nitro: {
-    preset: 'cloudflare_pages',
+    // Use static preset for true static site generation
+    preset: 'static',
     prerender: {
-      crawlLinks: true,
-    },
+      routes: ['/', '/ecosystem'],
+      // Crawl all routes for static generation
+      crawlLinks: true
+    }
   },
 
   // Enhanced Vite configuration for Cloudflare + existing fix

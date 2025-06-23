@@ -14,6 +14,21 @@ const nav = reactive({
   threshold: 100,
 })
 
+// Safe app config access with fallback
+const appConfig = computed(() => {
+  try {
+    return useAppConfig()
+  } catch {
+    return {
+      notice: {
+        displayUntil: '',
+        text: '',
+        href: ''
+      }
+    }
+  }
+})
+
 // Dropdown state management
 const openDropdown = ref<string | null>(null)
 let hoverTimeout: NodeJS.Timeout | null = null
@@ -60,11 +75,15 @@ function handleClickOutside(event: Event) {
 }
 
 onMounted(() => {
-  document.addEventListener('click', handleClickOutside)
+  if (process.client) {
+    document.addEventListener('click', handleClickOutside)
+  }
 })
 
 onUnmounted(() => {
-  document.removeEventListener('click', handleClickOutside)
+  if (process.client) {
+    document.removeEventListener('click', handleClickOutside)
+  }
 })
 
 watch(y, (newY) => {
@@ -82,7 +101,7 @@ watch(y, (newY) => {
     class="top-0 z-40 w-full fixed transition-colors duration-300 ease-out"
     :class="[nav.isTransparent ? 'bg-transparent' : 'is-active']"
   >
-    <Notice v-bind="useAppConfig().notice" />
+    <Notice v-bind="appConfig.notice" />
     <div class="grid-margins h-20 flex items-center justify-between">
       <AppLink class="ident transition" href="/" title="">
         <Ident :site-name="siteName" class="h-10" />

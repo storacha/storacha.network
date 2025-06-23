@@ -1,6 +1,12 @@
 <script lang="ts" setup>
-const { data: blog } = await useLazyFetch('/api/blog', { server: false })
-const items = computed(() => blog.value?.items.slice(0, 2))
+import type { Feed } from '~/types/blog'
+
+const { data: blog } = await useLazyFetch<Feed>('/api/blog', { 
+  server: false,
+  default: () => ({ items: [] })
+})
+
+const items = computed(() => blog.value?.items?.slice(0, 2) ?? [])
 </script>
 
 <template>

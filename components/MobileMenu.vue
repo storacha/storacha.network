@@ -46,17 +46,21 @@ function handleNavigate() {
 }
 
 function handleResize() {
-  if (window.innerWidth >= 768 && props.active) {
+  if (process.client && window.innerWidth >= 768 && props.active) {
     emit('close-menu')
   }
 }
 
-onMounted(() => { 
-  window.addEventListener('resize', handleResize) 
+onMounted(() => {
+  if (process.client) {
+    window.addEventListener('resize', handleResize)
+  }
 })
 
-onUnmounted(() => { 
-  window.removeEventListener('resize', handleResize) 
+onUnmounted(() => {
+  if (process.client) {
+    window.removeEventListener('resize', handleResize)
+  }
 })
 
 watch(() => props.active, (isActive) => {

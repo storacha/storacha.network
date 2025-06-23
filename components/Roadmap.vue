@@ -24,25 +24,27 @@ const cards = [{
 </script>
 
 <template>
-  <CarouselSection
-    class="roadmap"
-    title="Our Sizzling Roadmap"
-    description="Check out how we’re cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!"
-  >
-    <CardCell v-for="card in cards" :key="card.name" class="card bg-brand-3">
-      <div class="pill" :class="{ 'pill-active': card.active }">
-        <span class="b-1 rounded-full px-4 py-2 p3 text-xs">{{ card.status }}</span>
-      </div>
-      <div class="card-body mt-8 color-brand-4">
-        <Heading type="h3">
-          {{ card.title }}
-        </Heading>
-        <p class="mt-6 text-sm p1 sm:text-base">
-          {{ card.description }}
-        </p>
-      </div>
-    </CardCell>
-  </CarouselSection>
+  <Section>
+    <SectionHeader
+      title="Our Sizzling Roadmap"
+      description="Check out how we’re cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!"
+    />
+    <div class="mt-12 space-y-8">
+      <CardCell v-for="card in cards" :key="card.name" class="card mx-auto max-w-2xl bg-brand-3">
+        <div class="pill" :class="{ 'pill-active': card.active }">
+          <span class="b-1 rounded-full px-4 py-2 p3 text-xs">{{ card.status }}</span>
+        </div>
+        <div class="card-body mt-8 color-brand-4">
+          <Heading type="h3">
+            {{ card.title }}
+          </Heading>
+          <p class="mt-6 text-sm p1 sm:text-base">
+            {{ card.description }}
+          </p>
+        </div>
+      </CardCell>
+    </div>
+  </Section>
 </template>
 
 <style lang="postcss" scoped>
@@ -53,14 +55,4 @@ const cards = [{
 .pill-active span {
   @apply color-brand-3 bg-brand-4;
 }
-
-/*
-:deep(.carousel::-webkit-scrollbar-thumb) {
-  @apply bg-brand-3;
-}
-
-:deep(.carousel::-webkit-scrollbar-track) {
-  @apply bg-brand-4;
-}
- */
 </style>

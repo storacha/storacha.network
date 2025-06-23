@@ -1,0 +1,19 @@
+{
+    "name": "Storacha - Decentralized Hot Storage Layer on Filecoin",
+    "short_name": "Storacha",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#E91315",
+    "background_color": "#BDE0FF",
+    "display": "standalone"
+}

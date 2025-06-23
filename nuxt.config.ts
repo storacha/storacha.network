@@ -42,14 +42,11 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
   ],
 
-  // Cloudflare-specific optimizations (only for production)
+  // Simplified Cloudflare config - only for production and minimal
   nitro: {
     ...(process.env.NODE_ENV === 'production' && {
-      preset: 'cloudflare-pages',
-      minify: false,
-      experimental: {
-        wasm: true
-      }
+      preset: 'cloudflare-pages'
+      // Remove minify and experimental options for now
     })
   },
 
@@ -101,11 +98,7 @@ export default defineNuxtConfig({
     // see: https://github.com/nuxt/nuxt/issues/19478
     // payloadExtraction: false,
     
-    // Cloudflare hydration fixes (only for production)
-    ...(process.env.NODE_ENV === 'production' && {
-      renderJsonPayloads: true,
-      viewTransition: false,
-    })
+    // Remove Cloudflare experimental features for now to ensure build works
   },
 
   sitemap: {

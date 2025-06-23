@@ -31,8 +31,12 @@ const { currency = '$' } = defineProps<PricingCardProps>()
           </p>
         </li>
       </ul>
-      <div class="pricing-actions">
-        <Btn v-bind="action" v-if="action" />
+      <div class="pricing-actions w-full flex justify-center">
+        <Btn 
+          v-if="action" 
+          v-bind="action" 
+          class="w-full sm:w-auto"
+        />
       </div>
     </div>
   </Card>

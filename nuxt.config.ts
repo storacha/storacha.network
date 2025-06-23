@@ -21,7 +21,6 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/eslint',
-    '@nuxt/content',
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@nuxtjs/fontaine',

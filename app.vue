@@ -24,6 +24,7 @@ p a {
 p a:hover {
   @apply decoration-gray decoration-2;
 }
+
 footer a:hover {
   @apply underline;
 }

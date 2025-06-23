@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.19.3](https://github.com/storacha/storacha.network/compare/v0.19.2...v0.19.3) (2025-06-23)
+
+
+### Bug Fixes
+
+* add favicon configuration ([#174](https://github.com/storacha/storacha.network/issues/174)) ([eddbf38](https://github.com/storacha/storacha.network/commit/eddbf3877bad4286d7a3104b68bcfeac0c5ff766))
+* replace nuxt/content with json in ecosystem page ([#172](https://github.com/storacha/storacha.network/issues/172)) ([0b60c00](https://github.com/storacha/storacha.network/commit/0b60c009fcee6ed477167672206a621efb19aa6c))
+
 ## [0.19.2](https://github.com/storacha/storacha.network/compare/v0.19.1...v0.19.2) (2025-06-22)
 
 

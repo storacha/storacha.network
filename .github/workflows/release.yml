@@ -9,7 +9,7 @@ on:
 
 env:
   # path to built site
-  outputDir: .output
+  outputDir: dist
 
 jobs:
   preview:

@@ -42,13 +42,12 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
   ],
 
-  // Simplified Cloudflare config - only for production and minimal
-  nitro: {
-    ...(process.env.NODE_ENV === 'production' && {
-      preset: 'cloudflare-pages'
-      // Remove minify and experimental options for now
-    })
-  },
+  // Remove all Cloudflare-specific config - keep it simple
+  // nitro: {
+  //   ...(process.env.NODE_ENV === 'production' && {
+  //     preset: 'cloudflare-pages'
+  //   })
+  // },
 
   // Enhanced Vite configuration for Cloudflare + existing fix
   vite: {

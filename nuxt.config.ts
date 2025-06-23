@@ -13,16 +13,13 @@ export default defineNuxtConfig({
     // excluded from sitemap and robots, remove these when populated and ready for indexing
     '/privacy': { index: false },
     '/terms': { index: false },
-    // Cloudflare optimization: prerender ecosystem page for better performance
+    // Remove prerender to fix build errors, just add caching headers
     '/ecosystem': { 
-      prerender: true,
       headers: { 
         'Cache-Control': 's-maxage=3600' 
       }
     },
-    // Homepage optimization
     '/': { 
-      prerender: true,
       headers: { 
         'Cache-Control': 's-maxage=31536000' 
       }

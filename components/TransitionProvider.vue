@@ -29,7 +29,7 @@ onMounted(() => {
           })
         },
         {
-          threshold: window.innerWidth > 640 ? 0.25 : 0.1,
+          threshold: process.client && window.innerWidth > 640 ? 0.25 : 0.1,
         },
       )
       stopIntersectionObserver.value = stop

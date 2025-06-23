@@ -9,12 +9,6 @@ export default defineNuxtConfig({
     },
   },
 
-  routeRules: {
-    // excluded from sitemap and robots, remove these when populated and ready for indexing
-    '/privacy': { index: false },
-    '/terms': { index: false },
-  },
-
   css: [
     '@unocss/reset/tailwind.css',
   ],
@@ -41,15 +35,6 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '512x512', href: '/android-chrome-512x512.png' },
         { rel: 'manifest', href: '/site.webmanifest' }
       ]
-    }
-  },
-
-  // Add this vite configuration to fix Cloudflare build
-  vite: {
-    build: {
-      rollupOptions: {
-        external: ['unenv/runtime/mock/noop']
-      }
     }
   },
 

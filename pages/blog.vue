@@ -1,8 +1,11 @@
 <script lang="ts" setup>
+import type { Feed } from '~/types/blog'
+
 const MAX_AGE = 1000 * 60 * 60
 const isExpired = (d: Date, maxAge = MAX_AGE) => Date.now() - d.getTime() > maxAge
 
-const { data: blog } = await useLazyFetch('/api/blog', {
+const { data: blog } = await useLazyFetch<Feed>('/api/blog', {
+  default: () => ({ items: [] }), // Add default value
   getCachedData (key, nuxt) {
     const defaultData = nuxt.isHydrating ? nuxt.payload.data[key] : nuxt.static.data[key]
     if (typeof globalThis.localStorage === 'undefined') {
@@ -46,7 +49,7 @@ const medium = useSocialNetwork('medium')
     </div>
     <div class="blog-cell grid gap-4 lg:cols-3 md:cols-2">
       <BlogCard
-        v-for="item in blog?.items"
+        v-for="item in blog?.items || []"
         :key="item.title"
         :item="item"
         class="grid-rows-subgrid"

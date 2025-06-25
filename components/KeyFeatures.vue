@@ -49,14 +49,15 @@ const cards = [{
 </script>
 
 <template>
-  <CarouselSection
+  <GridSection
     class="key-features"
     title="Key Features"
     description="Check out how we’re cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!"
   >
     <CardCell v-for="card in cards" :key="card.title" class="card bg-brand-4 color-brand-3">
       <div class="pill h-3em w-3em flex-inline items-center justify-center rounded-full bg-white">
-        <AppIcon :i="card.icon" />
+        <div v-if="card.icon.startsWith('i-')" :class="card.icon" />
+        <span v-else>{{ card.icon }}</span>
       </div>
       <div class="card-body mt-6 color-brand-3">
         <Heading type="h3" class="font-medium">
@@ -70,7 +71,7 @@ const cards = [{
         </p>
       </div>
     </CardCell>
-  </CarouselSection>
+  </GridSection>
 </template>
 
 <style lang="postcss" scoped>

@@ -1,4 +1,39 @@
 <script lang="ts" setup>
+// SEO metadata for homepage
+useSeoMeta({
+  title: 'Storacha Network | Decentralized Hot Storage Layer on Filecoin',
+  description: 'Storacha is a decentralized hot storage network for data at scale, offering user-owned data with decentralized permissioning and leveraging Filecoin and IPFS.',
+  ogTitle: 'Storacha - Super Hot Decentralized Data at Scale',
+  ogDescription: 'Open hot storage network that scales IPFS and Filecoin with verifiable, user-owned data.',
+  ogImage: '/img/storacha-og-card.png',
+  keywords: 'storacha, decentralized storage, hot storage, filecoin, IPFS, web3 storage, blockchain storage',
+})
+
+// Homepage structured data
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Storacha Network",
+      "url": "https://storacha.network",
+      "description": "Decentralized hot storage network for data at scale, offering user-owned data with decentralized permissioning and leveraging Filecoin and IPFS.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Storacha Network",
+        "url": "https://storacha.network",
+        "logo": "https://storacha.network/img/storacha-logo.png"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://storacha.network/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    })
+  }]
+})
+
 const start = useActions('start')
 </script>
 

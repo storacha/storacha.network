@@ -20,6 +20,8 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/plausible',
     '@nuxtjs/seo',
+    '@nuxtjs/robots',  
+    '@nuxtjs/sitemap',
     '@nuxt/image',
     '@nuxt/scripts',
   ],
@@ -27,7 +29,10 @@ export default defineNuxtConfig({
   nitro: {
     output: {
       dir: 'dist' 
-    }
+    },
+    // Add CF Pages compatibility
+    preset: 'cloudflare-pages',
+    compatibilityDate: '2024-07-02'
   },
 
   // Favicon and PWA configuration
@@ -74,11 +79,82 @@ export default defineNuxtConfig({
     // payloadExtraction: false,
   },
 
+// Replace your existing sitemap configuration with this:
   sitemap: {
-    discoverImages: false,
+    // Enable image discovery for better SEO
+    discoverImages: true,
+    
+    // Exclude these routes from the sitemap
     exclude: [
       '/__nuxt_island/**',
+      '/api/**',        // API routes
+      '/_nuxt/**',      // Build assets
     ],
+    
+    // Default settings for all pages (removed lastmod anti-pattern)
+    defaults: {
+      changefreq: 'monthly',
+      priority: 0.7,
+    },
+    
+    // Custom configuration for specific routes
+    routes: async () => {
+      return [
+        // Homepage - highest priority
+        {
+          url: '/',
+          changefreq: 'weekly',
+          priority: 1.0,
+        },
+        
+        // Main navigation pages - high priority for sitelinks
+        {
+          url: '/referrals',
+          changefreq: 'monthly',
+          priority: 0.9,
+        },
+        {
+          url: '/ecosystem',
+          changefreq: 'monthly',
+          priority: 0.9,
+        },
+        {
+          url: '/node-providers',
+          changefreq: 'monthly',
+          priority: 0.9,
+        },
+        {
+          url: '/blog',
+          changefreq: 'weekly',
+          priority: 0.8,
+        },
+        {
+          url: '/roadmap',
+          changefreq: 'monthly',
+          priority: 0.8,
+        },
+        {
+          url: '/referred',
+          changefreq: 'monthly',
+          priority: 0.6, // Lower priority for referred page
+        },
+      ]
+    },
+    
+    // Split large sitemaps
+    sitemapSize: 45000, // Max URLs per sitemap file
+  },
+
+  // Optimized robots.txt for SEO
+  robots: {
+    UserAgent: '*',
+    Allow: '/',
+    Disallow: [
+      '/api/**',      // Block API endpoints to save crawl budget
+      '/_nuxt/**',    // Block Nuxt build assets
+    ],
+    Sitemap: `${PUBLIC_SITE_URL}/sitemap.xml`,
+    Host: PUBLIC_SITE_URL,
   },
 
   fontMetrics: {

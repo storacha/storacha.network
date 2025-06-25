@@ -1,33 +1,64 @@
 <script lang="ts" setup>
 import type { Feed } from '~/types/blog'
 
-const MAX_AGE = 1000 * 60 * 60
-const isExpired = (d: Date, maxAge = MAX_AGE) => Date.now() - d.getTime() > maxAge
+// SEO metadata for the blog page
+useSeoMeta({
+  title: 'Blog | Latest News from Storacha Network',
+  description: 'Stay updated with the latest news, updates, and insights from the Storacha team.',
+  ogTitle: 'Storacha Blog - Latest News & Updates',
+  ogDescription: 'Read the latest from Storacha about decentralized storage, web3 innovations, and platform updates.',
+  ogImage: '/img/blog-og.jpg',
+  keywords: 'storacha blog, decentralized storage news, web3, blockchain, filecoin, IPFS',
+})
 
-const { data: blog } = await useLazyFetch<Feed>('/api/blog', {
-  default: () => ({ items: [] }), // Add default value
-  getCachedData (key, nuxt) {
-    const defaultData = nuxt.isHydrating ? nuxt.payload.data[key] : nuxt.static.data[key]
-    if (typeof globalThis.localStorage === 'undefined') {
-      return defaultData
-    }
+// Structured data for the blog
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Storacha Blog",
+      "description": "Latest news, updates, and insights from the Storacha team.",
+      "url": "https://storacha.network/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Storacha Network",
+        "url": "https://storacha.network"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://storacha.network"
+        }, {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://storacha.network/blog"
+        }]
+      }
+    })
+  }]
+})
 
-    const ts = new Date(localStorage.getItem('blog:ts') ?? 0)
-    if (isExpired(ts)) {
-      console.log(`cache miss blog items (${Date.now() - ts.getTime()} > ${MAX_AGE})`)
-      return defaultData
-    }
+// 🔥 AGGRESSIVE CLIENT-SIDE ONLY APPROACH
+const blog = ref<Feed>({ items: [] })
+const error = ref<any>(null)
+const pending = ref(true)
 
-    console.log(`cache hit blog items (${Date.now() - ts.getTime()} < ${MAX_AGE})`)
-    const items = JSON.parse(localStorage.getItem('blog:items') ?? '[]')
-    return items.length ? { items } : defaultData
-  },
-  onResponse ({ response }) {
-    if (typeof globalThis.localStorage !== 'undefined') {
-      console.log('caching blog items')
-      localStorage.setItem('blog:ts', new Date().toISOString())
-      localStorage.setItem('blog:items', JSON.stringify(response._data.items))
-    }
+// Only run on client-side
+onMounted(async () => {
+  try {
+    const response = await $fetch<Feed>('/api/blog')
+    blog.value = response
+  } catch (err) {
+    error.value = err
+    console.error('Blog fetch error:', err)
+  } finally {
+    pending.value = false
   }
 })
 
@@ -47,7 +78,24 @@ const medium = useSocialNetwork('medium')
         <Btn text="Follow on Medium" :href="medium?.href" />
       </div>
     </div>
-    <div class="blog-cell grid gap-4 lg:cols-3 md:cols-2">
+
+    <!-- Loading State -->
+    <div v-if="pending" class="text-center py-12">
+      <div class="text-6xl mb-4 animate-spin">🔄</div>
+      <Heading type="h3" class="mb-4">Loading Latest Posts</Heading>
+      <p class="color-brand-3">Fetching the hottest content from our blog...</p>
+    </div>
+
+    <!-- Error State -->
+    <div v-else-if="error" class="text-center py-12">
+      <div class="text-6xl mb-4">📱</div>
+      <Heading type="h3" class="mb-4">Blog Temporarily Unavailable</Heading>
+      <p class="mb-6 color-brand-3">We're having trouble loading our latest posts right now.</p>
+      <Btn href="https://medium.com/@storacha" text="Visit Medium" class="btn bg-brand-3 text-white" external />
+    </div>
+
+    <!-- Success State -->
+    <div v-else class="blog-cell grid gap-4 lg:cols-3 md:cols-2">
       <BlogCard
         v-for="item in blog?.items || []"
         :key="item.title"
@@ -55,6 +103,14 @@ const medium = useSocialNetwork('medium')
         class="grid-rows-subgrid"
         show-snippet
       />
+      
+      <!-- Empty state -->
+      <div v-if="blog?.items?.length === 0" class="col-span-full text-center py-12">
+        <div class="text-6xl mb-4">📝</div>
+        <Heading type="h3" class="mb-4">No Posts Yet</Heading>
+        <p class="mb-6 color-brand-3">Check back soon for hot new content!</p>
+        <Btn href="https://medium.com/@storacha" text="Follow on Medium" class="btn bg-brand-3 text-white" external />
+      </div>
     </div>
   </Section>
 </template>

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.6](https://github.com/storacha/storacha.network/compare/v0.19.5...v0.19.6) (2025-06-25)
+
+
+### Bug Fixes
+
+* seo and error handling ([#182](https://github.com/storacha/storacha.network/issues/182)) ([af47e78](https://github.com/storacha/storacha.network/commit/af47e78a993ea0705e8188ffd9e3f2a0562054ea))
+
 ## [0.19.5](https://github.com/storacha/storacha.network/compare/v0.19.4...v0.19.5) (2025-06-23)
 
 

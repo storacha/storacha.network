@@ -3,6 +3,46 @@ const route = useRoute()
 const config = useRuntimeConfig()
 const refcode = route.query.refcode
 const consoleSignupUrl = `${config.public.consoleUrl}?refcode=${refcode}`
+
+// SEO metadata for referred page
+useSeoMeta({
+  title: 'Free Storage Offer | You\'ve Been Referred to Storacha',
+  description: 'Claim your free storage! Sign up for Storacha through a referral and receive up to two months of free decentralized storage.',
+  ogTitle: 'Free Storage Offer - Storacha Referral',
+  ogDescription: 'You\'ve been invited to join Storacha! Get up to 2 months of free decentralized storage.',
+  ogImage: '/img/referrals/referred-og.jpg',
+  keywords: 'storacha free storage, referral discount, decentralized storage offer, free months',
+  robots: 'noindex', // Prevent indexing of referral landing pages
+})
+
+// Structured data for referred page
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Storacha Referral Landing Page",
+      "description": "Claim your free storage through a Storacha referral invitation.",
+      "url": "https://storacha.network/referred",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Storacha Network",
+        "url": "https://storacha.network"
+      },
+      "mainEntity": {
+        "@type": "Offer",
+        "name": "Free Storage Offer",
+        "description": "Up to two months of free decentralized storage for new Storacha users",
+        "offeredBy": {
+          "@type": "Organization",
+          "name": "Storacha Network"
+        },
+        "eligibleCustomerType": "NewCustomers"
+      }
+    })
+  }]
+})
 </script>
 
 <template>

@@ -1,6 +1,49 @@
 <script lang="ts" setup>
 import type { Feed } from '~/types/blog'
 
+// SEO metadata for the blog page
+useSeoMeta({
+  title: 'Blog | Latest News from Storacha Network',
+  description: 'Stay updated with the latest news, updates, and insights from the Storacha team. Learn about decentralized storage, web3, and blockchain technology.',
+  ogTitle: 'Storacha Blog - Latest News & Updates',
+  ogDescription: 'Read the latest from Storacha about decentralized storage, web3 innovations, and platform updates.',
+  ogImage: '/img/blog-og.jpg',
+  keywords: 'storacha blog, decentralized storage news, web3, blockchain, filecoin, IPFS',
+})
+
+// Structured data for the blog
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Storacha Blog",
+      "description": "Latest news, updates, and insights from the Storacha team.",
+      "url": "https://storacha.network/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Storacha Network",
+        "url": "https://storacha.network"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://storacha.network"
+        }, {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://storacha.network/blog"
+        }]
+      }
+    })
+  }]
+})
+
 const MAX_AGE = 1000 * 60 * 60
 const isExpired = (d: Date, maxAge = MAX_AGE) => Date.now() - d.getTime() > maxAge
 

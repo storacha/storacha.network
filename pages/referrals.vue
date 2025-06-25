@@ -1,6 +1,58 @@
 <script setup lang="ts">
 import FreeStorage from '~/components/FreeStorage.vue'
 import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue'
+
+// SEO metadata for referrals page
+useSeoMeta({
+  title: 'Referrals Program | Earn RACHA Points & Storage Credits - Storacha',
+  description: 'Refer friends to Storacha and earn RACHA Points and Storage Credits! Get rewarded for sharing our blazing-fast, decentralized storage network.',
+  ogTitle: 'Storacha Referrals - Earn RACHA Points & Storage Credits',
+  ogDescription: 'Share Storacha with friends and earn up to 460 RACHA Points and Storage Credits through our referral program.',
+  ogImage: '/img/referrals/referrals-og.jpg',
+  keywords: 'storacha referrals, RACHA points, storage credits, refer friends, rewards program, loyalty program',
+})
+
+// Structured data for referrals page
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Storacha Referrals Program",
+      "description": "Refer friends to Storacha and earn RACHA Points and Storage Credits through our rewards program.",
+      "url": "https://storacha.network/referrals",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Storacha Network",
+        "url": "https://storacha.network"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://storacha.network"
+        }, {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Referrals",
+          "item": "https://storacha.network/referrals"
+        }]
+      },
+      "mainEntity": {
+        "@type": "LoyaltyProgram",
+        "name": "Storacha Referral Program",
+        "description": "Earn RACHA Points and Storage Credits by referring friends to Storacha's decentralized storage network.",
+        "provider": {
+          "@type": "Organization",
+          "name": "Storacha Network"
+        }
+      }
+    })
+  }]
+})
 </script>
 
 <template>
@@ -11,7 +63,7 @@ import ReferralCodeCreator from '~/components/ReferralCodeCreator.vue'
           <SectionHeader
             class="color-brand-3" eyebrow="Earn Racha Points & Storage Credits"
             title="Refer your friends to Storacha!"
-            description="Share Storacha’s blazing-fast, decentralized storage and get rewarded with Racha Points, part of our soon to be announced Loyalty Program, and Storage Credits! It’s simple: the more friends you refer, the more perks you unlock!"
+            description="Share Storacha's blazing-fast, decentralized storage and get rewarded with Racha Points, part of our soon to be announced Loyalty Program, and Storage Credits! It's simple: the more friends you refer, the more perks you unlock!"
           />
           <div class="color-brand-3 prose p1">
             <p>

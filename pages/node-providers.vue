@@ -1,21 +1,64 @@
 <script lang="ts" setup>
 import MailingListSignup from '~/components/MailingListSignup.vue'
 
+// SEO metadata for node providers page
+useSeoMeta({
+  title: 'Node Providers | Join the Storacha Network',
+  description: 'Join the waitlist to be the first to participate as a node provider on the Storacha network. Run storage, retrieval, or indexing nodes and earn rewards.',
+  ogTitle: 'Storacha Node Providers - Join the Network',
+  ogDescription: 'Be the first to run nodes on Storacha\'s decentralized storage network and earn rewards.',
+  ogImage: '/img/node-providers/node-providers-og.jpg',
+  keywords: 'storacha node providers, run storage nodes, decentralized network, earn rewards, blockchain infrastructure',
+})
+
+// Structured data for node providers page
+useHead({
+  script: [{
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Storacha Node Providers",
+      "description": "Join the waitlist to be the first to participate as a node provider on the Storacha network.",
+      "url": "https://storacha.network/node-providers",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Storacha Network",
+        "url": "https://storacha.network"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://storacha.network"
+        }, {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Node Providers",
+          "item": "https://storacha.network/node-providers"
+        }]
+      }
+    })
+  }]
+})
+
 const discord = useSocialNetwork('discord')
 const nodeWaitlist = useActions('nodeWaitlist')
 
 const nodes = [{
   id: 'storage',
   title: 'Storage Node',
-  description: 'The first nodes to roll-out: Spice up Storacha storage by running our first hotshot nodes! Keep Storacha’s data sizzling and accessible, and in exchange you’ll rack up rewards!',
+  description: 'The first nodes to roll-out: Spice up Storacha storage by running our first hotshot nodes! Keep Storacha\'s data sizzling and accessible, and in exchange you\'ll rack up rewards!',
 }, {
   id: 'retrieval',
   title: 'Retrieval Node',
-  description: 'Coming soon: Our lightning-fast Retrieval Nodes! Run a node to cache and fetch data effortlessly, serving users and earning you rewards. Stay tuned – the rewards will be worth it!',
+  description: 'Coming soon: Our lightning-fast Retrieval Nodes! Run a node to cache and fetch data effortlessly, serving users and earning you rewards. Stay tuned - the rewards will be worth it!',
 }, {
   id: 'indexing',
   title: 'Indexing Node',
-  description: 'Coming soon: Our Indexing Nodes will track data locations, helping users find what they need. Get excited – they’re on the way!',
+  description: 'Coming soon: Our Indexing Nodes will track data locations, helping users find what they need. Get excited - they\'re on the way!',
 }]
 </script>
 

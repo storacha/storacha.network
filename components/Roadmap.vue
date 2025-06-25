@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 const cards = [{
   name: 'Milestone 1',
-  status: 'In Progress 🔥',
-  active: true,
+  status: 'COMPLETED ✅',
   title: 'From centralized storage to trusted storage network',
   description: 'Following this, a transition from a centralized storage model to a platform-neutral network of trusted nodes is underway. This shift lays the groundwork for a permissionless storage protocol, enhances integration with Filecoin L1 providers, and aligns with web3-native use cases.',
 }, {
   name: 'Milestone 2',
-  status: 'Up Next',
+  status: 'In Progress 🔥',
+  active: true,
   title: 'Permissioned hot storage network with early participation',
   description: 'The storage node network is expanding to include third-party nodes on a permissioned basis, i.e. Filecoin L1 Storage Providers (SPs) or previous Saturn node providers. A verification system is being implemented to ensure that third-party providers maintain service guarantees. This system is crucial as it provides users with necessary proofs of service integrity.',
 }, {
   name: 'Milestone 3',
-  status: 'Future',
+  status: 'Up Next',
   title: 'Permissionless hot storage layer with retrieval MVP',
   description: 'The network is transitioning to a permissionless model, allowing any node to participate in the network. This model is designed to be more inclusive and decentralized, providing a more robust and secure network. The transition to a permissionless model is a significant milestone in the development of the Storacha network.',
 }, {
@@ -27,7 +27,7 @@ const cards = [{
   <CarouselSection
     class="roadmap"
     title="Our Sizzling Roadmap"
-    description="Check out how we’re cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!"
+    description="Check out how we're cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!"
   >
     <CardCell v-for="card in cards" :key="card.name" class="card bg-brand-3">
       <div class="pill" :class="{ 'pill-active': card.active }">

@@ -29,7 +29,10 @@ export default defineNuxtConfig({
   nitro: {
     output: {
       dir: 'dist' 
-    }
+    },
+    // Add CF Pages compatibility
+    preset: 'cloudflare-pages',
+    compatibilityDate: '2024-07-02'
   },
 
   // Favicon and PWA configuration

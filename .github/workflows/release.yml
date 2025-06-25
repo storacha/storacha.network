@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm
       - name: Build site
-        run: pnpm build --preset=cloudflare_pages
+        run: pnpm build --preset=cloudflare-pages
         env:
           CI: true
           NODE_ENV: production
@@ -91,7 +91,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/pnpm
       - name: Build site
-        run: pnpm build --preset=cloudflare_pages
+        run: pnpm build --preset=cloudflare-pages
         env:
           CI: true
           NODE_ENV: production

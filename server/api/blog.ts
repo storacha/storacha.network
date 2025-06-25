@@ -8,7 +8,7 @@ async function getFeed(feedUrl: string) {
 
 async function fetchPosts(url: string): Promise<Feed> {
   const rss = await getFeed(url)
-
+  
   if (!rss || rss.trim().length === 0) {
     throw new Error('Empty RSS feed received')
   }
@@ -54,29 +54,6 @@ async function fetchPosts(url: string): Promise<Feed> {
         return null
       }
     }).filter(Boolean) // Remove null entries
-=======
-  const root = new XMLParser().parse(rss)
-  const { channel } = root.rss
-
-  const regex = /<img.*?src="(.*?)"/g
-  return {
-    // transform posts and extract images to a new array key
-    items: channel.item.map((post: any) => {
-      const images = Array.from(String(post['content:encoded'])
-        .matchAll(regex)).map(match => match[1]).filter(Boolean)
-      let snippet = post['content:encoded'].replace(/(<([^>]+)>)/g, '')
-      if (snippet.length > 200) {
-        snippet = `${snippet.slice(0, 200)}...`
-      }
-      return {
-        title: post.title,
-        snippet,
-        pubDate: post.pubDate,
-        isoDate: post.isoDate,
-        link: post.link,
-        images,
-      }
-    }),
   }
 }
 

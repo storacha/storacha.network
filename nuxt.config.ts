@@ -20,6 +20,8 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/plausible',
     '@nuxtjs/seo',
+    '@nuxtjs/robots',  
+    '@nuxtjs/sitemap',
     '@nuxt/image',
     '@nuxt/scripts',
   ],
@@ -79,6 +81,18 @@ export default defineNuxtConfig({
     exclude: [
       '/__nuxt_island/**',
     ],
+  },
+
+  // Optimized robots.txt for SEO
+  robots: {
+    UserAgent: '*',
+    Allow: '/',
+    Disallow: [
+      '/api/**',      // Block API endpoints to save crawl budget
+      '/_nuxt/**',    // Block Nuxt build assets
+    ],
+    Sitemap: `${PUBLIC_SITE_URL}/sitemap.xml`,
+    Host: PUBLIC_SITE_URL,
   },
 
   fontMetrics: {

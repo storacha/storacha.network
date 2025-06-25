@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.19.5](https://github.com/storacha/storacha.network/compare/v0.19.4...v0.19.5) (2025-06-23)
+
+
+### Bug Fixes
+
+* SSR issues and 500s ([#177](https://github.com/storacha/storacha.network/issues/177)) ([c5a0491](https://github.com/storacha/storacha.network/commit/c5a0491e16647e206ebf2cb970f7c190c11ee1d0))
+
+## [0.19.4](https://github.com/storacha/storacha.network/compare/v0.19.3...v0.19.4) (2025-06-23)
+
+
+### Bug Fixes
+
+* ssr issues ([#175](https://github.com/storacha/storacha.network/issues/175)) ([21d7083](https://github.com/storacha/storacha.network/commit/21d70830887fb6e1e6dafb96424dc93b580a4819))
+
 ## [0.19.3](https://github.com/storacha/storacha.network/compare/v0.19.2...v0.19.3) (2025-06-23)
 
 

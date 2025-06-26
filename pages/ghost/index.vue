@@ -1,10 +1,14 @@
-<!-- pages/ghost/index.vue -->
 <script lang="ts" setup>
 import type { Feed } from '~/types/blog'
 import type { GhostFeed } from '~/types/ghost'
 import { transformGhostToFeed } from '~/utils/ghostAdapter'
 
-// SEO metadata for the Ghost blog page
+// Define page meta - ISR is configured globally in nuxt.config.ts
+definePageMeta({
+  // Route rules handle ISR configuration
+})
+
+// ✅ SEO metadata for the Ghost blog page
 useSeoMeta({
   title: 'Ghost Blog | Latest News from Storacha Network',
   description: 'Stay updated with the latest news, updates, and insights from the Storacha team via Ghost CMS.',
@@ -14,7 +18,7 @@ useSeoMeta({
   keywords: 'storacha ghost blog, decentralized storage news, web3, blockchain, filecoin, IPFS',
 })
 
-// Structured data for the blog
+// ✅ Structured data for the blog
 useHead({
   script: [{
     type: 'application/ld+json',
@@ -47,28 +51,22 @@ useHead({
   }]
 })
 
-// Client-side data fetching
-const blog = ref<Feed>({ items: [] })
-const error = ref<any>(null)
-const pending = ref(true)
-
-// Only run on client-side
-onMounted(async () => {
+// ✅ Use internal API route instead of direct Ghost API call
+const { data: blog, error, pending } = await useLazyAsyncData('ghost-blog', async () => {
   try {
-    // Fetch from Ghost API
-    const ghostResponse = await $fetch<GhostFeed>('/api/ghost-blog')
+    // Fetch from internal API route
+    const ghostResponse = await $fetch<GhostFeed>('/api/ghost')
+    
     // Transform Ghost data to existing blog format
-    blog.value = transformGhostToFeed(ghostResponse)
-  } catch (err) {
-    error.value = err
+    return transformGhostToFeed(ghostResponse)
+  } catch (err: any) {
     console.error('Ghost blog fetch error:', err)
-  } finally {
-    pending.value = false
+    throw createError({
+      statusCode: 500,
+      statusMessage: 'Failed to fetch Ghost blog posts'
+    })
   }
 })
-
-// Ghost site link
-const ghostLink = { href: 'https://your-ghost-site.ghost.io' }
 </script>
 
 <template>
@@ -79,7 +77,9 @@ const ghostLink = { href: 'https://your-ghost-site.ghost.io' }
           <Heading type="h4" class="uppercase color-brand-3">
             Ghost CMS Content
           </Heading>
-          <p class="max-w-50ch text-pretty prose p1 color-brand-3">Latest content powered by Ghost CMS for comparison.</p>
+          <p class="max-w-50ch text-pretty prose p1 color-brand-3">
+            Latest content powered by Ghost CMS with instant updates.
+          </p>
         </div>
       </div>
 
@@ -97,9 +97,9 @@ const ghostLink = { href: 'https://your-ghost-site.ghost.io' }
         <p class="mb-6 color-brand-3">We're having trouble connecting to Ghost CMS right now.</p>
         <div class="space-y-2 text-sm color-brand-3">
           <p><strong>Possible issues:</strong></p>
-          <p>• Ghost URL not configured</p>
-          <p>• Invalid API key</p>
-          <p>• Ghost site is down</p>
+          <p>• Ghost URL not configured properly</p>
+          <p>• Invalid Ghost Content API key</p>
+          <p>• Ghost site is temporarily down</p>
         </div>
         <Btn href="/blog" text="View Medium Blog" class="mt-4" />
       </div>
@@ -118,7 +118,7 @@ const ghostLink = { href: 'https://your-ghost-site.ghost.io' }
         <div v-if="blog?.items?.length === 0" class="col-span-full text-center py-12">
           <div class="text-6xl mb-4">👻</div>
           <Heading type="h3" class="mb-4">No Ghost Posts Yet</Heading>
-          <p class="mb-6 color-brand-3">No content found in Ghost CMS!</p>
+          <p class="mb-6 color-brand-3">No published content found in Ghost CMS!</p>
           <Btn href="/blog" text="View Medium Blog" />
         </div>
       </div>

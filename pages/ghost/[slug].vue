@@ -1,297 +1,468 @@
+<!-- pages/ghost/[slug].vue -->
 <script lang="ts" setup>
 import type { GhostPost } from '~/types/ghost'
+
+// Use the Ghost layout
+definePageMeta({
+  layout: 'ghost'
+})
 
 const route = useRoute()
 const slug = route.params.slug as string
 
-const { data: post, error, pending } = await useLazyFetch<GhostPost>(`/api/ghost-post/${slug}`, {
-  server: false
+// Fetch the post data
+const { data: post, error, pending } = await useLazyAsyncData(`ghost-post-${slug}`, async () => {
+  return await $fetch<GhostPost>(`/api/ghost/${slug}`)
+}, {
+  server: true,
+  default: () => null
 })
 
-// SEO metadata
-useSeoMeta({
-  title: () => post.value ? `${post.value.title} | Storacha Network` : 'Loading...',
-  description: () => post.value?.excerpt || 'Latest news from Storacha Network',
-  ogTitle: () => post.value?.title,
-  ogDescription: () => post.value?.excerpt,
-  ogImage: () => post.value?.feature_image || '/img/blog-og.jpg',
-  ogType: 'article',
-  articlePublishedTime: () => post.value?.published_at,
-  articleModifiedTime: () => post.value?.updated_at,
-  keywords: () => post.value?.tags?.map(tag => tag.name).join(', '),
-})
+// Handle error state
+if (error.value) {
+  throw createError({
+    statusCode: error.value.statusCode || 404,
+    statusMessage: error.value.statusMessage || 'Post not found'
+  })
+}
 
-// Structured data
-useHead(() => ({
-  script: post.value ? [{
-    type: 'application/ld+json',
-    innerHTML: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.value.title,
-      "description": post.value.excerpt,
-      "image": post.value.feature_image,
-      "datePublished": post.value.published_at,
-      "dateModified": post.value.updated_at,
-      "author": {
-        "@type": "Person",
-        "name": post.value.primary_author?.name || "Storacha Team"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Storacha Network",
-        "url": "https://storacha.network",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://storacha.network/img/logo.png"
-        }
-      },
-      "url": `https://storacha.network/ghost/${post.value.slug}`,
-      "mainEntityOfPage": `https://storacha.network/ghost/${post.value.slug}`
-    })
-  }] : []
-}))
+// Load Ghost CSS dynamically on the client
+const { stylesLoaded, stylesError, loadGhostStyles } = await useGhostStyles()
 
 const publishedDate = computed(() => {
   if (!post.value?.published_at) return ''
-  return useAppDateFormat(post.value.published_at)
+  if (process.client) {
+    return useAppDateFormat(post.value.published_at)
+  } else {
+    return new Date(post.value.published_at).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+  }
 })
 
-// Load Ghost assets
-useHead({
-  link: [
-    {
-      rel: 'stylesheet',
-      href: 'https://storacha-blog.ghost.io/public/cards.min.css',
-      media: 'all'
-    }
-  ],
-  script: [
-    {
-      src: 'https://storacha-blog.ghost.io/public/cards.min.js',
-      defer: true
-    }
-  ]
-})
+// SEO metadata
+if (post.value) {
+  useSeoMeta({
+    title: `${post.value.title} | Storacha Network`,
+    description: post.value.excerpt || 'Latest news from Storacha Network',
+    ogTitle: post.value.title,
+    ogDescription: post.value.excerpt,
+    ogImage: post.value.feature_image || '/img/blog-og.jpg',
+    ogType: 'article',
+    articlePublishedTime: post.value.published_at,
+    articleModifiedTime: post.value.updated_at,
+    keywords: post.value.tags?.map(tag => tag.name).join(', '),
+  })
+
+  useHead({
+    script: [{
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.value.title,
+        "description": post.value.excerpt,
+        "image": post.value.feature_image,
+        "datePublished": post.value.published_at,
+        "dateModified": post.value.updated_at,
+        "author": {
+          "@type": "Person",
+          "name": post.value.primary_author?.name || "Storacha Team"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Storacha Network",
+          "url": "https://storacha.network",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://storacha.network/img/logo.png"
+          }
+        },
+        "url": `https://storacha.network/ghost/${post.value.slug}`,
+        "mainEntityOfPage": `https://storacha.network/ghost/${post.value.slug}`
+      })
+    }]
+  })
+}
 </script>
 
 <template>
-  <div>
+  <div class="ghost-page">
     <!-- Loading State -->
-    <Section v-if="pending" class="bg-white" padding>
-      <div class="grid-margins text-center section-py">
-        <div class="text-6xl mb-4 animate-spin">👻</div>
-        <Heading type="h2" class="mb-4">Loading Post</Heading>
-        <p class="p1 text-brand-3">Fetching your content...</p>
+    <div v-if="pending" class="ghost-loading">
+      <div class="ghost-loading-content">
+        <div class="ghost-loading-spinner">👻</div>
+        <h2>Loading Post</h2>
+        <p>Fetching your content...</p>
+        <div v-if="!stylesLoaded && !stylesError" class="ghost-styles-status">
+          Loading Ghost styles...
+        </div>
       </div>
-    </Section>
+    </div>
 
     <!-- Error State -->
-    <Section v-else-if="error || !post" class="bg-white" padding>
-      <div class="grid-margins text-center section-py">
-        <img 
-          src="/img/errors/error-confused-racha.svg" 
-          alt="Confused Racha" 
-          class="w-32 h-32 mx-auto mb-6"
-        />
-        <Heading type="h2" class="mb-4 text-brand-3">Post Not Found</Heading>
-        <p class="p1 mb-8 text-brand-3">Sorry, we couldn't find that blog post.</p>
-        <Btn href="/ghost" class="flex items-center gap-2">
-          <span>←</span>
-          <span>Back to Ghost Blog</span>
-        </Btn>
+    <div v-else-if="error || !post" class="ghost-error">
+      <div class="ghost-error-content">
+        <h2>Post Not Found</h2>
+        <p>Sorry, we couldn't find that blog post.</p>
+        <a href="/ghost">← Back to Ghost Blog</a>
       </div>
-    </Section>
+    </div>
 
     <!-- Post Content -->
-    <article v-else>
-      <!-- Header Section - Your UnoCSS styling -->
-      <Section class="bg-white" padding>
-        <div class="grid-margins">
-          <div class="mt-20 mb-10">
-            <!-- Breadcrumb -->
-            <nav class="mb-8">
-              <div class="flex items-center gap-2 p4 text-brand-3">
-                <AppLink href="/" class="hover:underline hover:text-brand-1 transition-colors">Home</AppLink>
-                <span>/</span>
-                <AppLink href="/ghost" class="hover:underline hover:text-brand-1 transition-colors">Ghost Blog</AppLink>
-                <span>/</span>
-                <span class="font-medium">{{ post.title }}</span>
-              </div>
-            </nav>
+    <article v-else class="ghost-article">
+      <div class="ghost-container">
+        <!-- Breadcrumb -->
+        <nav class="ghost-breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/ghost">Ghost Blog</a>
+          <span>/</span>
+          <span>{{ post.title }}</span>
+        </nav>
 
-            <!-- Featured Image -->
-            <div v-if="post.feature_image" class="mb-10 aspect-video overflow-hidden rounded-2xl shadow-lg">
-              <img 
-                :src="post.feature_image" 
-                :alt="post.title"
-                class="w-full h-full object-cover"
-              />
+        <!-- Featured Image -->
+        <div v-if="post.feature_image" class="ghost-feature-image">
+          <img 
+            :src="post.feature_image" 
+            :alt="post.title"
+          />
+        </div>
+
+        <!-- Post Header -->
+        <header class="ghost-post-header">
+          <h1 class="ghost-post-title">{{ post.title }}</h1>
+          
+          <div class="ghost-post-meta">
+            <div v-if="post.primary_author" class="ghost-author">
+              <div v-if="post.primary_author.profile_image" class="ghost-author-image">
+                <img 
+                  :src="post.primary_author.profile_image" 
+                  :alt="post.primary_author.name"
+                />
+              </div>
+              <div v-else class="ghost-author-avatar">
+                <span>{{ post.primary_author.name.charAt(0) }}</span>
+              </div>
+              <span class="ghost-author-name">{{ post.primary_author.name }}</span>
             </div>
-
-            <!-- Post Header -->
-            <header class="mb-10 max-w-4xl">
-              <Heading type="h1" class="mb-6 text-balance">
-                {{ post.title }}
-              </Heading>
-              
-              <div class="flex flex-wrap items-center gap-6 mb-6 p3 text-brand-3">
-                <div v-if="post.primary_author" class="flex items-center gap-3">
-                  <div v-if="post.primary_author.profile_image" class="w-10 h-10 rounded-full overflow-hidden bg-brand-2">
-                    <img 
-                      :src="post.primary_author.profile_image" 
-                      :alt="post.primary_author.name"
-                      class="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div v-else class="w-10 h-10 rounded-full bg-brand-2 flex items-center justify-center">
-                    <span class="font-heading font-medium text-brand-1">{{ post.primary_author.name.charAt(0) }}</span>
-                  </div>
-                  <span class="font-medium">{{ post.primary_author.name }}</span>
-                </div>
-                
-                <time :datetime="post.published_at" class="flex items-center gap-2">
-                  <span class="w-1 h-1 rounded-full bg-brand-3"></span>
-                  {{ publishedDate }}
-                </time>
-                
-                <span v-if="post.reading_time" class="flex items-center gap-2">
-                  <span class="w-1 h-1 rounded-full bg-brand-3"></span>
-                  {{ post.reading_time }} min read
-                </span>
-              </div>
-
-              <!-- Tags -->
-              <div v-if="post.tags?.length" class="flex flex-wrap gap-3">
-                <span 
-                  v-for="tag in post.tags" 
-                  :key="tag.id"
-                  class="px-4 py-2 bg-brand-2 text-brand-1 p4 font-medium rounded-full"
-                >
-                  {{ tag.name }}
-                </span>
-              </div>
-            </header>
-          </div>
-        </div>
-      </Section>
-
-      <!-- 🔥 ISOLATED GHOST CONTENT SECTION - No UnoCSS interference -->
-      <section class="ghost-blog-content">
-        <div class="ghost-content-wrapper">
-          <!-- Excerpt with your styling -->
-          <div v-if="post.excerpt" class="excerpt-section">
-            <p>{{ post.excerpt }}</p>
+            
+            <time :datetime="post.published_at">
+              <span class="ghost-meta-dot"></span>
+              {{ publishedDate }}
+            </time>
+            
+            <span v-if="post.reading_time">
+              <span class="ghost-meta-dot"></span>
+              {{ post.reading_time }} min read
+            </span>
           </div>
 
-          <!-- Pure Ghost Content - Full width, no UnoCSS -->
-          <div class="ghost-raw-content" v-html="post.html" />
-        </div>
-      </section>
-
-      <!-- Footer Section - Your UnoCSS styling -->
-      <Section class="bg-white" padding>
-        <div class="grid-margins">
-          <div class="mt-12 pt-8 border-t border-brand-2">
-            <Btn href="/ghost" outline>
-              <span class="flex items-center gap-2">
-                <span class="text-lg">←</span>
-                Back to Ghost Blog
-              </span>
-            </Btn>
+          <!-- Tags -->
+          <div v-if="post.tags?.length" class="ghost-tags">
+            <span 
+              v-for="tag in post.tags" 
+              :key="tag.id"
+              class="ghost-tag"
+            >
+              {{ tag.name }}
+            </span>
           </div>
+        </header>
+
+        <!-- Excerpt -->
+        <div v-if="post.excerpt" class="ghost-excerpt">
+          <p>{{ post.excerpt }}</p>
         </div>
-      </Section>
+        
+        <!-- 
+          Ghost Content with Dynamic CSS
+          The layout provides ghost-content-isolation, and we add ghost-content class
+          CSS is loaded dynamically from Ghost or falls back to our styles
+        -->
+        <div 
+          class="ghost-content"
+          :class="{
+            'styles-loaded': stylesLoaded,
+            'styles-fallback': stylesError
+          }"
+          v-html="post.html" 
+        />
+      </div>
     </article>
   </div>
 </template>
 
-<style scoped>
-/* 🔥 ISOLATED GHOST SECTION - Bypass UnoCSS completely */
-.ghost-blog-content {
-  /* Reset everything to avoid UnoCSS conflicts */
-  all: initial;
-  
-  /* Container styling */
-  background: white;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  
-  /* Allow full-width content like real Ghost */
+<style>
+/* Base Ghost content styles - enhanced by dynamic CSS when available */
+.ghost-content {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  line-height: 1.6em;
+  color: #15171A;
+  font-weight: 400;
   max-width: none;
-  overflow-x: hidden;
+  transition: opacity 0.3s ease;
 }
 
-.ghost-content-wrapper {
-  /* Center content but allow breakouts */
-  max-width: 1200px;
+.ghost-content.styles-loaded {
+  opacity: 1;
+}
+
+.ghost-content.styles-fallback {
+  opacity: 0.95;
+}
+
+/* Basic Ghost typography fallbacks */
+.ghost-content h1,
+.ghost-content h2,
+.ghost-content h3,
+.ghost-content h4,
+.ghost-content h5,
+.ghost-content h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 700;
+  line-height: 1.25em;
+  margin: 2em 0 0.5em 0;
+  color: #15171A;
+}
+
+.ghost-content h1 { font-size: 3.2rem; }
+.ghost-content h2 { font-size: 2.6rem; }
+.ghost-content h3 { font-size: 2.0rem; }
+
+.ghost-content p {
+  margin: 0 0 1.5em 0;
+  line-height: 1.6em;
+}
+
+.ghost-content a {
+  color: #0084FF;
+  text-decoration: underline;
+}
+
+/* Basic Ghost cards */
+.ghost-content .kg-image {
+  width: 100%;
+  height: auto;
+  margin: 2em 0;
+  border-radius: 6px;
+}
+
+.ghost-content .kg-gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5em;
+  margin: 2em 0;
+}
+
+.ghost-content .kg-bookmark-card {
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  padding: 1em;
+  margin: 2em 0;
+  text-decoration: none;
+  display: block;
+}
+</style>
+
+<style scoped>
+.ghost-page {
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 2rem;
-  
-  /* Reset everything for Ghost content */
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
-  color: #15171a;
 }
 
-.excerpt-section {
-  max-width: 740px;
-  margin: 2rem auto;
+.ghost-container {
+  width: 100%;
+}
+
+/* Loading State */
+.ghost-loading {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.ghost-loading-spinner {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: spin 2s linear infinite;
+}
+
+.ghost-styles-status {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: #626d79;
+}
+
+/* Error State */
+.ghost-error {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.ghost-error a {
+  color: #0084ff;
+  text-decoration: none;
+}
+
+/* Breadcrumb */
+.ghost-breadcrumb {
+  margin-bottom: 2rem;
+  font-size: 14px;
+  color: #626d79;
+}
+
+.ghost-breadcrumb a {
+  color: #626d79;
+  text-decoration: none;
+}
+
+.ghost-breadcrumb a:hover {
+  color: #0084ff;
+}
+
+.ghost-breadcrumb span {
+  margin: 0 0.5rem;
+}
+
+/* Featured Image */
+.ghost-feature-image {
+  margin-bottom: 2rem;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.ghost-feature-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Post Header */
+.ghost-post-header {
+  margin-bottom: 2rem;
+}
+
+.ghost-post-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #15171A;
+}
+
+.ghost-post-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 14px;
+  color: #626d79;
+}
+
+.ghost-author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ghost-author-image {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.ghost-author-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ghost-author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #15171A;
+}
+
+.ghost-author-name {
+  font-weight: 500;
+  color: #15171A;
+}
+
+.ghost-meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #aeb7c1;
+}
+
+/* Tags */
+.ghost-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ghost-tag {
+  padding: 0.25rem 0.75rem;
+  background: #f8f9fa;
+  color: #15171A;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 15px;
+  border: 1px solid #e5e5e5;
+}
+
+/* Excerpt */
+.ghost-excerpt {
+  margin-bottom: 2rem;
   padding: 1.5rem;
-  background: #f9f9f9;
-  border-radius: 8px;
-  border-left: 4px solid #0176CE;
-}
-
-.excerpt-section p {
-  margin: 0;
+  background: #f8f9fa;
+  border-left: 4px solid #0084ff;
+  border-radius: 0 6px 6px 0;
   font-style: italic;
-  color: #666;
-  font-size: 1.125rem;
-  line-height: 1.6;
+  color: #626d79;
 }
 
-.ghost-raw-content {
-  /* This is where Ghost CSS takes over completely */
-  /* No UnoCSS interference here */
-  max-width: none;
+.ghost-excerpt p {
   margin: 0;
-  padding: 0;
 }
 
-/* Allow Ghost's width classes to work properly */
-.ghost-raw-content :deep(.kg-width-wide) {
-  position: relative;
-  width: 85vw;
-  min-width: 100%;
-  margin: 2rem auto calc(50% - 50vw);
-  transform: translateX(calc(50vw - 50%));
+/* Debug info */
+.ghost-debug {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #626d79;
 }
 
-.ghost-raw-content :deep(.kg-width-full) {
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* Mobile responsiveness */
 @media (max-width: 768px) {
-  .ghost-content-wrapper {
+  .ghost-page {
     padding: 0 1rem;
   }
   
-  .ghost-raw-content :deep(.kg-width-wide),
-  .ghost-raw-content :deep(.kg-width-full) {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    transform: none !important;
-    left: auto !important;
-    right: auto !important;
+  .ghost-post-title {
+    font-size: 2rem;
   }
 }
 </style>

@@ -64,6 +64,74 @@ export default defineConfig({
     ['p3', 'text-base font-sans font-normal'],
     ['p4', 'text-sm font-sans font-normal'],
   ],
+  
+  // CRITICAL: Safelist Ghost classes to prevent UnoCSS from processing them
+  safelist: [
+    // Ghost page wrapper classes
+    'ghost-page-wrapper',
+    'ghost-container',
+    'ghost-article',
+    'ghost-header',
+    'ghost-content-wrapper',
+    'ghost-footer-wrapper',
+    
+    // Ghost content isolation - MOST IMPORTANT
+    'ghost-content-isolation',
+    'ghost-content',
+    
+    // Ghost card classes - all kg-* variations
+    'kg-image',
+    'kg-gallery-container',
+    'kg-gallery-image',
+    'kg-bookmark-card',
+    'kg-bookmark-content',
+    'kg-bookmark-title',
+    'kg-bookmark-description',
+    'kg-bookmark-metadata',
+    'kg-bookmark-thumbnail',
+    'kg-callout-card',
+    'kg-callout-emoji',
+    'kg-callout-text',
+    'kg-button-card',
+    'kg-btn',
+    'kg-btn-accent',
+    'kg-width-wide',
+    'kg-width-full',
+    'kg-embed-card',
+    'kg-code-card',
+    'kg-card',
+    'kg-image-card',
+    'kg-gallery-card',
+    'kg-bookmark-card',
+    'kg-callout-card',
+    'kg-button-card',
+    'kg-embed-card',
+    'kg-code-card',
+    'kg-html-card',
+    'kg-markdown-card',
+    'kg-signup-card',
+    'kg-audio-card',
+    'kg-video-card',
+    'kg-file-card',
+    'kg-product-card',
+    'kg-toggle-card',
+    'kg-header-card',
+    'kg-nft-card',
+    
+    // Ghost layout classes
+    'ghost-loading',
+    'ghost-error',
+    'ghost-breadcrumb',
+    'ghost-feature-image',
+    'ghost-post-header',
+    'ghost-post-title',
+    'ghost-post-meta',
+    'ghost-author',
+    'ghost-tags',
+    'ghost-tag',
+    'ghost-excerpt',
+  ],
+  
   presets: [
     presetUno(),
     presetIcons({
@@ -72,7 +140,30 @@ export default defineConfig({
         mdi: () => import('@iconify/json/json/mdi.json').then(i => i.default),
       }
     }),
-    presetTypography(),
+    // Configure presetTypography to completely exclude Ghost content
+    presetTypography({
+      // Disable prose styles within Ghost content
+      cssExtend: {
+        // Ensure UnoCSS prose doesn't affect Ghost content
+        '.ghost-content-isolation': {
+          'all': 'revert !important',
+        },
+        '.ghost-content-isolation *': {
+          'all': 'revert !important',
+        },
+        '.ghost-content': {
+          'max-width': 'none !important',
+          'font-family': 'Georgia, Times, "Times New Roman", serif !important',
+        },
+        // Prevent prose from affecting any Ghost classes
+        '.prose .ghost-content': {
+          'all': 'revert !important',
+        },
+        '.prose .ghost-content *': {
+          'all': 'revert !important',
+        }
+      }
+    }),
     presetWebFonts({
       fonts: {
         heading: [
@@ -94,4 +185,27 @@ export default defineConfig({
     transformerDirectives(),
     transformerVariantGroup(),
   ],
+  
+  // CRITICAL: Block UnoCSS from processing Ghost-specific patterns
+  blocklist: [
+    // Prevent UnoCSS from generating conflicting prose styles
+    'prose-sm',
+    'prose-base',
+    'prose-lg',
+    'prose-xl',
+    'prose-2xl',
+    // Block specific utility patterns that might interfere
+    'not-prose',
+  ],
+  
+  // Exclude Ghost content from being processed
+  content: {
+    pipeline: {
+      exclude: [
+        // Don't process any content within ghost-content-isolation
+        /ghost-content-isolation/,
+        /ghost-content/,
+      ]
+    }
+  }
 })

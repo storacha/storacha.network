@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ghost CSS URL Tester</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .loading { background: #fff3cd; color: #856404; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Ghost CSS URL Tester</h1>
+    <p>Testing CSS endpoints for: <strong>https://storacha-blog.ghost.io</strong></p>
+    
+    <div id="results"></div>
+    
+    <script>
+        const ghostUrl = 'https://storacha-blog.ghost.io';
+        const endpoints = [
+            '/assets/built/screen.css',
+            '/assets/css/screen.css',
+            '/public/ghost.css', 
+            '/public/cards.min.css',
+            '/public/portal.min.css',
+            '/assets/built/main.css',
+            '/assets/built/index.css',
+            '/assets/css/main.css',
+            '/assets/css/global.css',
+            '/content/themes/casper/assets/built/screen.css',
+            '/content/themes/casper/assets/css/screen.css'
+        ];
+        
+        const resultsDiv = document.getElementById('results');
+        
+        async function testEndpoint(endpoint) {
+            const fullUrl = ghostUrl + endpoint;
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'test-result loading';
+            resultDiv.innerHTML = `Testing: ${endpoint}...`;
+            resultsDiv.appendChild(resultDiv);
+            
+            try {
+                const response = await fetch(fullUrl);
+                const size = response.headers.get('content-length');
+                const contentType = response.headers.get('content-type');
+                
+                if (response.ok) {
+                    const text = await response.text();
+                    resultDiv.className = 'test-result success';
+                    resultDiv.innerHTML = `
+                        <strong>✅ ${endpoint}</strong><br>
+                        Status: ${response.status}<br>
+                        Size: ${size ? (parseInt(size) / 1024).toFixed(2) + ' KB' : (text.length / 1024).toFixed(2) + ' KB'}<br>
+                        Type: ${contentType}<br>
+                        <a href="${fullUrl}" target="_blank">View CSS</a>
+                        <details>
+                            <summary>CSS Preview (first 500 chars)</summary>
+                            <pre>${text.substring(0, 500)}...</pre>
+                        </details>
+                    `;
+                } else {
+                    resultDiv.className = 'test-result error';
+                    resultDiv.innerHTML = `
+                        <strong>❌ ${endpoint}</strong><br>
+                        Status: ${response.status} ${response.statusText}
+                    `;
+                }
+            } catch (error) {
+                resultDiv.className = 'test-result error';
+                resultDiv.innerHTML = `
+                    <strong>❌ ${endpoint}</strong><br>
+                    Error: ${error.message}
+                `;
+            }
+        }
+        
+        // Test all endpoints
+        async function runTests() {
+            for (const endpoint of endpoints) {
+                await testEndpoint(endpoint);
+                // Small delay to avoid overwhelming the server
+                await new Promise(resolve => setTimeout(resolve, 200));
+            }
+            
+            // Add instructions
+            const instructionsDiv = document.createElement('div');
+            instructionsDiv.innerHTML = `
+                <h2>🎯 Next Steps:</h2>
+                <ol>
+                    <li>Look for any ✅ successful endpoints above</li>
+                    <li>Click "View CSS" on any working endpoint</li>
+                    <li>Copy the CSS content</li>
+                    <li>Check if it contains Ghost-specific classes like .kg-image, .kg-gallery-container, etc.</li>
+                    <li>If you find working CSS, update your API route to use that endpoint</li>
+                </ol>
+                
+                <h3>🔧 Alternative: Check Your Ghost Theme</h3>
+                <p>If no endpoints work, your Ghost blog might be using a custom theme. Try:</p>
+                <ul>
+                    <li>Visit your actual Ghost blog: <a href="https://storacha-blog.ghost.io" target="_blank">https://storacha-blog.ghost.io</a></li>
+                    <li>Right-click → "View Page Source"</li>
+                    <li>Look for <code>&lt;link rel="stylesheet"</code> tags</li>
+                    <li>Copy the href URL of any CSS files</li>
+                </ul>
+            `;
+            resultsDiv.appendChild(instructionsDiv);
+        }
+        
+        runTests();
+    </script>
+</body>
+</html>

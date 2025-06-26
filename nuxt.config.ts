@@ -3,19 +3,6 @@
 const PUBLIC_SITE_URL = import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://storacha.network'
 
 export default defineNuxtConfig({
-
-  devServer: {
-      host: '0.0.0.0', // Allow external connections
-    },
-    
-    vite: {
-      server: {
-        hmr: {
-          clientPort: 443, // Use HTTPS port for ngrok
-        }
-      }
-    },
-
   router: {
     options: {
       scrollBehaviorType: 'smooth',
@@ -24,6 +11,8 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
+    // Add Ghost CSS AFTER the reset - this is crucial!
+    '~/assets/css/ghost-reset.css',
   ],
 
   modules: [
@@ -33,8 +22,6 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/plausible',
     '@nuxtjs/seo',
-    '@nuxtjs/robots',  
-    '@nuxtjs/sitemap',
     '@nuxt/image',
     '@nuxt/scripts',
   ],
@@ -43,9 +30,61 @@ export default defineNuxtConfig({
     output: {
       dir: 'dist' 
     },
-    // Add CF Pages compatibility
     preset: 'cloudflare-pages',
     compatibilityDate: '2024-07-02'
+  },
+
+  // ✅ Enhanced ISR route rules with Ghost CSS caching
+  routeRules: {
+    // Homepage - pre-rendered at build time
+    '/': { prerender: true },
+    
+    // Ghost CSS endpoint - aggressive caching for performance
+    '/api/ghost/styles': { 
+      isr: false, // Don't use ISR for CSS - use direct caching
+      headers: { 
+        'cache-control': 'public, max-age=3600, s-maxage=86400', // 1hr browser, 24hr CDN
+        'content-type': 'text/css',
+        'x-ghost-cache': 'enabled'
+      },
+      cors: true 
+    },
+    
+    // Ghost API routes - moderate caching
+    '/api/ghost': { 
+      isr: true,
+      headers: { 'cache-control': 'public, max-age=300, s-maxage=1800' } // 5min browser, 30min CDN
+    },
+    '/api/ghost/**': { 
+      isr: true,
+      headers: { 'cache-control': 'public, max-age=600, s-maxage=3600' } // 10min browser, 1hr CDN
+    },
+    
+    // Ghost blog listing - ISR with 30 minute cache
+    '/ghost': { 
+      isr: 1800,
+      headers: { 'cache-control': 'public, max-age=300, s-maxage=1800' }
+    },
+    
+    // Ghost blog posts - ISR until manual invalidation
+    '/ghost/**': { 
+      isr: true,
+      headers: { 'cache-control': 'public, max-age=600, s-maxage=3600' }
+    },
+    
+    // Your existing pages - pre-rendered
+    '/blog': { prerender: true },
+    '/referrals': { prerender: true },
+    '/ecosystem': { prerender: true },
+    '/node-providers': { prerender: true },
+    '/roadmap': { prerender: true },
+    '/referred': { prerender: true },
+    
+    // API routes for webhooks (no caching)
+    '/api/revalidate-ghost': { 
+      headers: { 'cache-control': 'no-cache' },
+      cors: true 
+    },
   },
 
   // Favicon and PWA configuration
@@ -77,8 +116,6 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
-    // disable playwright and chromium binary downloads
-    // https://nuxtseo.com/og-image/guides/chromium#prerenderer-ci-chromium
     compatibility: {
       prerender: {
         chromium: false,
@@ -88,39 +125,28 @@ export default defineNuxtConfig({
 
   experimental: {
     // TODO: fix payload extraction for IPFS hosting
-    // see: https://github.com/nuxt/nuxt/issues/19478
     // payloadExtraction: false,
   },
 
-// Replace your existing sitemap configuration with this:
+  // Sitemap configuration (handled by @nuxtjs/seo)
   sitemap: {
-    // Enable image discovery for better SEO
     discoverImages: true,
-    
-    // Exclude these routes from the sitemap
     exclude: [
       '/__nuxt_island/**',
-      '/api/**',        // API routes
-      '/_nuxt/**',      // Build assets
+      '/api/**',
+      '/_nuxt/**',
     ],
-    
-    // Default settings for all pages (removed lastmod anti-pattern)
     defaults: {
       changefreq: 'monthly',
       priority: 0.7,
     },
-    
-    // Custom configuration for specific routes
     routes: async () => {
       return [
-        // Homepage - highest priority
         {
           url: '/',
           changefreq: 'weekly',
           priority: 1.0,
         },
-        
-        // Main navigation pages - high priority for sitelinks
         {
           url: '/referrals',
           changefreq: 'monthly',
@@ -142,6 +168,11 @@ export default defineNuxtConfig({
           priority: 0.8,
         },
         {
+          url: '/ghost',
+          changefreq: 'weekly',
+          priority: 0.8,
+        },
+        {
           url: '/roadmap',
           changefreq: 'monthly',
           priority: 0.8,
@@ -149,35 +180,18 @@ export default defineNuxtConfig({
         {
           url: '/referred',
           changefreq: 'monthly',
-          priority: 0.6, // Lower priority for referred page
+          priority: 0.6,
         },
       ]
     },
-    
-    // Split large sitemaps
-    sitemapSize: 45000, // Max URLs per sitemap file
-  },
-
-  // Optimized robots.txt for SEO
-  robots: {
-    UserAgent: '*',
-    Allow: '/',
-    Disallow: [
-      '/api/**',      // Block API endpoints to save crawl budget
-      '/_nuxt/**',    // Block Nuxt build assets
-    ],
-    Sitemap: `${PUBLIC_SITE_URL}/sitemap.xml`,
-    Host: PUBLIC_SITE_URL,
+    sitemapSize: 45000,
   },
 
   fontMetrics: {
-    // reduce CLS by calculating font metrics ahead of load
     fonts: ['Epilogue', 'DM Sans', 'DM Mono'],
   },
 
   site: {
-    // @nuxtjs/seo
-    // @see https://nuxtseo.com/site-config/api/config
     url: PUBLIC_SITE_URL,
     name: 'Storacha - Decentralized Hot Storage Layer on Filecoin',
     description: 'Storacha is a decentralized hot storage network for data at scale, offering user-owned data with decentralized permissioning and leveraging Filecoin and IPFS. Rebranded from web3.storage.',
@@ -189,18 +203,21 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-
-    // Private runtime config (server-side only)
+    // ✅ Private runtime config (server-side only)
     ghostWebhookSecret: process.env.GHOST_WEBHOOK_SECRET,
+    // Add Ghost Content API key to private config for better security
+    ghostContentApiKey: process.env.GHOST_CONTENT_API_KEY,
 
-     // public runtime config
+    // ✅ Public runtime config
     public: {
       // feed URL used for /api/blog
       blogFeedUrl: 'https://medium.com/feed/@storacha',
       consoleUrl: import.meta.env.NUXT_PUBLIC_CONSOLE_URL || 'https://console.storacha.network',
 
-      // 🆕 Ghost CMS configuration
-      ghostUrl: import.meta.env.NUXT_PUBLIC_GHOST_URL || 'https://your-ghost-site.ghost.io',
+      // ✅ Ghost CMS configuration
+      ghostUrl: import.meta.env.NUXT_PUBLIC_GHOST_URL || '',
+      // Note: Content API key moved to private config for better security
+      // But keep it public if your Ghost site allows it and you need client-side access
       ghostContentApiKey: import.meta.env.NUXT_PUBLIC_GHOST_CONTENT_API_KEY || '',
     },
   },

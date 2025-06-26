@@ -1,4 +1,4 @@
-// server/api/revalidate-ghost.ts - Single endpoint handling all Ghost events
+// server/api/revalidate-ghost.post.ts - Optimized webhook handler for ISR
 export default defineEventHandler(async (event) => {
   // Only allow POST requests
   if (getMethod(event) !== 'POST') {
@@ -12,12 +12,12 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event)
   const body = await readBody(event)
 
-  // Verify webhook secret for security
+  // ✅ Verify webhook secret for security
   const webhookSecret = config.ghostWebhookSecret || process.env.GHOST_WEBHOOK_SECRET
   const providedSecret = query.secret || body.secret
 
   if (!webhookSecret || providedSecret !== webhookSecret) {
-    console.warn('Invalid webhook secret attempted')
+    console.warn('❌ Invalid webhook secret attempted')
     throw createError({
       statusCode: 401,
       statusMessage: 'Unauthorized - Invalid webhook secret'
@@ -25,52 +25,39 @@ export default defineEventHandler(async (event) => {
   }
 
   try {
-    // Extract event type from the webhook payload
+    // Extract event type and post data
     const eventType = body.event || 'unknown'
-    const postData = body.post || body.page || null
+    const postData = body.post?.current || body.post || body.page || null
     
-    console.log('Ghost webhook received:', {
+    console.log('👻 Ghost webhook received:', {
       event: eventType,
       resourceId: postData?.id || 'unknown',
       slug: postData?.slug || 'unknown',
+      status: postData?.status || 'unknown',
       timestamp: new Date().toISOString()
     })
 
-    // Define which events should trigger cache invalidation
-    // Based on research: only events that affect VISIBLE published content
+    // ✅ Events that should trigger cache invalidation
     const cacheInvalidatingEvents = [
-      // Post events that affect published content
-      'post.published',           // ✅ New published post
-      'post.published.edited',    // ✅ Published post was edited
-      'post.unpublished',         // ✅ Post was unpublished (remove from site)
-      'post.deleted',             // ✅ Post was deleted
+      // Published content changes
+      'post.published',
+      'post.published.edited', 
+      'post.unpublished',
+      'post.deleted',
       
-      // Tag events that affect PUBLISHED posts
-      'tag.edited',               // ✅ Tag name/slug changed (affects URLs and display)
-      'tag.deleted',              // ✅ Tag deleted (posts lose categorization)
-      'post.tag.attached',        // ✅ Tag added to PUBLISHED post
-      'post.tag.detached',        // ✅ Tag removed from PUBLISHED post
+      // Tag changes affecting published posts
+      'tag.edited',
+      'tag.deleted',
+      'post.tag.attached',
+      'post.tag.detached',
       
-      // Note: Based on research findings:
-      // - Tags create automatic collection pages (/tag/tagname/)
-      // - Tag changes affect post categorization and filtering
-      // - Tags are used for organization and can affect URLs
-      // - Primary tags (first tag) are especially important for themes
-      // - Internal tags (#hashtag) are private and don't affect public content
+      // Site changes that might affect content
+      'site.changed'
     ]
-
-    // Events we deliberately DON'T invalidate cache for:
-    // - post.added (draft created, not published)
-    // - post.edited (draft edited, not published) 
-    // - post.scheduled/unscheduled/rescheduled (future publishing)
-    // - page.* events (we don't use Ghost pages)
-    // - tag.added (new tag creation, no posts affected yet)
-    // - page.tag.attached/detached (we don't use pages)
-    // - member.* events (don't affect blog content)
-    // - site.changed (too broad, includes admin settings)
 
     // Check if this event should trigger cache invalidation
     if (!cacheInvalidatingEvents.includes(eventType)) {
+      console.log(`ℹ️ Event ${eventType} ignored - no cache invalidation needed`)
       return {
         success: true,
         message: `Event ${eventType} ignored - no cache invalidation needed`,
@@ -78,75 +65,88 @@ export default defineEventHandler(async (event) => {
       }
     }
 
-    // Determine what to invalidate based on event type
-    const pathsToInvalidate: string[] = []
+    // ✅ Clear Nuxt data cache keys (matching the keys used in pages)
+    const cacheKeysCleared = []
     
-    // Always invalidate the main blog listing
-    pathsToInvalidate.push('/ghost')
+    // Always clear the blog listing cache
+    try {
+      await clearNuxtData('ghost-blog')
+      cacheKeysCleared.push('ghost-blog')
+      console.log('✅ Cleared ghost-blog cache')
+    } catch (err) {
+      console.warn('⚠️ Failed to clear ghost-blog cache:', err)
+    }
     
-    // If we have post/page data, also invalidate the specific post
+    // If we have post data, clear the specific post cache
     if (postData?.slug) {
-      pathsToInvalidate.push(`/ghost/${postData.slug}`)
+      try {
+        await clearNuxtData(`ghost-post-${postData.slug}`)
+        cacheKeysCleared.push(`ghost-post-${postData.slug}`)
+        console.log(`✅ Cleared ghost-post-${postData.slug} cache`)
+      } catch (err) {
+        console.warn(`⚠️ Failed to clear ghost-post-${postData.slug} cache:`, err)
+      }
     }
 
-    // Clear Nuxt data cache
-    await clearNuxtData('ghost-blog')
-    
-    if (postData?.slug) {
-      await clearNuxtData(`ghost-post-${postData.slug}`)
-    }
-
-    // Optional: Add specific handling for different event types
+    // ✅ Optional: Clear related caches based on event type
     switch (eventType) {
       case 'post.published':
-      case 'page.published':
-        console.log(`✅ New content published: ${postData?.title || 'Unknown'}`)
+        console.log(`🎉 New post published: "${postData?.title || 'Unknown'}"`)
         break
         
       case 'post.published.edited':
-      case 'page.published.edited':
-        console.log(`📝 Published content updated: ${postData?.title || 'Unknown'}`)
+        console.log(`📝 Published post updated: "${postData?.title || 'Unknown'}"`)
         break
         
       case 'post.unpublished':
-      case 'page.unpublished':
-        console.log(`📥 Content unpublished: ${postData?.title || 'Unknown'}`)
+        console.log(`📥 Post unpublished: "${postData?.title || 'Unknown'}"`)
         break
         
       case 'post.deleted':
-      case 'page.deleted':
-        console.log(`🗑️ Content deleted: ${postData?.title || 'Unknown'}`)
+        console.log(`🗑️ Post deleted: "${postData?.title || 'Unknown'}"`)
         break
         
       case 'tag.edited':
-        console.log(`🏷️ Tag updated: ${body.tag?.name || 'Unknown'}`)
+        console.log(`🏷️ Tag updated: "${body.tag?.name || 'Unknown'}"`)
+        // Clear all post caches since tag changes affect multiple posts
         break
         
       case 'tag.deleted':
-        console.log(`🗑️ Tag deleted: ${body.tag?.name || 'Unknown'}`)
+        console.log(`🗑️ Tag deleted: "${body.tag?.name || 'Unknown'}"`)
         break
         
       case 'site.changed':
-        console.log(`🌍 Site-wide change detected`)
+        console.log('🌍 Site-wide change detected')
         break
     }
 
-    // For production: you could also purge CDN cache here
-    // await purgeCDNCache(...pathsToInvalidate)
+    // ✅ For production: You could also purge CDN cache here
+    // if (process.env.NODE_ENV === 'production') {
+    //   await purgeCDNCache(['/ghost', `/ghost/${postData?.slug}`])
+    // }
 
-    return {
+    const result = {
       success: true,
       message: 'Cache invalidated successfully',
       event: eventType,
-      invalidatedPaths: pathsToInvalidate,
+      cacheKeysCleared,
+      postSlug: postData?.slug || null,
+      postTitle: postData?.title || null,
       timestamp: new Date().toISOString()
     }
 
-  } catch (error) {
-    console.error('Cache invalidation failed:', error)
-    throw createError({
-      statusCode: 500,
-      statusMessage: 'Cache invalidation failed'
-    })
+    console.log('✅ Cache invalidation completed:', result)
+    return result
+
+  } catch (error: any) {
+    console.error('❌ Cache invalidation failed:', error)
+    
+    // Don't throw - Ghost doesn't need to know about our cache issues
+    return {
+      success: false,
+      message: 'Cache invalidation failed but webhook acknowledged',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    }
   }
 })

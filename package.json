@@ -8,7 +8,7 @@
     "build": "nuxi build",
     "dev": "nuxi dev",
     "generate": "nuxi generate",
-    "preview": "nuxi preview",
+    "preview": "nuxi build && npx wrangler pages dev dist --compatibility-date=2024-07-02",
     "preview-static": "nuxi generate && npx serve dist",
     "preview-cf": "nuxi build --preset=cloudflare-pages && npx wrangler pages dev dist --port 3000",
     "postinstall": "nuxi prepare",

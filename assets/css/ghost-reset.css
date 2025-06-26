@@ -1,0 +1,567 @@
+/* Add this to a new file: assets/css/ghost-reset.css */
+/* This file should be imported AFTER your UnoCSS reset */
+
+/* 
+GHOST CONTENT ISOLATION STYLES
+This completely isolates Ghost content from your site's CSS framework
+*/
+
+.ghost-content-isolation {
+  /* Create a new stacking context and block formatting context */
+  isolation: isolate;
+  contain: layout style;
+  
+  /* Reset all inherited properties to browser defaults */
+  all: revert;
+  
+  /* Ensure it doesn't inherit any site-wide styles */
+  font-family: revert;
+  font-size: revert;
+  line-height: revert;
+  color: revert;
+  background: revert;
+  margin: revert;
+  padding: revert;
+  
+  /* Block any CSS custom properties from bleeding in */
+  --tw-ring-shadow: initial;
+  --tw-shadow: initial;
+  --tw-space-x-reverse: initial;
+  --tw-space-y-reverse: initial;
+  
+  /* Basic container setup */
+  display: block;
+  width: 100%;
+  max-width: none;
+}
+
+/* Reset all children to browser defaults */
+.ghost-content-isolation *,
+.ghost-content-isolation *::before,
+.ghost-content-isolation *::after {
+  /* Complete reset to browser defaults */
+  all: revert;
+  
+  /* Ensure box-sizing is correct */
+  box-sizing: border-box;
+  
+  /* Reset any Tailwind/UnoCSS variables */
+  --tw-ring-shadow: initial;
+  --tw-shadow: initial;
+}
+
+/* Remove any conflicting utility classes within Ghost content */
+.ghost-content-isolation [class*="text-"],
+.ghost-content-isolation [class*="font-"],
+.ghost-content-isolation [class*="leading-"],
+.ghost-content-isolation [class*="tracking-"],
+.ghost-content-isolation [class*="prose"],
+.ghost-content-isolation [class*="m-"],
+.ghost-content-isolation [class*="p-"],
+.ghost-content-isolation [class*="space-"],
+.ghost-content-isolation [class*="border-"],
+.ghost-content-isolation [class*="rounded-"],
+.ghost-content-isolation [class*="shadow-"],
+.ghost-content-isolation [class*="bg-"],
+.ghost-content-isolation [class*="hover:"],
+.ghost-content-isolation [class*="focus:"] {
+  /* Reset any utility classes to browser defaults */
+  all: revert !important;
+}
+
+/* Prevent Tailwind's preflight from affecting Ghost content */
+.ghost-content-isolation h1,
+.ghost-content-isolation h2,
+.ghost-content-isolation h3,
+.ghost-content-isolation h4,
+.ghost-content-isolation h5,
+.ghost-content-isolation h6 {
+  font-size: revert;
+  font-weight: revert;
+  margin: revert;
+  line-height: revert;
+}
+
+.ghost-content-isolation p {
+  margin: revert;
+}
+
+.ghost-content-isolation a {
+  color: revert;
+  text-decoration: revert;
+}
+
+.ghost-content-isolation ul,
+.ghost-content-isolation ol {
+  list-style: revert;
+  margin: revert;
+  padding: revert;
+}
+
+.ghost-content-isolation li {
+  margin: revert;
+}
+
+.ghost-content-isolation blockquote {
+  margin: revert;
+  padding: revert;
+  quotes: revert;
+}
+
+.ghost-content-isolation img {
+  max-width: revert;
+  height: revert;
+}
+
+.ghost-content-isolation table {
+  border-collapse: revert;
+}
+
+.ghost-content-isolation th,
+.ghost-content-isolation td {
+  padding: revert;
+}
+
+/* Now apply authentic Ghost styles */
+.ghost-content {
+  /* Ghost's base typography */
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  line-height: 1.6em;
+  color: #15171A;
+  font-weight: 400;
+  
+  /* Spacing */
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+.ghost-content > * + * {
+  margin-top: 1.5em;
+}
+
+.ghost-content > *:first-child {
+  margin-top: 0;
+}
+
+.ghost-content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Ghost Headings */
+.ghost-content h1,
+.ghost-content h2,
+.ghost-content h3,
+.ghost-content h4,
+.ghost-content h5,
+.ghost-content h6 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 700;
+  line-height: 1.25em;
+  margin: 0 0 0.5em 0;
+  color: #15171A;
+}
+
+.ghost-content h1 { 
+  font-size: 3.2rem; 
+  margin: 0 0 0.5em 0;
+}
+
+.ghost-content h2 { 
+  font-size: 2.6rem; 
+  margin: 1.5em 0 0.5em 0;
+}
+
+.ghost-content h3 { 
+  font-size: 2.0rem; 
+  margin: 1.5em 0 0.5em 0;
+}
+
+.ghost-content h4 { 
+  font-size: 1.8rem; 
+  margin: 1.5em 0 0.5em 0;
+}
+
+.ghost-content h5 { 
+  font-size: 1.6rem; 
+  margin: 1.5em 0 0.5em 0;
+}
+
+.ghost-content h6 { 
+  font-size: 1.4rem; 
+  margin: 1.5em 0 0.5em 0;
+}
+
+/* Ghost Paragraphs */
+.ghost-content p {
+  margin: 0 0 1.5em 0;
+  line-height: 1.6em;
+  font-size: 20px;
+  color: #15171A;
+}
+
+/* Ghost Links */
+.ghost-content a {
+  color: #0084FF;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 132, 255, 0.3);
+  text-underline-offset: 2px;
+  transition: all 0.2s ease;
+}
+
+.ghost-content a:hover {
+  text-decoration-color: #0084FF;
+}
+
+/* Ghost Lists */
+.ghost-content ul,
+.ghost-content ol {
+  margin: 0 0 1.5em 0;
+  padding-left: 2em;
+}
+
+.ghost-content ul {
+  list-style-type: disc;
+}
+
+.ghost-content ol {
+  list-style-type: decimal;
+}
+
+.ghost-content li {
+  margin-bottom: 0.5em;
+  line-height: 1.6em;
+}
+
+.ghost-content li p {
+  margin: 0 0 0.5em 0;
+}
+
+.ghost-content li:last-child p:last-child {
+  margin-bottom: 0;
+}
+
+/* Ghost Blockquotes */
+.ghost-content blockquote {
+  margin: 2em 0;
+  padding: 0 0 0 1.5em;
+  border-left: 4px solid #E5EFF5;
+  font-style: italic;
+  color: #626D79;
+  background: none;
+}
+
+.ghost-content blockquote p {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  margin: 0 0 1em 0;
+}
+
+.ghost-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Ghost Code */
+.ghost-content code {
+  background: #F1F1F1;
+  border-radius: 3px;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  font-size: 0.85em;
+  padding: 0.15em 0.4em;
+  color: #EB5757;
+  white-space: pre-wrap;
+}
+
+.ghost-content pre {
+  background: #15171A;
+  color: #FFF;
+  border-radius: 6px;
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.5em;
+  margin: 2em 0;
+  overflow-x: auto;
+  padding: 1.5em;
+}
+
+.ghost-content pre code {
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* Ghost Images */
+.ghost-content img {
+  display: block;
+  height: auto;
+  margin: 2em auto;
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+.ghost-content figure {
+  margin: 2em 0;
+}
+
+.ghost-content figcaption {
+  color: #626D79;
+  font-size: 14px;
+  line-height: 1.4em;
+  margin-top: 1em;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Ghost Tables */
+.ghost-content table {
+  border-collapse: collapse;
+  margin: 2em 0;
+  width: 100%;
+  font-size: 16px;
+}
+
+.ghost-content th,
+.ghost-content td {
+  border: 1px solid #E5EFF5;
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.ghost-content th {
+  background: #F8FBFE;
+  font-weight: 600;
+  color: #15171A;
+}
+
+.ghost-content td {
+  color: #15171A;
+}
+
+/* Ghost HR */
+.ghost-content hr {
+  border: none;
+  border-top: 1px solid #E5EFF5;
+  margin: 3em 0;
+  height: 1px;
+}
+
+/* Ghost Cards - The most important part */
+.ghost-content .kg-image {
+  margin: 2em 0;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
+.ghost-content .kg-gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 0.5em;
+  margin: 2em 0;
+}
+
+.ghost-content .kg-gallery-image {
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.ghost-content .kg-gallery-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 0;
+}
+
+.ghost-content .kg-bookmark-card {
+  border: 1px solid #E5EFF5;
+  border-radius: 6px;
+  display: flex;
+  margin: 2em 0;
+  overflow: hidden;
+  text-decoration: none;
+  transition: box-shadow 0.15s ease;
+  background: #FFF;
+}
+
+.ghost-content .kg-bookmark-card:hover {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+}
+
+.ghost-content .kg-bookmark-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px;
+  min-width: 0;
+}
+
+.ghost-content .kg-bookmark-title {
+  color: #15171A;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4em;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ghost-content .kg-bookmark-description {
+  color: #626D79;
+  font-size: 14px;
+  line-height: 1.5em;
+  margin-bottom: 8px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.ghost-content .kg-bookmark-metadata {
+  color: #626D79;
+  font-size: 14px;
+  line-height: 1.5em;
+  margin-top: auto;
+}
+
+.ghost-content .kg-bookmark-thumbnail {
+  flex-shrink: 0;
+  width: 160px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.ghost-content .kg-bookmark-thumbnail img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  margin: 0;
+  border-radius: 0;
+}
+
+/* Ghost Callout Cards */
+.ghost-content .kg-callout-card {
+  background: #F8FBFE;
+  border-left: 4px solid #0084FF;
+  border-radius: 0 6px 6px 0;
+  margin: 2em 0;
+  padding: 1.5em;
+}
+
+.ghost-content .kg-callout-emoji {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+  display: block;
+  line-height: 1;
+}
+
+.ghost-content .kg-callout-text {
+  font-size: 16px;
+  line-height: 1.6em;
+  color: #15171A;
+  margin: 0;
+}
+
+/* Ghost Button Cards */
+.ghost-content .kg-button-card {
+  margin: 2em 0;
+  text-align: center;
+}
+
+.ghost-content .kg-btn {
+  background: #0084FF;
+  border-radius: 6px;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.ghost-content .kg-btn:hover {
+  background: #005AA3;
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: #FFF;
+}
+
+/* Ghost Width Classes */
+.ghost-content .kg-width-wide {
+  margin-left: calc(-12.5vw + 50%);
+  margin-right: calc(-12.5vw + 50%);
+  max-width: none;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+}
+
+.ghost-content .kg-width-full {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  max-width: none;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
+}
+
+/* Ghost Embed Cards */
+.ghost-content .kg-embed-card {
+  margin: 2em 0;
+}
+
+.ghost-content .kg-embed-card iframe,
+.ghost-content .kg-embed-card video {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ghost-content {
+    font-size: 18px;
+  }
+  
+  .ghost-content h1 { font-size: 2.4rem; }
+  .ghost-content h2 { font-size: 2.0rem; }
+  .ghost-content h3 { font-size: 1.6rem; }
+  .ghost-content h4 { font-size: 1.4rem; }
+  .ghost-content h5 { font-size: 1.2rem; }
+  .ghost-content h6 { font-size: 1.1rem; }
+  
+  .ghost-content .kg-bookmark-card {
+    flex-direction: column;
+  }
+  
+  .ghost-content .kg-bookmark-thumbnail {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .ghost-content .kg-width-wide,
+  .ghost-content .kg-width-full {
+    margin-left: -20px;
+    margin-right: -20px;
+    width: calc(100% + 40px);
+    left: 0;
+    right: 0;
+    transform: none;
+  }
+}

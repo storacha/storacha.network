@@ -3,6 +3,19 @@
 const PUBLIC_SITE_URL = import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://storacha.network'
 
 export default defineNuxtConfig({
+
+  devServer: {
+      host: '0.0.0.0', // Allow external connections
+    },
+    
+    vite: {
+      server: {
+        hmr: {
+          clientPort: 443, // Use HTTPS port for ngrok
+        }
+      }
+    },
+
   router: {
     options: {
       scrollBehaviorType: 'smooth',
@@ -176,11 +189,19 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    // public runtime config
+
+    // Private runtime config (server-side only)
+    ghostWebhookSecret: process.env.GHOST_WEBHOOK_SECRET,
+
+     // public runtime config
     public: {
       // feed URL used for /api/blog
       blogFeedUrl: 'https://medium.com/feed/@storacha',
       consoleUrl: import.meta.env.NUXT_PUBLIC_CONSOLE_URL || 'https://console.storacha.network',
+
+      // 🆕 Ghost CMS configuration
+      ghostUrl: import.meta.env.NUXT_PUBLIC_GHOST_URL || 'https://your-ghost-site.ghost.io',
+      ghostContentApiKey: import.meta.env.NUXT_PUBLIC_GHOST_CONTENT_API_KEY || '',
     },
   },
 

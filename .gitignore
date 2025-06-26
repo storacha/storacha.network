@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+.wrangler
 
 # Node dependencies
 node_modules
@@ -23,4 +24,5 @@ logs
 .env.*
 !.env.example
 .vercel
+wrangler.toml
 # Release trigger

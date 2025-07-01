@@ -1,40 +1,44 @@
-<!-- layouts/ghost.vue -->
+<!-- layouts/ghost.vue - Clean and Simple -->
 <script setup>
-// This layout is specifically for Ghost pages
-// It provides the ghost-content-isolation environment
-
 const siteConfig = useSiteConfig()
 </script>
 
 <template>
   <div class="ghost-layout">
-    <!-- Minimal header for Ghost pages -->
+    <!-- Simple header for Ghost pages -->
     <header class="ghost-header">
-      <div class="ghost-container">
-        <nav class="ghost-nav">
-          <a href="/" class="ghost-home-link">
+      <div class="container">
+        <nav class="nav">
+          <NuxtLink to="/" class="logo">
             {{ siteConfig.name }}
-          </a>
-          <a href="/ghost" class="ghost-blog-link">
-            Blog
-          </a>
+          </NuxtLink>
+          <div class="nav-links">
+            <NuxtLink to="/ghost" class="nav-link">
+              Blog
+            </NuxtLink>
+            <NuxtLink to="/" class="nav-link">
+              Home
+            </NuxtLink>
+          </div>
         </nav>
       </div>
     </header>
 
-    <!-- Ghost content area with CSS isolation -->
+    <!-- Main content area -->
     <main class="ghost-main">
-      <div class="ghost-content-isolation">
-        <slot />
-      </div>
+      <slot />
     </main>
 
-    <!-- Minimal footer for Ghost pages -->
+    <!-- Simple footer -->
     <footer class="ghost-footer">
-      <div class="ghost-container">
-        <div class="ghost-footer-content">
-          <a href="/ghost" class="ghost-footer-link">← Back to Blog</a>
-          <span class="ghost-footer-text">Powered by Ghost CMS</span>
+      <div class="container">
+        <div class="footer-content">
+          <NuxtLink to="/ghost" class="footer-link">
+            ← Back to Blog
+          </NuxtLink>
+          <span class="footer-text">
+            Powered by Ghost CMS
+          </span>
         </div>
       </div>
     </footer>
@@ -47,6 +51,7 @@ const siteConfig = useSiteConfig()
   background: #ffffff;
   display: flex;
   flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .ghost-header {
@@ -56,38 +61,52 @@ const siteConfig = useSiteConfig()
   position: sticky;
   top: 0;
   z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
 }
 
-.ghost-container {
+.container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-.ghost-nav {
+.nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.ghost-home-link {
+.logo {
   font-size: 1.5rem;
   font-weight: 700;
   color: #15171a;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.ghost-home-link:hover {
+.logo:hover {
   color: #0084ff;
 }
 
-.ghost-blog-link {
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
   color: #626d79;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-.ghost-blog-link:hover {
+.nav-link:hover {
+  color: #0084ff;
+}
+
+.nav-link.router-link-active {
   color: #0084ff;
 }
 
@@ -103,7 +122,7 @@ const siteConfig = useSiteConfig()
   margin-top: auto;
 }
 
-.ghost-footer-content {
+.footer-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -111,29 +130,39 @@ const siteConfig = useSiteConfig()
   font-size: 0.875rem;
 }
 
-.ghost-footer-link {
+.footer-link {
   color: #0084ff;
   text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
-.ghost-footer-link:hover {
+.footer-link:hover {
   text-decoration: underline;
 }
 
-.ghost-footer-text {
+.footer-text {
   opacity: 0.8;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-  .ghost-container {
+  .container {
     padding: 0 1rem;
   }
   
-  .ghost-footer-content {
+  .nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .footer-content {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
   }
-}
-</style>
+  
+  .nav-links {
+    gap: 1rem;
+  }
+}</style>

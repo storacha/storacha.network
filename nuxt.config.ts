@@ -1,5 +1,4 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-
+// 1. UPDATED nuxt.config.ts - Fix route rules and CSS loading
 const PUBLIC_SITE_URL = import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://storacha.network'
 
 export default defineNuxtConfig({
@@ -11,8 +10,8 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
-    // Add Ghost CSS AFTER the reset - this is crucial!
-    '~/assets/css/ghost-reset.css',
+    // ✅ ADD YOUR GHOST RESET CSS HERE
+    '~/assets/css/ghost-reset.css'
   ],
 
   modules: [
@@ -31,48 +30,66 @@ export default defineNuxtConfig({
       dir: 'dist' 
     },
     preset: 'cloudflare-pages',
-    compatibilityDate: '2024-07-02'
+    compatibilityDate: '2024-07-02',
+    // ✅ Clean up nitro route rules - remove duplicates
+    routeRules: {
+      // Only block obvious asset requests from being treated as ghost posts
+      '/ghost/**/*.css': { redirect: '/404' },
+      '/ghost/**/*.js': { redirect: '/404' },
+      '/ghost/**/*.map': { redirect: '/404' },
+      '/ghost/**/*.json': { redirect: '/404' },
+      '/ghost/**/*.ico': { redirect: '/404' },
+      '/ghost/**/*.png': { redirect: '/404' },
+      '/ghost/**/*.jpg': { redirect: '/404' },
+      '/ghost/**/*.jpeg': { redirect: '/404' },
+      '/ghost/**/*.gif': { redirect: '/404' },
+      '/ghost/**/*.svg': { redirect: '/404' },
+      '/ghost/**/*.woff': { redirect: '/404' },
+      '/ghost/**/*.woff2': { redirect: '/404' },
+      '/ghost/**/*.ttf': { redirect: '/404' },
+      '/ghost/**/*.eot': { redirect: '/404' },
+      '/ghost/assets/**': { redirect: '/404' },
+      '/ghost/static/**': { redirect: '/404' },
+      '/ghost/_nuxt/**': { redirect: '/404' },
+      '/ghost/api/**': { redirect: '/404' },
+    }
   },
 
-  // ✅ Enhanced ISR route rules with Ghost CSS caching
+  // ✅ MAIN ROUTE RULES - Consolidated and fixed
   routeRules: {
-    // Homepage - pre-rendered at build time
+    // Homepage
     '/': { prerender: true },
     
-    // Ghost CSS endpoint - aggressive caching for performance
+    // Ghost CSS endpoint - CRITICAL for Cloudflare
     '/api/ghost/styles': { 
-      isr: false, // Don't use ISR for CSS - use direct caching
       headers: { 
-        'cache-control': 'public, max-age=3600, s-maxage=86400', // 1hr browser, 24hr CDN
-        'content-type': 'text/css',
-        'x-ghost-cache': 'enabled'
+        'cache-control': 'public, max-age=7200, s-maxage=86400',
+        'content-type': 'text/css; charset=utf-8'
       },
       cors: true 
     },
     
-    // Ghost API routes - moderate caching
+    // Ghost API routes
     '/api/ghost': { 
-      isr: true,
-      headers: { 'cache-control': 'public, max-age=300, s-maxage=1800' } // 5min browser, 30min CDN
+      isr: 300, // 5 minutes - faster updates
+      headers: { 'cache-control': 'public, max-age=180, s-maxage=900' }
     },
     '/api/ghost/**': { 
-      isr: true,
-      headers: { 'cache-control': 'public, max-age=600, s-maxage=3600' } // 10min browser, 1hr CDN
-    },
-    
-    // Ghost blog listing - ISR with 30 minute cache
-    '/ghost': { 
-      isr: 1800,
+      isr: 600, // 10 minutes  
       headers: { 'cache-control': 'public, max-age=300, s-maxage=1800' }
     },
     
-    // Ghost blog posts - ISR until manual invalidation
+    // Ghost pages
+    '/ghost': { 
+      isr: 900, // 15 minutes
+      headers: { 'cache-control': 'public, max-age=300, s-maxage=900' }
+    },
     '/ghost/**': { 
       isr: true,
       headers: { 'cache-control': 'public, max-age=600, s-maxage=3600' }
     },
     
-    // Your existing pages - pre-rendered
+    // Your existing pages
     '/blog': { prerender: true },
     '/referrals': { prerender: true },
     '/ecosystem': { prerender: true },
@@ -80,14 +97,14 @@ export default defineNuxtConfig({
     '/roadmap': { prerender: true },
     '/referred': { prerender: true },
     
-    // API routes for webhooks (no caching)
+    // Webhook endpoint
     '/api/revalidate-ghost': { 
       headers: { 'cache-control': 'no-cache' },
       cors: true 
     },
   },
 
-  // Favicon and PWA configuration
+  // Rest of your config remains the same...
   app: {
     head: {
       link: [
@@ -128,20 +145,23 @@ export default defineNuxtConfig({
     // payloadExtraction: false,
   },
 
-  // Sitemap configuration (handled by @nuxtjs/seo)
   sitemap: {
     discoverImages: true,
     exclude: [
       '/__nuxt_island/**',
       '/api/**',
       '/_nuxt/**',
+      '/ghost/**/*.css',
+      '/ghost/**/*.map',
+      '/ghost/**/*.js',
+      '/ghost/assets/**',
     ],
     defaults: {
       changefreq: 'monthly',
       priority: 0.7,
     },
     routes: async () => {
-      return [
+      const routes = [
         {
           url: '/',
           changefreq: 'weekly',
@@ -183,6 +203,23 @@ export default defineNuxtConfig({
           priority: 0.6,
         },
       ]
+
+      try {
+        const ghostPosts = await $fetch('/api/ghost')
+        if (ghostPosts?.posts) {
+          const ghostRoutes = ghostPosts.posts.map((post: any) => ({
+            url: `/ghost/${post.slug}`,
+            changefreq: 'monthly',
+            priority: 0.7,
+            lastmod: post.updated_at
+          }))
+          routes.push(...ghostRoutes)
+        }
+      } catch (error) {
+        console.warn('Could not fetch Ghost posts for sitemap:', error)
+      }
+
+      return routes
     },
     sitemapSize: 45000,
   },
@@ -203,21 +240,15 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    // ✅ Private runtime config (server-side only)
+    // Private runtime config (server-side only)
     ghostWebhookSecret: process.env.GHOST_WEBHOOK_SECRET,
-    // Add Ghost Content API key to private config for better security
     ghostContentApiKey: process.env.GHOST_CONTENT_API_KEY,
 
-    // ✅ Public runtime config
+    // Public runtime config
     public: {
-      // feed URL used for /api/blog
       blogFeedUrl: 'https://medium.com/feed/@storacha',
       consoleUrl: import.meta.env.NUXT_PUBLIC_CONSOLE_URL || 'https://console.storacha.network',
-
-      // ✅ Ghost CMS configuration
       ghostUrl: import.meta.env.NUXT_PUBLIC_GHOST_URL || '',
-      // Note: Content API key moved to private config for better security
-      // But keep it public if your Ghost site allows it and you need client-side access
       ghostContentApiKey: import.meta.env.NUXT_PUBLIC_GHOST_CONTENT_API_KEY || '',
     },
   },

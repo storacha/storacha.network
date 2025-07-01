@@ -1,3 +1,4 @@
+// unocss.config.ts - Fixed to work with Ghost CSS
 import {
   defineConfig,
   presetIcons,
@@ -42,7 +43,6 @@ export default defineConfig({
     },
   },
   shortcuts: [
-    // Updated button with inline-flex for better text centering
     ['btn', 'py-4 px-8 whitespace-nowrap bg-brand-3 text-white text-sm md:text-base font-heading uppercase rounded-full cursor-pointer inline-flex items-center justify-center focus:outline-none scale-[0.99] hover:(scale-100 no-underline) active:scale-[0.98] transition duration-150'],
     ['btn-primary', 'bg-brand-1 text-brand-4'],
     ['btn-secondary', 'bg-white text-brand-3'],
@@ -65,46 +65,67 @@ export default defineConfig({
     ['p4', 'text-sm font-sans font-normal'],
   ],
   
-  // CRITICAL: Safelist Ghost classes to prevent UnoCSS from processing them
+  // ✅ GHOST SAFELIST - Comprehensive protection for all Ghost classes
   safelist: [
-    // Ghost page wrapper classes
-    'ghost-page-wrapper',
-    'ghost-container',
-    'ghost-article',
-    'ghost-header',
-    'ghost-content-wrapper',
-    'ghost-footer-wrapper',
-    
-    // Ghost content isolation - MOST IMPORTANT
+    // Ghost isolation wrapper
     'ghost-content-isolation',
     'ghost-content',
+    'ghost-content-root',
     
-    // Ghost card classes - all kg-* variations
+    // Ghost layout classes
+    'ghost-page',
+    'ghost-layout', 
+    'ghost-main',
+    'ghost-header',
+    'ghost-footer',
+    'ghost-article',
+    'ghost-container',
+    'ghost-nav',
+    'ghost-breadcrumb',
+    'ghost-loading',
+    'ghost-error',
+    
+    // Ghost post elements
+    'ghost-post-header',
+    'ghost-post-title', 
+    'ghost-post-meta',
+    'ghost-author',
+    'ghost-author-image',
+    'ghost-author-avatar',
+    'ghost-author-name',
+    'ghost-meta-dot',
+    'ghost-tags',
+    'ghost-tag',
+    'ghost-excerpt',
+    'ghost-feature-image',
+    
+    // ALL Ghost kg- card classes (this is critical)
+    'kg-card',
     'kg-image',
+    'kg-image-card',
+    'kg-gallery-card',
     'kg-gallery-container',
+    'kg-gallery-row',
     'kg-gallery-image',
     'kg-bookmark-card',
+    'kg-bookmark-container', 
     'kg-bookmark-content',
     'kg-bookmark-title',
     'kg-bookmark-description',
     'kg-bookmark-metadata',
     'kg-bookmark-thumbnail',
-    'kg-callout-card',
-    'kg-callout-emoji',
-    'kg-callout-text',
+    'kg-bookmark-icon',
+    'kg-bookmark-author',
+    'kg-bookmark-publisher',
     'kg-button-card',
     'kg-btn',
     'kg-btn-accent',
+    'kg-callout-card',
+    'kg-callout-emoji',
+    'kg-callout-text',
     'kg-width-wide',
     'kg-width-full',
-    'kg-embed-card',
-    'kg-code-card',
-    'kg-card',
-    'kg-image-card',
-    'kg-gallery-card',
-    'kg-bookmark-card',
-    'kg-callout-card',
-    'kg-button-card',
+    'kg-width-regular',
     'kg-embed-card',
     'kg-code-card',
     'kg-html-card',
@@ -112,24 +133,68 @@ export default defineConfig({
     'kg-signup-card',
     'kg-audio-card',
     'kg-video-card',
+    'kg-video-container',
     'kg-file-card',
+    'kg-file-card-container',
+    'kg-file-card-contents',
+    'kg-file-card-title',
+    'kg-file-card-caption',
+    'kg-file-card-metadata',
+    'kg-file-card-filename',
+    'kg-file-card-filesize',
+    'kg-file-card-icon',
     'kg-product-card',
     'kg-toggle-card',
     'kg-header-card',
+    'kg-header-card-content',
+    'kg-header-card-text',
+    'kg-header-card-heading',
+    'kg-header-card-subheading',
     'kg-nft-card',
-    
-    // Ghost layout classes
-    'ghost-loading',
-    'ghost-error',
-    'ghost-breadcrumb',
-    'ghost-feature-image',
-    'ghost-post-header',
-    'ghost-post-title',
-    'ghost-post-meta',
-    'ghost-author',
-    'ghost-tags',
-    'ghost-tag',
-    'ghost-excerpt',
+    'kg-cta-card',
+    'kg-cta-content',
+    'kg-cta-content-inner',
+    'kg-cta-text',
+    'kg-cta-button',
+    'kg-align-center',
+    'kg-align-left',
+    'kg-align-right',
+    'kg-v2',
+    'kg-content-wide',
+  ],
+  
+  // ✅ BLOCK PROSE UTILITIES to prevent conflicts
+  blocklist: [
+    'prose',
+    'prose-sm',
+    'prose-base', 
+    'prose-lg',
+    'prose-xl',
+    'prose-2xl',
+    'not-prose',
+    'prose-gray',
+    'prose-slate',
+    'prose-zinc',
+    'prose-neutral',
+    'prose-stone',
+    'prose-red',
+    'prose-orange',
+    'prose-amber',
+    'prose-yellow',
+    'prose-lime',
+    'prose-green',
+    'prose-emerald',
+    'prose-teal',
+    'prose-cyan',
+    'prose-sky',
+    'prose-blue',
+    'prose-indigo',
+    'prose-violet',
+    'prose-purple',
+    'prose-fuchsia',
+    'prose-pink',
+    'prose-rose',
+    'max-w-prose',
   ],
   
   presets: [
@@ -140,27 +205,35 @@ export default defineConfig({
         mdi: () => import('@iconify/json/json/mdi.json').then(i => i.default),
       }
     }),
-    // Configure presetTypography to completely exclude Ghost content
+    // ✅ Configure Typography to completely avoid Ghost content
     presetTypography({
-      // Disable prose styles within Ghost content
+      // Don't apply prose styles to Ghost content at all
       cssExtend: {
-        // Ensure UnoCSS prose doesn't affect Ghost content
-        '.ghost-content-isolation': {
+        // Ensure Ghost content is completely isolated from prose
+        '.prose .ghost-content-isolation': {
           'all': 'revert !important',
         },
-        '.ghost-content-isolation *': {
+        '.prose .ghost-content-isolation *': {
           'all': 'revert !important',
         },
-        '.ghost-content': {
-          'max-width': 'none !important',
-          'font-family': 'Georgia, Times, "Times New Roman", serif !important',
-        },
-        // Prevent prose from affecting any Ghost classes
         '.prose .ghost-content': {
           'all': 'revert !important',
         },
         '.prose .ghost-content *': {
           'all': 'revert !important',
+        },
+        // Block prose from affecting any kg- classes
+        '.prose [class*="kg-"]': {
+          'all': 'revert !important',
+        },
+        // Ensure prose doesn't override Ghost isolation
+        '.ghost-content-isolation': {
+          'font-family': 'revert !important',
+          'font-size': 'revert !important',
+          'line-height': 'revert !important',
+          'color': 'revert !important',
+          'margin': 'revert !important',
+          'padding': 'revert !important',
         }
       }
     }),
@@ -185,27 +258,4 @@ export default defineConfig({
     transformerDirectives(),
     transformerVariantGroup(),
   ],
-  
-  // CRITICAL: Block UnoCSS from processing Ghost-specific patterns
-  blocklist: [
-    // Prevent UnoCSS from generating conflicting prose styles
-    'prose-sm',
-    'prose-base',
-    'prose-lg',
-    'prose-xl',
-    'prose-2xl',
-    // Block specific utility patterns that might interfere
-    'not-prose',
-  ],
-  
-  // Exclude Ghost content from being processed
-  content: {
-    pipeline: {
-      exclude: [
-        // Don't process any content within ghost-content-isolation
-        /ghost-content-isolation/,
-        /ghost-content/,
-      ]
-    }
-  }
 })

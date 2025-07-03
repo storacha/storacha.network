@@ -1,4 +1,4 @@
-// 1. UPDATED nuxt.config.ts - Fix route rules and CSS loading
+// nuxt.config.ts - SIMPLE VERSION (No problematic redirects)
 const PUBLIC_SITE_URL = import.meta.env.NUXT_PUBLIC_SITE_URL || 'https://storacha.network'
 
 export default defineNuxtConfig({
@@ -10,8 +10,6 @@ export default defineNuxtConfig({
 
   css: [
     '@unocss/reset/tailwind.css',
-    // ✅ ADD YOUR GHOST RESET CSS HERE
-    '~/assets/css/ghost-reset.css'
   ],
 
   modules: [
@@ -31,37 +29,15 @@ export default defineNuxtConfig({
     },
     preset: 'cloudflare-pages',
     compatibilityDate: '2024-07-02',
-    // ✅ Clean up nitro route rules - remove duplicates
-    routeRules: {
-      // Only block obvious asset requests from being treated as ghost posts
-      '/ghost/**/*.css': { redirect: '/404' },
-      '/ghost/**/*.js': { redirect: '/404' },
-      '/ghost/**/*.map': { redirect: '/404' },
-      '/ghost/**/*.json': { redirect: '/404' },
-      '/ghost/**/*.ico': { redirect: '/404' },
-      '/ghost/**/*.png': { redirect: '/404' },
-      '/ghost/**/*.jpg': { redirect: '/404' },
-      '/ghost/**/*.jpeg': { redirect: '/404' },
-      '/ghost/**/*.gif': { redirect: '/404' },
-      '/ghost/**/*.svg': { redirect: '/404' },
-      '/ghost/**/*.woff': { redirect: '/404' },
-      '/ghost/**/*.woff2': { redirect: '/404' },
-      '/ghost/**/*.ttf': { redirect: '/404' },
-      '/ghost/**/*.eot': { redirect: '/404' },
-      '/ghost/assets/**': { redirect: '/404' },
-      '/ghost/static/**': { redirect: '/404' },
-      '/ghost/_nuxt/**': { redirect: '/404' },
-      '/ghost/api/**': { redirect: '/404' },
-    }
   },
 
-  // ✅ MAIN ROUTE RULES - Consolidated and fixed
+  // ✅ SIMPLIFIED: Just essential routes, no problematic redirects
   routeRules: {
     // Homepage
     '/': { prerender: true },
     
-    // Ghost CSS endpoint - CRITICAL for Cloudflare
-    '/api/ghost/styles': { 
+    // Ghost assets endpoint
+    '/api/ghost/assets': { 
       headers: { 
         'cache-control': 'public, max-age=7200, s-maxage=86400',
         'content-type': 'text/css; charset=utf-8'
@@ -71,17 +47,17 @@ export default defineNuxtConfig({
     
     // Ghost API routes
     '/api/ghost': { 
-      isr: 300, // 5 minutes - faster updates
+      isr: 300,
       headers: { 'cache-control': 'public, max-age=180, s-maxage=900' }
     },
     '/api/ghost/**': { 
-      isr: 600, // 10 minutes  
+      isr: 600,
       headers: { 'cache-control': 'public, max-age=300, s-maxage=1800' }
     },
     
     // Ghost pages
     '/ghost': { 
-      isr: 900, // 15 minutes
+      isr: 900,
       headers: { 'cache-control': 'public, max-age=300, s-maxage=900' }
     },
     '/ghost/**': { 
@@ -89,7 +65,7 @@ export default defineNuxtConfig({
       headers: { 'cache-control': 'public, max-age=600, s-maxage=3600' }
     },
     
-    // Your existing pages
+    // Static pages
     '/blog': { prerender: true },
     '/referrals': { prerender: true },
     '/ecosystem': { prerender: true },
@@ -104,7 +80,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // Rest of your config remains the same...
   app: {
     head: {
       link: [

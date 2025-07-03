@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ghost CSS Diagnostic Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #e5e5e5; border-radius: 8px; }
+        .success { background: #d4edda; color: #155724; border-color: #28a745; }
+        .error { background: #f8d7da; color: #721c24; border-color: #dc3545; }
+        .warning { background: #fff3cd; color: #856404; border-color: #ffc107; }
+        .info { background: #d1ecf1; color: #0c5460; border-color: #17a2b8; }
+        .code-block { background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; font-size: 12px; max-height: 300px; overflow-y: auto; }
+        .test-button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        .test-button:hover { background: #0056b3; }
+        .endpoint-test { padding: 10px; margin: 5px 0; border-radius: 5px; border: 1px solid #ddd; }
+        .working { background: #d4edda; border-color: #28a745; }
+        .failing { background: #f8d7da; border-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Ghost CSS Diagnostic Test</h1>
+    <p>Testing your Ghost CMS setup at: <strong>https://storacha-blog.ghost.io</strong></p>
+    
+    <div class="test-section info">
+        <h3>🎯 Quick Tests</h3>
+        <button class="test-button" onclick="testYourAPI()">1. Test YOUR API Endpoint</button>
+        <button class="test-button" onclick="testDirectGhost()">2. Test Direct Ghost CSS</button>
+        <button class="test-button" onclick="testPageElements()">3. Check Page Elements</button>
+        <button class="test-button" onclick="testCSSLoading()">4. Check CSS Loading</button>
+        <button class="test-button" onclick="runAllDiagnostics()">🚀 Run All Diagnostics</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        const resultsDiv = document.getElementById('results');
+        
+        function addResult(title, status, content, details = '') {
+            const div = document.createElement('div');
+            div.className = `test-section ${status}`;
+            div.innerHTML = `
+                <h3>${title}</h3>
+                <div>${content}</div>
+                ${details ? `<div class="code-block">${details}</div>` : ''}
+            `;
+            resultsDiv.appendChild(div);
+        }
+        
+        // Test 1: Your API endpoint
+        async function testYourAPI() {
+            addResult('Testing Your API...', 'info', 'Checking /api/ghost/assets endpoints');
+            
+            try {
+                // Test CSS endpoint
+                const cssResponse = await fetch('/api/ghost/assets?type=css');
+                const cssText = await cssResponse.text();
+                
+                if (cssResponse.ok && cssText.length > 100) {
+                    const hasTwitterStyles = cssText.includes('.twitter-tweet') || cssText.includes('kg-embed-card');
+                    const hasGalleryStyles = cssText.includes('.kg-gallery') || cssText.includes('kg-gallery-image');
+                    const hasSpacingFixes = cssText.includes('margin: 2rem 0') || cssText.includes('margin: 1.5em 0');
+                    
+                    addResult(
+                        '✅ Your CSS API Working', 
+                        'success', 
+                        `CSS loaded: ${(cssText.length / 1024).toFixed(2)} KB<br>
+                        Twitter fixes: ${hasTwitterStyles ? '✅' : '❌'}<br>
+                        Gallery fixes: ${hasGalleryStyles ? '✅' : '❌'}<br>
+                        Spacing fixes: ${hasSpacingFixes ? '✅' : '❌'}`,
+                        cssText.substring(0, 1000) + '...'
+                    );
+                } else {
+                    addResult('❌ Your CSS API Failed', 'error', `Status: ${cssResponse.status}<br>Length: ${cssText.length}`, cssText);
+                }
+                
+                // Test JS endpoint
+                const jsResponse = await fetch('/api/ghost/assets?type=js');
+                const jsText = await jsResponse.text();
+                
+                if (jsResponse.ok && jsText.length > 100) {
+                    const hasTwitterJS = jsText.includes('twitter') || jsText.includes('fixTwitter');
+                    const hasGalleryJS = jsText.includes('gallery') || jsText.includes('fixGallery');
+                    
+                    addResult(
+                        '✅ Your JS API Working', 
+                        'success', 
+                        `JS loaded: ${(jsText.length / 1024).toFixed(2)} KB<br>
+                        Twitter JS: ${hasTwitterJS ? '✅' : '❌'}<br>
+                        Gallery JS: ${hasGalleryJS ? '✅' : '❌'}`,
+                        jsText.substring(0, 500) + '...'
+                    );
+                } else {
+                    addResult('❌ Your JS API Failed', 'error', `Status: ${jsResponse.status}<br>Length: ${jsText.length}`, jsText);
+                }
+                
+            } catch (error) {
+                addResult('❌ API Test Failed', 'error', `Error: ${error.message}`);
+            }
+        }
+        
+        // Test 2: Direct Ghost CSS
+        async function testDirectGhost() {
+            addResult('Testing Direct Ghost...', 'info', 'Checking direct access to Ghost CSS');
+            
+            const endpoints = [
+                '/assets/css/screen.css',
+                '/assets/built/screen.css', 
+                '/public/cards.min.css'
+            ];
+            
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch('https://storacha-blog.ghost.io' + endpoint);
+                    const cssText = await response.text();
+                    
+                    if (response.ok && cssText.length > 100) {
+                        const hasGhostClasses = (cssText.match(/\\.kg-/g) || []).length;
+                        
+                        addResult(
+                            `✅ ${endpoint}`, 
+                            'success', 
+                            `Size: ${(cssText.length / 1024).toFixed(2)} KB<br>
+                            Ghost classes: ${hasGhostClasses}`,
+                            cssText.substring(0, 500) + '...'
+                        );
+                    } else {
+                        addResult(`❌ ${endpoint}`, 'error', `Status: ${response.status}`);
+                    }
+                } catch (error) {
+                    addResult(`❌ ${endpoint}`, 'error', `Error: ${error.message}`);
+                }
+            }
+        }
+        
+        // Test 3: Page elements
+        function testPageElements() {
+            addResult('Testing Page Elements...', 'info', 'Checking what Ghost elements exist on this page');
+            
+            // Check if we're on a Ghost page
+            const isGhostPage = window.location.pathname.includes('/ghost/');
+            
+            // Count elements
+            const ghostContent = document.querySelectorAll('.ghost-content, .ghost-content-isolation, .ghost-content-root');
+            const kgCards = document.querySelectorAll('[class*="kg-"]');
+            const twitterEmbeds = document.querySelectorAll('.twitter-tweet, iframe[src*="twitter.com"]');
+            const galleries = document.querySelectorAll('.kg-gallery-card, .kg-gallery-container');
+            const videoCards = document.querySelectorAll('.kg-video-card');
+            const embedCards = document.querySelectorAll('.kg-embed-card');
+            
+            let elementInfo = `
+Current page: ${window.location.pathname}
+Is Ghost page: ${isGhostPage ? '✅' : '❌'}
+
+Ghost content containers: ${ghostContent.length}
+KG elements: ${kgCards.length}
+Twitter embeds: ${twitterEmbeds.length}
+Galleries: ${galleries.length}  
+Video cards: ${videoCards.length}
+Embed cards: ${embedCards.length}
+`;
+            
+            // Show specific elements found
+            if (kgCards.length > 0) {
+                const kgClasses = Array.from(kgCards).map(el => 
+                    Array.from(el.classList).filter(c => c.startsWith('kg-'))
+                ).flat();
+                const uniqueClasses = [...new Set(kgClasses)];
+                elementInfo += `\nKG classes found: ${uniqueClasses.join(', ')}`;
+            }
+            
+            // Check applied styles on elements
+            if (embedCards.length > 0) {
+                const firstEmbed = embedCards[0];
+                const computedStyle = window.getComputedStyle(firstEmbed);
+                elementInfo += `\nFirst embed card styles:
+- Margin: ${computedStyle.margin}
+- Text align: ${computedStyle.textAlign}
+- Background: ${computedStyle.backgroundColor}`;
+            }
+            
+            if (kgCards.length > 0 || isGhostPage) {
+                addResult('✅ Ghost Elements Found', 'success', 'Ghost content detected on page', elementInfo);
+            } else {
+                addResult('⚠️ No Ghost Elements', 'warning', 'No Ghost content found - test on a Ghost page', elementInfo);
+            }
+        }
+        
+        // Test 4: CSS Loading
+        function testCSSLoading() {
+            addResult('Testing CSS Loading...', 'info', 'Checking if Ghost CSS is loaded in the page');
+            
+            // Check for style elements
+            const allStyles = document.querySelectorAll('style, link[rel="stylesheet"]');
+            const ghostStyles = document.getElementById('ghost-styles');
+            const ghostFallback = document.getElementById('ghost-fallback');
+            const ghostDirectFix = document.getElementById('ghost-direct-fix');
+            
+            let styleInfo = `
+Total stylesheets: ${allStyles.length}
+Ghost styles element: ${ghostStyles ? '✅ Found' : '❌ Not found'}
+Ghost fallback: ${ghostFallback ? '✅ Found' : '❌ Not found'}  
+Ghost direct fix: ${ghostDirectFix ? '✅ Found' : '❌ Not found'}
+`;
+            
+            // Check content of Ghost styles
+            if (ghostStyles) {
+                const content = ghostStyles.textContent || ghostStyles.innerHTML;
+                const hasTwitter = content.includes('.twitter-tweet') || content.includes('kg-embed-card');
+                const hasGallery = content.includes('.kg-gallery');
+                
+                styleInfo += `\nGhost styles content:
+- Size: ${content.length} characters
+- Has Twitter styles: ${hasTwitter ? '✅' : '❌'}
+- Has Gallery styles: ${hasGallery ? '✅' : '❌'}`;
+            }
+            
+            // List all stylesheets
+            const stylesheetList = Array.from(allStyles).map((el, i) => {
+                if (el.tagName === 'STYLE') {
+                    return `${i}: <style id="${el.id || 'unnamed'}">${el.textContent.substring(0, 50)}...`;
+                } else {
+                    return `${i}: <link href="${el.href}">`;
+                }
+            }).join('\n');
+            
+            styleInfo += `\n\nAll stylesheets:\n${stylesheetList}`;
+            
+            if (ghostStyles || ghostDirectFix) {
+                addResult('✅ CSS Loading Working', 'success', 'Ghost CSS found in page', styleInfo);
+            } else {
+                addResult('❌ CSS Not Loading', 'error', 'Ghost CSS not found in page', styleInfo);
+            }
+        }
+        
+        // Run all diagnostics
+        async function runAllDiagnostics() {
+            resultsDiv.innerHTML = '';
+            addResult('🚀 Running Complete Diagnostics...', 'info', 'Testing all Ghost CSS components');
+            
+            await testYourAPI();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testDirectGhost();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            testPageElements();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            testCSSLoading();
+            
+            addResult('🎯 Diagnostics Complete', 'info', 'Check results above. If any tests fail, that shows the issue!');
+        }
+        
+        // Auto-run when loaded
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                addResult('🏁 Ghost CSS Diagnostic Ready', 'info', 'Run tests to see what\'s failing with your Ghost CSS setup.');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

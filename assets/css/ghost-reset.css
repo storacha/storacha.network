@@ -1,470 +1,268 @@
-/* assets/css/ghost-reset.css - Based on actual Ghost HTML structure */
+/* ===== TARGETED GHOST CSS FIXES - Add to end of ghost-reset.css ===== */
 
-/* 
-GHOST CONTENT ISOLATION - Updated based on actual Ghost output
-*/
-
-.ghost-content-isolation {
-  isolation: isolate;
-  contain: layout style;
-  all: initial;
-  display: block;
-  width: 100%;
-  max-width: none;
-  
-  /* Reset framework variables */
-  --tw-ring-shadow: initial;
-  --tw-shadow: initial;
-  --tw-space-x-reverse: initial;
-  --tw-space-y-reverse: initial;
-  --uno-ring-shadow: initial;
-  --uno-shadow: initial;
-}
-
-.ghost-content-isolation * {
-  box-sizing: border-box;
-  --tw-ring-shadow: initial;
-  --tw-shadow: initial;
-  --tw-space-x-reverse: initial;
-  --tw-space-y-reverse: initial;
-  --uno-ring-shadow: initial;
-  --uno-shadow: initial;
-}
-
-/* Core Ghost Content Base */
-.ghost-content {
-  font-family: Georgia, Times, "Times New Roman", serif !important;
-  font-size: 20px !important;
-  line-height: 1.6 !important;
-  color: #15171A !important;
-  display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  max-width: none !important;
-}
-
-/* Basic Typography */
-.ghost-content h1,
-.ghost-content h2,
-.ghost-content h3,
-.ghost-content h4,
-.ghost-content h5,
-.ghost-content h6 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  font-weight: 700 !important;
-  color: #15171A !important;
-  margin-top: 1.5em !important;
-  margin-bottom: 0.5em !important;
-  line-height: 1.25 !important;
-}
-
-.ghost-content h1 { font-size: 3.2rem !important; margin-top: 0 !important; }
-.ghost-content h2 { font-size: 2.6rem !important; }
-.ghost-content h3 { font-size: 2.0rem !important; }
-.ghost-content h4 { font-size: 1.8rem !important; }
-.ghost-content h5 { font-size: 1.6rem !important; }
-.ghost-content h6 { font-size: 1.4rem !important; }
-
-.ghost-content p {
-  margin: 0 0 1.5em 0 !important;
-  line-height: 1.6 !important;
-  font-size: 20px !important;
-  color: #15171A !important;
-}
-
-.ghost-content a {
-  color: #0084FF !important;
-  text-decoration: underline !important;
-}
-
-.ghost-content ul,
-.ghost-content ol {
-  margin: 0 0 1.5em 0 !important;
-  padding-left: 2em !important;
-}
-
-.ghost-content li {
-  margin-bottom: 0.5em !important;
-  line-height: 1.6 !important;
-}
-
-/* ✅ ACTUAL GHOST CARD CLASSES - Based on your HTML */
-
-/* Images */
+/* 1. FIX IMAGE WHITE BACKGROUND - Racha logo */
+.ghost-content .kg-image,
+.ghost-content .kg-image-card .kg-image,
 .ghost-content img {
-  display: block !important;
-  max-width: 100% !important;
-  height: auto !important;
-  margin: 2em auto !important;
-  border-radius: 6px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  /* Remove any container that might add white background */
+  box-shadow: none !important;
 }
 
-/* Regular image cards */
-.ghost-content figure {
-  margin: 2em 0 !important;
-  display: block !important;
+.ghost-content .kg-image-card {
+  background: transparent !important;
+  background-color: transparent !important;
 }
 
-.ghost-content figure img {
-  margin: 0 auto !important;
-  display: block !important;
+/* 2. FIX BOOKMARK CARD ALIGNMENT */
+.ghost-content .kg-bookmark-card {
+  /* Reset text alignment */
+  text-align: left !important;
 }
 
-/* Button Cards - Based on your HTML structure */
-.ghost-content a.not-kg-prose {
-  display: inline-block !important;
-  cursor: pointer !important;
-  text-center: center !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  font-weight: 600 !important;
-  border-radius: 6px !important;
-  background: #FF1A75 !important; /* Your accent color */
-  color: #fff !important;
-  text-decoration: none !important;
-  transition: all 0.2s ease !important;
-  padding: 0 !important;
+.ghost-content .kg-bookmark-content {
+  text-align: left !important;
+  align-items: flex-start !important;
 }
 
-.ghost-content a.not-kg-prose:hover {
-  background: #CD0051 !important;
-  color: #fff !important;
-  text-decoration: none !important;
-  transform: translateY(-1px) !important;
-}
-
-.ghost-content a.not-kg-prose span {
-  display: block !important;
-  padding: 1rem 1.25rem !important;
-  font-size: 16px !important;
-  line-height: 1.4 !important;
-}
-
-.ghost-content button.not-kg-prose {
-  display: inline-block !important;
-  cursor: pointer !important;
-  text-align: center !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  font-weight: 600 !important;
-  border-radius: 6px !important;
-  background: #FF1A75 !important;
-  color: #fff !important;
-  border: none !important;
-  transition: all 0.2s ease !important;
-  padding: 0 !important;
-}
-
-.ghost-content button.not-kg-prose:hover {
-  background: #CD0051 !important;
-  color: #fff !important;
-  transform: translateY(-1px) !important;
-}
-
-.ghost-content button.not-kg-prose span {
-  display: block !important;
-  padding: 1rem 1.25rem !important;
-  font-size: 16px !important;
-  line-height: 1.4 !important;
-}
-
-/* Bookmark Cards - Based on your HTML structure */
-.ghost-content .not-kg-prose.relative.flex {
-  border: 1px solid #E5EFF5 !important;
-  border-radius: 6px !important;
-  display: flex !important;
-  margin: 2em 0 !important;
-  overflow: hidden !important;
-  background: #FFF !important;
-  text-decoration: none !important;
-  color: inherit !important;
-  transition: box-shadow 0.15s ease !important;
-  min-height: 120px !important;
-}
-
-.ghost-content .not-kg-prose.relative.flex:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08) !important;
-  text-decoration: none !important;
-}
-
-/* Bookmark content */
-.ghost-content .flex.grow.basis-full {
-  display: flex !important;
-  flex-direction: column !important;
-  flex-grow: 1 !important;
-  padding: 20px !important;
-  min-width: 0 !important;
-}
-
-/* Bookmark title */
-.ghost-content .text-\\[1\\.5rem\\] {
-  color: #15171A !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  font-size: 1.5rem !important;
-  font-weight: 600 !important;
-  line-height: 1.4 !important;
+.ghost-content .kg-bookmark-title {
+  text-align: left !important;
   margin-bottom: 8px !important;
+  font-weight: 600 !important; /* Keep title bold */
 }
 
-/* Bookmark description */
-.ghost-content .line-clamp-2 {
-  color: #626D79 !important;
-  font-size: 14px !important;
-  line-height: 1.5 !important;
-  margin-bottom: 8px !important;
-  overflow: hidden !important;
-  display: -webkit-box !important;
+.ghost-content .kg-bookmark-description {
+  text-align: left !important;
+  /* Limit to 2 lines instead of 3 */
   -webkit-line-clamp: 2 !important;
+  display: -webkit-box !important;
   -webkit-box-orient: vertical !important;
-}
-
-/* Bookmark metadata */
-.ghost-content .flex.items-center.text-sm {
-  color: #626D79 !important;
-  font-size: 14px !important;
-  line-height: 1.5 !important;
-  margin-top: auto !important;
-  display: flex !important;
-  align-items: center !important;
-}
-
-/* Bookmark thumbnail */
-.ghost-content .grow-1.relative {
-  flex-shrink: 0 !important;
-  width: 160px !important;
-  min-width: 33% !important;
   overflow: hidden !important;
-  position: relative !important;
 }
 
-.ghost-content .grow-1.relative img {
-  position: absolute !important;
-  inset: 0 !important;
+.ghost-content .kg-bookmark-metadata {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+/* 3. FIX GALLERY CARD - Proper aspect ratio and width alignment */
+.ghost-content .kg-gallery-card.kg-width-wide {
+  /* Align with content width, not extended beyond */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
   width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  border-radius: 0 6px 6px 0 !important;
 }
 
-/* Gallery Cards - Complex grid structure */
-.ghost-content figure .not-kg-prose.relative[data-testid="gallery-container"] {
-  margin: 2em 0 !important;
-  display: block !important;
-}
-
-.ghost-content .not-kg-prose.flex.flex-col[data-gallery="true"] {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 4px !important;
-}
-
-.ghost-content .flex.flex-row.justify-center {
+.ghost-content .kg-gallery-row {
   display: flex !important;
   flex-direction: row !important;
-  justify-content: center !important;
-  gap: 4px !important;
+  gap: 6px !important;
+  margin-bottom: 6px !important;
+  align-items: flex-start !important; /* Don't stretch images */
 }
 
-.ghost-content .group\\/image.relative {
-  position: relative !important;
+.ghost-content .kg-gallery-image {
+  /* Maintain aspect ratio properly */
+  flex: 1 1 auto !important;
   overflow: hidden !important;
-  border-radius: 3px !important;
+  border-radius: 4px !important;
+  position: relative !important;
+  /* Don't force height - let images keep natural proportions */
+  height: auto !important;
 }
 
-.ghost-content .group\\/image.relative img {
+.ghost-content .kg-gallery-image img {
   width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
+  height: auto !important; /* Keep natural aspect ratio */
+  object-fit: contain !important; /* Don't crop, show full image */
   display: block !important;
   margin: 0 !important;
   border-radius: 0 !important;
+  /* Remove forced min-height */
+  min-height: auto !important;
 }
 
-/* Horizontal Rule */
-.ghost-content hr {
-  border: none !important;
-  border-top: 1px solid #E5EFF5 !important;
-  margin: 3em 0 !important;
-  height: 1px !important;
-  display: block !important;
-}
-
-/* Email Cards - Hidden from website */
-.ghost-content [data-testid="visibility-message"] {
-  display: none !important;
-}
-
-/* Call to Action Cards */
-.ghost-content .w-full.rounded-lg.border {
-  background: #F8FBFE !important;
-  border: 1px solid #E5EFF5 !important;
-  border-radius: 8px !important;
-  margin: 2em 0 !important;
-  padding: 0 !important;
-  display: block !important;
-}
-
-.ghost-content .flex.gap-6.pt-6.pb-7 {
-  display: flex !important;
-  gap: 1.5rem !important;
-  padding: 1.5rem 1.5rem 1.75rem 1.5rem !important;
-  flex-direction: row !important;
-}
-
-.ghost-content .w-full.whitespace-normal.text-pretty {
-  font-family: Georgia, Times, "Times New Roman", serif !important;
+/* 4. FIX CTA CARD TEXT - Remove bold from "Do this now" */
+.ghost-content .kg-cta-text {
+  font-weight: normal !important; /* Remove bold */
   font-size: 20px !important;
   line-height: 1.6 !important;
-  color: #15171A !important;
-  margin-bottom: 1.5rem !important;
 }
 
-/* Header Cards - Full width sections */
-.ghost-content .flex.w-full.font-sans {
-  display: flex !important;
+.ghost-content .kg-cta-text p {
+  font-weight: normal !important; /* Remove bold */
+  font-size: 20px !important;
+}
+
+/* 5. FIX HEADER CARD - Make it much higher like original */
+.ghost-content .kg-header-card {
+  /* Make header card much taller */
+  min-height: 600px !important;
+  padding: 8rem 2rem !important;
+  /* Keep within content width */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   width: 100% !important;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
-  margin: 2em 0 !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-  min-height: 200px !important;
 }
 
-.ghost-content .mx-auto.flex.w-full.flex-1 {
+.ghost-content .kg-header-card.kg-width-full {
+  /* Keep within page width, don't extend beyond */
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+}
+
+.ghost-content .kg-header-card-heading {
+  font-size: 4rem !important; /* Make heading larger */
+  margin-bottom: 2rem !important;
+}
+
+.ghost-content .kg-header-card-subheading {
+  font-size: 1.5rem !important; /* Make subheading larger */
+}
+
+/* 6. FIX VIDEO CARD - Make it functional and properly sized */
+.ghost-content .kg-video-card {
+  margin: 2.5em 0 !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.ghost-content .kg-video-container {
+  position: relative !important;
+  width: 100% !important;
+  /* Make video much larger */
+  min-height: 500px !important;
+  background: #000000 !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+}
+
+.ghost-content .kg-video-container video {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 500px !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 0 !important;
+}
+
+/* Make video play button functional */
+.ghost-content .kg-video-large-play-icon {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50% !important;
+  background: rgba(0, 0, 0, 0.8) !important;
+  border: none !important;
+  cursor: pointer !important;
   display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
   align-items: center !important;
-  padding: 4rem 2rem !important;
-  text-align: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
 }
 
-/* Header card headings */
-.ghost-content .heading-large p {
-  font-size: 3rem !important;
-  font-weight: 700 !important;
-  line-height: 1.2 !important;
-  margin: 0 0 1rem 0 !important;
+.ghost-content .kg-video-large-play-icon svg {
+  width: 36px !important;
+  height: 36px !important;
+  fill: #ffffff !important;
+  margin-left: 6px !important;
 }
 
-.ghost-content .subheading-large p {
-  font-size: 1.25rem !important;
-  font-weight: 400 !important;
-  line-height: 1.5 !important;
-  margin: 0 !important;
-  opacity: 0.8 !important;
+/* 7. FIX FILE CARD - Left align text and use Storacha red for download icon */
+.ghost-content .kg-file-card {
+  text-align: left !important;
 }
 
-/* Video Cards */
-.ghost-content figure.not-kg-prose {
-  margin: 2em 0 !important;
-  position: relative !important;
-  display: block !important;
+.ghost-content .kg-file-card-container {
+  justify-content: flex-start !important;
+  text-align: left !important;
 }
 
-.ghost-content .not-kg-prose.relative[data-testid="video-card-populated"] {
-  position: relative !important;
-  border-radius: 8px !important;
-  overflow: hidden !important;
-}
-
-.ghost-content .not-kg-prose.relative[data-testid="video-card-populated"] img {
-  width: 100% !important;
-  height: auto !important;
-  display: block !important;
-}
-
-/* File Cards */
-.ghost-content .flex.justify-between.rounded-md.border {
-  border: 1px solid #E5EFF5 !important;
-  border-radius: 6px !important;
-  display: flex !important;
-  margin: 2em 0 !important;
-  padding: 0.5rem !important;
-  background: #FFF !important;
-}
-
-.ghost-content .flex.w-full.flex-col.px-2 {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  padding: 0 0.5rem !important;
+.ghost-content .kg-file-card-contents {
+  text-align: left !important;
   flex-grow: 1 !important;
 }
 
-/* Embed Cards */
-.ghost-content iframe {
-  width: 100% !important;
-  border: none !important;
-  border-radius: 6px !important;
-  margin: 2em 0 !important;
-  display: block !important;
+.ghost-content .kg-file-card-title {
+  text-align: left !important;
+  margin-bottom: 4px !important;
 }
 
-/* Twitter/X embeds */
-.ghost-content iframe[title="embed-card-iframe"] {
-  min-height: 400px !important;
-  background: #f8f9fa !important;
+.ghost-content .kg-file-card-metadata {
+  text-align: left !important;
+  justify-content: flex-start !important;
 }
 
-/* YouTube embeds */
-.ghost-content iframe[src*="youtube.com"],
-.ghost-content iframe[src*="youtu.be"] {
-  aspect-ratio: 16 / 9 !important;
-  width: 100% !important;
-  height: auto !important;
-}
-
-/* GIFs and animated content */
-.ghost-content img[src*=".gif"],
-.ghost-content img[src*="tenor.com"],
-.ghost-content img[src*="giphy.com"] {
+.ghost-content .kg-file-card-icon {
+  background: #f1f1f1 !important;
   border-radius: 8px !important;
-  margin: 2em auto !important;
-  max-width: 100% !important;
-  height: auto !important;
 }
 
-/* Responsive adjustments */
+.ghost-content .kg-file-card-icon svg {
+  /* Use Storacha red for download arrow */
+  color: #FF1A75 !important;
+  width: 28px !important;
+  height: 28px !important;
+}
+
+/* 8. FIX EMBED CARDS - Make YouTube videos much larger */
+.ghost-content .kg-embed-card {
+  margin: 2.5em 0 !important;
+  display: block !important;
+  width: 100% !important;
+}
+
+.ghost-content .kg-embed-card iframe {
+  width: 100% !important;
+  /* Make YouTube videos much larger */
+  min-height: 400px !important;
+  height: 400px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Specific fix for YouTube embeds */
+.ghost-content .kg-embed-card iframe[src*="youtube"] {
+  width: 100% !important;
+  height: 450px !important;
+  min-height: 450px !important;
+}
+
+/* 9. RESPONSIVE FIXES */
 @media (max-width: 768px) {
-  .ghost-content {
-    font-size: 18px !important;
+  .ghost-content .kg-header-card {
+    min-height: 400px !important;
+    padding: 4rem 1rem !important;
   }
   
-  .ghost-content h1 { font-size: 2.4rem !important; }
-  .ghost-content h2 { font-size: 2.0rem !important; }
-  .ghost-content h3 { font-size: 1.6rem !important; }
+  .ghost-content .kg-header-card-heading {
+    font-size: 2.5rem !important;
+  }
   
-  .ghost-content .not-kg-prose.relative.flex {
+  .ghost-content .kg-header-card-subheading {
+    font-size: 1.25rem !important;
+  }
+  
+  .ghost-content .kg-video-container {
+    min-height: 300px !important;
+  }
+  
+  .ghost-content .kg-video-container video {
+    min-height: 300px !important;
+  }
+  
+  .ghost-content .kg-embed-card iframe {
+    height: 250px !important;
+    min-height: 250px !important;
+  }
+  
+  .ghost-content .kg-gallery-row {
     flex-direction: column !important;
-  }
-  
-  .ghost-content .grow-1.relative {
-    width: 100% !important;
-    min-width: 100% !important;
-    height: 200px !important;
-  }
-  
-  .ghost-content .grow-1.relative img {
-    border-radius: 0 0 6px 6px !important;
-  }
-  
-  .ghost-content .flex.flex-row.justify-center {
-    flex-direction: column !important;
-    gap: 2px !important;
-  }
-  
-  .ghost-content .group\\/image.relative {
-    margin-bottom: 2px !important;
-  }
-  
-  .ghost-content .mx-auto.flex.w-full.flex-1 {
-    padding: 2rem 1rem !important;
-  }
-  
-  .ghost-content .heading-large p {
-    font-size: 2rem !important;
-  }
-  
-  .ghost-content .subheading-large p {
-    font-size: 1rem !important;
+    gap: 4px !important;
   }
 }
+

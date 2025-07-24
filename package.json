@@ -39,7 +39,7 @@
     "unocss": "^0.63.6"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.8.0",
+    "@antfu/eslint-config": "^4.19.0",
     "@nuxt/eslint": "^1.4.1",
     "@unocss/eslint-config": "^0.63.6",
     "eslint": "^9.13.0",

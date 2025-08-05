@@ -12,16 +12,16 @@ export default defineAppConfig({
     start: { text: 'Start Storing', href: 'https://console.storacha.network/' },
     docs: { text: 'Docs', href: 'https://docs.storacha.network', secondary: true },
     headerLinks: [
-       {
+      {
         text: 'Product',
         dropdown: [
           { text: 'Bluesky Storage', href: 'https://bsky.storage' },
           { text: 'Storacha AI', href: 'https://storacha.ai' },
           { text: 'Storacha Console', href: 'https://console.storacha.network/' },
           { text: 'Roadmap', href: '/roadmap' },
-        ]
+        ],
       },
-      { text: 'Referrals', href: '/referrals'},
+      { text: 'Referrals', href: '/referrals' },
       { text: 'Ecosystem', href: '/ecosystem' },
       { text: 'Node Providers', href: '/node-providers' },
       { text: 'Blog', href: '/blog' },
@@ -49,8 +49,8 @@ export default defineAppConfig({
         { text: 'Status', href: 'https://status.storacha.network' },
       ],
       getStarted: [
-        { text: 'JS Client', href: 'https://github.com/storacha/w3up/tree/main/packages/w3up-client#readme' },
-        { text: 'CLI', href: 'https://docs.storacha.network/w3cli' },
+        { text: 'JS Client', href: 'https://docs.storacha.network/js-client/' },
+        { text: 'CLI', href: 'https://docs.storacha.network/cli/' },
         { text: 'Web UI', href: 'https://console.storacha.network' },
       ],
     },

@@ -50,6 +50,7 @@ export default defineAppConfig({
       ],
       getStarted: [
         { text: 'JS Client', href: 'https://docs.storacha.network/js-client/' },
+        { text: 'Go Client', href: 'https://docs.storacha.network/go-client/' },
         { text: 'CLI', href: 'https://docs.storacha.network/cli/' },
         { text: 'Web UI', href: 'https://console.storacha.network' },
       ],

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.19.7](https://github.com/storacha/storacha.network/compare/v0.19.6...v0.19.7) (2025-08-06)
+
+
+### Bug Fixes
+
+* footer URLs ([#185](https://github.com/storacha/storacha.network/issues/185)) ([e933a82](https://github.com/storacha/storacha.network/commit/e933a8299d318cb3eaf199eb830743d6f48b27da))
+
 ## [0.19.6](https://github.com/storacha/storacha.network/compare/v0.19.5...v0.19.6) (2025-06-25)
 
 

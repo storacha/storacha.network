@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Feed } from '~/types/blog'
+import { clientLogger } from '~/utils/logger'
 
 // SEO metadata for the blog page
 useSeoMeta({
@@ -16,32 +17,32 @@ useHead({
   script: [{
     type: 'application/ld+json',
     innerHTML: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "Storacha Blog",
-      "description": "Latest news, updates, and insights from the Storacha team.",
-      "url": "https://storacha.network/blog",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Storacha Network",
-        "url": "https://storacha.network"
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      'name': 'Storacha Blog',
+      'description': 'Latest news, updates, and insights from the Storacha team.',
+      'url': 'https://storacha.network/blog',
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'Storacha Network',
+        'url': 'https://storacha.network',
       },
-      "breadcrumb": {
-        "@type": "BreadcrumbList",
-        "itemListElement": [{
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://storacha.network"
+      'breadcrumb': {
+        '@type': 'BreadcrumbList',
+        'itemListElement': [{
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': 'https://storacha.network',
         }, {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Blog",
-          "item": "https://storacha.network/blog"
-        }]
-      }
-    })
-  }]
+          '@type': 'ListItem',
+          'position': 2,
+          'name': 'Blog',
+          'item': 'https://storacha.network/blog',
+        }],
+      },
+    }),
+  }],
 })
 
 // 🔥 AGGRESSIVE CLIENT-SIDE ONLY APPROACH
@@ -54,10 +55,16 @@ onMounted(async () => {
   try {
     const response = await $fetch<Feed>('/api/blog')
     blog.value = response
-  } catch (err) {
+  }
+  catch (err) {
     error.value = err
-    console.error('Blog fetch error:', err)
-  } finally {
+    clientLogger.error('Blog fetch error', {
+      error: err instanceof Error ? err.message : String(err),
+      stack: err instanceof Error ? err.stack : undefined,
+      timestamp: new Date().toISOString(),
+    })
+  }
+  finally {
     pending.value = false
   }
 })
@@ -67,12 +74,14 @@ const medium = useSocialNetwork('medium')
 
 <template>
   <Section class="bg-white" padding>
-    <div class="py-4 flex md:flex-row flex-col mt-20">
-      <div class="flex-none mb-4 md:mb-0">
-        <Heading type="h4" class="uppercase color-brand-3">
+    <div class="mt-20 flex flex-col py-4 md:flex-row">
+      <div class="mb-4 flex-none md:mb-0">
+        <Heading type="h4" class="color-brand-3 uppercase">
           Blazing Hot News
         </Heading>
-        <p class="max-w-50ch text-pretty prose p1 color-brand-3">The latest and greatest from the Storacha team.</p>
+        <p class="max-w-50ch text-pretty color-brand-3 prose p1">
+          The latest and greatest from the Storacha team.
+        </p>
       </div>
       <div class="flex-auto md:text-right">
         <Btn text="Follow on Medium" :href="medium?.href" />
@@ -80,18 +89,30 @@ const medium = useSocialNetwork('medium')
     </div>
 
     <!-- Loading State -->
-    <div v-if="pending" class="text-center py-12">
-      <div class="text-6xl mb-4 animate-spin">🔄</div>
-      <Heading type="h3" class="mb-4">Loading Latest Posts</Heading>
-      <p class="color-brand-3">Fetching the hottest content from our blog...</p>
+    <div v-if="pending" class="py-12 text-center">
+      <div class="mb-4 animate-spin text-6xl">
+        🔄
+      </div>
+      <Heading type="h3" class="mb-4">
+        Loading Latest Posts
+      </Heading>
+      <p class="color-brand-3">
+        Fetching the hottest content from our blog...
+      </p>
     </div>
 
     <!-- Error State -->
-    <div v-else-if="error" class="text-center py-12">
-      <div class="text-6xl mb-4">📱</div>
-      <Heading type="h3" class="mb-4">Blog Temporarily Unavailable</Heading>
-      <p class="mb-6 color-brand-3">We're having trouble loading our latest posts right now.</p>
-      <Btn href="https://medium.com/@storacha" text="Visit Medium" class="btn bg-brand-3 text-white" external />
+    <div v-else-if="error" class="py-12 text-center">
+      <div class="mb-4 text-6xl">
+        📱
+      </div>
+      <Heading type="h3" class="mb-4">
+        Blog Temporarily Unavailable
+      </Heading>
+      <p class="mb-6 color-brand-3">
+        We're having trouble loading our latest posts right now.
+      </p>
+      <Btn href="https://medium.com/@storacha" text="Visit Medium" class="bg-brand-3 text-white btn" external />
     </div>
 
     <!-- Success State -->
@@ -103,13 +124,19 @@ const medium = useSocialNetwork('medium')
         class="grid-rows-subgrid"
         show-snippet
       />
-      
+
       <!-- Empty state -->
-      <div v-if="blog?.items?.length === 0" class="col-span-full text-center py-12">
-        <div class="text-6xl mb-4">📝</div>
-        <Heading type="h3" class="mb-4">No Posts Yet</Heading>
-        <p class="mb-6 color-brand-3">Check back soon for hot new content!</p>
-        <Btn href="https://medium.com/@storacha" text="Follow on Medium" class="btn bg-brand-3 text-white" external />
+      <div v-if="blog?.items?.length === 0" class="col-span-full py-12 text-center">
+        <div class="mb-4 text-6xl">
+          📝
+        </div>
+        <Heading type="h3" class="mb-4">
+          No Posts Yet
+        </Heading>
+        <p class="mb-6 color-brand-3">
+          Check back soon for hot new content!
+        </p>
+        <Btn href="https://medium.com/@storacha" text="Follow on Medium" class="bg-brand-3 text-white btn" external />
       </div>
     </div>
   </Section>

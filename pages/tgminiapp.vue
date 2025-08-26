@@ -356,12 +356,12 @@ function startBackup() {
 
 @screen xl {
   .telegram-hero-bg {
-    background: url(/img/telegram/hero.png) no-repeat right center;
+    background: url(/img/tgminiapp/hero.png) no-repeat right center;
     background-size: contain;
   }
 
   .telegram-hero-bg::before {
-    background: url(/img/telegram/hero.png) no-repeat center right;
+    background: url(/img/tgminiapp/hero.png) no-repeat center right;
     background-size: contain;
   }
 }

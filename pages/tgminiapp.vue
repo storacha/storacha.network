@@ -235,16 +235,18 @@ function startBackup() {
   background-size: cover;
   background-attachment: fixed;
   overflow: hidden;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .telegram-hero-section::after {
   content: '';
   position: absolute;
   top: 50%;
-  right: 5%;
+  right: 3%;
   transform: translateY(-50%);
-  width: 500px;
-  height: 500px;
+  width: 650px;
+  height: 650px;
   background: url(/img/tgminiapp/hero.png) no-repeat center center;
   background-size: contain;
   z-index: 1;
@@ -255,6 +257,18 @@ function startBackup() {
   position: relative;
   z-index: 2;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  line-height: 1.4;
+  margin-top: 1.5rem;
 }
 
 .cta-button {
@@ -289,37 +303,78 @@ function startBackup() {
 @screen sm {
   .telegram-hero-section {
     background-attachment: scroll;
+    min-height: 100vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
   }
 
   .telegram-hero-section::after {
-    width: 350px;
-    height: 350px;
+    width: 450px;
+    height: 450px;
     right: 10px;
     opacity: 0.8;
   }
 }
 
 @screen md {
+  .telegram-hero-section {
+    min-height: 100vh;
+  }
+
+  .hero-content h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero-content p {
+    font-size: 1.3rem;
+  }
+
   .telegram-hero-section::after {
-    width: 420px;
-    height: 420px;
-    right: 3%;
+    width: 550px;
+    height: 550px;
+    right: 2%;
   }
 }
 
 @screen lg {
+  .telegram-hero-section {
+    min-height: 100vh;
+  }
+
+  .hero-content h1 {
+    font-size: 4rem;
+  }
+
+  .hero-content p {
+    font-size: 1.5rem;
+  }
+
   .telegram-hero-section::after {
-    width: 500px;
-    height: 500px;
-    right: 5%;
+    width: 650px;
+    height: 650px;
+    right: 3%;
   }
 }
 
 @screen xl {
+  .hero-content h1 {
+    font-size: 4.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.6rem;
+  }
+
   .telegram-hero-section::after {
-    width: 580px;
-    height: 580px;
-    right: 8%;
+    width: 750px;
+    height: 750px;
+    right: 5%;
   }
 }
 </style>

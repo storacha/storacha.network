@@ -53,7 +53,7 @@ function startBackup() {
           <SectionHeader
             class="hero-content color-brand-3"
             title="🚨 Don't Lose Your Telegram Chats"
-            description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, forever."
+            description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, secure."
           />
           <div class="mt-6 color-brand-3 prose p1">
             <button

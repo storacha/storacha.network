@@ -3,7 +3,7 @@ import FreeStorage from '~/components/FreeStorage.vue'
 
 // SEO metadata for telegram backup page
 useSeoMeta({
-  title: 'Backup Telegram Chats | Secure Decentralized Storage - Storacha',
+  title: 'Telegram Mini App | Secure Decentralized Storage - Storacha',
   description: 'Backup your Telegram chats to Storacha\'s decentralized storage. Safe, private, encrypted backups that you control forever.',
   ogTitle: 'Don\'t Lose Your Telegram Chats - Backup with Storacha',
   ogDescription: 'Secure your 1-on-1s, groups, and channels with encrypted backups on decentralized storage.',
@@ -245,8 +245,8 @@ function startBackup() {
   top: 50%;
   right: 3%;
   transform: translateY(-50%);
-  width: 650px;
-  height: 650px;
+  width: 600px;
+  height: 600px;
   background: url(/img/tgminiapp/hero.png) no-repeat center center;
   background-size: contain;
   z-index: 1;
@@ -307,11 +307,11 @@ function startBackup() {
   }
 
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
   }
 
   .hero-content p {
-    font-size: 1.2rem;
+    font-size: 0.6rem;
   }
 
   .telegram-hero-section::after {
@@ -328,11 +328,11 @@ function startBackup() {
   }
 
   .hero-content h1 {
-    font-size: 3.2rem;
+    font-size: 2.5rem;
   }
 
   .hero-content p {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   .telegram-hero-section::after {
@@ -348,11 +348,11 @@ function startBackup() {
   }
 
   .hero-content h1 {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
   .hero-content p {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   .telegram-hero-section::after {
@@ -364,11 +364,11 @@ function startBackup() {
 
 @screen xl {
   .hero-content h1 {
-    font-size: 4.5rem;
+    font-size: 4.0rem;
   }
 
   .hero-content p {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .telegram-hero-section::after {

@@ -138,9 +138,14 @@ function startBackup() {
           </p>
         </div>
       </div>
+
+      <!-- Small spacer div -->
+      <div class="mt-8" />
+
       <div class="mt-6 text-center">
-        <p class="prose p2">
-          For additional support, please see our step-by-step guide and FAQ.
+        <p class="text-center prose p2">
+          For additional support, please see our
+          <a href="https://docs.storacha.network/" class="color-brand-1 underline hover:no-underline">step-by-step guide and FAQ</a>.
         </p>
       </div>
     </Section>
@@ -217,8 +222,6 @@ function startBackup() {
         Start Backup Now
       </button>
     </Section>
-
-    <FreeStorage />
   </TransitionProvider>
 </template>
 

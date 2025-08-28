@@ -47,11 +47,11 @@ function startBackup() {
 <template>
   <TransitionProvider>
     <!-- Hero Section -->
-    <Section class="telegram-hero-bg">
+    <Section class="telegram-hero-section">
       <HeroBase class="sm:min-h-200">
         <template #left>
           <SectionHeader
-            class="color-brand-3"
+            class="hero-content color-brand-3"
             title="🚨 Don't Lose Your Telegram Chats"
             description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, forever."
           />
@@ -228,10 +228,33 @@ function startBackup() {
   background-size: contain;
 }
 
-.telegram-hero-bg {
-  background: url(/img/tgminiapp/hero.png) no-repeat right center;
-  background-size: contain;
+.telegram-hero-section {
   position: relative;
+  min-height: 100vh;
+  background: url(/img/tgminiapp/hero_bg.png) no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.telegram-hero-section::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  width: 500px;
+  height: 500px;
+  background: url(/img/tgminiapp/hero.png) no-repeat center center;
+  background-size: contain;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .cta-button {
@@ -240,6 +263,8 @@ function startBackup() {
   display: inline-block;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  position: relative;
+  z-index: 2;
 }
 
 .cta-button-large {
@@ -260,15 +285,41 @@ function startBackup() {
   border-left: 4px solid var(--brand-1);
 }
 
-@screen xl {
-  .telegram-hero-bg {
-    background: url(/img/tgminiapp/hero.png) no-repeat right center;
-    background-size: contain;
+/* Mobile responsiveness */
+@screen sm {
+  .telegram-hero-section {
+    background-attachment: scroll;
   }
 
-  .telegram-hero-bg::before {
-    background: url(/img/tgminiapp/hero.png) no-repeat center right;
-    background-size: contain;
+  .telegram-hero-section::after {
+    width: 350px;
+    height: 350px;
+    right: 10px;
+    opacity: 0.8;
+  }
+}
+
+@screen md {
+  .telegram-hero-section::after {
+    width: 420px;
+    height: 420px;
+    right: 3%;
+  }
+}
+
+@screen lg {
+  .telegram-hero-section::after {
+    width: 500px;
+    height: 500px;
+    right: 5%;
+  }
+}
+
+@screen xl {
+  .telegram-hero-section::after {
+    width: 580px;
+    height: 580px;
+    right: 8%;
   }
 }
 </style>

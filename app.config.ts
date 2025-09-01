@@ -15,11 +15,11 @@ export default defineAppConfig({
       {
         text: 'Product',
         dropdown: [
+          { text: 'Telegram Backup', href: '/tgminiapp' },
           { text: 'Bluesky Storage', href: 'https://bsky.storage' },
           { text: 'Storacha AI', href: 'https://storacha.ai' },
           { text: 'Storacha Console', href: 'https://console.storacha.network/' },
           { text: 'Roadmap', href: '/roadmap' },
-          { text: 'Telegram Mini App', href: '/tgminiapp' },
         ],
       },
       { text: 'Referrals', href: '/referrals' },

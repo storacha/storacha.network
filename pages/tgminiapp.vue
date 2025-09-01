@@ -57,9 +57,10 @@ function startBackup() {
             description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, secure."
           />
           <div class="mt-6 color-brand-3 prose p1">
+            <!-- Using same button class as referral page -->
             <NuxtLink 
               to="#backup" 
-              class="btn btn-primary no-underline"
+              class="btn no-underline"
               @click="startBackup"
             >
               Start Backup Now
@@ -219,7 +220,7 @@ function startBackup() {
       </div>
       <NuxtLink 
         to="#backup" 
-        class="btn btn-primary btn-large no-underline"
+        class="btn btn-large no-underline"
         @click="startBackup"
       >
         Start Backup Now
@@ -237,6 +238,7 @@ function startBackup() {
 .telegram-hero-section {
   position: relative;
   min-height: 100vh;
+  /* Using the specified blue color */
   background: #BDE0FF;
   overflow: hidden;
   padding-bottom: 0;
@@ -260,8 +262,10 @@ function startBackup() {
 .hero-content {
   position: relative;
   z-index: 2;
+  /* Removed text shadow to match referral page */
 }
 
+/* Removed all custom font overrides - now uses default component fonts */
 
 .callout-box {
   border-left: 4px solid var(--brand-1);

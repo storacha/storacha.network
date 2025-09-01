@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import FreeStorage from '~/components/FreeStorage.vue'
+const docs = useActions('docs')
+
 
 // SEO metadata for telegram backup page
 useSeoMeta({
@@ -50,18 +52,11 @@ function startBackup() {
     <Section class="telegram-hero-section">
       <HeroBase class="sm:min-h-200">
         <template #left>
-          <SectionHeader
-            class="hero-content color-brand-3" 
-            eyebrow="BACKUP AND EARN LOYALTY POINTS"
+          <SectionHeader class="hero-content color-brand-3" eyebrow="BACKUP AND EARN LOYALTY POINTS"
             title="Don't Lose Your Telegram Chats"
-            description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, secure."
-          />
+            description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, secure." />
           <div class="mt-6 color-brand-3 prose p1">
-            <NuxtLink 
-              to="#backup" 
-              class="btn no-underline"
-              @click="startBackup"
-            >
+            <NuxtLink to="#backup" class="btn no-underline" @click="startBackup">
               Start Backup Now
             </NuxtLink>
           </div>
@@ -81,11 +76,12 @@ function startBackup() {
               </Heading>
               <div class="prose p1">
                 <p>
-                  Every time you back up your Telegram chats, you're not just securing your data, you're also stacking rewards.
+                  Every time you back up your Telegram chats, you're not just securing your data, you're also stacking
+                  rewards.
                 </p>
-                <div class="callout-box my-4 rounded-lg bg-brand-6 p-4">
-                  <div class="text-2xl color-brand-1 font-bold">
-                    💎 Earn 10,000 mini Rachas per GB backed up
+                <div class="callout-box my-4">
+                  <div class="text-2xl font-bold">
+                    <b>💎 Earn 10,000 mini Rachas per GB backed up</b>
                   </div>
                 </div>
                 <p>
@@ -99,117 +95,105 @@ function startBackup() {
     </Section>
 
     <!-- How to Get Started Section -->
-    <Section class="bg-brand-6 color-brand-3" padding>
-      <div class="mb-8 text-center">
-        <Heading type="h2" class="mb-4 font-medium">
-          How to Get Started
-        </Heading>
+    <Section class="bg-brand-4" padding>
+      <div class="color-brand-3">
+        <SectionHeader title="How to Get Started" center />
       </div>
-      <div class="grid gap-8 md:grid-cols-3">
-        <div class="text-center">
-          <div class="mb-4 text-4xl">
-            🔑
+      <div class="grid grid-cols-1 mt-12 gap-4 sm:grid-cols-3">
+        <Card title="Step 1: Authorize OTP">
+          <div class="flex flex-col gap-8">
+            <div class="min-h-30 flex items-center justify-center">
+              <img src="/img/nodes/storage.png" alt="Step 1: Authorize OTP" class="max-h-24">
+            </div>
+            <p class="font-sans p2">
+              Give permission so the miniapp can read your chats (we can't back them up otherwise).
+            </p>
           </div>
-          <Heading type="h3" class="mb-2 font-medium">
-            Step 1: Authorize OTP
-          </Heading>
-          <p class="prose p2">
-            Give permission so the miniapp can read your chats (we can't back them up otherwise).
-          </p>
-        </div>
-        <div class="text-center">
-          <div class="mb-4 text-4xl">
-            ⚡
+        </Card>
+        <Card title="Step 2: Create Storacha Account">
+          <div class="flex flex-col gap-8">
+            <div class="min-h-30 flex items-center justify-center">
+              <img src="/img/nodes/retrieval.png" alt="Step 2: Create Storacha Account" class="max-h-24">
+            </div>
+            <p class="font-sans p2">
+              It takes seconds. Your encryption key is generated on your device.
+            </p>
           </div>
-          <Heading type="h3" class="mb-2 font-medium">
-            Step 2: Create Storacha Account
-          </Heading>
-          <p class="prose p2">
-            It takes seconds. Your encryption key is generated on your device.
-          </p>
-        </div>
-        <div class="text-center">
-          <div class="mb-4 text-4xl">
-            🚀
+        </Card>
+        <Card title="Step 3: Start Backup">
+          <div class="flex flex-col gap-8">
+            <div class="min-h-30 flex items-center justify-center">
+              <img src="/img/nodes/indexing.png" alt="Step 3: Start Backup" class="max-h-24">
+            </div>
+            <p class="font-sans p2">
+              Start your backup in seconds: simple, private, and encrypted.
+            </p>
           </div>
-          <Heading type="h3" class="mb-2 font-medium">
-            Step 3: Start Backup
-          </Heading>
-          <p class="prose p2">
-            Start your backup in seconds: simple, private, and encrypted.
-          </p>
-        </div>
+        </Card>
       </div>
 
-      <!-- Small spacer div -->
-      <div class="mt-8" />
+
 
       <div class="mt-6 text-center">
-        <p class="text-center prose p2">
-          For additional support, please see our
-          <a href="https://docs.storacha.network/" class="color-brand-1 underline hover:no-underline">step-by-step guide and FAQ</a>.
-        </p>
+        <NuxtLink href="https://docs.storacha.network/" class="btn  no-underline"
+          :class="{ 'btn-secondary': docs.secondary }">
+          Learn More
+        </NuxtLink>
       </div>
     </Section>
 
     <!-- Security & Benefits Section -->
-    <Section class="bg-brand-6 color-brand-3" padding>
-      <div class="mb-8 text-center">
-        <Heading type="h2" class="mb-4 font-medium">
-          Security & Benefits
-        </Heading>
+    <Section class="bg-brand-4" padding>
+      <div class="color-brand-3">
+        <SectionHeader title="Security & Benefits" center />
       </div>
-      <div class="grid gap-6 lg:grid-cols-4 md:grid-cols-2">
-        <div class="rounded-lg bg-white p-4 text-center">
-          <div class="mb-3 text-3xl">
-            🔐
+      <div class="grid grid-cols-1 mt-12 gap-4 lg:grid-cols-4 md:grid-cols-2">
+        <Card title="Your Key, Your Data">
+          <div class="flex flex-col gap-8">
+            <div class="min-h-30 flex items-center justify-center">
+              <img src="/img/nodes/storage.png" alt="Your Key, Your Data" class="max-h-24">
+            </div>
+            <p class="font-sans p3">
+              Encryption happens on your device. We never see your messages.
+            </p>
           </div>
-          <Heading type="h4" class="mb-2 font-medium">
-            Your Key, Your Data
-          </Heading>
-          <p class="p3 prose">
-            Encryption happens on your device. We never see your messages.
-          </p>
-        </div>
-        <div class="rounded-lg bg-white p-4 text-center">
-          <div class="mb-3 text-3xl">
-            🌍
+        </Card>
+        <Card title="Decentralized">
+          <div class="flex flex-col gap-8">
+            <div class="min-h-30 flex items-center justify-center">
+              <img src="/img/nodes/retrieval.png" alt="Decentralized" class="max-h-24">
+            </div>
+            <p class="font-sans p3">
+              No central point of failure. Your chats are always recoverable.
+            </p>
           </div>
-          <Heading type="h4" class="mb-2 font-medium">
-            Decentralized
-          </Heading>
-          <p class="p3 prose">
-            No central point of failure. Your chats are always recoverable.
-          </p>
-        </div>
-        <div class="rounded-lg bg-white p-4 text-center">
-          <div class="mb-3 text-3xl">
-            🏆
+        </Card>
+        <Card title="Earn Rewards">
+          <div class="flex flex-col gap-8">
+            <div class="min-h-30 flex items-center justify-center">
+              <img src="/img/nodes/indexing.png" alt="Earn Rewards" class="max-h-24">
+            </div>
+            <p class="font-sans p3">
+              Back up and stack loyalty points you can redeem later.
+            </p>
           </div>
-          <Heading type="h4" class="mb-2 font-medium">
-            Earn Rewards
-          </Heading>
-          <p class="p3 prose">
-            Back up and stack loyalty points you can redeem later.
-          </p>
-        </div>
-        <div class="rounded-lg bg-white p-4 text-center">
-          <div class="mb-3 text-3xl">
-            ⚡
+        </Card>
+        <Card title="MiniApp Magic">
+          <div class="flex flex-col gap-8">
+            <div class="min-h-30 flex items-center justify-center">
+              <img src="/img/nodes/storage.png" alt="MiniApp Magic" class="max-h-24">
+            </div>
+            <p class="font-sans p3">
+              Open inside Telegram via bot. No downloads, no hassle.
+            </p>
           </div>
-          <Heading type="h4" class="mb-2 font-medium">
-            MiniApp Magic
-          </Heading>
-          <p class="p3 prose">
-            Open inside Telegram via bot. No downloads, no hassle.
-          </p>
-        </div>
+        </Card>
       </div>
     </Section>
 
     <!-- Final CTA Section -->
-    <Section class="bg-red-600 text-center color-white" padding>
-      <Heading type="h2" class="mb-4 font-medium">
+    <Section class="text-center color-brand-3" style="background: #EFE4F3;" padding>
+      <Heading type="h2" class="mb-4 font-medium font-bold">
         Don't wait until it's too late.
       </Heading>
       <div class="mx-auto max-w-xl">
@@ -217,11 +201,7 @@ function startBackup() {
           Protect your Telegram chats today with Storacha.
         </p>
       </div>
-      <NuxtLink 
-        to="#backup" 
-        class="btn btn-large no-underline"
-        @click="startBackup"
-      >
+      <NuxtLink to="#backup" class="btn btn-large no-underline" @click="startBackup">
         Start Backup Now
       </NuxtLink>
     </Section>
@@ -237,7 +217,6 @@ function startBackup() {
 .telegram-hero-section {
   position: relative;
   min-height: 100vh;
-  /* Using the specified blue color */
   background: #BDE0FF;
   overflow: hidden;
   padding-bottom: 0;

@@ -57,7 +57,6 @@ function startBackup() {
             description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, secure."
           />
           <div class="mt-6 color-brand-3 prose p1">
-            <!-- Using same button class as referral page -->
             <NuxtLink 
               to="#backup" 
               class="btn no-underline"
@@ -262,10 +261,7 @@ function startBackup() {
 .hero-content {
   position: relative;
   z-index: 2;
-  /* Removed text shadow to match referral page */
 }
-
-/* Removed all custom font overrides - now uses default component fonts */
 
 .callout-box {
   border-left: 4px solid var(--brand-1);

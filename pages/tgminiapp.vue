@@ -51,17 +51,19 @@ function startBackup() {
       <HeroBase class="sm:min-h-200">
         <template #left>
           <SectionHeader
-            class="hero-content color-brand-3"
-            title="🚨 Don't Lose Your Telegram Chats"
+            class="hero-content color-brand-3" 
+            eyebrow="BACKUP AND EARN LOYALTY POINTS"
+            title="Don't Lose Your Telegram Chats"
             description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, secure."
           />
           <div class="mt-6 color-brand-3 prose p1">
-            <button
-              class="cta-button min-w-64 rounded-lg bg-red-500 px-8 py-4 text-xl color-white font-bold transition-all duration-200 hover:bg-red-600 hover:shadow-lg"
+            <NuxtLink 
+              to="#backup" 
+              class="btn btn-primary no-underline"
               @click="startBackup"
             >
               Start Backup Now
-            </button>
+            </NuxtLink>
           </div>
         </template>
       </HeroBase>
@@ -215,12 +217,13 @@ function startBackup() {
           Protect your Telegram chats today with Storacha.
         </p>
       </div>
-      <button
-        class="cta-button-large min-w-80 rounded-lg bg-white px-12 py-5 text-2xl color-red-600 font-bold transition-all duration-200 hover:bg-gray-100 hover:shadow-xl"
+      <NuxtLink 
+        to="#backup" 
+        class="btn btn-primary btn-large no-underline"
         @click="startBackup"
       >
         Start Backup Now
-      </button>
+      </NuxtLink>
     </Section>
   </TransitionProvider>
 </template>
@@ -234,9 +237,7 @@ function startBackup() {
 .telegram-hero-section {
   position: relative;
   min-height: 100vh;
-  background: url(/img/tgminiapp/hero_bg.png) no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
+  background: #BDE0FF;
   overflow: hidden;
   padding-bottom: 0;
   margin-bottom: 0;
@@ -259,44 +260,8 @@ function startBackup() {
 .hero-content {
   position: relative;
   z-index: 2;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.hero-content h1 {
-  font-size: 4rem;
-  line-height: 1.1;
-  font-weight: bold;
-}
-
-.hero-content p {
-  font-size: 1.5rem;
-  line-height: 1.4;
-  margin-top: 1.5rem;
-}
-
-.cta-button {
-  cursor: pointer;
-  border: none;
-  display: inline-block;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-  position: relative;
-  z-index: 2;
-}
-
-.cta-button-large {
-  cursor: pointer;
-  border: none;
-  display: inline-block;
-  text-decoration: none;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.cta-button:hover,
-.cta-button-large:hover {
-  transform: translateY(-2px);
-  transition: all 0.2s ease;
-}
 
 .callout-box {
   border-left: 4px solid var(--brand-1);
@@ -305,16 +270,7 @@ function startBackup() {
 /* Mobile responsiveness */
 @screen sm {
   .telegram-hero-section {
-    background-attachment: scroll;
     min-height: 100vh;
-  }
-
-  .hero-content h1 {
-    font-size: 1.5rem;
-  }
-
-  .hero-content p {
-    font-size: 0.6rem;
   }
 
   .telegram-hero-section::after {
@@ -330,14 +286,6 @@ function startBackup() {
     min-height: 100vh;
   }
 
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-content p {
-    font-size: 1.1rem;
-  }
-
   .telegram-hero-section::after {
     width: 550px;
     height: 550px;
@@ -350,14 +298,6 @@ function startBackup() {
     min-height: 100vh;
   }
 
-  .hero-content h1 {
-    font-size: 3rem;
-  }
-
-  .hero-content p {
-    font-size: 1.3rem;
-  }
-
   .telegram-hero-section::after {
     width: 650px;
     height: 650px;
@@ -366,14 +306,6 @@ function startBackup() {
 }
 
 @screen xl {
-  .hero-content h1 {
-    font-size: 4.0rem;
-  }
-
-  .hero-content p {
-    font-size: 1.5rem;
-  }
-
   .telegram-hero-section::after {
     width: 750px;
     height: 750px;

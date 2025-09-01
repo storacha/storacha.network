@@ -15,6 +15,7 @@ export default defineAppConfig({
       {
         text: 'Product',
         dropdown: [
+          { text: 'Telegram Backup', href: '/tgminiapp' },
           { text: 'Bluesky Storage', href: 'https://bsky.storage' },
           { text: 'Storacha AI', href: 'https://storacha.ai' },
           { text: 'Storacha Console', href: 'https://console.storacha.network/' },

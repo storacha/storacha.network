@@ -171,7 +171,7 @@ useHead({
               <img src="/img/nodes/indexing.png" alt="Earn Rewards" class="max-h-24">
             </div>
             <p class="font-sans p3">
-              Back up and stack loyalty points you can redeem later.
+              Back up and stack loyalty points.
             </p>
           </div>
         </Card>

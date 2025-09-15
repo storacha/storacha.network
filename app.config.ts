@@ -4,8 +4,8 @@
 export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
   notice: {
-    text: 'EARN RACHA POINTS AND STORAGE CREDITS BY REFERRING FRIENDS <u>LEARN MORE</u>',
-    href: '/referrals',
+    text: 'Click Here to Earn From Your TG Chats',
+    href: '/tgminiapp',
     displayUntil: '2025-12-31', // use ISO date format or final day +1 in yyyy-mm-dd
   },
   actions: {

@@ -41,9 +41,6 @@ useHead({
   }],
 })
 
-function startBackup() {
-  // Handle backup initiation
-}
 </script>
 
 <template>
@@ -56,7 +53,7 @@ function startBackup() {
             title="Don't Lose Your Telegram Chats"
             description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, secure." />
           <div class="mt-6 color-brand-3 prose p1">
-            <NuxtLink to="#backup" class="btn no-underline" @click="startBackup">
+            <NuxtLink href="https://t.me/storacha_bot/backup?utm_source=website" class="btn no-underline">
               Start Backup Now
             </NuxtLink>
           </div>
@@ -201,7 +198,7 @@ function startBackup() {
           Protect your Telegram chats today with Storacha.
         </p>
       </div>
-      <NuxtLink to="#backup" class="btn btn-large no-underline" @click="startBackup">
+      <NuxtLink href="https://t.me/storacha_bot/backup?utm_source=website" class="btn no-underline">
         Start Backup Now
       </NuxtLink>
     </Section>

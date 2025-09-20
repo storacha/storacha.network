@@ -51,10 +51,10 @@ useHead({
         <template #left>
           <SectionHeader class="hero-content color-brand-3" eyebrow="BACKUP AND EARN LOYALTY POINTS"
             title="Don't Lose Your Telegram Chats"
-            description="Backup your 1-on-1s, groups, and channels to Storacha's decentralized storage - safe, private, secure." />
+            description="Backup with Storacha’s decentralized storage - safe, private, forever." />
           <div class="mt-6 color-brand-3 prose p1">
             <NuxtLink href="https://t.me/storacha_bot/backup?utm_source=website" class="btn no-underline">
-              Start Backup Now
+              Store-2-earn
             </NuxtLink>
           </div>
         </template>
@@ -64,26 +64,22 @@ useHead({
     <!-- Earn Rewards Section -->
     <Section full-width>
       <Split>
-        <SplitCell :bg="{ outer: 'bg-brand-2', inner: 'rewards-bg' }" />
+        <SplitCell :bg="{ outer: 'bg-white', inner: 'rewards-bg' }" />
         <SplitCell :bg="{ outer: 'bg-white' }" padding>
           <div class="flex items-center color-brand-3">
             <div>
               <Heading type="h2" class="font-medium">
-                🔥 Back Up & Rack Up
-              </Heading>
+                Back Up And Earn Rewards </Heading>
+
               <div class="prose p1">
                 <p>
-                  Every time you back up your Telegram chats, you're not just securing your data, you're also stacking
-                  rewards.
+                  Earn <span class="highlight">10,000</span> mini Rachas per GB!<br>
+                  Secure your data and earn rewards together.
                 </p>
-                <div class="callout-box my-4">
-                  <div class="text-2xl font-bold">
-                    <b>💎 Earn 10,000 mini Rachas per GB backed up</b>
-                  </div>
-                </div>
-                <p>
-                  More perks are coming soon! Stay tuned for fresh ways to use your rewards.
-                </p>
+
+                <NuxtLink href="https://t.me/storacha_bot/backup?utm_source=website" class="btn no-underline">
+                  Start Backup Now
+                </NuxtLink>
               </div>
             </div>
           </div>
@@ -239,8 +235,11 @@ useHead({
   z-index: 2;
 }
 
-.callout-box {
-  border-left: 4px solid var(--brand-1);
+.highlight {
+  font-weight: bold;
+  /* Makes it bold */
+  font-size: 1.2em;
+  /* Slightly bigger than normal text */
 }
 
 /* Mobile responsiveness */

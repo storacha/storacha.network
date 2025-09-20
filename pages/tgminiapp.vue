@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import FreeStorage from '~/components/FreeStorage.vue'
-const docs = useActions('docs')
-
 
 // SEO metadata for telegram backup page
 useSeoMeta({
@@ -9,7 +6,7 @@ useSeoMeta({
   description: 'Backup your Telegram chats to Storacha\'s decentralized storage. Safe, private, encrypted backups that you control forever.',
   ogTitle: 'Don\'t Lose Your Telegram Chats - Backup with Storacha',
   ogDescription: 'Secure your 1-on-1s, groups, and channels with encrypted backups on decentralized storage.',
-  ogImage: '/img/tgminiapp/telegram-backup-og.jpg',
+  ogImage: '/img/tgminiapp/tgminiapp-og.png',
   keywords: 'telegram backup, chat backup, decentralized storage, encrypted backup, secure messaging',
 })
 
@@ -22,7 +19,7 @@ useHead({
       '@type': 'WebPage',
       'name': 'Telegram Chat Backup',
       'description': 'Backup your Telegram chats to Storacha\'s secure decentralized storage network.',
-      'url': 'https://storacha.network/telegram-backup',
+      'url': 'https://storacha.network/tgminiapp',
       'isPartOf': {
         '@type': 'WebSite',
         'name': 'Storacha Network',

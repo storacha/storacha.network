@@ -96,7 +96,7 @@ useHead({
         <Card title="Step 1: Authorize OTP">
           <div class="flex flex-col gap-8">
             <div class="min-h-30 flex items-center justify-center">
-              <img src="/img/nodes/storage.png" alt="Step 1: Authorize OTP" class="max-h-24">
+              <img src="/img/tgminiapp/cards/chat.png" alt="Step 1: Authorize OTP" class="max-h-24">
             </div>
             <p class="font-sans p2">
               Give permission so the miniapp can read your chats (we can't back them up otherwise).
@@ -106,7 +106,7 @@ useHead({
         <Card title="Step 2: Create Storacha Account">
           <div class="flex flex-col gap-8">
             <div class="min-h-30 flex items-center justify-center">
-              <img src="/img/nodes/retrieval.png" alt="Step 2: Create Storacha Account" class="max-h-24">
+              <img src="/img/tgminiapp/cards/racha-click.png" alt="Step 2: Create Storacha Account" class="max-h-24">
             </div>
             <p class="font-sans p2">
               It takes seconds. Your encryption key is generated on your device.
@@ -116,7 +116,7 @@ useHead({
         <Card title="Step 3: Start Backup">
           <div class="flex flex-col gap-8">
             <div class="min-h-30 flex items-center justify-center">
-              <img src="/img/nodes/indexing.png" alt="Step 3: Start Backup" class="max-h-24">
+              <img src="/img/tgminiapp/cards/folder.png" alt="Step 3: Start Backup" class="max-h-24">
             </div>
             <p class="font-sans p2">
               Start your backup in seconds: simple, private, and encrypted.
@@ -139,7 +139,7 @@ useHead({
         <Card title="Your Key, Your Data">
           <div class="flex flex-col gap-8">
             <div class="min-h-30 flex items-center justify-center">
-              <img src="/img/nodes/storage.png" alt="Your Key, Your Data" class="max-h-24">
+              <img src="/img/tgminiapp/cards/chat-lock.png" alt="Your Key, Your Data" class="max-h-24">
             </div>
             <p class="font-sans p3">
               Encryption happens on your device. We never see your messages.
@@ -149,7 +149,7 @@ useHead({
         <Card title="Decentralized">
           <div class="flex flex-col gap-8">
             <div class="min-h-30 flex items-center justify-center">
-              <img src="/img/nodes/retrieval.png" alt="Decentralized" class="max-h-24">
+              <img src="/img/tgminiapp/cards/decentralized-network.png" alt="Decentralized" class="max-h-24">
             </div>
             <p class="font-sans p3">
               No central point of failure. Your chats are always recoverable.
@@ -159,7 +159,7 @@ useHead({
         <Card title="Earn Rewards">
           <div class="flex flex-col gap-8">
             <div class="min-h-30 flex items-center justify-center">
-              <img src="/img/nodes/indexing.png" alt="Earn Rewards" class="max-h-24">
+              <img src="/img/tgminiapp/cards/racha-coins.png" alt="Earn Rewards" class="max-h-24">
             </div>
             <p class="font-sans p3">
               Back up and stack loyalty points.
@@ -169,7 +169,7 @@ useHead({
         <Card title="MiniApp Magic">
           <div class="flex flex-col gap-8">
             <div class="min-h-30 flex items-center justify-center">
-              <img src="/img/nodes/storage.png" alt="MiniApp Magic" class="max-h-24">
+              <img src="/img/tgminiapp/cards/tg-click.png" alt="MiniApp Magic" class="max-h-24">
             </div>
             <p class="font-sans p3">
               Open inside Telegram via bot. No downloads, no hassle.

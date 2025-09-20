@@ -57,6 +57,20 @@ useHead({
         </template>
       </HeroBase>
     </Section>
+    <Section class="social-proof-section" padding>
+  <div class="flex items-center justify-center gap-8 md:gap-12">
+    <div class="flex items-center px-4 py-2 rounded-full border border-black">
+      <span class="text-sm font-medium text-black">Trusted By</span>
+    </div>
+    
+    <div class="flex items-center gap-6 md:gap-8">
+      <img src="/img/tgminiapp/logos/filecoin.png" alt="Filecoin" class="h-8">
+      <img src="/img/tgminiapp/logos/infura.png" alt="INFURA" class="h-8">
+      <img src="/img/tgminiapp/logos/opensea.png" alt="OpenSea" class="h-8">
+      <img src="/img/tgminiapp/logos/magic-eden.png" alt="MAGIC EDEN" class="h-8">
+    </div>
+  </div>
+</Section>
 
     <!-- Earn Rewards Section -->
     <Section full-width>
@@ -218,28 +232,25 @@ useHead({
   height: 600px;
   background: url(/img/tgminiapp/hero.png) no-repeat center center;
   background-size: contain;
-  z-index: 1;
   pointer-events: none;
 }
 
 .hero-content {
   position: relative;
-  z-index: 2;
+}
+
+.social-proof-section {
+  background: #BDE0FF;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .highlight {
   font-weight: bold;
-  /* Makes it bold */
   font-size: 1.2em;
-  /* Slightly bigger than normal text */
 }
 
 /* Mobile responsiveness */
 @screen sm {
-  .telegram-hero-section {
-    min-height: 100vh;
-  }
-
   .telegram-hero-section::after {
     width: 450px;
     height: 450px;
@@ -249,10 +260,6 @@ useHead({
 }
 
 @screen md {
-  .telegram-hero-section {
-    min-height: 100vh;
-  }
-
   .telegram-hero-section::after {
     width: 550px;
     height: 550px;
@@ -261,9 +268,6 @@ useHead({
 }
 
 @screen lg {
-  .telegram-hero-section {
-    min-height: 100vh;
-  }
 
   .telegram-hero-section::after {
     width: 650px;
@@ -279,4 +283,5 @@ useHead({
     right: 5%;
   }
 }
+
 </style>

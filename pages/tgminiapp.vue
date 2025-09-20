@@ -127,12 +127,7 @@ useHead({
 
 
 
-      <div class="mt-6 text-center">
-        <NuxtLink href="https://docs.storacha.network/" class="btn  no-underline"
-          :class="{ 'btn-secondary': docs.secondary }">
-          Learn More
-        </NuxtLink>
-      </div>
+
     </Section>
 
     <!-- Security & Benefits Section -->

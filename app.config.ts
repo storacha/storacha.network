@@ -4,7 +4,7 @@
 export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
   notice: {
-    text: 'Click Here to Earn From Your TG Chats',
+    text: '<u>Click Here to Earn From Your TG Chats</u>',
     href: '/tgminiapp',
     displayUntil: '2025-12-31', // use ISO date format or final day +1 in yyyy-mm-dd
   },

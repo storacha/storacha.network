@@ -44,7 +44,7 @@ useHead({
   <TransitionProvider>
     <!-- Hero Section -->
     <Section class="telegram-hero-bg bg-brand-2">
-      <HeroBase class="min-h-150 lg:min-h-180">
+      <HeroBase class="min-h-150 lg:min-h-180 pt-16 md:pt-26 lg:pt-24">
         <template #left>
           <SectionHeader class="color-brand-3" eyebrow="BACKUP AND EARN LOYALTY POINTS"
             title="Don't Lose Your Telegram Chats"
@@ -57,7 +57,7 @@ useHead({
         </template>
       </HeroBase>
     </Section>
-    <Section class="social-proof-section bg-brand-2" padding>
+    <Section class="social-proof-section bg-brand-2 hidden lg:block" padding>
   <div class="flex items-center justify-between px-6 md:px-12 lg:px-15">
     <div class="flex items-center px-3 py-2 md:px-4 rounded-full border border-black">
       <span class="text-xs md:text-sm font-medium text-black">Trusted By</span>

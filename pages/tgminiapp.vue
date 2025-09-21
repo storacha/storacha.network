@@ -57,7 +57,7 @@ useHead({
         </template>
       </HeroBase>
     </Section>
-    <Section class="social-proof-section colors-brand-7" padding>
+    <Section class="social-proof-section bg-brand-2" padding>
   <div class="flex items-center justify-center gap-8 md:gap-12">
     <div class="flex items-center px-4 py-2 rounded-full border border-black">
       <span class="text-sm font-medium text-black">Trusted By</span>

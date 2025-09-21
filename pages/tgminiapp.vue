@@ -43,8 +43,8 @@ useHead({
 <template>
   <TransitionProvider>
     <!-- Hero Section -->
-    <Section class="telegram-hero-section">
-      <HeroBase class="sm:min-h-200">
+    <Section class="telegram-hero-bg bg-brand-2">
+      <HeroBase class="min-h-150 lg:min-h-180">
         <template #left>
           <SectionHeader class="color-brand-3" eyebrow="BACKUP AND EARN LOYALTY POINTS"
             title="Don't Lose Your Telegram Chats"
@@ -58,17 +58,15 @@ useHead({
       </HeroBase>
     </Section>
     <Section class="social-proof-section bg-brand-2" padding>
-  <div class="flex items-center justify-center gap-8 md:gap-12">
-    <div class="flex items-center px-4 py-2 rounded-full border border-black">
-      <span class="text-sm font-medium text-black">Trusted By</span>
+  <div class="flex items-center justify-between px-6 md:px-12 lg:px-15">
+    <div class="flex items-center px-3 py-2 md:px-4 rounded-full border border-black">
+      <span class="text-xs md:text-sm font-medium text-black">Trusted By</span>
     </div>
     
-    <div class="flex items-center gap-6 md:gap-8">
-      <img src="/img/tgminiapp/logos/filecoin.png" alt="Filecoin" class="h-8">
-      <img src="/img/tgminiapp/logos/infura.png" alt="INFURA" class="h-8">
-      <img src="/img/tgminiapp/logos/opensea.png" alt="OpenSea" class="h-8">
-      <img src="/img/tgminiapp/logos/magic-eden.png" alt="MAGIC EDEN" class="h-8">
-    </div>
+    <img src="/img/tgminiapp/logos/filecoin.png" alt="Filecoin" class="h-6 md:h-8">
+    <img src="/img/tgminiapp/logos/infura.png" alt="INFURA" class="h-6 md:h-8">
+    <img src="/img/tgminiapp/logos/opensea.png" alt="OpenSea" class="h-6 md:h-8">
+    <img src="/img/tgminiapp/logos/magic-eden.png" alt="MAGIC EDEN" class="h-6 md:h-8">
   </div>
 </Section>
 
@@ -213,28 +211,6 @@ useHead({
   background-size: contain;
 }
 
-.telegram-hero-section {
-  position: relative;
-  min-height: 100vh;
-  background: #BDE0FF;
-  overflow: hidden;
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-
-.telegram-hero-section::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 3%;
-  transform: translateY(-50%);
-  width: 600px;
-  height: 600px;
-  background: url(/img/tgminiapp/hero.png) no-repeat center center;
-  background-size: contain;
-  pointer-events: none;
-}
-
 .social-proof-section {
   border-bottom: 1px solid #e2e8f0;
 }
@@ -244,39 +220,24 @@ useHead({
   font-size: 1.2em;
 }
 
-/* Mobile responsiveness */
-@screen sm {
-  .telegram-hero-section::after {
-    width: 450px;
-    height: 450px;
-    right: 10px;
-    opacity: 0.8;
-  }
-}
-
 @screen md {
-  .telegram-hero-section::after {
-    width: 550px;
-    height: 550px;
-    right: 2%;
+  .telegram-hero-bg {
+    background-image: url(/img/tgminiapp/hero.png);
+    background-repeat: no-repeat;
+    background-position: bottom right ;
+    background-size: auto 55%;
   }
 }
 
 @screen lg {
-
-  .telegram-hero-section::after {
-    width: 650px;
-    height: 650px;
-    right: 3%;
-  }
+  .telegram-hero-bg {
+    background-size: auto 60%;
+    }
 }
 
 @screen xl {
-  .telegram-hero-section::after {
-    width: 750px;
-    height: 750px;
-    right: 5%;
-  }
+  .telegram-hero-bg {
+    background-size: auto 65%;
+    }
 }
-
 </style>

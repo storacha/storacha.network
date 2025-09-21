@@ -46,7 +46,7 @@ useHead({
     <Section class="telegram-hero-section">
       <HeroBase class="sm:min-h-200">
         <template #left>
-          <SectionHeader class="hero-content color-brand-3" eyebrow="BACKUP AND EARN LOYALTY POINTS"
+          <SectionHeader class="color-brand-3" eyebrow="BACKUP AND EARN LOYALTY POINTS"
             title="Don't Lose Your Telegram Chats"
             description="Backup with Storacha’s decentralized storage - safe, private, forever." />
           <div class="mt-6 color-brand-3 prose p1">
@@ -57,7 +57,7 @@ useHead({
         </template>
       </HeroBase>
     </Section>
-    <Section class="social-proof-section" padding>
+    <Section class="social-proof-section colors-brand-7" padding>
   <div class="flex items-center justify-center gap-8 md:gap-12">
     <div class="flex items-center px-4 py-2 rounded-full border border-black">
       <span class="text-sm font-medium text-black">Trusted By</span>
@@ -235,12 +235,7 @@ useHead({
   pointer-events: none;
 }
 
-.hero-content {
-  position: relative;
-}
-
 .social-proof-section {
-  background: #BDE0FF;
   border-bottom: 1px solid #e2e8f0;
 }
 

@@ -50,7 +50,7 @@ useHead({
             title="Don't Lose Your Telegram Chats"
             description="Backup with Storacha’s decentralized storage - safe, private, forever." />
           <div class="mt-6 color-brand-3 prose p1">
-            <NuxtLink href="https://t.me/storacha_bot/backup?utm_source=website" class="btn no-underline">
+            <NuxtLink href="https://t.me/storacha_bot/backup?startapp=dXRtX3NvdXJjZT10Z19taW5pYXBwJnV0bV9tZWRpdW09d2Vic2l0ZSZ1dG1fY2FtcGFpZ249bGFuZGluZ19wYWdl" class="btn no-underline">
               Store-2-earn
             </NuxtLink>
           </div>
@@ -86,7 +86,7 @@ useHead({
                   Secure your data and earn rewards together.
                 </p>
 
-                <NuxtLink href="https://t.me/storacha_bot/backup?utm_source=website" class="btn no-underline">
+                <NuxtLink href="https://t.me/storacha_bot/backup?startapp=dXRtX3NvdXJjZT10Z19taW5pYXBwJnV0bV9tZWRpdW09d2Vic2l0ZSZ1dG1fY2FtcGFpZ249bGFuZGluZ19wYWdl" class="btn no-underline">
                   Start Backup Now
                 </NuxtLink>
               </div>
@@ -198,7 +198,7 @@ useHead({
           Protect your Telegram chats today with Storacha.
         </p>
       </div>
-      <NuxtLink href="https://t.me/storacha_bot/backup?utm_source=website" class="btn no-underline">
+      <NuxtLink href="https://t.me/storacha_bot/backup?startapp=dXRtX3NvdXJjZT10Z19taW5pYXBwJnV0bV9tZWRpdW09d2Vic2l0ZSZ1dG1fY2FtcGFpZ249bGFuZGluZ19wYWdl" class="btn no-underline">
         Start Backup Now
       </NuxtLink>
     </Section>

@@ -6,22 +6,24 @@ defineProps<{
   item: Item
   showSnippet?: boolean
 }>()
+// Change the path as required
+const fallbackImage = '/img/fallback.png'
+function handleImageError(event: Event) {
+  const target = event.target as HTMLImageElement
+  target.src = fallbackImage
+}
 </script>
 
 <template>
   <Card class="blog-card overflow-clip">
     <template #header>
-      <AppLink :href="item.link" class="aspect-ratio-video overflow-hidden">
-        <img
-          :src="item.images?.[0]"
-          loading="lazy"
-          :alt="item.title"
-          class="h-full w-full object-cover object-left"
-        >
-      </AppLink>
+      <NuxtLink :to="item.link" class="aspect-ratio-video overflow-hidden">
+        <img :src="item.images?.[0] || fallbackImage" loading="lazy" :alt="item.title"
+          class="h-full w-full object-cover object-left" @error="handleImageError">
+      </NuxtLink>
     </template>
     <article>
-      <AppLink :href="item.link" style="display:block">
+      <NuxtLink :to="item.link" style="display:block">
         <div class="flex flex-col gap-2">
           <Heading type="h5" class="font-medium">
             {{ item.title }}
@@ -33,7 +35,7 @@ defineProps<{
             {{ item.snippet }}
           </p>
         </div>
-      </AppLink>
+      </NuxtLink>
     </article>
   </Card>
 </template>

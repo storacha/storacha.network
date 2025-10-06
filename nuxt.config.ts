@@ -178,8 +178,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // public runtime config
     public: {
-      // feed URL used for /api/blog
-      blogFeedUrl: 'https://medium.com/feed/@storacha',
+      // Ghost CMS settings used for /blog
+      ghost: {
+        url: 'https://storacha-network.ghost.io',
+        key: import.meta.env.GHOST_CONTENT_API_KEY,
+        version: 'v6.0',
+      },
       consoleUrl: import.meta.env.NUXT_PUBLIC_CONSOLE_URL || 'https://console.storacha.network',
     },
   },

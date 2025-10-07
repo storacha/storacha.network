@@ -8,6 +8,10 @@ export default defineNuxtConfig({
       scrollBehaviorType: 'smooth',
     },
   },
+  routeRules: {
+    '/blog': { prerender: true },
+    '/blog/**': { isr: 3600 }, // Regenerate every hour
+  },
 
   css: [
     '@unocss/reset/tailwind.css',
@@ -20,7 +24,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/plausible',
     '@nuxtjs/seo',
-    '@nuxtjs/robots',  
+    '@nuxtjs/robots',
     '@nuxtjs/sitemap',
     '@nuxt/image',
     '@nuxt/scripts',
@@ -28,7 +32,10 @@ export default defineNuxtConfig({
 
   nitro: {
     output: {
-      dir: 'dist' 
+      dir: 'dist'
+    },
+    prerender: {
+      routes: ['/blog']
     },
     // Add CF Pages compatibility
     preset: 'cloudflare-pages',
@@ -79,24 +86,24 @@ export default defineNuxtConfig({
     // payloadExtraction: false,
   },
 
-// Replace your existing sitemap configuration with this:
+  // Replace your existing sitemap configuration with this:
   sitemap: {
     // Enable image discovery for better SEO
     discoverImages: true,
-    
+
     // Exclude these routes from the sitemap
     exclude: [
       '/__nuxt_island/**',
       '/api/**',        // API routes
       '/_nuxt/**',      // Build assets
     ],
-    
+
     // Default settings for all pages (removed lastmod anti-pattern)
     defaults: {
       changefreq: 'monthly',
       priority: 0.7,
     },
-    
+
     // Custom configuration for specific routes
     routes: async () => {
       return [
@@ -106,7 +113,7 @@ export default defineNuxtConfig({
           changefreq: 'weekly',
           priority: 1.0,
         },
-        
+
         // Main navigation pages - high priority for sitelinks
         {
           url: '/referrals',
@@ -140,7 +147,7 @@ export default defineNuxtConfig({
         },
       ]
     },
-    
+
     // Split large sitemaps
     sitemapSize: 45000, // Max URLs per sitemap file
   },

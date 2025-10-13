@@ -4,8 +4,8 @@
 export default defineAppConfig({
   dateFormat: 'MMM DD, YYYY',
   notice: {
-    text: 'EARN RACHA POINTS AND STORAGE CREDITS BY REFERRING FRIENDS <u>LEARN MORE</u>',
-    href: '/referrals',
+    text: '<u>Click Here to Earn From Your TG Chats</u>',
+    href: '/tgminiapp',
     displayUntil: '2025-12-31', // use ISO date format or final day +1 in yyyy-mm-dd
   },
   actions: {
@@ -15,6 +15,7 @@ export default defineAppConfig({
       {
         text: 'Product',
         dropdown: [
+          { text: 'Telegram Backup', href: '/tgminiapp' },
           { text: 'Bluesky Storage', href: 'https://bsky.storage' },
           { text: 'Storacha AI', href: 'https://storacha.ai' },
           { text: 'Storacha Console', href: 'https://console.storacha.network/' },

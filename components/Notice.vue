@@ -16,7 +16,8 @@ onMounted(() => {
 <template>
   <div
     v-if="isVisible"
-    class="bg-brand-5 p-3 text-center text-sm text-brand-1 font-heading uppercase"
+    class="p-3 text-center text-sm text-white font-heading uppercase"
+    style="background: linear-gradient(90deg, #E81E25 0%, #F6CB55 100%);"
   >
     <AppLink :href="href" class="block w-full" v-html="text" />
   </div>

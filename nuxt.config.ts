@@ -183,13 +183,13 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    webhookSecret: process.env.NUXT_WEBHOOK_SECRET,
+    webhookSecret: process.env.NUXT_WEBHOOK_SECRET || '',
     // public runtime config
     public: {
       // Ghost CMS settings used for /blog
       ghost: {
         url: 'https://storacha-network.ghost.io',
-        key: import.meta.env.NUXT_GHOST_CONTENT_API_KEY,
+        key: process.env.NUXT_GHOST_CONTENT_API_KEY || import.meta.env.NUXT_GHOST_CONTENT_API_KEY || '',
         version: 'v6.0',
       },
       consoleUrl: import.meta.env.NUXT_PUBLIC_CONSOLE_URL || 'https://console.storacha.network',

@@ -66,7 +66,7 @@ useHead({
     
     <img src="/img/tgminiapp/logos/filecoin.png" alt="Filecoin" class="h-6 md:h-8">
     <img src="/img/tgminiapp/logos/infura.png" alt="INFURA" class="h-6 md:h-8">
-    <img src="/img/tgminiapp/logos/opensea.png" alt="OpenSea" class="h-6 md:h-8">
+    <img src="/img/tgminiapp/logos/bluesky.png" alt="Bluesky" class="h-6 md:h-8">
     <img src="/img/tgminiapp/logos/magic-eden.png" alt="MAGIC EDEN" class="h-6 md:h-8">
   </div>
 </Section>

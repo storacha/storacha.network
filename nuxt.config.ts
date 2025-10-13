@@ -188,7 +188,7 @@ export default defineNuxtConfig({
       // Ghost CMS settings used for /blog
       ghost: {
         url: 'https://storacha-network.ghost.io',
-        key: import.meta.env.GHOST_CONTENT_API_KEY,
+        key: import.meta.env.NUXT_GHOST_CONTENT_API_KEY,
         version: 'v6.0',
       },
       consoleUrl: import.meta.env.NUXT_PUBLIC_CONSOLE_URL || 'https://console.storacha.network',
@@ -208,4 +208,12 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-07-02',
+  vite: {
+    server: {
+      allowedHosts: [
+        '.ngrok-free.app',  // Allow all ngrok domains
+        'fd039bb5f0b4.ngrok-free.app'  // Or just your specific one
+      ]
+    }
+  }
 })

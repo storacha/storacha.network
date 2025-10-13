@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const secret = query.secret as string
   
   // Validate secret
-  if (!process.env.WEBHOOK_SECRET || secret !== process.env.WEBHOOK_SECRET) {
+  if (!process.env.NUXT_WEBHOOK_SECRET || secret !== process.env.NUXT_WEBHOOK_SECRET) {
     throw createError({
       statusCode: 403,
       message: 'Forbidden'

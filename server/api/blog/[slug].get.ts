@@ -7,7 +7,7 @@ export default defineCachedEventHandler(async (event) => {
         throw createError({ status: 400, message: 'Missing slug parameter' })
     }
 
-    const config = useRuntimeConfig()
+    const config = useRuntimeConfig(event)
     const { url, key, version } = config.public.ghost
 
     const api = new GhostContentAPI({ url, key, version })

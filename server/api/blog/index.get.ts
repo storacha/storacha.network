@@ -1,8 +1,8 @@
 import GhostContentAPI from '@tryghost/content-api'
 import type { Feed, Item } from '~/types/blog'
 
-async function fetchGhostPosts(): Promise<Feed> {
-  const config = useRuntimeConfig()
+async function fetchGhostPosts(event: any): Promise<Feed> {
+  const config = useRuntimeConfig(event)
   const { url, key, version } = config.public.ghost
 
   const api = new GhostContentAPI({ url, key, version })
@@ -26,9 +26,9 @@ async function fetchGhostPosts(): Promise<Feed> {
   return { items }
 }
 
-export default defineCachedEventHandler(async () => {
+export default defineCachedEventHandler(async (event) => {
   try {
-    return await fetchGhostPosts()
+    return await fetchGhostPosts(event)
   }
   catch (e: any) {
     console.error('Failed to get blog posts:', e)

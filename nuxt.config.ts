@@ -183,6 +183,7 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    webhookSecret: process.env.NUXT_WEBHOOK_SECRET,
     // public runtime config
     public: {
       // Ghost CMS settings used for /blog

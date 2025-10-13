@@ -1,10 +1,20 @@
 export default defineEventHandler(async (event) => {
+  const config = useRuntimeConfig(event)
   const body = await readBody(event)
   const query = getQuery(event)
   const secret = query.secret as string
   
   // Validate secret
-  if (!process.env.NUXT_WEBHOOK_SECRET || secret !== process.env.NUXT_WEBHOOK_SECRET) {
+  if (!config.webhookSecret) {
+    console.error('❌ WEBHOOK_SECRET not configured!')
+    throw createError({
+      statusCode: 500,
+      message: 'Webhook not configured'
+    })
+  }
+  
+  if (secret !== config.webhookSecret) {
+    console.error('❌ Invalid webhook secret provided')
     throw createError({
       statusCode: 403,
       message: 'Forbidden'

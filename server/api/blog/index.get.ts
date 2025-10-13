@@ -34,4 +34,4 @@ export default defineCachedEventHandler(async () => {
     console.error('Failed to get blog posts:', e)
     return { items: [] }
   }
-}, { maxAge: 3600 })
+})

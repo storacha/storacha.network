@@ -31,4 +31,4 @@ export default defineCachedEventHandler(async (event) => {
             message: 'Post not found',
         })
     }
-}, { maxAge: 3600 })
+})

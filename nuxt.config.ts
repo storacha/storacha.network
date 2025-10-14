@@ -209,12 +209,12 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-07-02',
-  vite: {
-    server: {
-      allowedHosts: [
-        '.ngrok-free.app',  // Allow all ngrok domains
-        'fd039bb5f0b4.ngrok-free.app'  // Or just your specific one
-      ]
-    }
-  }
+  //vite: {
+  //  server: {
+  //    allowedHosts: [
+        //'.ngrok-free.app',  // Allow all ngrok domains
+        //'fd039bb5f0b4.ngrok-free.app'  // Or just your specific one
+      //]
+    //}
+  //}
 })

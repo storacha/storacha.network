@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/blog': { prerender: true },
     '/blog/**': { isr: 3600 }, // Regenerate every hour
   },
 
@@ -33,9 +32,6 @@ export default defineNuxtConfig({
   nitro: {
     output: {
       dir: 'dist'
-    },
-    prerender: {
-      routes: ['/blog']
     },
     // Add CF Pages compatibility
     preset: 'cloudflare-pages',
@@ -209,12 +205,4 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-07-02',
-  //vite: {
-  //  server: {
-  //    allowedHosts: [
-        //'.ngrok-free.app',  // Allow all ngrok domains
-        //'fd039bb5f0b4.ngrok-free.app'  // Or just your specific one
-      //]
-    //}
-  //}
 })

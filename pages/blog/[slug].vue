@@ -12,17 +12,14 @@ if (error.value) {
   })
 }
 
-// ✅ NEW: Fix Ghost URLs in content
+// Fix Ghost URLs
 const processedContent = computed(() => {
   if (!post.value?.content) return ''
   let html = post.value.content
-  
-  // Replace ghost.io URLs with your blog URLs
   html = html.replace(
     /href="https:\/\/storacha-network\.ghost\.io\//g,
     'href="/blog/'
   )
-  
   return html
 })
 
@@ -37,7 +34,7 @@ useHead({
   link: [
     {
       rel: 'stylesheet',
-      href: '/ghost-cards.css'    // ← Added this
+      href: '/ghost-cards.css'
     }
   ],
   script: [{
@@ -57,25 +54,37 @@ useHead({
     })
   }]
 })
+
+// Initialize interactive cards after mount
+onMounted(() => {
+  // Toggle cards
+  const toggleCards = document.querySelectorAll('.kg-toggle-card')
+  toggleCards.forEach((card) => {
+    const heading = card.querySelector('.kg-toggle-heading')
+    const content = card.querySelector('.kg-toggle-content')
+
+    if (heading && content) {
+      heading.addEventListener('click', () => {
+        card.classList.toggle('kg-toggle-card-open')
+      })
+    }
+  })
+})
 </script>
 
 <template>
   <Section v-if="post" class="bg-white" padding>
     <article class="blog-post lg:prose-xl mt-24 max-w-none prose">
       <Heading type="h1">{{ post.title }}</Heading>
-      
+
       <time class="mb-8 mt-4 block text-sm text-gray-500" :datetime="post.pubDate">
         {{ useAppDateFormat(post.pubDate) }}
       </time>
 
-      <img
-        v-if="post.images?.[0]"
-        :src="post.images[0]"
-        :alt="post.title"
-        class="mb-8 max-h-96 w-full rounded-lg object-cover"
-      >
+      <img v-if="post.images?.[0]" :src="post.images[0]" :alt="post.title"
+        class="mb-8 max-h-96 w-full rounded-lg object-cover">
 
-      <div class="post-content" v-html="processedContent" />  <!-- ✅ NEW: Use processed content -->
+      <div class="post-content" v-html="processedContent" />
 
       <NuxtLink to="/blog" class="mt-12 inline-flex border-t border-gray-200 pt-8">
         ← Back to Blog

@@ -12,6 +12,20 @@ if (error.value) {
   })
 }
 
+// ✅ NEW: Fix Ghost URLs in content
+const processedContent = computed(() => {
+  if (!post.value?.content) return ''
+  let html = post.value.content
+  
+  // Replace ghost.io URLs with your blog URLs
+  html = html.replace(
+    /href="https:\/\/storacha-network\.ghost\.io\//g,
+    'href="/blog/'
+  )
+  
+  return html
+})
+
 useSeoMeta({
   title: `${post.value?.title} | Storacha Blog`,
   description: post.value?.snippet,
@@ -20,6 +34,12 @@ useSeoMeta({
 })
 
 useHead({
+  link: [
+    {
+      rel: 'stylesheet',
+      href: '/ghost-cards.css'    // ← Added this
+    }
+  ],
   script: [{
     type: 'application/ld+json',
     innerHTML: JSON.stringify({
@@ -55,7 +75,7 @@ useHead({
         class="mb-8 max-h-96 w-full rounded-lg object-cover"
       >
 
-      <div class="post-content" v-html="post.content" />
+      <div class="post-content" v-html="processedContent" />  <!-- ✅ NEW: Use processed content -->
 
       <NuxtLink to="/blog" class="mt-12 inline-flex border-t border-gray-200 pt-8">
         ← Back to Blog

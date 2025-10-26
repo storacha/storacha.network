@@ -1,0 +1,196 @@
+
+/* Gallery card */
+.kg-gallery-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+  }
+  
+  .kg-gallery-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .kg-gallery-image {
+    flex: 1 1 0%;
+  }
+  
+  .kg-gallery-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Bookmark card */
+  .kg-bookmark-card {
+    width: 100%;
+    margin: 2em 0;
+  }
+  
+  .kg-bookmark-container {
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .kg-bookmark-container:hover {
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .kg-bookmark-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .kg-bookmark-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .kg-bookmark-description {
+    font-size: 0.9em;
+    color: #738a94;
+    margin-bottom: 12px;
+  }
+  
+  .kg-bookmark-metadata {
+    display: flex;
+    align-items: center;
+    font-size: 0.85em;
+    color: #738a94;
+  }
+  
+  .kg-bookmark-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+  
+  .kg-bookmark-thumbnail {
+    flex: 0 0 auto;
+    min-width: 33%;
+    max-height: 200px;
+  }
+  
+  .kg-bookmark-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Button card */
+  .kg-button-card {
+    display: flex;
+    justify-content: center;
+    margin: 2em 0;
+  }
+  
+  .kg-button-card.kg-align-left {
+    justify-content: flex-start;
+  }
+  
+  .kg-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-size: 1em;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+  
+  .kg-btn-accent {
+    background-color: #FF1A75;
+    color: #fff;
+  }
+  
+  .kg-btn-accent:hover {
+    background-color: #E60064;
+  }
+  
+  /* Callout card */
+  .kg-callout-card {
+    display: flex;
+    padding: 1.5em;
+    border-radius: 8px;
+    margin: 2em 0;
+  }
+  
+  .kg-callout-card-grey {
+    background-color: #f8f9fa;
+    border-left: 4px solid #6c757d;
+  }
+  
+  .kg-callout-card-accent {
+    background-color: #fff0f6;
+    border-left: 4px solid #FF1A75;
+  }
+  
+  .kg-callout-emoji {
+    font-size: 1.5em;
+    margin-right: 0.75em;
+  }
+  
+  /* Video card */
+  .kg-video-card video,
+  .kg-embed-card iframe {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  /* Audio card */
+  .kg-audio-card audio {
+    width: 100%;
+  }
+  
+  /* File card */
+  .kg-file-card-container {
+    display: flex;
+    align-items: center;
+    padding: 1.5em;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .kg-file-card-contents {
+    flex: 1;
+  }
+  
+  .kg-file-card-title {
+    font-weight: 600;
+    margin-bottom: 0.25em;
+  }
+  
+  /* Center images */
+  .kg-image-card {
+    text-align: center;
+    margin: 2em 0;
+  }
+  
+  .kg-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 640px) {
+    .kg-bookmark-container {
+      flex-direction: column;
+    }
+    
+    .kg-bookmark-thumbnail {
+      min-width: 100%;
+    }
+    
+    .kg-gallery-row {
+      flex-direction: column;
+    }
+  }

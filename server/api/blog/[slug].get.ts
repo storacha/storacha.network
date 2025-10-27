@@ -17,7 +17,7 @@ export default defineCachedEventHandler(async (event) => {
 
         return {
             title: post.title || 'Untitled',
-            content: post.html || '',
+            content: (post.html || '').replace(/â€¢/g, '•'),
             snippet: post.excerpt || '',
             pubDate: post.published_at || new Date().toISOString(),
             isoDate: post.published_at || new Date().toISOString(),

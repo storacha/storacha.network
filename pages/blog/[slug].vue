@@ -16,7 +16,7 @@ const processedContent = computed(() => {
   if (!post.value?.content) return ''
   let html = post.value.content
   
-  // Fix Ghost URLs
+  // Fix internal Ghost URLs
   html = html.replace(/href="https:\/\/storacha-network\.ghost\.io\//g, 'href="/blog/')
   
   return html
@@ -52,105 +52,37 @@ useHead({
   }]
 })
 
+// Minimal JavaScript for interactive cards
 onMounted(() => {
-  console.log('=== Ghost Cards Initialization ===')
-  
-  // 1. TOGGLE CARDS
-  const toggleCards = document.querySelectorAll('.kg-toggle-card')
-  console.log(`Found ${toggleCards.length} toggle cards`)
-  
-  toggleCards.forEach((card, index) => {
-    const heading = card.querySelector('.kg-toggle-heading')
-    const content = card.querySelector('.kg-toggle-content') as HTMLElement
-    
-    if (heading && content) {
-      console.log(`Toggle ${index}:`, {
-        hasHeading: true,
-        hasContent: true,
-        contentInnerHTML: content.innerHTML.substring(0, 50) + '...',
-        isOpen: card.classList.contains('kg-toggle-card-open')
-      })
-      
-      // Clone to remove old listeners
-      const newHeading = heading.cloneNode(true) as HTMLElement
-      heading.parentNode?.replaceChild(newHeading, heading)
-      
-      newHeading.addEventListener('click', () => {
-        const wasOpen = card.classList.contains('kg-toggle-card-open')
+  // Toggle cards
+  document.querySelectorAll('.kg-toggle-heading').forEach((heading) => {
+    heading.addEventListener('click', () => {
+      const card = heading.closest('.kg-toggle-card')
+      if (card) {
         card.classList.toggle('kg-toggle-card-open')
-        console.log(`Toggle ${index} clicked:`, wasOpen ? 'closing' : 'opening')
-      })
-    } else {
-      console.warn(`Toggle ${index} missing elements:`, { hasHeading: !!heading, hasContent: !!content })
-    }
-  })
-  
-  // 2. VIDEO CARDS
-  const videoCards = document.querySelectorAll('.kg-video-card')
-  console.log(`Found ${videoCards.length} video cards`)
-  
-  videoCards.forEach((card, index) => {
-    const video = card.querySelector('video') as HTMLVideoElement | null
-    const overlay = card.querySelector('.kg-video-overlay') as HTMLElement | null
-    
-    if (video && overlay) {
-      console.log(`Video ${index}:`, {
-        src: video.src || video.querySelector('source')?.src || 'NO SOURCE',
-        hasOverlay: true,
-        videoVisible: window.getComputedStyle(video).display !== 'none',
-        overlayVisible: window.getComputedStyle(overlay).display !== 'none'
-      })
-      
-      overlay.addEventListener('click', () => {
-        console.log(`Video ${index} play clicked`)
-        overlay.classList.add('hidden')
-        video.play()
-          .then(() => console.log(`Video ${index} playing`))
-          .catch(err => console.error(`Video ${index} play failed:`, err))
-      })
-      
-      video.addEventListener('play', () => {
-        console.log(`Video ${index} started`)
-        overlay.classList.add('hidden')
-      })
-      
-      video.addEventListener('pause', () => {
-        if (!video.ended) {
-          console.log(`Video ${index} paused`)
-          overlay.classList.remove('hidden')
-        }
-      })
-      
-      video.addEventListener('ended', () => {
-        console.log(`Video ${index} ended`)
-        overlay.classList.remove('hidden')
-      })
-    } else {
-      console.warn(`Video ${index} missing elements:`, { hasVideo: !!video, hasOverlay: !!overlay })
-    }
-  })
-  
-  // 3. AUDIO CARDS
-  const audioCards = document.querySelectorAll('.kg-audio-card')
-  console.log(`Found ${audioCards.length} audio cards`)
-  
-  audioCards.forEach((card, index) => {
-    const audioElements = card.querySelectorAll('audio')
-    console.log(`Audio card ${index} has ${audioElements.length} audio elements`)
-    
-    audioElements.forEach((audio, audioIndex) => {
-      const el = audio as HTMLAudioElement
-      el.controls = true
-      el.preload = 'metadata'
-      
-      console.log(`Audio ${index}-${audioIndex}:`, {
-        src: el.src || el.querySelector('source')?.src || 'NO SOURCE',
-        visible: window.getComputedStyle(el).display !== 'none'
-      })
+      }
     })
   })
-  
-  console.log('=== Initialization Complete ===')
+
+  // Video cards
+  document.querySelectorAll('.kg-video-overlay').forEach((overlay) => {
+    overlay.addEventListener('click', () => {
+      const container = overlay.closest('.kg-video-container')
+      const video = container?.querySelector('video') as HTMLVideoElement
+      
+      if (video) {
+        (overlay as HTMLElement).style.display = 'none'
+        video.play()
+      }
+    })
+  })
+
+  // Audio - just ensure controls are enabled
+  document.querySelectorAll('.kg-audio-card audio').forEach((audio) => {
+    const el = audio as HTMLAudioElement
+    el.controls = true
+    el.preload = 'metadata'
+  })
 })
 </script>
 

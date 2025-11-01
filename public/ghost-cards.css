@@ -418,10 +418,6 @@
     font-weight: 400
 }
 
-.kg-bookmark-metadata>span:nth-of-type(2):before {
-    content: "â€¢";
-    margin: 0 6px
-}
 
 .kg-bookmark-metadata>span:last-of-type {
     overflow: hidden;

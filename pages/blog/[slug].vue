@@ -13,12 +13,13 @@ if (error.value) {
 }
 
 const processedContent = computed(() => {
-  if (!post.value?.content) return ''
+  if (!post.value?.content)
+    return ''
   let html = post.value.content
-  
+
   // Fix internal Ghost URLs
   html = html.replace(/href="https:\/\/storacha-network\.ghost\.io\//g, 'href="/blog/')
-  
+
   return html
 })
 
@@ -32,24 +33,24 @@ useSeoMeta({
 useHead({
   link: [
     { rel: 'stylesheet', href: '/ghost-screen.css' },
-    { rel: 'stylesheet', href: '/ghost-cards.css' }
+    { rel: 'stylesheet', href: '/ghost-cards.css' },
   ],
   script: [{
     type: 'application/ld+json',
     innerHTML: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.value?.title,
-      "image": post.value?.images?.[0],
-      "datePublished": post.value?.pubDate,
-      "author": { "@type": "Organization", "name": "Storacha Network" },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Storacha Network",
-        "logo": { "@type": "ImageObject", "url": "https://storacha.network/img/logo.png" }
-      }
-    })
-  }]
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      'headline': post.value?.title,
+      'image': post.value?.images?.[0],
+      'datePublished': post.value?.pubDate,
+      'author': { '@type': 'Organization', 'name': 'Storacha Network' },
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'Storacha Network',
+        'logo': { '@type': 'ImageObject', 'url': 'https://storacha.network/img/logo.png' },
+      },
+    }),
+  }],
 })
 
 // Minimal JavaScript for interactive cards
@@ -60,19 +61,6 @@ onMounted(() => {
       const card = heading.closest('.kg-toggle-card')
       if (card) {
         card.classList.toggle('kg-toggle-card-open')
-      }
-    })
-  })
-
-  // Video cards
-  document.querySelectorAll('.kg-video-overlay').forEach((overlay) => {
-    overlay.addEventListener('click', () => {
-      const container = overlay.closest('.kg-video-container')
-      const video = container?.querySelector('video') as HTMLVideoElement
-      
-      if (video) {
-        (overlay as HTMLElement).style.display = 'none'
-        video.play()
       }
     })
   })
@@ -88,32 +76,32 @@ onMounted(() => {
 
 <template>
   <Section v-if="post" class="bg-white" padding>
-    <article class="blog-post max-w-4xl mx-auto mt-24 px-4">
+    <article class="blog-post mx-auto mt-24 max-w-4xl px-4">
       <header class="mb-12">
-        <Heading type="h1" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+        <Heading type="h1" class="mb-4 text-4xl font-bold lg:text-6xl md:text-5xl">
           {{ post.title }}
         </Heading>
 
-        <time class="block text-base text-gray-500 mb-8" :datetime="post.pubDate">
+        <time class="mb-8 block text-base text-gray-500" :datetime="post.pubDate">
           {{ useAppDateFormat(post.pubDate) }}
         </time>
 
-        <img 
-          v-if="post.images?.[0]" 
-          :src="post.images[0]" 
+        <img
+          v-if="post.images?.[0]"
+          :src="post.images[0]"
           :alt="post.title"
-          class="w-full max-h-[500px] object-cover rounded-lg shadow-lg"
+          class="max-h-[500px] w-full rounded-lg object-cover shadow-lg"
         >
       </header>
 
       <div class="gh-content" v-html="processedContent" />
 
-      <footer class="mt-16 pt-8 border-t border-gray-200">
-        <NuxtLink 
-          to="/blog" 
-          class="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
+      <footer class="mt-16 border-t border-gray-200 pt-8">
+        <NuxtLink
+          to="/blog"
+          class="inline-flex items-center text-blue-600 font-medium hover:text-blue-800"
         >
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="mr-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           Back to Blog

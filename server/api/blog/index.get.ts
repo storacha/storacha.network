@@ -12,11 +12,12 @@ async function fetchGhostPosts(event: any): Promise<Feed> {
     fields: ['title', 'slug', 'feature_image', 'published_at', 'excerpt'],
   })
 
-  if (!posts?.length) return { items: [] }
+  if (!posts?.length)
+    return { items: [] }
 
-  const items: Item[] = posts.map((post) => ({
-    title: post.title || 'Untitled',
-    snippet: post.excerpt || '',
+  const items: Item[] = posts.map(post => ({
+    title: post.title || '🌀 Uh-oh, the title went on a data adventure 🌍. Please refresh the page.',
+    snippet: post.excerpt || '🌀 Uh-oh, the snippet went on a data adventure 🌍. Please refresh the page.',
     pubDate: post.published_at || new Date().toISOString(),
     isoDate: post.published_at || new Date().toISOString(),
     link: `/blog/${post.slug}`,

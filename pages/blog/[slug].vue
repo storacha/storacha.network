@@ -1,3 +1,4 @@
+<!-- eslint-disable no-console -->
 <script lang="ts" setup>
 const route = useRoute()
 const slug = computed(() => route.params.slug as string)
@@ -53,8 +54,10 @@ useHead({
   }],
 })
 
-// Minimal JavaScript for interactive cards
 onMounted(() => {
+  console.log('Content loaded, looking for video cards...')
+  const videoCards = document.querySelectorAll('.kg-video-card')
+  console.log(`Found ${videoCards.length} video cards`)
   // Toggle cards
   document.querySelectorAll('.kg-toggle-heading').forEach((heading) => {
     heading.addEventListener('click', () => {
@@ -70,6 +73,34 @@ onMounted(() => {
     const el = audio as HTMLAudioElement
     el.controls = true
     el.preload = 'metadata'
+  })
+
+  // Videos - remove custom controller, enable native controls
+  document.querySelectorAll('.kg-video-card').forEach((card, index) => {
+    const video = card.querySelector('video') as HTMLVideoElement | null
+    const overlay = card.querySelector('.kg-video-overlay') as HTMLElement | null
+    const vscController = card.querySelector('vsc-controller') as HTMLElement | null
+
+    console.log(`Video card ${index}:`, {
+      hasVideo: !!video,
+      hasOverlay: !!overlay,
+      hasVscController: !!vscController,
+    })
+
+    // Remove the custom video controller
+    if (vscController) {
+      vscController.remove()
+    }
+
+    if (video) {
+      video.controls = true
+      // Ensure video is playable
+      video.style.pointerEvents = 'auto'
+    }
+
+    if (overlay) {
+      overlay.remove() // Completely remove overlay instead of hiding
+    }
   })
 })
 </script>
@@ -115,5 +146,22 @@ onMounted(() => {
 .blog-post :deep(img) {
   max-width: 100%;
   height: auto;
+}
+.blog-post :deep(.kg-video-container) {
+  height: auto !important;
+  position: relative;
+  width: 100%;
+}
+
+.blog-post :deep(.kg-video-container video) {
+  position: relative !important;
+  width: 100%;
+  height: auto !important;
+  display: block;
+}
+
+.blog-post :deep(.kg-video-overlay) {
+  display: none !important;
+  pointer-events: none !important; /* Allow clicks to pass through */
 }
 </style>

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.20.0](https://github.com/storacha/storacha.network/compare/v0.19.7...v0.20.0) (2025-11-15)
+
+
+### Features
+
+* Add 'Storacha Forge' link to header dropdown ([#201](https://github.com/storacha/storacha.network/issues/201)) ([9574297](https://github.com/storacha/storacha.network/commit/9574297a017ac0a1a67da34b6fd413e99b13332d))
+
 ## [0.19.7](https://github.com/storacha/storacha.network/compare/v0.19.6...v0.19.7) (2025-08-06)
 
 

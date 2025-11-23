@@ -50,6 +50,9 @@ importers:
       '@vueuse/nuxt':
         specifier: ^13.4.0
         version: 13.4.0(magicast@0.3.5)(nuxt@3.17.5(@parcel/watcher@2.4.1)(@types/node@24.0.3)(better-sqlite3@11.10.0)(db0@0.3.2(better-sqlite3@11.10.0))(eslint@9.13.0(jiti@2.4.2))(ioredis@5.6.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.44.0)(terser@5.43.1)(tsx@4.19.2)(typescript@5.6.3)(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(vue-tsc@2.1.10(typescript@5.6.3))(webpack-sources@3.3.3)(yaml@2.8.0))(vue@3.5.12(typescript@5.6.3))
+      consola:
+        specifier: ^3.4.2
+        version: 3.4.2
       defu:
         specifier: ^6.1.4
         version: 6.1.4
@@ -3064,10 +3067,6 @@ packages:
 
   confbox@0.2.2:
     resolution: {integrity: sha512-1NB+BKqhtNipMsov4xI/NnhCKp9XG9NamYp5PVm9klAT0fsrNPjaFICsCFhNhwZJKNh7zB/3q8qXz0E9oaMNtQ==}
-
-  consola@3.2.3:
-    resolution: {integrity: sha512-I5qxpzLv+sJhTVEoLYNcTW+bThDCPsit0vLNKShZx6rLtpilNpmmeTPaeqJb9ZE9dV3DGaeby6Vuhrw38WjeyQ==}
-    engines: {node: ^14.18.0 || >=16.10.0}
 
   consola@3.4.2:
     resolution: {integrity: sha512-5IKcdX0nnYavi6G7TtOhwkYzyjfJlatbjMjuLSfE2kYT5pMDOilZ4OvMhi637CcDICTmz3wARPoyhqyX1Y+XvA==}
@@ -8234,7 +8233,7 @@ snapshots:
       '@vue/devtools-core': 7.4.4(vite@6.3.5(@types/node@24.0.3)(jiti@2.4.2)(terser@5.43.1)(tsx@4.19.2)(yaml@2.8.0))(vue@3.5.12(typescript@5.6.3))
       '@vue/devtools-kit': 7.4.4
       birpc: 0.2.19
-      consola: 3.2.3
+      consola: 3.4.2
       cronstrue: 2.51.0
       destr: 2.0.3
       error-stack-parser-es: 0.1.5
@@ -10554,7 +10553,7 @@ snapshots:
       giget: 1.2.3
       jiti: 1.21.6
       mlly: 1.7.4
-      ohash: 1.1.4
+      ohash: 1.1.6
       pathe: 1.1.2
       perfect-debounce: 1.0.0
       pkg-types: 1.3.1
@@ -10756,8 +10755,6 @@ snapshots:
   confbox@0.1.8: {}
 
   confbox@0.2.2: {}
-
-  consola@3.2.3: {}
 
   consola@3.4.2: {}
 

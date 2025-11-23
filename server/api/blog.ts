@@ -1,5 +1,6 @@
 import { XMLParser } from 'fast-xml-parser'
 import type { Feed } from '~/types/blog'
+import { blogLogger } from '~/utils/logger'
 
 async function getFeed(feedUrl: string) {
   const rss = await $fetch<string>(feedUrl)
@@ -8,25 +9,25 @@ async function getFeed(feedUrl: string) {
 
 async function fetchPosts(url: string): Promise<Feed> {
   const rss = await getFeed(url)
-  
+
   if (!rss || rss.trim().length === 0) {
     throw new Error('Empty RSS feed received')
   }
-  
+
   const root = new XMLParser().parse(rss)
-  
+
   // Add null checks for RSS structure
   if (!root?.rss?.channel) {
     throw new Error('Invalid RSS feed structure - missing channel')
   }
-  
+
   const { channel } = root.rss
-  
+
   // Handle case where there are no items
   if (!channel.item) {
     return { items: [] }
   }
-  
+
   // Ensure channel.item is an array (sometimes it's a single object)
   const items = Array.isArray(channel.item) ? channel.item : [channel.item]
 
@@ -49,11 +50,16 @@ async function fetchPosts(url: string): Promise<Feed> {
           link: post.link || '#',
           images,
         }
-      } catch (error) {
-        console.warn('Failed to process blog post:', post.title, error)
+      }
+      catch (error) {
+        blogLogger.warn('Failed to process blog post', {
+          title: post.title,
+          error: error instanceof Error ? error.message : String(error),
+          stack: error instanceof Error ? error.stack : undefined,
+        })
         return null
       }
-    }).filter(Boolean) // Remove null entries
+    }).filter(Boolean), // Remove null entries
   }
 }
 
@@ -62,28 +68,39 @@ export default defineCachedEventHandler(async (event) => {
   try {
     const feedUrl = config.public.blogFeedUrl
     if (!feedUrl) {
-      throw createError({ 
+      throw createError({
         statusCode: 500,
-        statusMessage: 'Blog feed URL not configured' 
+        statusMessage: 'Blog feed URL not configured',
       })
     }
-    
+
     const posts = await fetchPosts(feedUrl)
     return posts
   }
   catch (e: any) {
-    console.error('failed to get blog posts:', e)
-    
+    const requestId = getHeader(event, 'x-request-id') || 'unknown'
+
+    blogLogger.error('Failed to get blog posts', {
+      error: e.message || String(e),
+      stack: e.stack,
+      requestId,
+      feedUrl: config.public.blogFeedUrl,
+    })
+
     // Return empty data instead of throwing for client errors
     if (e.message?.includes('fetch') || e.message?.includes('Empty RSS') || e.message?.includes('Invalid RSS')) {
-      console.warn('Blog feed issue, returning empty data:', e.message)
+      blogLogger.warn('Blog feed issue, returning empty data', {
+        error: e.message,
+        requestId,
+        feedUrl: config.public.blogFeedUrl,
+      })
       return { items: [] }
     }
-    
+
     // Only throw for server configuration errors
-    throw createError({ 
-      statusCode: 500, 
-      statusMessage: `Failed to fetch posts: ${e.message}` 
+    throw createError({
+      statusCode: 500,
+      statusMessage: `Failed to fetch posts: ${e.message}`,
     })
   }
 }, { maxAge: 60 * 60 })

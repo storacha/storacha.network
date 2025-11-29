@@ -185,7 +185,9 @@ export default defineNuxtConfig({
   },
 
   plausible: {
+    domain: 'storacha.network',
     autoOutboundTracking: true,
+    logIgnoredEvents: process.env.NODE_ENV === 'development',
   },
 
   unocss: {

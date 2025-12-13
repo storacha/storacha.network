@@ -6,7 +6,7 @@ runs:
   steps:
     - uses: pnpm/action-setup@v2
       with:
-        version: 9
+        version: 9.15.9
         run_install: true
     - uses: actions/setup-node@v4
       with:

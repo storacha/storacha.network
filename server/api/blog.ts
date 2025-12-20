@@ -37,21 +37,29 @@ async function fetchPosts(url: string): Promise<Feed> {
         const content = post['content:encoded'] || ''
         const images = Array.from(String(content)
           .matchAll(regex)).map(match => match[1]).filter(Boolean)
-        let snippet = content.replace(/(<([^>]+)>)/g, '')
+        let snippet = content.replace(/(\<([^\>]+)\>)/g, '')
         if (snippet.length > 200) {
           snippet = `${snippet.slice(0, 200)}...`
         }
         return {
           title: post.title || 'Untitled',
-          snippet,
+          snippet: snippet || '',
           pubDate: post.pubDate || new Date().toISOString(),
           isoDate: post.isoDate || new Date().toISOString(),
           link: post.link || '#',
-          images,
+          images: images || [],
         }
       } catch (error) {
-        console.warn('Failed to process blog post:', post.title, error)
-        return null
+        console.warn('Failed to process blog post:', post.title || 'Unknown', error)
+        // Return default object even on error to avoid filtering out
+        return {
+          title: 'Untitled',
+          snippet: '',
+          pubDate: new Date().toISOString(),
+          isoDate: new Date().toISOString(),
+          link: '#',
+          images: [],
+        }
       }
     }).filter(Boolean) // Remove null entries
   }

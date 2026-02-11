@@ -32,10 +32,10 @@ export default defineConfig({
       brand: {
         dark: '#000',
         light: '#fff',
-        1: '#0176CE',
+        1: '#013e6d',
         2: '#BDE0FF',
-        3: '#E91315',
-        4: '#EFE3F3',
+        3: '#D51013',
+        4: '#F5EDF7',
         5: '#FFC83F',
         6: '#FFE4AE',
       },

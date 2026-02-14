@@ -24,7 +24,7 @@ const cards = [{
 </script>
 
 <template>
-  <CarouselSection
+  <GridSection
     class="roadmap"
     title="Our Sizzling Roadmap"
     description="Check out how we're cranking up the heat with upcoming features and innovations to make your data storage experience scorching hot!"
@@ -42,7 +42,7 @@ const cards = [{
         </p>
       </div>
     </CardCell>
-  </CarouselSection>
+  </GridSection>
 </template>
 
 <style lang="postcss" scoped>

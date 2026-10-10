@@ -43,10 +43,10 @@ jobs:
         with:
           run: egrep -o 'https?://[^ ]+' <(echo "${{ steps.cloudflare.outputs.stdout }}")
       - name: Find Current Pull Request
-        uses: jwalton/gh-find-current-pr@v1.3.3
+        uses: jwalton/gh-find-current-pr@v1.3.5
         id: finder
       - name: Update Preview URLs PR Comment
-        uses: marocchino/sticky-pull-request-comment@v2.9.0
+        uses: marocchino/sticky-pull-request-comment@v2.9.4
         with:
           number: ${{ steps.finder.outputs.pr }}
           message: |

@@ -26,7 +26,7 @@
     "@nuxt/image": "^1.10.0",
     "@nuxt/scripts": "^0.11.8",
     "@nuxtjs/fontaine": "^0.5.0",
-    "@nuxtjs/plausible": "^1.2.0",
+    "@nuxtjs/plausible": "^4.0.0",
     "@nuxtjs/seo": "^3.0.3",
     "@unhead/vue": "^2.0.10",
     "@unocss/nuxt": "^66.2.3",
